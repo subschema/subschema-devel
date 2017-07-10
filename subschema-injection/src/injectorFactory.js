@@ -65,10 +65,14 @@ export default function injector(resolvers = new Map()) {
             if (propType == null || resolve == null) {
                 throw new Error('must define both a propType and a resolver');
             }
-            if (propType.isRequired) {
-                resolvers.set(propType.isRequired, resolve);
+            if (resolvers instanceof Map) {
+                if (propType.isRequired) {
+                    resolvers.set(propType.isRequired, resolve);
+                }
+                resolvers.set(propType, resolve);
+            } else {
+                resolvers.addResolver(propType, resolve);
             }
-            resolvers.set(propType, resolve);
         },
         unmount,
         listener,
