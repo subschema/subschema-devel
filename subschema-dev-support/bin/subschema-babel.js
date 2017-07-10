@@ -19,4 +19,4 @@ if (process.argv.indexOf('--plugins') == -1) {
 if (process.argv.indexOf('--out-file') == -1 && process.argv.indexOf('--filename') == -1) {
     process.argv.push('src');
 }
-require(path.resolve(__dirname, '..', 'node_modules', '.bin', 'babel'));
+require('babel-cli/bin/babel');

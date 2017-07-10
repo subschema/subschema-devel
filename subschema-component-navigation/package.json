@@ -1,7 +1,7 @@
 {
   "name": "subschema-component-navigation",
   "main": "lib/index.js",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "Navigation components",
   "scripts": {
     "server": "subschema-webpack-dev-server",
@@ -18,11 +18,11 @@
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "subschema": "^2.2.7",
-    "subschema-core": "^2.2.7",
-    "subschema-css-bootstrap": "^2.2.7",
-    "subschema-dev-support": "^2.2.7",
-    "subschema-prop-types": "^2.2.7"
+    "subschema": "^2.2.8",
+    "subschema-core": "^2.2.8",
+    "subschema-css-bootstrap": "^2.2.8",
+    "subschema-dev-support": "^2.2.8",
+    "subschema-prop-types": "^2.2.8"
   },
   "peerDependencies": {
     "prop-types": "*",

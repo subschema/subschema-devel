@@ -1,6 +1,6 @@
 {
   "name": "subschema-dev-support",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "Tools for developing with subschema and webpack",
   "scripts": {
     "test": "echo 'No Tests for subschema-dev-support'",

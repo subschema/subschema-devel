@@ -1,6 +1,6 @@
 {
   "name": "subschema-css-bootstrap",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "main": "lib/index.js",
   "source": "src/index",
   "description": "Bootstrap CSS support for subschema",
@@ -13,11 +13,11 @@
     "bootstrap": "^3.3.7"
   },
   "peerDependencies": {
-    "subschema-transitions": "^2.2.7"
+    "subschema-transitions": "^2.2.8"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
-    "subschema-dev-support": "^2.2.7",
-    "subschema-transitions": "^2.2.7"
+    "subschema-dev-support": "^2.2.8",
+    "subschema-transitions": "^2.2.8"
   }
 }

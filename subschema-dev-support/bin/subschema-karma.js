@@ -61,4 +61,4 @@ process.env.SUBSCHEMA_KARMA = 1;
 //for all tests, regardless of imports.
 process.env.SUBSCHEMA_USE_ALIASES = process.env.SUBSCHEMA_USE_ALIASES ? `react,react-dom,${process.env.SUBSCHEMA_USE_ALIASES}` :`react,react-dom`;
 
-require(path.resolve(__dirname, '..', 'node_modules', '.bin', 'karma'));
+require('karma-cli/bin/karma');

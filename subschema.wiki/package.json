@@ -1,6 +1,6 @@
 {
   "name": "subschema.wiki",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "Subschema Wiki",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,6 @@
     "react-syntax-highlighter": "^5.6.2"
   },
   "devDependencies": {
-    "subschema-dev-support": "^2.2.7"
+    "subschema-dev-support": "^2.2.8"
   }
 }

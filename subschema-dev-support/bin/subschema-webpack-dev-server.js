@@ -38,7 +38,7 @@ if (argv.indexOf('-h') != -1 || argv.indexOf('--help') != -1) {
     \t--use-externals a comma seperated dot valued list of externals to use`);
 }
 process.env.SUBSCHEMA_USE_HTML = 1;
-var webpackDevServer = path.resolve(__dirname, '..', 'node_modules', '.bin', 'webpack-dev-server');
+var webpackDevServer = require.resolve('webpack-dev-server/bin/webpack-dev-server');
 if (process.env.SUBSCHEMA_DEBUG){
     console.warn(webpackDevServer, argv.slice(2));
 }

@@ -114,4 +114,4 @@ subschema-webpack extensions
 Otherwise supports webpack commands:    
 `)
 }
-require(path.resolve(__dirname, '..', 'node_modules', '.bin', 'webpack'));
+require('webpack/bin/webpack');

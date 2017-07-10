@@ -69,6 +69,7 @@ export const types     = {
     Hidden,
     Number,
     Object: ObjectType,
+    ObjectType,
     Password,
     Radio,
     Restricted,

@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-playground",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "A tool for editing and playing with subschema components",
   "scripts": {
     "karma": "subschema-karma",
@@ -13,7 +13,7 @@
     "brace": "^0.10.0",
     "browser-filesaver": "^1.1.1",
     "react-ace": "^5.0.1",
-    "subschema-project": "^2.2.7",
+    "subschema-project": "^2.2.8",
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
@@ -22,34 +22,34 @@
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "subschema": "^2.2.7",
-    "subschema-component-autocomplete": "^2.2.7",
-    "subschema-component-form": "^2.2.7",
-    "subschema-component-list": "^2.2.7",
-    "subschema-component-modal": "^2.2.7",
-    "subschema-component-wizard": "^2.2.7",
-    "subschema-core": "^2.2.7",
-    "subschema-css-bootstrap": "^2.2.7",
-    "subschema-dev-support": "^2.2.7",
-    "subschema-processors": "^2.2.7",
-    "subschema-prop-types": "^2.2.7",
-    "subschema-test-samples": "^2.2.7",
-    "subschema-test-support": "^2.2.7",
-    "subschema-transitions": "^2.2.7",
-    "subschema-validators": "^2.2.7",
-    "subschema-valuemanager": "^2.2.7"
+    "subschema": "^2.2.8",
+    "subschema-component-autocomplete": "^2.2.8",
+    "subschema-component-form": "^2.2.8",
+    "subschema-component-list": "^2.2.8",
+    "subschema-component-modal": "^2.2.8",
+    "subschema-component-wizard": "^2.2.8",
+    "subschema-core": "^2.2.8",
+    "subschema-css-bootstrap": "^2.2.8",
+    "subschema-dev-support": "^2.2.8",
+    "subschema-processors": "^2.2.8",
+    "subschema-prop-types": "^2.2.8",
+    "subschema-test-samples": "^2.2.8",
+    "subschema-test-support": "^2.2.8",
+    "subschema-transitions": "^2.2.8",
+    "subschema-validators": "^2.2.8",
+    "subschema-valuemanager": "^2.2.8"
   },
   "peerDependencies": {
     "lodash": "*",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "subschema": "^2.2.7",
-    "subschema-component-form": "^2.2.7",
-    "subschema-core": "^2.2.7",
-    "subschema-css-bootstrap": "^2.2.7",
-    "subschema-prop-types": "^2.2.7",
-    "subschema-valuemanager": "^2.2.7"
+    "subschema": "^2.2.8",
+    "subschema-component-form": "^2.2.8",
+    "subschema-core": "^2.2.8",
+    "subschema-css-bootstrap": "^2.2.8",
+    "subschema-prop-types": "^2.2.8",
+    "subschema-valuemanager": "^2.2.8"
   },
   "subschema": {
     "includes": "*subschema*"

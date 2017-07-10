@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "subschema-prop-types";
 export default class FormTemplate extends Component {
-    static displayName = 'FormTemplate';
     static propTypes = {
         style: PropTypes.style,
         onSubmit: PropTypes.submit,
