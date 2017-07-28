@@ -3,7 +3,11 @@ Resolvers
 Resolvers are a key component to understanding how Subschema works.   They add the magical properties to Components.  Below is the documentation for the built in resolvers, however you can write your own.
 
 # Resolver API
-The resolver api resolves PropTypes to resolver functions.
+The resolver api resolves PropTypes to resolver functions.  However due to the
+way newer versions of React handle *propTypes you need to use subschema-prop-types*
+rather than the React ones.   For non resolver mappings it will not matter.
+
+
 
 ## Registering a resolver.
 You register a resolver by calling
