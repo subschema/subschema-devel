@@ -296,6 +296,18 @@ function useDepAlias(alias = {}, deps = pkg()) {
     const r = aliasArr.filter(hasSource).reduce(makeAlias, alias);
     return r;
 }
+function configOrBool(value, defaultValue){
+    if (value == null) return false;
+    switch(String(value).trim().toLowerCase()){
+        case '':
+        case 'false':
+        case '0': return false;
+        case 'true':
+        case '1': return defaultValue || true;
+        default:
+            return value;
+    }
+}
 
 module.exports = {
     set,
@@ -303,6 +315,7 @@ module.exports = {
     project,
     deps: pkg(),
     pkg,
+    configOrBool,
     applyFuncs,
     useAlias,
     useDepAlias,

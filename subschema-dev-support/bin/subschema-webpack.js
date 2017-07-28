@@ -29,28 +29,15 @@ if (!hasArg('--config')) {
     process.argv.push('--config', path.resolve(__dirname, '..', 'webpack.config.js'));
 }
 
+if ((idx = argv.indexOf('--public')) != -1) {
+    process.env.SUBSCHEMA_PUBLIC = argv[idx + 1];
+}
 
 if ((idx = process.argv.indexOf('--demo')) != -1) {
     process.env.SUBSCHEMA_USE_NAME_HASH = 1;
     process.env.SUBSCHEMA_NO_STYLE_LOADER = 1;
     process.env.SUBSCHEMA_USE_HTML = 1;
-    if (!hasArg('--devtool')) {
-        process.argv.push('--devtool', 'sourcemap');
-    }
-    if (!hasArg('--entry')) {
-        process.argv.push('--entry', './public/index.jsx');
-    }
-    if (!hasArg('--output-filename')) {
-        process.argv.push('--output-filename', '[hash].app.js');
-    }
-    let docs = path.resolve(process.cwd(), process.argv[idx + 1]);
-    if (!hasArg('--output-path')) {
-        process.argv.push('--output-path', docs);
-    } else {
-        docs = process.argv[process.argv.indexOf('--output-path') + 1];
-    }
-    process.argv.splice(idx, 2);
-    console.warn(`docs will be in ${docs}`);
+    process.env.SUBSCHEMA_DEMO = 1;
 
 } else {
 
