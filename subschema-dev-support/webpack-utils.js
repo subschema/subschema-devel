@@ -256,19 +256,16 @@ function useExternalizePeers(externals = {}) {
 
 function useExternals(externals = {}) {
     var externals = configOrBool(process.env.SUBSCHEMA_USE_EXTERNALS, '');
-    if (externals) {
+    if (typeof externals === 'string') {
         return externals.split(/,\s*/)
-                      .reduce(function (ret, key) {
-                          const [k, v] = key.split(/\s*=\s*/, 2);
-                          set(ret, k, v || k);
-                          return ret;
-                      }, externals);
+                        .reduce(function (ret, key) {
+                            const [k, v] = key.split(/\s*=\s*/, 2);
+                            set(ret, k, v || k);
+                            return ret;
+                        }, {});
     }
 }
 
-function _resolveConf(key, confFile) {
-
-}
 
 function useCustomConf(customConf, confFile = SUBSCHEMA_CONF, deps = pkg()) {
     aliasDependencies(deps).forEach(function (key) {

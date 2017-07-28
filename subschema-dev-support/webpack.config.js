@@ -132,7 +132,7 @@ if (!(opts.isKarma || opts.isDevServer || opts.isDemo)) {
 }
 
 
-var externals = useExternalizePeers(useExternals());
+var externals = useExternalizePeers(useExternals({}));
 
 var webpack = {
     devServer    : {
