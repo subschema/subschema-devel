@@ -8,7 +8,7 @@
     "compile-lib": "subschema-babel && yarn run compile-default-loader",
     "compile-server": "subschema-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
     "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom,prop-types subschema-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
-    "compile-web-debug": "SUBSCHEMA_USE_ALIASES=react,react-dom,prop-types subschema-webpack --no-externalize-peers --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
+    "compile-web-debug": "subschema-webpack --no-externalize-peers --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
     "compile-web-noreact": "subschema-webpack -p  --output-path dist --output-filename subschema-noreact.js",
     "karma": "subschema-karma",
     "test": "subschema-karma",

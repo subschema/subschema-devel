@@ -11,8 +11,12 @@ var deps                = webpackUtils.deps,
     useExternalizePeers = webpackUtils.useExternalizePeers,
     useCustomConf       = webpackUtils.useCustomConf,
     useDepAlias         = webpackUtils.useDepAlias,
-    dependency          = webpackUtils.dependency;
+    camelCased          = webpackUtils.camelCased,
+    sliced              = webpackUtils.sliced;
 
+function cwd() {
+    return path.resolve.apply(path, [process.cwd()].concat(sliced(arguments)));
+}
 
 function autoprefixer() {
     return [
@@ -30,11 +34,16 @@ function autoprefixer() {
 
 var plugins = [];
 var opts    = {
-    isKarma    : configOrBool(process.env.SUBSCHEMA_KARMA),
-    isDemo     : configOrBool(process.env.SUBSCHEMA_DEMO),
-    isDevServer: configOrBool(process.env.SUBSCHEMA_DEV_SERVER),
-    publicPath : configOrBool(process.env.SUBSCHEMA_PUBLIC, '/'),
-    useCss     : {
+    isProduction     : process.env.NODE_ENV === 'production',
+    isKarma          : configOrBool(process.env.SUBSCHEMA_KARMA),
+    isDemo           : configOrBool(process.env.SUBSCHEMA_DEMO),
+    isDevServer      : configOrBool(process.env.SUBSCHEMA_DEV_SERVER),
+    isUseStyleLoader : !configOrBool(process.env.SUBSCHEMA_NO_STYLE_LOADER,
+        true),
+    publicPath       : configOrBool(process.env.SUBSCHEMA_PUBLIC, '/'),
+    useSubschemaAlias: true,
+    babel,
+    useCssModule     : {
         loader : "css-loader",
         options: {
             modules       : true,
@@ -42,43 +51,55 @@ var opts    = {
             localIdentName: '[name]__[local]___[hash:base64:5]',
         }
     },
-    usePostCss : {
+    useCss           : {
+        loader : "css-loader",
+        options: {
+            importLoaders: 1,
+        }
+    },
+    usePostCss       : {
         loader : 'postcss-loader',
         options: {
             plugins: autoprefixer
         }
     },
-    useLess    : {
+    useLess          : {
         loader : "less-loader",
         options: {
             strictMath: true,
             noIeCompat: true
         }
     },
-    useNameHash: configOrBool(process.env.SUBSCHEMA_USE_NAME_HASH,
+    useNameHash      : configOrBool(process.env.SUBSCHEMA_USE_NAME_HASH,
         '[name]-[hash].js'),
-    analytics  : configOrBool(process.env.SUBSCHEMA_USE_ANALYTICS, 'static'),
+    analytics        : configOrBool(process.env.SUBSCHEMA_USE_ANALYTICS,
+        'static'),
 };
 
-if (configOrBool(process.env.SUBSCHEMA_NO_STYLE_LOADER)) {
+if (!opts.isUseStyleLoader) {
     var ExtractTextPlugin = require('extract-text-webpack-plugin');
     var extractCSS        = new ExtractTextPlugin(
         opts.useNameHash ? '[hash].style.css' : 'style.css');
     opts.useStyle         = function useStyleExtractText() {
-        return extractCSS.extract(Array.prototype.slice.call(arguments),
-            { publicPath: opts.publicPath });
+        const conf = { use: sliced(arguments).filter(Boolean) };
+        if (opts.publicPath) {
+            conf.publicPath = opts.publicPath;
+        }
+        return extractCSS.extract(conf);
     };
     plugins.push(extractCSS);
 } else {
     opts.useStyle = function useStyleWithStyleLoader() {
-        return ['style-loader'].concat(Array.prototype.slice.call(arguments));
+        return ['style-loader'].concat(sliced(arguments).filter(Boolean));
     };
 }
 
-if (process.env.SUBSCHEMA_USE_STATS_FILE) {
-    opts.useStatsFile = process.env.SUBSCHEMA_USE_STATS_FILE;
+opts.useStatsFile = configOrBool(process.env.SUBSCHEMA_USE_STATS_FILE)
+if (opts.useStatsFile) {
+    var useStatsFile = opts.useStatsFile === true ? 'stats.json'
+        : opts.useStatsFile;
     plugins.push(new (require("webpack-stats-plugin").StatsWriterPlugin)({
-        filename: process.env.SUBSCHEMA_USE_STATS_FILE,
+        filename: useStatsFile,
         transform(data, opts) {
             var chunks = data.assetsByChunkName["null"];
             return JSON.stringify({ main: chunks[0], css: chunks[1] }, null, 2);
@@ -86,7 +107,32 @@ if (process.env.SUBSCHEMA_USE_STATS_FILE) {
     }))
 }
 
-var externals = useExternalizePeers(useExternals(externals));
+var output = {
+    filename: configOrBool(process.env.SUBSCHEMA_OUTPUT_FILENAME,
+        opts.useNameHash) || opts.useNameHash || '[name].js',
+    path    : configOrBool(process.env.SUBSCHEMA_OUTPUT_PATH, cwd('lib'))
+              || cwd('lib')
+};
+
+//if its not anything else its a library.
+if (!(opts.isKarma || opts.isDevServer || opts.isDemo)) {
+    opts.isLibrary    = true;
+    var library       = configOrBool(process.env.SUBSCHEMA_LIBRARY),
+        libraryTarget = configOrBool(process.env.SUBSCHEMA_LIBRARY_TARGET);
+    if (library === true || library === false) {
+        output.library = camelCased(
+            require(cwd('package.json')).name);
+    } else {
+        output.library = library;
+    }
+    output.libraryTarget =
+        libraryTarget === true || libraryTarget === false ? 'umd'
+            : libraryTarget;
+
+}
+
+
+var externals = useExternalizePeers(useExternals());
 
 var webpack = {
     devServer    : {
@@ -94,7 +140,7 @@ var webpack = {
         filename          : 'index.js',
         historyApiFallback: true,
         inline            : true,
-        contentBase       : path.resolve(process.cwd(), 'public'),
+        contentBase       : cwd('public'),
         publicPath        : opts.publicPath,
         port              : 8082
     },
@@ -104,10 +150,11 @@ var webpack = {
     },
     resolveLoader: {
         modules: [
-            path.resolve(process.cwd(), "node_modules"),
+            cwd("node_modules"),
             path.resolve(__dirname, 'node_modules'),
         ]
     },
+    output,
     plugins,
     externals,
     module       : {
@@ -124,7 +171,8 @@ var webpack = {
             },
             {
                 test: /\.css$/,
-                use : opts.useStyle('css-loader')
+                use : opts.useStyle(opts.useCss)
+
             },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -142,9 +190,10 @@ var webpack = {
             {
                 test: /\.less$/,
                 use : opts.useStyle(
-                    opts.useCss,
+                    opts.useCssModule,
                     opts.useLess,
                     opts.usePostCss)
+
             },
             {
                 test: /\.json$/,
@@ -155,12 +204,13 @@ var webpack = {
 };
 
 if (process.env.SUBSCHEMA_MAIN_FIELDS) {
-
-    const mainFields           = configOrBool(process.env.SUBSCHEMA_MAIN_FIELDS,
+    var mainFields = configOrBool(process.env.SUBSCHEMA_MAIN_FIELDS,
         ['source', 'main']);
-    webpack.resolve.mainFields =
-        Array.isArray(mainFields) ? mainFields : mainFields.split(/,\s*/);
-    console.warn(`using mainFields`, webpack.resolve.mainFields);
+    if (mainFields) {
+        webpack.resolve.mainFields =
+            Array.isArray(mainFields) ? mainFields : mainFields.split(/,\s*/);
+        console.warn(`using mainFields`, webpack.resolve.mainFields);
+    }
 }
 
 function charset(ele) {
@@ -184,11 +234,9 @@ HtmlWebpackPlugin.prototype.generateAssetTags = function (assets) {
 opts.HtmlWebpackPlugin = HtmlWebpackPlugin;
 
 if (process.env.SUBSCHEMA_USE_HTML) {
-    opts.useHtml = true;
     console.warn(`using html plugin`);
 
-
-    plugins.push(new opts.HtmlWebpackPlugin({
+    opts.useHtml = {
         'title'   : (deps.description ? deps.description : deps.name),
         'hash'    : opts.useNameHash,
         'template': path.resolve(__dirname, 'public',
@@ -196,7 +244,7 @@ if (process.env.SUBSCHEMA_USE_HTML) {
         'filename': 'index.html',
         publicPath: opts.publicPath,
         analytics : opts.analytics
-    }));
+    };
 }
 
 if (process.env.SUBSCHEMA_USE_HOT) {
@@ -233,41 +281,50 @@ if (idx > -1) {
     webpack.entry = entry;
 } else {
     if (opts.isDemo || configOrBool(process.env.SUBSCHEMA_DEV_SERVER)) {
-        webpack.entry = path.resolve(process.cwd(), 'public', 'index.jsx');
-    } else {
-        webpack.entry = path.resolve(process.cwd(), 'src', 'index.js');
+        webpack.entry = { index: cwd('public', 'index') };
+    } else if (!webpack.entry &&! opts.isKarma) {
+        webpack.entry = { index: cwd('src', 'index.js') };
     }
 }
 
-
+//This is where the magic happens
 var customConf = useCustomConf();
 opts.webpack   = webpackObject;
 if (customConf) {
     webpack = customConf(opts, webpack);
 }
+
+
 if (opts.useHot) {
+    var preEntry = ['only-dev-server'];
     if (typeof webpack.entry == 'string') {
-        webpack.entry = ['only-dev-server', webpack.entry];
+        webpack.entry = preEntry.concat(webpack.entry);
     } else if (Array.isArray(webpack.entry)) {
-        webpack.entry = webpack.entry.map(entry => ['only-dev-server', entry]);
+        webpack.entry = webpack.entry.map(entry => preEntry.concat(entry));
     } else if (webpack.entry) {
         webpack.entry = Object.keys(webpack.entry).reduce(function (ret, key) {
-            ret[key] = ['only-dev-server', webpack.entry[key]];
+            ret[key] = preEntry.concat(webpack.entry[key]);
             return ret;
         }, {});
     } else {
-        console.warn(`could not find an webpack.entry`);
+        console.warn(
+            `could not find an webpack.entry, hot loading may not work`);
     }
 }
 
 //Think hard if this should be the default.
-if (!webpack.resolve.alias.subschema) {
+if (opts.useSubschemaAlias) {
+    var subschemaKey = opts.useSubschemaAlias === true ? 'subschema'
+        : opts.useSubschemaAlias;
     try {
-        webpack.resolve.alias.subschema =
+        webpack.resolve.alias[subschemaKey] =
             require.resolve('subschema/dist/subschema-noreact');
     } catch (e) {
-        //swallow?
     }
+}
+
+if (opts.useHtml) {
+    plugins.push(new opts.HtmlWebpackPlugin(opts.useHtml));
 }
 
 if (opts.analytics) {
@@ -293,6 +350,6 @@ if (opts.analytics) {
     })();
 }
 if (process.env.SUBSCHEMA_DEBUG) {
-    console.log('webpack', JSON.stringify(webpack, null, 2));
+    console.log('webpack opts %O, webpack %O', opts, webpack);
 }
 module.exports = webpack;

@@ -1,7 +1,6 @@
 import React from "react";
 import {generate, compile, project} from "../lib";
 import expect from "expect";
-import JSZip from "jszip";
 import {into, renderPage, execMock, testEachSample} from "./support";
 
 describe('subschema-project/samples', function () {

@@ -3,19 +3,23 @@ var SUBSCHEMA_CONF = 'subschema-webpack.config.js';
 var fs             = require('fs');
 
 var asArray = Function.call.bind(Array.prototype.slice);
+
 function project() {
     return path.resolve(cwd(), path.join.apply(path, asArray(arguments)));
 }
+
 function cwd() {
     return path.resolve.apply(path,
         [process.env.SUBSCHEMA_PROJECT_DIR || process.cwd()].concat(
             asArray(arguments)));
 }
+
 function pkg() {
     var _pkg = cwd('package.json');
     debug(`using package`, _pkg);
     return require(_pkg);
 }
+
 function dependency(current) {
     if (current == pkg().name) {
         //if its the current project than we return relative to ourselves
@@ -29,6 +33,7 @@ function dependency(current) {
     return path.resolve.apply(path,
         [cwd(), 'node_modules'].concat(asArray(arguments)));
 }
+
 function re(str) {
     if (str.startsWith('!')) {
         str = str.substring(1);
@@ -45,9 +50,11 @@ function re(str) {
     }
     return str;
 }
+
 function execThis(func) {
     return func(this);
 }
+
 function wrapExcludes(excludes = []) {
     excludes = excludes ? Array.isArray(excludes) ? excludes : [excludes] : [];
     excludes = excludes.map(function (str) {
@@ -62,12 +69,14 @@ function wrapExcludes(excludes = []) {
         return excludes.find(execThis, value);
     }
 }
+
 var DEFAULT_EXCLUDE = 'subschema(?:$|-(?:native|core|loader|project|component|processors|transitions|css|validators)(?:-.+?)?)';
 
 function keys$unique(ret, key) {
     ret[key] = true;
     return ret;
 }
+
 function keys(obj) {
     if (arguments.length == 0) {
         return [];
@@ -84,6 +93,7 @@ function keys(obj) {
     }
     return Object.keys(ret);
 }
+
 function unique(arr) {
     var ret = {};
     for (var i = 0, l = arguments.length; i < l; i++) {
@@ -95,20 +105,25 @@ function unique(arr) {
 function hasSource(name) {
     return fs.existsSync(dependency(name, 'src'));
 }
+
 function debug() {
     if (process.env.SUBSCHEMA_DEBUG) {
         console.warn.apply(console, asArray(arguments));
     }
 }
+
 function warn() {
     console.warn.apply(console, asArray(arguments));
 }
+
 function info() {
     console.warn.apply(console, asArray(arguments));
 }
+
 function concatFilteredDependencies(core, userPkg = pkg()) {
     return unique(filteredDependencies(core), filteredDependencies(userPkg));
 }
+
 function filteredDependencies(userPkg = pkg()) {
     var subschema = userPkg.subschema;
     var include   = subschema && subschema.include;
@@ -121,11 +136,13 @@ function filteredDependencies(userPkg = pkg()) {
     }
     return _filteredDependencies(userPkg, include, exclude);
 }
+
 function aliasDependencies(userPkg = pkg()) {
     const { include = [], exclude = [DEFAULT_EXCLUDE] } = userPkg.subschema
                                                           || {};
     return _filteredDependencies(userPkg, include, exclude);
 }
+
 function _filteredDependencies(userPkg  = pkg(), includes,
                                excludes = [DEFAULT_EXCLUDE]) {
 
@@ -193,6 +210,7 @@ function applyFuncs(f1, f2) {
         return f1.call(this, opts, (f2.call(this, opts, conf)));
     }
 }
+
 function parseAlias(key) {
     var parts = key.split('=', 2);
     var name  = parts[0];
@@ -204,6 +222,7 @@ function parseAlias(key) {
         this[name] = project('node_modules', name);
     }
 }
+
 function useAlias(alias = {}) {
 
     if (process.env.SUBSCHEMA_USE_ALIASES) {
@@ -214,6 +233,7 @@ function useAlias(alias = {}) {
     debug('using aliases', alias);
     return alias;
 }
+
 function useExternalizePeers(externals = {}) {
 
     if (process.env.SUBSCHEMA_EXTERNALIZE_PEERS) {
@@ -233,9 +253,11 @@ function useExternalizePeers(externals = {}) {
     }
     return externals;
 }
+
 function useExternals(externals = {}) {
-    if (process.env.SUBSCHEMA_USE_EXTERNALS) {
-        return process.env.SUBSCHEMA_USE_EXTERNALS.split(/,\s*/)
+    var externals = configOrBool(process.env.SUBSCHEMA_USE_EXTERNALS, '');
+    if (externals) {
+        return externals.split(/,\s*/)
                       .reduce(function (ret, key) {
                           const [k, v] = key.split(/\s*=\s*/, 2);
                           set(ret, k, v || k);
@@ -243,9 +265,11 @@ function useExternals(externals = {}) {
                       }, externals);
     }
 }
+
 function _resolveConf(key, confFile) {
 
 }
+
 function useCustomConf(customConf, confFile = SUBSCHEMA_CONF, deps = pkg()) {
     aliasDependencies(deps).forEach(function (key) {
         if (fs.existsSync(dependency(key, confFile))) {
@@ -270,6 +294,7 @@ function useCustomConf(customConf, confFile = SUBSCHEMA_CONF, deps = pkg()) {
 
     return customConf;
 }
+
 function makeAlias(ret, key) {
     ret[key + '/lib/style.css'] = dependency(key, 'lib', 'style.css');
     ret[key]                    =
@@ -281,6 +306,7 @@ function makeAlias(ret, key) {
     }
     return ret;
 }
+
 function useDepAlias(alias = {}, deps = pkg()) {
     var aliasArr = [];
 
@@ -296,21 +322,34 @@ function useDepAlias(alias = {}, deps = pkg()) {
     const r = aliasArr.filter(hasSource).reduce(makeAlias, alias);
     return r;
 }
-function configOrBool(value, defaultValue){
-    if (value == null) return false;
-    switch(String(value).trim().toLowerCase()){
+
+function configOrBool(value, defaultValue) {
+    if (value == null) {
+        return false;
+    }
+
+    switch (String(value).trim().toLowerCase()) {
         case '':
         case 'false':
-        case '0': return false;
+        case '0':
+            return false;
         case 'true':
-        case '1': return defaultValue || true;
+        case '1':
+            return defaultValue || true;
         default:
             return value;
     }
 }
 
+var camelCased = function (str) {
+    return str.replace(/-([a-z])/g, function (g) {
+        return g[1].toUpperCase();
+    })
+};
+var sliced     = Function.call.bind(Array.prototype.slice);
 module.exports = {
     set,
+    camelCased,
     wrapFunc,
     project,
     deps: pkg(),
@@ -328,5 +367,6 @@ module.exports = {
     warn,
     concatFilteredDependencies,
     info,
-    cwd
+    cwd, sliced
+
 };
