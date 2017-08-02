@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-var path       = require('path');
-var argv       = process.argv;
+var path  = require('path');
+var argv  = process.argv;
 var slice = Function.call.bind(Array.prototype.slice);
 
 function indexOfArg() {
@@ -58,19 +58,26 @@ if (!hasArg('--config')) {
     argv.push('--config', path.resolve(__dirname, '..', 'webpack.config.js'));
 }
 
-if (envSplice('--demo')) {
+if (envSplice('SUBSCHEMA_DEMO', '--demo')) {
     process.env.SUBSCHEMA_USE_NAME_HASH   = 1;
     process.env.SUBSCHEMA_NO_STYLE_LOADER = 1;
     process.env.SUBSCHEMA_USE_HTML        = 1;
-    process.env.SUBSCHEMA_DEMO            = 1;
-
+    var demo                              = process.env.SUBSCHEMA_DEMO;
+    if (!(demo == true || demo == '1' || demo == 1 )) {
+        if (demo.startsWith('.') || !demo.startsWith('/')) {
+            process.env.SUBSCHEMA_OUTPUT_PATH =
+                path.resolve(process.cwd(), demo);
+        }
+    } else {
+        process.env.SUBSCHEMA_DEMO = 1;
+    }
 } else {
 
     if (!envRemove('SUBSCHEMA_EXTERNALIZE_PEERS', '--externalize-peers')) {
         //By default we externalize peer dependencies.
         process.env.SUBSCHEMA_EXTERNALIZE_PEERS = 1;
     }
-    if (envRemove('SUBSCHEMA_EXTERNALIZE_PEERS', '--no-externalize-peers')){
+    if (envRemove('SUBSCHEMA_EXTERNALIZE_PEERS', '--no-externalize-peers')) {
         process.env.SUBSCHEMA_EXTERNALIZE_PEERS = '';
     }
     envMap('SUBSCHEMA_OUTPUT_PATH', '--output-path');

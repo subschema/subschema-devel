@@ -72,8 +72,8 @@ var opts    = {
     },
     useNameHash      : configOrBool(process.env.SUBSCHEMA_USE_NAME_HASH,
         '[name]-[hash].js'),
-    analytics        : configOrBool(process.env.SUBSCHEMA_USE_ANALYTICS,
-        'static'),
+    analytics        : configOrBool(process.env.SUBSCHEMA_USE_ANALYTICS),
+    analyze          : configOrBool(process.env.SUBSCHEMA_ANALYZE, 'static'),
 };
 
 if (!opts.isUseStyleLoader) {
@@ -282,7 +282,7 @@ if (idx > -1) {
 } else {
     if (opts.isDemo || configOrBool(process.env.SUBSCHEMA_DEV_SERVER)) {
         webpack.entry = { index: cwd('public', 'index') };
-    } else if (!webpack.entry &&! opts.isKarma) {
+    } else if (!webpack.entry && !opts.isKarma) {
         webpack.entry = { index: cwd('src', 'index.js') };
     }
 }
@@ -327,13 +327,13 @@ if (opts.useHtml) {
     plugins.push(new opts.HtmlWebpackPlugin(opts.useHtml));
 }
 
-if (opts.analytics) {
+if (opts.analyze) {
     //only include for analyzer.
     const BundleAnalyzerPlugin = require(
         'webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
     (function (analyze = {}) {
-        switch (opts.analytics) {
+        switch (opts.analyze) {
             case 'server':
                 break;
             case 'static': {
@@ -342,7 +342,7 @@ if (opts.analytics) {
                 break;
             }
             default: {
-                analyze = JSON.parse(opts.analytics);
+                analyze = JSON.parse(opts.analyze);
             }
         }
         console.warn(`analyzing project`);
