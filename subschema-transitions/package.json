@@ -1,6 +1,6 @@
 {
   "name": "subschema-transitions",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "description": "Subschema Transitions",
   "main": "lib/index.js",
   "scripts": {
@@ -11,11 +11,11 @@
   "dependencies": {
     "prop-types": "^15.5.4",
     "react-transition-group": "^1.1.1",
-    "subschema-prop-types": "^2.2.10",
-    "subschema-utils": "^2.2.10"
+    "subschema-prop-types": "^2.2.11",
+    "subschema-utils": "^2.2.11"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
-    "subschema-dev-support": "^2.2.10"
+    "subschema-dev-support": "^2.2.11"
   }
 }
