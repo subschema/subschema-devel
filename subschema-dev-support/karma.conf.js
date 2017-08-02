@@ -1,21 +1,53 @@
 // Karma configuration
-var webpack                = require('./webpack.config');
-var path                   = require('path');
-const test                 = path.resolve(
-    process.env.SUBSCHEMA_TEST_DIR || __dirname, 'test-index.js');
-webpack.resolve.alias.test = path.resolve(process.cwd(), 'test');
+const webpack = require('./webpack.config');
+const path    = require('path');
 
-webpack.devtool            = '#inline-source-map';
+const {
+          SUBSCHEMA_KARMA_FILES  = '',
+          SUBSCHEMA_TEST_DIR     = __dirname,
+          SUBSCHEMA_COVERAGE     = '',
+          SUBSCHEMA_COVERAGE_DIR = '',
+          SUBSCHEMA_DEBUG,
+          TRAVIS
+      } = process.env;
+
+const useCoverage = !!SUBSCHEMA_COVERAGE || !!SUBSCHEMA_COVERAGE_DIR;
+const test        = path.resolve(SUBSCHEMA_TEST_DIR, 'test-index.js');
 if (!webpack.output) {
     webpack.output = {};
 }
-webpack.output.pathinfo = true;
-var useCoverage         = false;
-if (process.env.SUBSCHEMA_COVERAGE) {
-    console.warn(`enabling code coverage for karma`);
-    useCoverage = true;
+
+//muck with webpack
+if (!webpack.resolve.alias.test) {
+    webpack.resolve.alias.test = path.resolve(process.cwd(), 'test');
 }
 console.warn('running tests in ', webpack.resolve.alias.test);
+
+webpack.devtool = '#inline-source-map';
+
+
+
+
+if (useCoverage) {
+    console.warn(`enabling code coverage for karma`);
+    webpack.module.rules.unshift(
+        {
+            test   : /\.jsx?$/,
+            // instrument only testing sources with Istanbul
+            include: [/subschema*/, path.join(process.cwd(),
+                'src'), path.join(process.cwd(), 'public')],
+            use    : 'istanbul-instrumenter-loader'
+        }
+    );
+}
+
+
+const files = [test];
+if (SUBSCHEMA_KARMA_FILES) {
+    files.unshift(...SUBSCHEMA_KARMA_FILES.split(/,\s*/));
+    console.warn(`using files ${files}`);
+}
+
 module.exports = function (config) {
     const karmaConf = {
 
@@ -28,9 +60,8 @@ module.exports = function (config) {
 
 
         // list of files / patterns to load in the browser
-        files          : [
-            test
-        ],
+        files,
+
         customLaunchers: {
             Chrome_with_debugging: {
                 base         : 'Chrome',
@@ -111,34 +142,11 @@ module.exports = function (config) {
             require('karma-webpack')
         ]
     };
-    if (useCoverage) {
-        karmaConf.reporters.push('coverage-istanbul');
-        karmaConf.plugins.push('karma-coverage-istanbul-reporter');
-        karmaConf.coverageIstanbulReporter = {
-            // reports can be any that are listed here:
-            // https://github.com/istanbuljs/istanbul-reports/tree/590e6b0089f67b723a1fdf57bc7ccc080ff189d7/lib
-            reports              : ['lcov', 'json'],
-            // base output directory. If you include %browser% in the path it
-            // will be replaced with the karma browser name
-            dir                  : process.env.SUBSCHEMA_COVERAGE_DIR
-                                   || path.join(process.cwd(), 'coverage'),
-            fixWebpackSourcePaths: true
-        };
-        webpack.module.rules.unshift(
-            {
-                test   : /\.jsx?$/,
-                // instrument only testing sources with Istanbul
-                include: [/subschema*/, path.join(process.cwd(),
-                    'src'), path.join(process.cwd(), 'public')],
-                use    : 'istanbul-instrumenter-loader'
-            }
-        );
-    }
-    if (process.env.TRAVIS) {
+    if (TRAVIS) {
         karmaConf.browsers = ['Firefox'];
     }
-    if (process.env.SUBSCHEMA_DEBUG) {
-        console.warn('karma-webpack %o', webpack);
+    if (SUBSCHEMA_DEBUG) {
+        console.warn('karma-webpack %o', karmaConf);
     }
     config.set(karmaConf);
 };
