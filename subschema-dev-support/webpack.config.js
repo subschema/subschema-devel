@@ -262,16 +262,15 @@ var idx;
 if ((idx = process.argv.indexOf('--target')) != -1) {
     opts.target = process.argv[idx + 1];
 }
-
-var argv = process.argv;
-var idx  = argv.indexOf('--entry');
-if (idx > -1) {
-    var entry = {};
-    for (var i = idx + 1, l = argv.length; i < l; i++) {
-        if (argv[i].startsWith('-')) {
-            break;
-        }
-        var parts = argv[i].split('=', 2);
+//we take this away from webpack so we an expose it to the config.
+if (process.env.SUBSCHEMA_ENTRY) {
+    var entry        = {};
+    var entryNoParse = JSON.parse('"' + process.env.SUBSCHEMA_ENTRY + '"');
+    if (!Array.isArray(entryNoParse)) {
+        entryNoParse = entryNoParse.split(/,\s*/);
+    }
+    for (var i=0, l=entryNoParse.length; i<l;i++) {
+        var parts = entryNoParse[i].split('=', 2);
         if (!parts[1]) {
             entry[path.basename(parts[0])] = parts[0];
         } else {

@@ -34,8 +34,17 @@ if ((idx = argv.indexOf('--use-externals')) != -1) {
 if ((idx = argv.indexOf('--no-use-externals')) != -1) {
     argv.splice(idx, 1);
     process.env.SUBSCHEMA_USE_EXTERNALS = '';
-
 }
+if ((idx = argv.indexOf('--entry')) != -1){
+    var entryArgs = [];
+    for(var i=idx+1, l=argv.length; i<l;i++){
+        if (argv[i].startsWith('-'))break;
+        entryArgs.push(argv[i]);
+    }
+    argv.splice(idx, entryArgs.length +1);
+    process.env.SUBSCHEMA_ENTRY = JSON.stringify(entryArgs).replace(/^"(.+?)"$/, '$1');
+}
+
 if (argv.indexOf('-h') != -1 || argv.indexOf('--help') != -1) {
     console.warn(`${argv[1]}
     \t--use-externals a comma seperated dot valued list of externals to use`);

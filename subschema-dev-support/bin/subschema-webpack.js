@@ -4,10 +4,10 @@ var argv  = process.argv;
 var slice = Function.call.bind(Array.prototype.slice);
 
 function indexOfArg() {
-    var argv = slice(process.argv, 2);
+    var args = slice(argv, 2);
     var idx  = -1;
     for (var i = 0, l = arguments.length; i < l; i++) {
-        if ((idx = argv.indexOf(arguments[i])) != -1) {
+        if ((idx = args.indexOf(arguments[i])) != -1) {
             return idx + 2;
         }
     }
@@ -50,45 +50,68 @@ function envSplice(envName, argName) {
     return false;
 }
 
+function envSpliceMulti(envName, argName) {
+    var idx;
+    if ((idx = indexOfArg(argName)) != -1) {
+        console.log('idx', idx);
+        var allArgs = [];
+        for (var end = idx + 1, length = argv.length; end < length; end++) {
+            if (argv[end].startsWith('-')) {
+                break;
+            }
+            allArgs.push(argv[end])
+        }
+        argv.splice(idx, allArgs.length+1);
+        process.env[envName] =
+            JSON.stringify(allArgs).replace(/^"(.+?)"$/, '$1');
+        return true;
+    }
+    return false;
+}
+
+envSpliceMulti('SUBSCHEMA_ENTRY', '--entry');
 
 if (hasArg('-p', '--production')) {
     process.env.NODE_ENV = 'production';
 }
+
 if (!hasArg('--config')) {
     argv.push('--config', path.resolve(__dirname, '..', 'webpack.config.js'));
 }
-
 if (envSplice('SUBSCHEMA_DEMO', '--demo')) {
-    process.env.SUBSCHEMA_USE_NAME_HASH   = 1;
-    process.env.SUBSCHEMA_NO_STYLE_LOADER = 1;
-    process.env.SUBSCHEMA_USE_HTML        = 1;
-    var demo                              = process.env.SUBSCHEMA_DEMO;
-    if (!(demo == true || demo == '1' || demo == 1 )) {
-        if (demo.startsWith('.') || !demo.startsWith('/')) {
-            process.env.SUBSCHEMA_OUTPUT_PATH =
-                path.resolve(process.cwd(), demo);
+    if (envSplice('SUBSCHEMA_DEMO', '--demo')) {
+        process.env.SUBSCHEMA_USE_NAME_HASH   = 1;
+        process.env.SUBSCHEMA_NO_STYLE_LOADER = 1;
+        process.env.SUBSCHEMA_USE_HTML        = 1;
+        var demo                              = process.env.SUBSCHEMA_DEMO;
+        if (!(demo == true || demo == '1' || demo == 1 )) {
+            if (demo.startsWith('.') || !demo.startsWith('/')) {
+                process.env.SUBSCHEMA_OUTPUT_PATH =
+                    path.resolve(process.cwd(), demo);
+            }
+        } else {
+            process.env.SUBSCHEMA_DEMO = 1;
         }
     } else {
-        process.env.SUBSCHEMA_DEMO = 1;
-    }
-} else {
 
-    if (!envRemove('SUBSCHEMA_EXTERNALIZE_PEERS', '--externalize-peers')) {
-        //By default we externalize peer dependencies.
-        process.env.SUBSCHEMA_EXTERNALIZE_PEERS = 1;
-    }
-    if (envRemove('SUBSCHEMA_EXTERNALIZE_PEERS', '--no-externalize-peers')) {
-        process.env.SUBSCHEMA_EXTERNALIZE_PEERS = '';
-    }
-    envMap('SUBSCHEMA_OUTPUT_PATH', '--output-path');
-    envMap('SUBSCHEMA_OUTPUT_FILENAME', '--output-filename');
-    envMap('SUBSCHEMA_OUTPUT_LIBRARY', '--output-library');
-    envMap('SUBSCHEMA_OUTPUT_LIBRARY_TARGET', '--output-library-target');
-    envSplice('SUBSCHEMA_PUBLIC', '--public');
-    envRemove('SUBSCHEMA_NO_STYLE_LOADER', '--no-style-loader');
-    envSplice('SUBSCHEMA_USE_STATS_FILE', '--use-stats-file');
-    envSplice('SUBSCHEMA_USE_EXTERNALS', '--use-externals');
+        if (!envRemove('SUBSCHEMA_EXTERNALIZE_PEERS', '--externalize-peers')) {
+            //By default we externalize peer dependencies.
+            process.env.SUBSCHEMA_EXTERNALIZE_PEERS = 1;
+        }
+        if (envRemove('SUBSCHEMA_EXTERNALIZE_PEERS',
+                '--no-externalize-peers')) {
+            process.env.SUBSCHEMA_EXTERNALIZE_PEERS = '';
+        }
+        envMap('SUBSCHEMA_OUTPUT_PATH', '--output-path');
+        envMap('SUBSCHEMA_OUTPUT_FILENAME', '--output-filename');
+        envMap('SUBSCHEMA_OUTPUT_LIBRARY', '--output-library');
+        envMap('SUBSCHEMA_OUTPUT_LIBRARY_TARGET', '--output-library-target');
+        envSplice('SUBSCHEMA_PUBLIC', '--public');
+        envRemove('SUBSCHEMA_NO_STYLE_LOADER', '--no-style-loader');
+        envSplice('SUBSCHEMA_USE_STATS_FILE', '--use-stats-file');
+        envSplice('SUBSCHEMA_USE_EXTERNALS', '--use-externals');
 
+    }
 }
 if (hasArg('--help', '-h')) {
     console.warn(`
