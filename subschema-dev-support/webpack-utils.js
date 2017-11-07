@@ -8,6 +8,10 @@ function project() {
     return path.resolve(cwd(), path.join.apply(path, asArray(arguments)));
 }
 
+function resolvePkgDir(name) {
+    return path.resolve(require.resolve(path.join(name, 'package.json')), '..');
+}
+
 function cwd() {
     return path.resolve.apply(path,
         [process.env.SUBSCHEMA_PROJECT_DIR || process.cwd()].concat(
@@ -20,18 +24,16 @@ function pkg() {
     return require(_pkg);
 }
 
-function dependency(current) {
+function dependency(current, ...rest) {
     if (current == pkg().name) {
         //if its the current project than we return relative to ourselves
-        return project.apply(null, asArray(arguments, 1));
+        return project(...rest);
     }
-    const local = path.resolve.apply(path,
-        [cwd()].concat(asArray(arguments)));
+    const local = path.resolve(cwd(), ...arguments);
     if (fs.existsSync(local)) {
         return local;
     }
-    return path.resolve.apply(path,
-        [cwd(), 'node_modules'].concat(asArray(arguments)));
+    return path.resolve(cwd(), 'node_modules', ...rest);
 }
 
 function re(str) {
@@ -70,7 +72,8 @@ function wrapExcludes(excludes = []) {
     }
 }
 
-var DEFAULT_EXCLUDE = 'subschema(?:$|-(?:native|core|loader|project|component|processors|transitions|css|validators)(?:-.+?)?)';
+//var DEFAULT_EXCLUDE =
+// 'subschema(?:$|.|-(?:native|core|loader|project|component|processors|transitions|css|validators|wiki)(?:-.+?)?)';
 
 function keys$unique(ret, key) {
     ret[key] = true;
@@ -103,7 +106,7 @@ function unique(arr) {
 }
 
 function hasSource(name) {
-    return fs.existsSync(dependency(name, 'src'));
+    return fs.existsSync(path.join(resolvePkgDir(name), 'src'));
 }
 
 function debug() {
@@ -121,7 +124,11 @@ function info() {
 }
 
 function concatFilteredDependencies(core, userPkg = pkg()) {
-    return unique(filteredDependencies(core), filteredDependencies(userPkg));
+    const filteredCore                   = filteredDependencies(core);
+    const { include = [], exclude = [] } = core.subschema || {};
+    const filteredPkg                    = _filteredDependencies(userPkg,
+        include, exclude);
+    return unique(filteredCore, filteredPkg);
 }
 
 function filteredDependencies(userPkg = pkg()) {
@@ -138,30 +145,45 @@ function filteredDependencies(userPkg = pkg()) {
 }
 
 function aliasDependencies(userPkg = pkg()) {
-    const { include = [], exclude = [DEFAULT_EXCLUDE] } = userPkg.subschema
-                                                          || {};
+    const { include = [], exclude = [] } = userPkg.subschema
+                                           || {};
     return _filteredDependencies(userPkg, include, exclude);
 }
 
-function _filteredDependencies(userPkg  = pkg(), includes,
-                               excludes = [DEFAULT_EXCLUDE]) {
+const isAliasRe = process.env.SUBSCHEMA_ALIAS_PATTERN ? new RegExp(
+    process.env.SUBSCHEMA_ALIAS_PATTERN) : /subschema/;
 
-    var all = [].concat(
-        keys(userPkg.dependencies, userPkg.devDependencies,
-            userPkg.peerDependencies));
-    if (!all) {
-        return userPkg.name ? [userPkg.name] : [];
+function isAliasable(includes = [], excludes = []) {
+    const inc = wrapExcludes(includes, false);
+    const exc = wrapExcludes(excludes, true);
+    return function (name) {
+        try {
+            const pkg = require(`${name}/package.json`);
+            if (inc(pkg.name)) {
+                return true;
+            }
+            if (exc(pkg.name)) {
+                return false;
+            }
+            return isAliasRe.test(pkg.name)
+        } catch (e) {
+            console.warn(`could not resolve package.json for '%s'`, name);
+        }
+        return false;
     }
-    var isExclude        = wrapExcludes(excludes);
-    var isInclude        = includes ? wrapExcludes(includes) : () => false;
-    var filteredExcludes = all.filter(isExclude);
-    var filteredIncludes = all.filter(isInclude);
-    var ret              = unique(userPkg.name ? [userPkg.name] : [],
-        filteredExcludes,
-        filteredIncludes);
+}
 
-    return !ret ? userPkg.name ? [userPkg.name] : [] : ret;
+function _filteredDependencies({
+                                   name, dependencies,
+                                   peerDependencies,
 
+                               }        = pkg(),
+                               includes,
+                               excludes = []) {
+
+    const ret = [name].concat(keys(dependencies, peerDependencies))
+                      .filter(isAliasable(includes, excludes));
+    return ret;
 }
 
 var pkg;
@@ -292,13 +314,17 @@ function useCustomConf(customConf, confFile = SUBSCHEMA_CONF, deps = pkg()) {
     return customConf;
 }
 
+function resolveRelativePkg(name, ...args) {
+    return path.resolve(resolvePkgDir(name), ...args);
+}
+
 function makeAlias(ret, key) {
-    ret[key + '/lib/style.css'] = dependency(key, 'lib', 'style.css');
+    ret[key + '/lib/style.css'] = resolveRelativePkg(key, 'lib', 'style.css');
     ret[key]                    =
-        ret[key + '/lib'] = dependency(key, 'src');
+        ret[key + '/lib'] = resolveRelativePkg(key, 'src');
     if (process.env.SUBSCHEMA_KARMA) {
-        ret[key + '/test'] = dependency(key, 'test');
-        ret[key + '/']     = dependency(key, 'src');
+        ret[key + '/test'] = resolveRelativePkg(key, 'test');
+        ret[key + '/']     = resolveRelativePkg(key, 'src');
 
     }
     return ret;
@@ -360,6 +386,7 @@ module.exports = {
     useExternalizePeers,
     filteredDependencies,
     dependency,
+    resolvePkgDir,
     debug,
     warn,
     concatFilteredDependencies,

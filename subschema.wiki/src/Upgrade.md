@@ -19,7 +19,7 @@
 * Changed the layout of the samples configuration, imports get imported and props are passed to the Form in the demo
 * Removed injected from subschema-injection, now just uses state to maintain the values.  Faster,easier,better. If
   you have written resolvers using this.injected, you are pretty safe to move to this.state/this.setState.
-* DefaultLoader.js is now generated need to document.
+* DefaultLoader.js.tmpl is now generated need to document.
 * Removed duplicate DownloadButton.js from demo.
 * webpack.config.js has beeen removed use the new subschema-webpack.config.js and the subschema-webpack tool.
 

@@ -14,14 +14,17 @@
     "backbone-forms"
   ],
   "peerDependencies": {
-    "lodash": "*"
+    "lodash": "*",
+    "react": "*",
+    "react-dom":"*",
+    "prop-types": "*"
   },
   "devDependencies": {
     "expect": "^1.20.2",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "rimraf": "^2.6.1",
     "subschema-dev-support": "^2.2.11",
     "subschema-test-support": "^2.2.11"

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
-import {ReactCSSReplaceTransition, templates} from 'subschema-component-form';
 import {Form} from 'subschema';
+import {ReactCSSReplaceTransition, templates} from 'subschema-component-form';
 import UninjectedDisplayValueAndErrors from './DisplayValueAndErrors.jsx';
-import {normalize, source} from 'subschema-project/lib/compile';
+import {normalize, source} from 'subschema-project';
 import Compiler from './Compiler';
 import SchemaEditor from './SchemaEditor';
 import ExportButtons from './ExportButtons';

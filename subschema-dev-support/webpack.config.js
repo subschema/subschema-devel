@@ -12,6 +12,7 @@ var deps                = webpackUtils.deps,
     useCustomConf       = webpackUtils.useCustomConf,
     useDepAlias         = webpackUtils.useDepAlias,
     camelCased          = webpackUtils.camelCased,
+    resolvePkgDir       = webpackUtils.resolvePkgDir,
     sliced              = webpackUtils.sliced;
 
 function cwd() {
@@ -41,10 +42,10 @@ var opts    = {
     isUseStyleLoader : !configOrBool(process.env.SUBSCHEMA_NO_STYLE_LOADER,
         true),
     publicPath       : configOrBool(process.env.SUBSCHEMA_PUBLIC, '/'),
-    useSubschemaAlias: true,
+    useSubschemaAlias: false,
     babel,
     useCssModule     : {
-        loader : "css-loader",
+        loader : require.resolve("css-loader"),
         options: {
             modules       : true,
             importLoaders : 1,
@@ -52,19 +53,19 @@ var opts    = {
         }
     },
     useCss           : {
-        loader : "css-loader",
+        loader : require.resolve("css-loader"),
         options: {
             importLoaders: 1,
         }
     },
     usePostCss       : {
-        loader : 'postcss-loader',
+        loader : require.resolve('postcss-loader'),
         options: {
             plugins: autoprefixer
         }
     },
     useLess          : {
-        loader : "less-loader",
+        loader : require.resolve("less-loader"),
         options: {
             strictMath: true,
             noIeCompat: true
@@ -90,7 +91,8 @@ if (!opts.isUseStyleLoader) {
     plugins.push(extractCSS);
 } else {
     opts.useStyle = function useStyleWithStyleLoader() {
-        return ['style-loader'].concat(sliced(arguments).filter(Boolean));
+        return [require.resolve('style-loader')].concat(
+            sliced(arguments).filter(Boolean));
     };
 }
 
@@ -152,7 +154,10 @@ var webpack = {
         modules: [
             cwd("node_modules"),
             path.resolve(__dirname, 'node_modules'),
-        ]
+        ],
+        alias  : {
+            'raw-loader': require.resolve('raw-loader')
+        }
     },
     output,
     plugins,
@@ -165,7 +170,7 @@ var webpack = {
                 //       exclude: /(node_modules|bower_components)/,
                 include: [/\/test\/*/, /\/src\/*/, /\/public\/*/, /subschema[^/]*\/src\/*/],
                 use    : [{
-                    loader : 'babel-loader',
+                    loader : require.resolve('babel-loader'),
                     options: babel
                 }]
             },
@@ -175,33 +180,63 @@ var webpack = {
 
             },
             {
+
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                use : 'url-loader?limit=10000&mimetype=application/font-woff'
+                use : {
+                    loader : require.resolve('url-loader'),
+                    options: {
+                        limit   : 10000,
+                        mimetype: 'application/font-woff',
+
+                    }
+                }
             },
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                use : 'url-loader?limit=10000&mimetype=application/octet-stream'
+                use : {
+                    loader : require.resolve('url-loader'),
+                    options: {
+                        limit   : 10000,
+                        mimetype: 'application/octet-stream'
+                    }
+                }
             },
-            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: 'file-loader' },
+            {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                use : { loader: require.resolve('file-loader') }
+            },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                use : 'url-loader?limit=10000&mimetype=image/svg+xml'
+                use : {
+                    loader : require.resolve('url-loader'),
+                    options: {
+                        limit   : 10000,
+                        mimetype: 'image/svg+xml'
+                    }
+                }
             },
             {
-                test: /\.less$/,
-                use : opts.useStyle(
-                    opts.useCssModule,
-                    opts.useLess,
-                    opts.usePostCss)
+                test  : /\.less$/,
+                loader:
+                    opts.useStyle(
+                        opts.useCssModule,
+                        opts.useLess,
+                        opts.usePostCss)
 
             },
             {
-                test: /\.json$/,
-                use : 'json-loader'
+                test  : /\.json$/,
+                loader: require.resolve('json-loader')
             }
         ]
     }
 };
+
+
+webpack.resolve.alias.react         = resolvePkgDir('react');
+webpack.resolve.alias['react-dom']  = resolvePkgDir('react-dom');
+webpack.resolve.alias['prop-types'] = resolvePkgDir('prop-types');
+
 
 if (process.env.SUBSCHEMA_MAIN_FIELDS) {
     var mainFields = configOrBool(process.env.SUBSCHEMA_MAIN_FIELDS,
@@ -248,7 +283,8 @@ if (process.env.SUBSCHEMA_USE_HTML) {
 }
 
 if (process.env.SUBSCHEMA_USE_HOT) {
-    opts.useHot = true;
+    opts.useHot     = true;
+    webpack.devtool = 'cheap-module-source-map';
     babel.plugins.unshift(require.resolve("react-hot-loader/babel"));
     webpack.resolve.alias['webpack/hot/dev-server'] =
         require.resolve('webpack/hot/dev-server.js');
@@ -269,7 +305,7 @@ if (process.env.SUBSCHEMA_ENTRY) {
     if (!Array.isArray(entryNoParse)) {
         entryNoParse = entryNoParse.split(/,\s*/);
     }
-    for (var i=0, l=entryNoParse.length; i<l;i++) {
+    for (var i = 0, l = entryNoParse.length; i < l; i++) {
         var parts = entryNoParse[i].split('=', 2);
         if (!parts[1]) {
             entry[path.basename(parts[0])] = parts[0];

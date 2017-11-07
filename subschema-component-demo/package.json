@@ -27,6 +27,7 @@
     "subschema-injection": "^2.2.11",
     "subschema-loader": "^2.2.11",
     "subschema-processors": "^2.2.11",
+    "subschema-project": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
     "subschema-test-samples": "^2.2.11",
     "subschema-test-support": "^2.2.11",
@@ -38,21 +39,16 @@
   },
   "peerDepenencies": {
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "prop-types": "*"
   },
   "devDependencies": {
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "rimraf": "^2.6.1",
     "subschema-dev-support": "^2.2.11",
     "subschema-project": "^2.2.11",
     "subschema-test-support": "^2.2.11"
-  },
-  "subschema": {
-    "include": [
-      "subschema-project",
-      "subschema.wiki"
-    ]
   }
 }

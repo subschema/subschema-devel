@@ -16,9 +16,9 @@
     "clean": "rimraf ./lib ./dist"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.0",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0"
+    "prop-types": "16.x || ^15.5.0",
+    "react": "16.x || ^15.5.0",
+    "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
     "lodash": "^4.17.4",
@@ -29,7 +29,6 @@
     "subschema-component-wizard": "^2.2.11",
     "subschema-core": "^2.2.11",
     "subschema-css-bootstrap": "^2.2.11",
-    "subschema-dev-support": "^2.2.11",
     "subschema-expression": "^2.2.11",
     "subschema-injection": "^2.2.11",
     "subschema-loader": "^2.2.11",
@@ -43,11 +42,24 @@
   },
   "devDependencies": {
     "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "rimraf": "^2.6.1"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "rimraf": "^2.6.1",
+    "subschema-dev-support": "^2.2.11"
   },
   "subschema": {
-    "exclude": "subschema-(?:|component|css|processors|validators)(?:-.+?)?"
+    "exclude": [
+      "subschema",
+      "subschema-core",
+      "subschema-dev-support",
+      "subschema.wiki",
+      "subschema-test-support",
+      "subschema-expression",
+      "subschema-valuemanager",
+      "subschema-prop-types",
+      "subschema-utils",
+      "subschema-injection",
+      "subschema-loader"
+    ]
   }
 }

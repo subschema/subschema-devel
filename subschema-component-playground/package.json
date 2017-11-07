@@ -50,8 +50,5 @@
     "subschema-css-bootstrap": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
     "subschema-valuemanager": "^2.2.11"
-  },
-  "subschema": {
-    "includes": "*subschema*"
   }
 }

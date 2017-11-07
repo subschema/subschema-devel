@@ -12,5 +12,10 @@
   },
   "devDependencies": {
     "subschema-dev-support": "^2.2.11"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0 || ^15.0.0",
+    "react-dom": "^16.0.0 || ^15.0.0",
+    "prop-types": "^16.0.0 || ^15.0.0"
   }
 }

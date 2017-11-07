@@ -3,16 +3,17 @@ var webpackUtils = require('subschema-dev-support/webpack-utils');
 var pkg          = require('./package.json');
 
 module.exports = function (options, webpack) {
-    webpack.module.rules.push({
+    const dependencies = webpackUtils.concatFilteredDependencies(pkg);
+   /* webpack.module.rules.push({
         test: path.resolve(__dirname, 'src', 'DefaultLoader.js'),
         use : {
-            loader : 'val-loader',
+            loader : require.resolve('val-loader'),
             options: {
-                dependencies: webpackUtils.concatFilteredDependencies(pkg)
+                dependencies
             }
 
         }
-    });
+    });*/
     //make sure everyone uses the same lodash.
     webpack.resolve.alias.lodash =
         path.dirname(require.resolve('lodash'));
