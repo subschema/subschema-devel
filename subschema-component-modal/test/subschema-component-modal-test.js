@@ -29,7 +29,7 @@ describe('subschema-component-modal', function () {
                 }
             ]
         }}/>, true);
-        expect(form).toExist();
+        expect(form).to.exist;
     });
 
     it('should render template with and submit validate', function () {
@@ -77,9 +77,6 @@ describe('subschema-component-modal', function () {
             ]
         }} loader={loader} valueManager={valueManager}/>, true);
 
-
-        expect(form).toExist();
-
         const checkbox = (checked = true) => check(
             byComponent(form, Checkbox), checked);
         const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
@@ -89,14 +86,14 @@ describe('subschema-component-modal', function () {
         const value    = (path, expected) => {
             const v = valueManager.path(path);
             if (expected != null) {
-                return expect(v).toBe(expected);
+                return expect(v).to.eql(expected);
             }
-            return expect(v).toNotExist();
+            return expect(v).to.not.exist;
 
         };
         checkbox();
         submit();
-        expect(valueManager.getErrors().test.length).toBe(1);
+        expect(valueManager.getErrors().test.length).to.eql(1);
         cancel();
 
         value('test', null);
@@ -181,8 +178,6 @@ describe('subschema-component-modal', function () {
             }} valueManager={valueManager} loader={loader}/>, true);
 
 
-            expect(form).toExist();
-
             const checkbox = (checked = true) => check(
                 byComponent(form, Checkbox), checked);
             const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
@@ -192,14 +187,14 @@ describe('subschema-component-modal', function () {
             const value    = (path, expected) => {
                 const v = valueManager.path(path);
                 if (expected != null) {
-                    return expect(v).toBe(expected);
+                    return expect(v).to.eql(expected);
                 }
-                return expect(v).toNotExist();
+                return expect(v).to.not.exist;
 
             };
             checkbox();
             submit();
-            expect(valueManager.getErrors().test.length).toBe(1);
+            expect(valueManager.getErrors().test.length).to.eql(1);
 
             cancel();
 
@@ -268,8 +263,6 @@ describe('subschema-component-modal', function () {
             }} loader={loader} valueManager={valueManager}/>, true);
 
 
-            expect(form).toExist();
-
             const checkbox = (checked = true) => valueManager.update(
                 'showModal', checked);
             const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
@@ -280,14 +273,14 @@ describe('subschema-component-modal', function () {
             const value    = (path, expected) => {
                 const v = valueManager.path(path);
                 if (expected != null) {
-                    return expect(v).toBe(expected);
+                    return expect(v).to.eql(expected);
                 }
-                return expect(v).toNotExist();
+                return expect(v).to.not.exist;
 
             };
             checkbox();
             submit();
-            expect(valueManager.getErrors().test.length).toBe(1);
+            expect(valueManager.getErrors().test.length).to.eql(1);
 
             cancel();
 
@@ -365,8 +358,6 @@ describe('subschema-component-modal', function () {
             }} valueManager={valueManager} loader={loader}/>, true);
 
 
-            expect(form).toExist();
-
             const checkbox = (checked = true) => valueManager.update(
                 'showModal', checked);
             const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
@@ -377,14 +368,14 @@ describe('subschema-component-modal', function () {
             const value    = (path, expected) => {
                 const v = valueManager.path(path);
                 if (expected != null) {
-                    return expect(v).toBe(expected);
+                    return expect(v).to.eql(expected);
                 }
-                return expect(v).toNotExist();
+                return expect(v).to.not.exist;
 
             };
             checkbox();
             submit();
-            // expect(context.valueManager.getErrors()['hello.test'].length).toBe(1);
+            // expect(context.valueManager.getErrors()['hello.test'].length).to.eql(1);
 
             cancel();
             value('test', null);
