@@ -1,8 +1,8 @@
 import validators from '../lib';
-import expect from 'expect';
+import {expect} from 'chai';
 
 describe('validators', function () {
     it('should test the validators', function () {
-        expect(validators).toExist();
+        expect(validators).to.exist;
     })
 })
