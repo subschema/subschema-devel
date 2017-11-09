@@ -15,15 +15,15 @@
     "history": "^4.6.1"
   },
   "devDependencies": {
-    "expect": "^1.20.2",
-    "prop-types": "^15.5.8",
-    "react": "^16.0.0",
-    "react-dom": "^15.5.4",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
     "subschema": "^2.2.11",
     "subschema-core": "^2.2.11",
     "subschema-css-bootstrap": "^2.2.11",
     "subschema-dev-support": "^2.2.11",
-    "subschema-prop-types": "^2.2.11"
+    "subschema-prop-types": "^2.2.11",
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "prop-types": "*",

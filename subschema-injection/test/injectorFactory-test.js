@@ -1,14 +1,7 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import injectorFactory from '../lib/injectorFactory';
 const RESOLVER = new Map();
-const listen = _ => {
-};
 
-const property = _ => {
-};
-
-const extend = _ => {
-};
 const nope = _=> {
 };
 
@@ -25,7 +18,7 @@ describe('injectorFactory', function () {
 
         }
         const injF = injectorFactory(RESOLVER);
-        expect(injF.inject(Empty)).toBe(Empty);
+        expect(injF.inject(Empty)).to.eql(Empty);
     });
     it('should return the original class with props', function () {
         class Empty {
@@ -38,7 +31,7 @@ describe('injectorFactory', function () {
             }
         }
         const injF = injectorFactory(RESOLVER);
-        expect(injF.inject(Empty)).toBe(Empty);
+        expect(injF.inject(Empty)).to.eql(Empty);
     });
     it('should inject listener', function () {
         const invoked = [];
@@ -64,8 +57,8 @@ describe('injectorFactory', function () {
 
         const injF = injectorFactory();
         injF.resolver(listenTest, listenTest);
-        expect(injF.inject(ListenToMe)).toNotBe(ListenToMe);
-        expect(invoked.length).toBe(0);
+        expect(injF.inject(ListenToMe)).to.not.eql(ListenToMe);
+        expect(invoked.length).to.eql(0);
 
     });
 });

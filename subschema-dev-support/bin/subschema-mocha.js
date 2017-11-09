@@ -74,7 +74,7 @@ if (configOrBool(SUBSCHEMA_COVERAGE)
 } else {
     argv.push('-r', resolvePkgDir('babel-polyfill'));
 }
-argv.push('--compilers', 'js:' + require.resolve('../babel-register'));
+argv.push('-r', require.resolve('../babel-register'));
 argv.push(SUBSCHEMA_MOCHA_TEST);
 if (SUBSCHEMA_DEBUG) {
     console.log(`[subschema-mocha] running with args `, argv);

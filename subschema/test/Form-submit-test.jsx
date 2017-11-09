@@ -1,7 +1,8 @@
 import React from "react";
-import {newSubschemaContext} from "subschema";
-import {renderToString, renderToStaticMarkup} from "react-dom/server";
-import {into, expect, Simulate, byTags, cleanUp} from "subschema-test-support";
+import { newSubschemaContext } from "subschema";
+import {
+    byTags, cleanUp, expect, into, Simulate
+} from "subschema-test-support";
 
 
 describe('Form/submit', function () {
@@ -9,19 +10,21 @@ describe('Form/submit', function () {
     let Form, ValueManager, EditorTemplate, ButtonTemplate, loader;
 
     beforeEach(function () {
-        const context = newSubschemaContext();
-        loader = context.loader;
-        Form = context.Form;
-        ValueManager = context.ValueManager;
+        const context  = newSubschemaContext();
+        loader         = context.loader;
+        Form           = context.Form;
+        ValueManager   = context.ValueManager;
         EditorTemplate = context.loader.loadTemplate('EditorTemplate');
         ButtonTemplate = context.loader.loadTemplate('ButtonTemplate')
     });
+
     afterEach(cleanUp);
+
     it('should submit the form and have handler by name', function (done) {
-        const schema = {
-            template: 'ObjectTemplate',
-            schema: {
-                test: {
+        const schema       = {
+            template : 'ObjectTemplate',
+            schema   : {
+                test : {
                     type: 'Text'
 
                 },
@@ -32,38 +35,39 @@ describe('Form/submit', function () {
             },
             fieldsets: [{
                 template: 'FormTemplate',
-                fields: 'test',
-                name: 'form1'
+                fields  : 'test',
+                name    : 'form1'
             }, {
                 template: 'FormTemplate',
-                fields: 'other',
-                name: 'form2'
+                fields  : 'other',
+                name    : 'form2'
             }]
         };
         const valueManager = ValueManager();
         valueManager.addSubmitListener(null, function (e, err, value, path) {
             e && e.preventDefault();
-            expect(path).toBe('form2');
+            expect(path).to.eql('form2');
             done();
         });
 
-        const content = into(<Form schema={schema} valueManager={valueManager}/>, true);
-        const forms = byTags(content, 'form');
-        expect(forms.length).toBe(2, 'found 2 forms');
-        expect(forms[0].name).toBe('form1');
-        expect(forms[1].name).toBe('form2');
+        const content = into(<Form schema={schema}
+                                   valueManager={valueManager}/>, true);
+        const forms   = byTags(content, 'form');
+        expect(forms.length).to.eql(2, 'found 2 forms');
+        expect(forms[0].name).to.eql('form1');
+        expect(forms[1].name).to.eql('form2');
         Simulate.submit(forms[1]);
 
     });
 
     it('should submit the form and have that is nested', function (done) {
-        const schema = {
+        const schema       = {
             template: 'ObjectTemplate',
-            schema: {
+            schema  : {
 
                 test: {
-                    type: "Object",
-                    template: 'FormTemplate',
+                    type     : "Object",
+                    template : 'FormTemplate',
                     subSchema: {
                         schema: {
                             me: 'Text'
@@ -71,9 +75,9 @@ describe('Form/submit', function () {
                     }
 
                 },
-                you: {
-                    type: "Object",
-                    template: 'FormTemplate',
+                you : {
+                    type     : "Object",
+                    template : 'FormTemplate',
                     subSchema: {
                         schema: {
                             that: 'Text'
@@ -84,33 +88,34 @@ describe('Form/submit', function () {
             }
         };
         const valueManager = ValueManager();
-        const paths = [];
+        const paths        = [];
         valueManager.addSubmitListener('you', function (e, err, value, path) {
             e && e.preventDefault();
-            expect(path).toBe('you');
+            expect(path).to.eql('you');
             paths.push(path);
         });
 
         valueManager.addSubmitListener('test', function (e, err, value, path) {
             e && e.preventDefault();
-            expect(path).toBe('test');
+            expect(path).to.eql('test');
             paths.push(path);
         });
 
         valueManager.addSubmitListener(null, function (e, err, value, path) {
             paths.push(path);
         });
-        setTimeout(()=> {
-            expect(paths[0]).toBe('you');
-            expect(paths[1]).toBe('you');
-            expect(paths[2]).toBe('test');
-            expect(paths[3]).toBe('test');
-            expect(paths.length).toBe(4);
+        setTimeout(() => {
+            expect(paths[0]).to.eql('you');
+            expect(paths[1]).to.eql('you');
+            expect(paths[2]).to.eql('test');
+            expect(paths[3]).to.eql('test');
+            expect(paths.length).to.eql(4);
             done();
         }, 200);
-        const content = into(<Form schema={schema} valueManager={valueManager}/>, true);
-        const forms = byTags(content, 'form');
-        expect(forms.length).toBe(2, 'found 2 forms');
+        const content = into(<Form schema={schema}
+                                   valueManager={valueManager}/>, true);
+        const forms   = byTags(content, 'form');
+        expect(forms.length).to.eql(2, 'found 2 forms');
         Simulate.submit(forms[1]);
         Simulate.submit(forms[0]);
 

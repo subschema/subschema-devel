@@ -13,7 +13,8 @@
   },
   "devDependencies": {
     "subschema-dev-support": "^2.2.11",
-    "react": "^16.0.0"
+    "react": "^16.1.0",
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^15.0.0",

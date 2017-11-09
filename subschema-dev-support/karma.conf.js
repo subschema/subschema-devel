@@ -33,7 +33,7 @@ webpack.node            = webpack.node || {};
 webpack.node.fs         = 'empty';
 webpack.node.net        = 'empty';
 webpack.node.console    = false;
-webpack.node.util       = true;
+webpack.resolve.alias.util = require.resolve('util');
 webpack.output.pathinfo = true;
 
 Object.assign(webpack.resolve.alias, resolveMap('subschema-test-support'));

@@ -15,7 +15,7 @@
     "subschema-transitions": "^2.2.11"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.2",
     "subschema-dev-support": "^2.2.11",
     "subschema-transitions": "^2.2.11"
   },

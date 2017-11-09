@@ -39,39 +39,39 @@ describe('components/Form', function () {
             const input = byTag(edit, 'input');
             Simulate.blur(input);
 
-            expect(edit.props.error).toNotExist();
+            expect(edit.props.error).to.not.exist;
 
             /*
              Simulate.change(input, {target: {value: 'dude@g'}});
-             expect(field.state.errors.name).toNotExist();
+             expect(field.state.errors.name).to.not.exist;
              */
 
             Simulate.change(input, { target: { value: 'dude@g.com' } });
 
-            expect(edit.props.error).toNotExist();
+            expect(edit.props.error).to.not.exist;
 
             Simulate.change(input, { target: { value: 'dude@g' } });
-            expect(edit.props.error).toExist();
+            expect(edit.props.error).to.exist;
             Simulate.change(input, { target: { value: 'dude@g.com' } });
 
-            expect(edit.props.error).toNotExist();
+            expect(edit.props.error).to.not.exist;
 
 
             Simulate.change(input, { target: { value: 'dude@g' } });
 
-            expect(edit.props.error).toExist();
+            expect(edit.props.error).to.exist;
 
             Simulate.blur(input);
-            expect(edit.props.error).toExist();
+            expect(edit.props.error).to.exist;
 
             Simulate.change(input, { target: { value: 'dude@go.com' } });
-            expect(edit.props.error).toNotExist();
+            expect(edit.props.error).to.not.exist;
 
             Simulate.change(input, { target: { value: 'dude@g' } });
-            expect(edit.props.error).toExist();
+            expect(edit.props.error).to.exist;
 
             Simulate.change(input, { target: { value: '' } });
-            expect(edit.props.error).toNotExist();
+            expect(edit.props.error).to.not.exist;
             done();
         });
     //This should give a warning. and it does, but it makes debuuging harder so
@@ -79,7 +79,7 @@ describe('components/Form', function () {
     it.skip('should create a form', function () {
 
         const root = into(<Form/>);
-        expect(root).toExist();
+        expect(root).to.exist;
     });
     it('should create a form with a schema', function () {
 
@@ -89,10 +89,10 @@ describe('components/Form', function () {
             }
         }}/>);
 
-        expect(root).toExist();
+        expect(root).to.exist;
         const edit = TestUtils.scryRenderedComponentsWithType(root,
             EditorTemplate)[0]
-        expect(edit).toExist();
+        expect(edit).to.exist;
     });
     it('should create a form with a schema and value', function () {
 
@@ -102,12 +102,12 @@ describe('components/Form', function () {
             }
         }}/>);
 
-        expect(root).toExist();
+        expect(root).to.exist;
         const edit = TestUtils.scryRenderedComponentsWithType(root,
             EditorTemplate)[0]
 
-        expect(edit).toExist();
-        expect(root.getValue().name).toEqual('Joe');
+        expect(edit).to.exist;
+        expect(root.getValue().name).to.eql('Joe');
     });
 
     it('should create a form with a schema and value and error', function () {
@@ -124,7 +124,7 @@ describe('components/Form', function () {
                                  errors={errors}/>);
         const edit  = TestUtils.scryRenderedComponentsWithType(root,
             EditorTemplate)[0]
-        expect(edit.props.error).toEqual('Is lousy');
+        expect(edit.props.error).to.eql('Is lousy');
     });
 
     it('should create a form with a schema and value and triggered error',
@@ -144,10 +144,11 @@ describe('components/Form', function () {
                 EditorTemplate)[0]
             const input = byTag(edit, 'input');
             //   Simulate.blur(input);
-            expect(edit.props.error).toNotExist('No value no trigger no error');
+            expect(edit.props.error,
+                'No value no trigger no error').to.not.exist;
             valueManager.validate();
             expect(edit.props.error)
-                .toEqual('Required', 'No value no trigger no error');
+                .to.eql('Required', 'No value no trigger no error');
         });
 
     it('should create a nested form with multiple errors', function () {
@@ -183,12 +184,12 @@ describe('components/Form', function () {
         }
         const root  = into(<Form value={value} schema={schema}
                                  errors={errors}/>);
-        //     expect(root.refs.name.state.errors[0].message).toEqual('Error
+        //     expect(root.refs.name.state.errors[0].message).to.eql('Error
         // Not My Name');
-        // expect(root.refs.test.refs.field.state.errors.name[0].message).toEqual('Error
+        // expect(root.refs.test.refs.field.state.errors.name[0].message).to.eql('Error
         // Not My Name');
 
-//        expect(root.refs.test.refs.field.refs.more.fstate.errors.name[0].message).toEqual('Error
+//        expect(root.refs.test.refs.field.refs.more.fstate.errors.name[0].message).to.eql('Error
 // Not My Name');
 
 
@@ -196,7 +197,7 @@ describe('components/Form', function () {
          field = root.refs.name;
          Simulate.blur(input);
 
-         expect(field.state.errors.name).toNotExist();*/
+         expect(field.state.errors.name).to.not.exist;*/
 
     });
     it('should create a nested form with when setErrors is called',
@@ -240,25 +241,25 @@ describe('components/Form', function () {
             const root = into(<Form value={value} schema={schema}
                                     errors={{}}/>);
             root.setErrors(errors);
-            /*   expect(root.refs.name.state.errors[0].message).toEqual(msg1);
+            /*   expect(root.refs.name.state.errors[0].message).to.eql(msg1);
              var res = root.validate();
-             expect(res.name[0].message).toEqual(msg1);
-             expect(res['test.stuff'][0].message).toEqual(msg2);
-             expect(res['test.more.andMore'][0].message).toEqual(msg3);
+             expect(res.name[0].message).to.eql(msg1);
+             expect(res['test.stuff'][0].message).to.eql(msg2);
+             expect(res['test.more.andMore'][0].message).to.eql(msg3);
 
              Simulate.change(root.refs.test.refs.field.refs.stuff.refs.field.refs.input, {target: {value: null}})
              var res = root.validate();
-             expect(res.name[0].message).toEqual(msg1);
-             expect(res['test.stuff'][0].message).toEqual(msg2);
-             expect(res['test.more.andMore'][0].message).toEqual(msg3);
+             expect(res.name[0].message).to.eql(msg1);
+             expect(res['test.stuff'][0].message).to.eql(msg2);
+             expect(res['test.more.andMore'][0].message).to.eql(msg3);
 
              Simulate.change(root.refs.test.refs.field.refs.stuff.refs.field.refs.input, {target: {value: 'stuff'}});
              res = root.validate();
-             expect(res['test.stuff']).toNotExist();
+             expect(res['test.stuff']).to.not.exist;
 
              Simulate.change(root.refs.test.refs.field.refs.stuff.refs.field.refs.input, {target: {value: ''}});
              res = root.validate();
-             expect(res['test.stuff'][0].message).toEqual('Required');*/
+             expect(res['test.stuff'][0].message).to.eql('Required');*/
 
         });
 
@@ -283,9 +284,9 @@ describe('components/Form', function () {
         const root   = into(<Form value={value} schema={schema}
                                   onSubmit={onSubmit}/>);
         const button = byType(root, ButtonTemplate);
-        expect(button).toExist('it should have rendered');
+        expect(button, 'it should have rendered').to.exist;
         click(button);
-        expect(submitArgs).toExist();
+        expect(submitArgs).to.exist;
     });
 
     it('should not submit a form with errors', function () {
@@ -310,20 +311,20 @@ describe('components/Form', function () {
         var root   = into(<Form value={{}} schema={schema}
                                 onSubmit={onSubmit}/>);
         var button = byType(root, ButtonTemplate);
-        expect(button).toExist('it should have rendered');
+        expect(button,'it should have rendered').to.exist;
         click(button);
-        expect(value).toExist();
-        expect(error).toExist();
-        expect(error.test).toExist();
-        expect(error.test[0].type).toBe('required', 'Should have an error');
-        expect(error.test.length).toBe(1);
+        expect(value).to.exist;
+        expect(error).to.exist;
+        expect(error.test).to.exist;
+        expect(error.test[0].type).to.eql('required', 'Should have an error');
+        expect(error.test.length).to.eql(1);
         click(button);
-        expect(value).toExist();
-        expect(error).toExist();
-        expect(error.test).toExist();
-        expect(error.test[0].type).toBe('required', 'Should have an error');
-        expect(error.test.length).toBe(1);
-        expect(count).toBe(2);
+        expect(value).to.exist;
+        expect(error).to.exist;
+        expect(error.test).to.exist;
+        expect(error.test[0].type).to.eql('required', 'Should have an error');
+        expect(error.test.length).to.eql(1);
+        expect(count).to.eql(2);
     });
 
     it('should validate checkbox on submit', function () {
@@ -341,13 +342,13 @@ describe('components/Form', function () {
                 fields : "c1"
             }]
         }}/>, true);
-        expect(root).toExist();
+        expect(root).to.exist;
         let submit = byTag(root, 'button');
         click(submit);
         const err = byClass(root, 'error-block')[0];
-        expect(err.innerHTML).toBe('Required');
+        expect(err.innerHTML).to.eql('Required');
         valueManager.update('c1', true);
-        expect(byClass(root, 'help-block')[0].innerHTML).toBe('');
+        expect(byClass(root, 'help-block')[0].innerHTML).to.eql('');
 
     });
 
@@ -365,12 +366,12 @@ describe('components/Form', function () {
 
         const sform = into(<StateForm/>);
         const test  = byTag(sform, 'input');
-        expect(test.name).toBe('test');
+        expect(test.name).to.eql('test');
 
         sform.setState({ form: 1 });
 
         const other = byTag(sform, 'input');
-        expect(other.name).toBe('other');
+        expect(other.name).to.eql('other');
     })
 
 

@@ -13,7 +13,7 @@ const a = () => {
 
 describe('loadFactory', function () {
 
-    
+
 
     it('should create a loader of loaders', function () {
         const loader = loaderFactory();

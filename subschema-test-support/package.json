@@ -9,25 +9,25 @@
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
+    "browser-assert": "^1.2.1",
     "chai": "^4.1.2",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
-    "expect": "^1.20.2",
-    "inherits": "^2.0.3",
-    "node-utils": "^0.0.2"
+    "expect": "^21.2.1",
+    "util": "^0.10.3"
   },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
+    "react": "^16.1.0",
+    "rimraf": "^2.6.2",
     "subschema-dev-support": "^2.2.11",
     "subschema-injection": "^2.2.11",
     "subschema-loader": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
-    "subschema-valuemanager": "^2.2.11",
-    "react": "^16.0.0"
+    "subschema-valuemanager": "^2.2.11"
   },
   "source": "src"
 }

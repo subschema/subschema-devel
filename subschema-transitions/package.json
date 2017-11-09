@@ -9,8 +9,8 @@
     "clean": "rimraf ./lib ./dist"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
-    "prop-types": "^15.5.4",
+    "rimraf": "^2.6.2",
+    "prop-types": "^15.6.0",
     "subschema-dev-support": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
     "subschema-utils": "^2.2.11",
