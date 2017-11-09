@@ -27,7 +27,7 @@ describe('expression/function', function () {
                 return `<h1>${a}-${b}</h1>`;
             }
         });
-        expect(res, "hello &lt;h1&gt;Joe&lt;b/&gt;-true&lt;/h1&gt; 1");
+        expect(res).toBe("hello &lt;h1&gt;Joe&lt;b/&gt;-true&lt;/h1&gt; 1");
     });
 
     it('should parse out function with multiple args literal', function () {
