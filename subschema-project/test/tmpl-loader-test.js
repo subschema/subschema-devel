@@ -1,4 +1,4 @@
-import expect from "expect";
+import { expect } from 'chai';
 import { projectTemplates as templates } from "subschema-project";
 import pkg from "../../subschema/package.json";
 
@@ -23,7 +23,7 @@ describe('tmpl-loader', function () {
                     name: 'hello'
                 },
                 pkg
-            })).toExist();
+            })).to.exist;
         });
     })
 })

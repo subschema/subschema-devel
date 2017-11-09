@@ -24,7 +24,6 @@ describe('subschema-project/samples/Autocomplete', function () {
         const context = setupFunc(Autocomplete, Subschema);
 
         const form = into(<Form {...context}/>, true);
-        expect(form);
 
         const [simple, ajax] = byTypes(form, AutocompleteType, 2);
 
@@ -62,23 +61,22 @@ describe('subschema-project/samples/Autocomplete', function () {
 
         const form = byComponent(into(<RenderTest/>, true), Form);
         const {injector} = form.props;
-        expect(form);
         if (valueManager.listeners)
-            expect(valueManager.listeners.length).toBe(4);
-        expect(injector.size()).toBe(12);
-        form.increment();
-        form.increment();
-        if (valueManager.listeners)
-            expect(valueManager.listeners.length).toBe(0);
-        expect(injector.size()).toBe(12);
-        form.increment();
-        form.increment();
-        form.increment();
+            expect(valueManager.listeners.length).to.eql(4);
+        expect(injector.size()).to.eql(12);
         form.increment();
         form.increment();
         if (valueManager.listeners)
-            expect(valueManager.listeners.length).toBe(4);
-        expect(injector.size()).toBe(12);
+            expect(valueManager.listeners.length).to.eql(0);
+        expect(injector.size()).to.eql(12);
+        form.increment();
+        form.increment();
+        form.increment();
+        form.increment();
+        form.increment();
+        if (valueManager.listeners)
+            expect(valueManager.listeners.length).to.eql(4);
+        expect(injector.size()).to.eql(12);
 
         //just a simple test to make sure everything still works.
         const [simple, ajax] = byTypes(form, AutocompleteType, 2);

@@ -33,37 +33,35 @@ describe('subschema-test-samples/Todos', function () {
         CollectionCreateTemplate = loader.loadTemplate('CollectionCreateTemplate')
     });
     function add(root, c) {
-        var allBtns = TestUtils.scryRenderedComponentsWithType(root, ButtonTemplate);
-        var addBtn = findNode(allBtns[0]);
+        const allBtns = TestUtils.scryRenderedComponentsWithType(root, ButtonTemplate);
+        const addBtn = findNode(allBtns[0]);
 
         click(addBtn);
-        var create = byComponent(root, CollectionCreateTemplate);
-        var input = byTag(create, 'input');
+        const create = byComponent(root, CollectionCreateTemplate);
+        const input = byTag(create, 'input');
         Simulate.change(input, {target: {value: 'Hello, world ' + c}});
-        var buttons = TestUtils.scryRenderedComponentsWithType(create, ButtonTemplate);
-        expect(buttons[0]).toExist('buttons[0] does not exist');
-        var btn = findNode(filterProp(buttons, 'action', 'submit')[0]);
+        const buttons = TestUtils.scryRenderedComponentsWithType(create, ButtonTemplate);
+        expect(buttons[0],'buttons[0] does not exist').to.exist;
+        const btn = findNode(filterProp(buttons, 'action', 'submit')[0]);
         Simulate.click(btn);
 
-        var value = root.getValue();
-        expect(value.tasks[c]).toEqual('Hello, world ' + c);
-        var tasks = byComponents(root, ListItemTemplate);
+        const value = root.getValue();
+        expect(value.tasks[c]).to.eql('Hello, world ' + c);
+        const tasks = byComponents(root, ListItemTemplate);
         return tasks[c];
     }
 
 
     it('should render a list', function () {
-        var root = into(<Form schema={Todos.schema}/>, true);
-        expect(root).toExist();
-        var tasks = byComponents(root, ListItemTemplate);
-        expect(tasks.length).toEqual(0);
+        const root = into(<Form schema={Todos.schema}/>, true);
+        const tasks = byComponents(root, ListItemTemplate);
+        expect(tasks.length).to.eql(0);
 
     });
     it('should render a list with data', function () {
-        var root = into(<Form schema={Todos.schema} value={Todos.data}/>, true);
-        expect(root).toExist();
-        var tasks = byComponents(root, ListItemTemplate);
-        expect(tasks.length).toEqual(3);
+        const root = into(<Form schema={Todos.schema} value={Todos.data}/>, true);
+        const tasks = byComponents(root, ListItemTemplate);
+        expect(tasks.length).to.eql(3);
         const [first, second, last] = byComponents(root, ListItemTemplate);
         click(byClass(second, 'clickable')[0]);
     });
@@ -78,26 +76,25 @@ describe('subschema-test-samples/Todos', function () {
         };
         const root = into(<Form schema={Todos.schema} value={data}/>, true);
 
-        expect(root).toExist('root should exist');
 
         const addBtn = byClass(root, 'btn-add', 0)[0];
 
-        expect(addBtn).toExist('add btn should exit');
+        expect(addBtn,'add btn should exit').to.exist;
 
         const [first, second, last] = byComponents(root, ListItemTemplate);
 
-        expect(controlBtn(first, 'up')).toNotExist();
-        expect(controlBtn(first, 'down')).toExist();
-        expect(controlBtn(first, 'delete')).toExist();
+        expect(controlBtn(first, 'up')).to.not.exist;
+        expect(controlBtn(first, 'down')).to.exist;
+        expect(controlBtn(first, 'delete')).to.exist;
 
 
-        expect(controlBtn(second, 'up')).toExist();
-        expect(controlBtn(second, 'down')).toExist();
-        expect(controlBtn(second, 'delete')).toExist();
+        expect(controlBtn(second, 'up')).to.exist;
+        expect(controlBtn(second, 'down')).to.exist;
+        expect(controlBtn(second, 'delete')).to.exist;
 
-        expect(controlBtn(last, 'up')).toExist();
-        expect(controlBtn(last, 'delete')).toExist();
-        expect(controlBtn(last, 'down')).toNotExist();
+        expect(controlBtn(last, 'up')).to.exist;
+        expect(controlBtn(last, 'delete')).to.exist;
+        expect(controlBtn(last, 'down')).to.not.exist;
 
 
     });

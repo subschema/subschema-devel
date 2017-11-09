@@ -1,15 +1,15 @@
 import React from "react";
-import {generate, compile, project} from "subschema-project";
-import expect from "expect";
-import {into, renderPage, execMock, testEachSample} from "./support";
+import { compile, generate, project } from "subschema-project";
+import { expect } from 'chai';
+import { testEachSample } from "./support";
 
 describe('subschema-project/samples', function () {
     this.timeout(50000);
 
     testEachSample((ds, sample) => {
         it(`should render "${sample}"`, async () => {
-            var blob = await generate(ds, 'page', 'string');
-            expect(blob).toExist();
+            const blob = await generate(ds, 'page', 'string');
+            expect(blob).to.exist;
         });
     });
 

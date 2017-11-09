@@ -40,7 +40,7 @@ describe('project', function () {
     this.timeout(600000);
     it('should generate install and test an app', function (done) {
         var generate = require('../dist/index').generate;
-        expect(generate).toExist();
+        expect(generate).to.exist;
         var ds = {
             schema: {},
             title: 'Hello',
@@ -53,9 +53,9 @@ describe('project', function () {
         };
 
         var blob = generate(ds, 'project', 'zip-base64');
-        expect(blob).toExist();
+        expect(blob).to.exist;
         var unzip = new JSZip(blob, {base64: true});
-        expect(unzip).toExist();
+        expect(unzip).to.exist;
         temp.mkdir('subschema-project-test', function (err, dirPath) {
 
             if (err) {

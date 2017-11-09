@@ -31,20 +31,18 @@ describe('subschema-test-samples/Modal', function () {
 
         const form = into(<Form schema={Modal.schema}
                                 valueManager={valueManager}/>, true);
-        expect(form).toExist();
 
 
         let modal = byComponents(form, ModalTemplate)[0];
-        expect(modal).toNotExist('modal should not show');
+        expect(modal,'modal should not show').to.not.exist;
         valueManager.update('showAddressModal', true);
         modal = byComponent(form, ModalTemplate);
-        expect(modal).toExist('Modal should show');
 
         let buttons = byTags(modal, 'button');
-        expect(buttons.length).toBe(3, 'should have 3 buttons');
+        expect(buttons.length).to.eql(3, 'should have 3 buttons');
         click(buttons[0]);
         expect(valueManager.path('showAddressModal'))
-            .toBe(null, 'dismiss modal');
+            .to.eql(null, 'dismiss modal');
 
         valueManager.update('showAddressModal', true);
         modal    = byComponent(form, ModalTemplate);
@@ -53,9 +51,9 @@ describe('subschema-test-samples/Modal', function () {
         buttons = byTags(modal, 'button');
         click(buttons[1]);
         modal = byComponents(form, ModalTemplate)[0];
-        expect(modal).toNotExist('hide');
+        expect(modal,'hide').to.not.exist;
         expect(valueManager.path('address'))
-            .toBe(null, 'should revert change on cancel');
+            .to.eql(null, 'should revert change on cancel');
 
         valueManager.update('showAddressModal', true);
         modal = byComponent(form, ModalTemplate);
@@ -64,16 +62,16 @@ describe('subschema-test-samples/Modal', function () {
         buttons = byTags(modal, 'button');
         click(buttons[2]);
         modal = byComponents(form, ModalTemplate)[0];
-        expect(modal).toExist('hide');
+        expect(modal).to.exist;
         //change to validate.
         change(byId(form, 'address.zip'), '95130');
         click(byTags(modal, 'button')[2]);
 
 
         modal = byComponents(form, ModalTemplate)[0];
-        expect(modal).toNotExist('hide');
+        expect(modal,'hide').to.not.exist;
         expect(valueManager.path('address.street'))
-            .toBe('hello2', 'should commit change on save');
+            .to.eql('hello2', 'should commit change on save');
 
 
         valueManager.update('showAddressModal', true);
@@ -83,9 +81,9 @@ describe('subschema-test-samples/Modal', function () {
         buttons = byTags(modal, 'button');
         click(buttons[1]);
         modal = byComponents(form, ModalTemplate)[0];
-        expect(modal).toNotExist('hide');
+        expect(modal,'hide').to.not.exist;
         expect(valueManager.path('address.street'))
-            .toBe('hello2', 'should revert change on cancel');
+            .to.eql('hello2', 'should revert change on cancel');
 
     });
 });
