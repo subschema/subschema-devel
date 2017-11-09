@@ -1,5 +1,5 @@
 import loaderFactory from '../src';
-import expect from 'expect';
+import { expect } from 'chai';
 
 
 const a = () => {
@@ -13,10 +13,7 @@ const a = () => {
 
 describe('loadFactory', function () {
 
-    it('should create a loader', function () {
-        const loader = loaderFactory();
-        expect(loader).toExist();
-    });
+    
 
     it('should create a loader of loaders', function () {
         const loader = loaderFactory();
@@ -24,8 +21,8 @@ describe('loadFactory', function () {
         const loader2 = loaderFactory([loader]);
 
         loader.addTemplate('Be', B)
-        expect(loader2.loadTemplate('Be')).toBe(B);
-        expect(loader2.loadTemplate('A')).toBe(A);
+        expect(loader2.loadTemplate('Be')).to.eql(B);
+        expect(loader2.loadTemplate('A')).to.eql(A);
     });
 
     it('should load resolvers', function () {
@@ -34,25 +31,25 @@ describe('loadFactory', function () {
             resolvers: [a, b]
         }]);
         const r      = loader.loadResolver(a);
-        expect(r).toBe(b);
+        expect(r).to.eql(b);
 
         const loader2 = loaderFactory([loader]);
         loader2.addLoader({ resolvers: [[c, d]] });
 
-        expect(loader2.loadResolver(a)).toBe(b);
-        expect(loader2.loadResolver(c)).toBe(d);
+        expect(loader2.loadResolver(a)).to.eql(b);
+        expect(loader2.loadResolver(c)).to.eql(d);
 
-        expect(loader2.loadResolver(e)).toNotExist();
-        expect(loader.loadResolver(c)).toNotExist();
+        expect(loader2.loadResolver(e)).to.not.exist;
+        expect(loader.loadResolver(c)).to.not.exist;
     });
 
     it('should load many resolvers', function () {
         const loader = loaderFactory([{
             resolvers: [[a, b], [c, d], [e, null]]
         }]);
-        expect(loader.loadResolver(a)).toBe(b);
-        expect(loader.loadResolver(c)).toBe(d);
-        expect(loader.loadResolver(e)).toBe(null);
+        expect(loader.loadResolver(a)).to.eql(b);
+        expect(loader.loadResolver(c)).to.eql(d);
+        expect(loader.loadResolver(e)).to.eql(null);
 
     });
     it('should load mixed', function () {
@@ -63,12 +60,12 @@ describe('loadFactory', function () {
 
         const loader2 = loaderFactory([{ resolvers: [[c, d]] }, loader]);
 
-        expect(loader2.loadResolver(a)).toBe(b);
-        expect(loader2.loadResolver(a)).toBe(b);
-        expect(loader2.loadResolver(c)).toBe(d);
+        expect(loader2.loadResolver(a)).to.eql(b);
+        expect(loader2.loadResolver(a)).to.eql(b);
+        expect(loader2.loadResolver(c)).to.eql(d);
 
-        expect(loader2.loadResolver(e)).toNotExist();
-        expect(loader.loadResolver(c)).toNotExist();
+        expect(loader2.loadResolver(e)).to.not.exist;
+        expect(loader.loadResolver(c)).to.not.exist;
     });
     it('should load list key val', function () {
 
@@ -76,10 +73,10 @@ describe('loadFactory', function () {
         loader.addResolver(a, b);
 
         const loader2 = loaderFactory([{ resolvers: [[c, d]] }, loader]);
-        expect(loader2.listResolvers().map(v => v.name)).toEqual([c, a]);
+        expect(loader2.listResolvers().map(v => v.name)).to.eql([c, a]);
 
         loader2.removeResolver(a);
-        expect(loader2.listResolvers().map(v => v.name)).toEqual([c]);
+        expect(loader2.listResolvers().map(v => v.name)).to.eql([c]);
     });
     it('should load list array val', function () {
 
@@ -87,15 +84,15 @@ describe('loadFactory', function () {
         loader.addResolver([a, b]);
 
         const loader2 = loaderFactory([{ resolvers: [[c, d]] }, loader]);
-        expect(loader2.listResolvers().map(v => v.name)).toEqual([c, a]);
+        expect(loader2.listResolvers().map(v => v.name)).to.eql([c, a]);
 
         loader2.removeResolver(a);
-        expect(loader2.listResolvers().map(v => v.name)).toEqual([c]);
+        expect(loader2.listResolvers().map(v => v.name)).to.eql([c]);
     });
     it('should load list nested array val', function () {
         const loader = loaderFactory();
         loader.addResolver([[a, b]]);
-        expect(loader.loadResolver(a)).toBe(b);
+        expect(loader.loadResolver(a)).to.eql(b);
     });
 
     it('should resolve object', function () {
@@ -109,8 +106,8 @@ describe('loadFactory', function () {
             }
 
         }]);
-        expect(loader.loadType("A")).toBe(A);
-        expect(loader.loadTemplate("B")).toBe(B);
+        expect(loader.loadType("A")).to.eql(A);
+        expect(loader.loadTemplate("B")).to.eql(B);
 
     });
     it('should resolve map', function () {
@@ -118,8 +115,8 @@ describe('loadFactory', function () {
         const loader = loaderFactory([{
             types: new Map([['A', A], ['B', B]])
         }]);
-        expect(loader.loadType("A")).toBe(A);
-        expect(loader.loadType("B")).toBe(B);
+        expect(loader.loadType("A")).to.eql(A);
+        expect(loader.loadType("B")).to.eql(B);
 
     });
     it('should override value', function () {
@@ -133,7 +130,7 @@ describe('loadFactory', function () {
                 A: 3
             }
         }]));
-        expect(loader.loadType("A")).toBe(3);
+        expect(loader.loadType("A")).to.eql(3);
     });
     it('should map maps', function () {
 
@@ -147,10 +144,10 @@ describe('loadFactory', function () {
             b: e
         };
         loader.addResolvers(propTypes, resolvers);
-        expect(loader.loadResolver(a)).toBe(c);
-        expect(loader.loadResolver(b)).toBe(e);
+        expect(loader.loadResolver(a)).to.eql(c);
+        expect(loader.loadResolver(b)).to.eql(e);
         //when mapped as such the type can be resolved via string.
-        expect(loader.loadResolver('b')).toBe(e);
+        expect(loader.loadResolver('b')).to.eql(e);
 
     });
 
