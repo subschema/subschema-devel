@@ -7,7 +7,8 @@
     "react-dom": "^16.0.0"
   },
   "scripts": {
-    "rebuild": "lerna clean --yes && yarn install && lerna bootstrap && lr-idea",
+    "clean": "lerna clean --yes && lerna run clean",
+    "rebuild": "lerna clean --yes && lerna run clean && yarn install && lerna run prepublish && lr-idea",
     "coverage": "SUBSCHEMA_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
     "test": "lerna bootstrap && lerna run test",
     "bootstrap": "lerna bootstrap  && lr-idea",
@@ -78,7 +79,7 @@
   },
   "engines": {
     "npm": "^3.10.0",
-    "yarn": "^1.1.0"
+    "yarn": "^1.3.0"
   },
   "subschema": {
     "include": "subschema*"

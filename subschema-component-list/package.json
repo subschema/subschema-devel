@@ -18,7 +18,8 @@
     "subschema-component-form": "^2.2.11",
     "subschema-core": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
-    "subschema-utils": "^2.2.11"
+    "subschema-utils": "^2.2.11",
+    "subschema-css-bootstrap": "^2.2.11"
   },
   "devDependencies": {
     "expect": "^1.20.2",

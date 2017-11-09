@@ -4,7 +4,8 @@
   "description": "Subschema Wiki",
   "main": "src/index.js",
   "scripts": {
-    "server": "subschema-webpack-dev-server"
+    "server": "subschema-webpack-dev-server",
+    "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
     "markdown-it": "^8.3.1",
