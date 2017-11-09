@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import expression from '../lib';
 
 
-
 describe('expression', function () {
     this.timeout(50000);
     it('should substitute nicely', function () {
