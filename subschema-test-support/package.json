@@ -26,7 +26,8 @@
     "subschema-injection": "^2.2.11",
     "subschema-loader": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
-    "subschema-valuemanager": "^2.2.11"
+    "subschema-valuemanager": "^2.2.11",
+    "react": "^16.0.0"
   },
   "source": "src"
 }

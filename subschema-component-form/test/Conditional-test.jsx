@@ -37,7 +37,7 @@ describe('components/Conditional', function () {
         });
     });
 
-    var schema = {
+    const schema = {
         'menu'     : {
             type   : 'Radio',
             options: ['this', 'that', 'other']

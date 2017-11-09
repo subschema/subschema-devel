@@ -55,7 +55,7 @@ export function handleTransition(value, key, props, { loader }) {
     const _on = Array.isArray(on) ? on : [on];
     //either the original value has the timeout or we have an on
     if (enter && (transitionEnterTimeout || _on.includes('enter'))) {
-        rest.timeout    = transitionEnterTimeout;
+        rest.timeout    = { enter: transitionEnterTimeout };
         rest.classNames = {
             ...rest.transitionName,
             ...rest.classNames,
@@ -65,7 +65,7 @@ export function handleTransition(value, key, props, { loader }) {
     }
 
     if (appear && (transitionAppearTimeout || _on.includes('appear'))) {
-        rest.timeout    = transitionAppearTimeout;
+        rest.timeout    = { ...rest.timeout, appear: transitionAppearTimeout };
         rest.classNames = {
             ...rest.transitionName,
             ...rest.classNames,
@@ -76,16 +76,16 @@ export function handleTransition(value, key, props, { loader }) {
     }
 
     if (leave && (transitionLeaveTimeout || _on.includes('leave'))) {
-        rest.timeout    = transitionLeaveTimeout;
+        rest.timeout    = { ...rest.timeout, exit: transitionLeaveTimeout };
         rest.classNames = {
             ...rest.transitionName,
             ...rest.classNames,
-            exit:leave,
-            exitActive:leaveActive,
+            exit      : leave,
+            exitActive: leaveActive,
         };
 
     }
-    rest.className=transitionHeightClass;
+    rest.className = transitionHeightClass;
     if (!rest.classNames) {
         return null;
     }

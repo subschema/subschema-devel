@@ -21,7 +21,7 @@
     "expect": "^1.20.2",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
-    "react": "^15.5.4",
+    "react": "^16.0.0",
     "react-dom": "^15.5.4",
     "subschema": "^2.2.11",
     "subschema-component-autocomplete": "^2.2.11",

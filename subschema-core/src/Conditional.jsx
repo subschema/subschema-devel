@@ -115,10 +115,11 @@ export default class Conditional extends Component {
         if (!this.props.transition) {
             return this.renderContent(matches);
         }
-        const { Transition,  ...tprops } = this.props.transition;
+        const { Transition, className, ...tprops } = this.props.transition;
 
-        return  <Transition in={matches} {...tprops}>
-                   {this.renderContent(matches)}
-               </Transition>
+        return (<Transition key={matches ? 'in' : 'out'}
+                            in={matches} {...tprops}>
+            {this.renderContent(matches)}
+        </Transition>);
     }
 }

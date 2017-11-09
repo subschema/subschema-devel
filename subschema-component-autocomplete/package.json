@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "lodash": "^4.17.4",
-    "react": "^15.5.4",
+    "react": "^16.0.0",
     "react-dom": "^15.5.4",
     "rimraf": "^2.6.1",
     "subschema-component-form": "^2.2.11",
