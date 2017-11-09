@@ -46,8 +46,8 @@ describe('subschema-core/Content', function () {
             ctx({ valueManager }), true, PropTypes.contextTypes);
         var node         = findNode(root);
         var str          = node.innerHTML + '';
-        expect(str).toBe('your value is 2');
-        expect(node.tagName).toBe('SPAN');
+        expect(str).to.eql('your value is 2');
+        expect(node.tagName).to.eql('SPAN');
     });
     it('should do simple subsitution escape html in values', function () {
         var what         = '<' + 'h1' + '>2<' + '/h1>';
@@ -58,8 +58,8 @@ describe('subschema-core/Content', function () {
             ctx({ valueManager }), true, PropTypes.contextTypes);
         var node         = findNode(root);
         var str          = node.innerHTML + '';
-        expect(str).toBe('your value is &lt;h1&gt;2&lt;/h1&gt;');
-        expect(node.tagName).toBe('SPAN');
+        expect(str).to.eql('your value is &lt;h1&gt;2&lt;/h1&gt;');
+        expect(node.tagName).to.eql('SPAN');
     });
     it('should render an array of content', function () {
         var what         = '<' + 'h1' + '>2<' + '/h1>';
@@ -71,8 +71,8 @@ describe('subschema-core/Content', function () {
             ctx({ valueManager }), true, PropTypes.contextTypes);
         var node         = findNode(root);
         var str          = node.innerHTML + '';
-        //expect(str).toBe('your value is &lt;h1&gt;2&lt;/h1&gt;');
-        expect(node.tagName).toBe('SPAN');
+        //expect(str).to.eql('your value is &lt;h1&gt;2&lt;/h1&gt;');
+        expect(node.tagName).to.eql('SPAN');
 
     });
     it('should render an object of content', function () {
@@ -85,8 +85,8 @@ describe('subschema-core/Content', function () {
             ctx({ valueManager }), true, PropTypes.contextTypes);
         var node         = findNode(root);
         var str          = node.innerHTML + '';
-        //expect(str).toBe('your value is &lt;h1&gt;2&lt;/h1&gt;');
-        expect(node.tagName).toBe('SPAN');
+        //expect(str).to.eql('your value is &lt;h1&gt;2&lt;/h1&gt;');
+        expect(node.tagName).to.eql('SPAN');
 
     });
 
@@ -104,8 +104,8 @@ describe('subschema-core/Content', function () {
             ctx({ valueManager }), true, PropTypes.contextTypes);
         var node         = findNode(root);
         var str          = node.innerHTML + '';
-        //expect(str).toBe('your value is &lt;h1&gt;2&lt;/h1&gt;');
-        expect(node.tagName).toBe('SPAN');
+        //expect(str).to.eql('your value is &lt;h1&gt;2&lt;/h1&gt;');
+        expect(node.tagName).to.eql('SPAN');
 
     });
     it('should render loaded an h3', function () {
@@ -119,10 +119,10 @@ describe('subschema-core/Content', function () {
             ctx({ valueManager }), true, PropTypes.contextTypes);
         var node = findNode(root);
         var str  = node.innerHTML;
-        expect(str).toBe('');
-        //expect(str).toBe('your value is &lt;h1&gt;2&lt;/h1&gt;');
-        expect(node.tagName).toBe('P');
-        expect(node.className).toBe('stuff');
+        expect(str).to.eql('');
+        //expect(str).to.eql('your value is &lt;h1&gt;2&lt;/h1&gt;');
+        expect(node.tagName).to.eql('P');
+        expect(node.className).to.eql('stuff');
     });
     it('should render nested content', function () {
         var title = {
@@ -207,7 +207,7 @@ describe('subschema-core/Content', function () {
          </span>
          */
         //@formatter:on
-        expect(node).toEqual(
+        expect(node).to.eql(
             '<span class="panel panel-default"><span class="clz-left"><h1>Heading stuff Joe</h1><p>Super special content</p><button class="btn btn-primary">Activate</button></span><span class="clz-right"><img class="super-img" src="about:blank"/></span></span>');
     });
     it('should render content stuff in a form', function () {

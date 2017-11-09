@@ -1,4 +1,3 @@
-"use strict";
 import React from 'react';
 import {
     byType, byTypes, expect, into, intoWithContext, notByType, select
@@ -68,7 +67,7 @@ describe('components/Conditional', function () {
                                                   animate={false} path='hot'
                                                   operator={/stuff/}/>, context,
             false, PropTypes.contextTypes);
-        expect(cond).toExist();
+        expect(cond).to.exist;
         notByType(cond, Hello);
         vm.update('hot', 'stuff');
         byType(cond, Hello);
@@ -82,7 +81,7 @@ describe('components/Conditional', function () {
                                                   animate={false} path='hot'
                                                   operator={'!/stuff/i'}/>,
             context, false, PropTypes.contextTypes);
-        expect(cond).toExist();
+        expect(cond).to.exist;
         byType(cond, Hello);
         vm.update('hot', 'stuff');
         notByType(cond, Hello);
@@ -100,7 +99,7 @@ describe('components/Conditional', function () {
             injector,
             loader
         }, false, PropTypes.contextTypes);
-        expect(cond).toExist();
+        expect(cond).to.exist;
         notByType(cond, Hello);
         vm.update('hot', 'stuff');
         byType(cond, Hello);
@@ -113,7 +112,7 @@ describe('components/Conditional', function () {
         const cond = intoWithContext(<Conditional template={'Hello'}
                                                   animate={false} path='hot'
         />, context, true, PropTypes.contextTypes);
-        expect(cond).toExist();
+        expect(cond).to.exist;
         notByType(cond, Hello);
         valueManager.update('hot', 'stuff');
         byType(cond, Hello);
@@ -126,7 +125,7 @@ describe('components/Conditional', function () {
         const cond = intoWithContext(<Conditional animate={false} path='hot'
         ><Hello/></Conditional>, context, false, PropTypes.contextTypes);
 
-        expect(cond).toExist();
+        expect(cond).to.exist;
         notByType(cond, Hello);
         vm.update('hot', 'stuff');
         byType(cond, Hello);
@@ -188,7 +187,7 @@ describe('components/Conditional', function () {
             var form    = into(<Form schema={schema}/>, true);
             var selects = byTypes(form, Select);
 
-            expect(selects.length).toBe(2, 'Should have 2 selects');
+            expect(selects.length).to.eql(2, 'Should have 2 selects');
             select(selects[0], 2);
             /*
              var selects = byTypes(form, Select);

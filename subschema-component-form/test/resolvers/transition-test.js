@@ -21,7 +21,7 @@ describe("resolvers/transition", function () {
             'stuff', {},
             { loader });
         expect(resp).to.eql({
-            "timeout"   : 500,
+            "timeout"   : {enter: 500, appear: 500, exit: 500},
             "classNames": {
                 "enter"       : "transitions__slideLeftEnter___3b_Rw",
                 "enterActive" : "transitions__slideLeftEnterActive___1AI3C",
@@ -40,7 +40,7 @@ describe("resolvers/transition", function () {
             { transition: 'slideLeft', on: ['appear'] }, 'stuff', {},
             { loader });
         expect(resp).to.eql({
-            "timeout"   : 500,
+            "timeout"   : {enter: 500, appear: 500, exit: 500},
             "classNames": {
                 "enter"       : "transitions__slideLeftEnter___3b_Rw",
                 "enterActive" : "transitions__slideLeftEnterActive___1AI3C",
@@ -63,7 +63,7 @@ describe("resolvers/transition", function () {
             }, 'stuff', {}, { loader });
 
             expect(resp).to.eql({
-                "timeout": 500,
+                "timeout": {enter: 500, appear: 500, exit: 500},
                 "classNames": {
                     "enter": "transitions__slideLeftEnter___3b_Rw",
                     "enterActive": "transitions__slideLeftEnterActive___1AI3C",

@@ -1,4 +1,4 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import React, {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
@@ -58,11 +58,11 @@ describe('resolvers/type', function () {
         const et = byComponent(inst, TargetTest);
         const stuff = byComponent(inst, TestStuff);
         const node = findNode(et);
-        expect(et).toExist();
-        expect(stuff).toExist();
-        expect(stuff.props.value).toBe('d');
+        expect(et).to.exist;
+        expect(stuff).to.exist;
+        expect(stuff.props.value).to.eql('d');
         valueManager.update('more', 'stuff');
-        expect(stuff.props.value).toBe('stuff');
+        expect(stuff.props.value).to.eql('stuff');
     });
 
     it('should inject configured types', function () {
@@ -77,11 +77,11 @@ describe('resolvers/type', function () {
         const et = byComponent(inst, TargetTest);
         const stuff = byComponent(inst, TestStuff);
         const node = findNode(et);
-        expect(et).toExist();
-        expect(stuff).toExist();
-        expect(stuff.props.value).toBe('d');
+        expect(et).to.exist;
+        expect(stuff).to.exist;
+        expect(stuff.props.value).to.eql('d');
         valueManager.update('more', 'other');
-        expect(stuff.props.value).toBe('other');
+        expect(stuff.props.value).to.eql('other');
     });
 
 });

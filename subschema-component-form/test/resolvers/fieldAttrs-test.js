@@ -20,7 +20,7 @@ describe("resolvers/fieldAttrs", function () {
             schema
         }} valueManager={valueManager} loader={loader}/>);
         const input = byTag(form, 'input');
-        expect(input.dataset.stuff).toBe('1');
-        expect(input.attributes['aria-required'].value).toBe('true');
+        expect(input.dataset.stuff).to.eql('1');
+        expect(input.attributes['aria-required'].value).to.eql('true');
     });
 });

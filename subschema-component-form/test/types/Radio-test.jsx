@@ -14,7 +14,7 @@ describe('types/Radio', function () {
             path="test"
             options={ [{val: 1, label: 'One'}, {val: 2, label: 'Two'}]}
         />);
-        expect(result).toBe(
+        expect(result).to.eql(
             '<div><div class="radio "><label class="" for="test.0"><input type="radio" id="test.0" name="test" value="1"/><span>One</span></label></div><div class="radio "><label class="" for="test.1"><input type="radio" id="test.1" name="test" value="2"/><span>Two</span></label></div></div>'
         );
     });
@@ -27,7 +27,7 @@ describe('types/Radio', function () {
             value={1}
             options={ [{val: 1, label: 'One'}, {val: 2, label: 'Two'}]}
         />);
-        expect(result).toBe(
+        expect(result).to.eql(
             '<div><div class="radio "><label class="" for="test.0"><input type="radio" id="test.0" name="test" checked="" value="1"/><span>One</span></label></div><div class="radio "><label class="" for="test.1"><input type="radio" id="test.1" name="test" value="2"/><span>Two</span></label></div></div>'
         );
     });
@@ -47,14 +47,14 @@ describe('types/Radio', function () {
         />, {value: 2}, true));
 
         const inputs = byTags(child, 'input');
-        expect(inputs.length).toEqual(2);
+        expect(inputs.length).to.eql(2);
 
         const dm0 = findNode(inputs[0]), dm1 = findNode(inputs[1]);
-        expect(dm0.checked).toEqual(false);
-        expect(dm1.checked).toEqual(true);
+        expect(dm0.checked).to.eql(false);
+        expect(dm1.checked).to.eql(true);
         state.setState({value: 1});
-        expect(dm0.checked).toEqual(true);
-        expect(dm1.checked).toEqual(false);
+        expect(dm0.checked).to.eql(true);
+        expect(dm1.checked).to.eql(false);
 
 
     });

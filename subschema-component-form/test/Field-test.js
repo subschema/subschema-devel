@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import expect from 'expect';
+import {expect} from 'chai';
 import PropTypes from 'subschema-prop-types';
 import Field from 'subschema-core/lib/Field';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
@@ -29,25 +29,25 @@ describe('subschema-core/Field', function () {
         };
         const finst = intoWithContext(<WField path="name"
                                               field={field}/>, context, true, PropTypes.contextTypes);
-        expect(finst).toExist();
+        expect(finst).to.exist;
         const type = byComponent(finst, Text);
         const templ = byComponent(finst, EditorTemplate);
         const input = byTag(finst, 'input');
-        expect(type).toExist();
-        expect(templ).toExist();
-        expect(input).toExist();
-        expect(templ.props.help.content).toBe('Hello');
-        expect(templ.props.title).toBe('Name');
-        expect(input.getAttribute('type')).toBe('text');
+        expect(type).to.exist;
+        expect(templ).to.exist;
+        expect(input).to.exist;
+        expect(templ.props.help.content).to.eql('Hello');
+        expect(templ.props.title).to.eql('Name');
+        expect(input.getAttribute('type')).to.eql('text');
         change(input, 'a');
-        expect(templ.props.help.content).toBe('Hello');
+        expect(templ.props.help.content).to.eql('Hello');
         change(input, 'aa');
-        expect(templ.props.help.content).toBe('Hello');
+        expect(templ.props.help.content).to.eql('Hello');
         blur(input);
-        expect(templ.props.error).toBe('2 is less than 3');
+        expect(templ.props.error).to.eql('2 is less than 3');
         change(input, 'aaa');
-        expect(templ.props.error).toNotExist();
-        expect(templ.props.help.content).toBe('Hello');
+        expect(templ.props.error).to.not.exist;
+        expect(templ.props.help.content).to.eql('Hello');
 
     });
     it('should not render template only field', function () {
@@ -71,9 +71,9 @@ describe('subschema-core/Field', function () {
         };
         const finst = intoWithContext(<WField path="name"
                                               field={field}/>, context, true, PropTypes.contextTypes);
-        expect(finst).toExist();
+        expect(finst).to.exist;
         const input = byTag(finst, 'input');
-        expect(input).toExist();
+        expect(input).to.exist;
 
     });
 
@@ -120,24 +120,24 @@ describe('subschema-core/Field', function () {
             loader,
             injector
         }, true, PropTypes.contextTypes);
-        expect(finst).toExist();
+        expect(finst).to.exist;
         const type = byComponent(finst, JoeText);
         const templ = byComponent(finst, JoeTemplate);
         const input = byTag(finst, 'input');
-        expect(type).toExist();
-        expect(templ).toExist();
-        expect(input).toExist();
-        expect(templ.props.help).toBe('Hello');
-        expect(templ.props.title).toBe('Name');
+        expect(type).to.exist;
+        expect(templ).to.exist;
+        expect(input).to.exist;
+        expect(templ.props.help).to.eql('Hello');
+        expect(templ.props.title).to.eql('Name');
         change(input, 'a');
-        expect(templ.props.help).toBe('Hello');
+        expect(templ.props.help).to.eql('Hello');
         change(input, 'aa');
-        expect(templ.props.help).toBe('Hello');
+        expect(templ.props.help).to.eql('Hello');
         blur(input);
-        expect(templ.props.error).toBe('2 is less than 3');
+        expect(templ.props.error).to.eql('2 is less than 3');
         change(input, 'aaa');
-        expect(templ.props.error).toNotExist();
-        expect(templ.props.help).toBe('Hello');
+        expect(templ.props.error).to.not.exist;
+        expect(templ.props.help).to.eql('Hello');
 
     });
 });

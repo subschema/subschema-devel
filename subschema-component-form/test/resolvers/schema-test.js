@@ -1,4 +1,4 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import {normalizeSchema} from 'subschema-core/lib/resolvers/schema';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 

@@ -28,13 +28,12 @@ describe('types/Checkbox', function () {
                 }
             }
         }}/>);
-        expect(root).toExist('form should exist');
         var ret = root.getValue();
-        expect(ret.c1).toNotExist('c1 should not exist');
-        expect(ret.c2).toNotExist('c2 should not exist');
+        expect(ret.c1,'c1 should not exist').to.not.exist;
+        expect(ret.c2,'c2 should not exist').to.not.exist;
         valueManager.update('c1', true);
         var ret = root.getValue();
-        expect(ret.c1).toBe(true, 'should update value');
+        expect(ret.c1).to.eql(true, 'should update value');
 
     });
 
@@ -44,12 +43,12 @@ describe('types/Checkbox', function () {
         };
         const {state, child} = intoWithState(<Checkbox value="nolo" onChange={onChange}/>, {value:'nolo'}, true), checkbox = child;
 
-        expect(findNode(checkbox).checked).toBe(true);
+        expect(findNode(checkbox).checked).to.eql(true);
         check(findNode(checkbox), true);
-        expect(state.state.value).toBe('nolo', 'state should update');
+        expect(state.state.value).to.eql('nolo', 'state should update');
         check(findNode(checkbox), false);
-        expect(state.state.value).toBe(null, 'state should update');
-        expect(findNode(checkbox).checked).toBe(false, 'should not be checked');
+        expect(state.state.value).to.eql(null, 'state should update');
+        expect(findNode(checkbox).checked).to.eql(false, 'should not be checked');
 
     });
     it('should validate on change', function () {
@@ -63,12 +62,11 @@ describe('types/Checkbox', function () {
             }
         }}/>, true);
         const template = byComponent(root, EditorTemplate);
-        expect(root).toExist('form should exist');
         const checkbox = byComponent(root, Checkbox);
-        expect(byTags(template, 'p', 1)[0].innerHTML).toBe('');
+        expect(byTags(template, 'p', 1)[0].innerHTML).to.eql('');
         valueManager.validate();
         let p = byTags(template, 'p')[0];
-        expect(p.innerHTML).toBe('Required');
+        expect(p.innerHTML).to.eql('Required');
         check(checkbox, true);
         expect(byTags(template, 'p', 1));
 

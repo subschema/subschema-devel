@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import expect from 'expect';
+import {expect} from 'chai';
 import resolvers from 'subschema-core/lib/resolvers';
 import PropTypes from 'subschema-prop-types';
 import {intoWithContext, byComponent, findNode, change} from 'subschema-test-support';
@@ -37,7 +37,7 @@ describe('resolvers/fieldset', function () {
 
         const et = byComponent(inst, TargetTest);
         const node = findNode(et);
-        expect(et.props.fieldsets.fields.length).toBe(2);
+        expect(et.props.fieldsets.fields.length).to.eql(2);
 
     });
     it('should normalize fieldsets deep', function () {
@@ -69,8 +69,8 @@ describe('resolvers/fieldset', function () {
         const et = byComponent(inst, TargetTest);
         const node = findNode(et);
         const fs = et.props.fieldsets;
-        expect(fs.fields).toEqual('abcdef'.split(''));
-        expect(fs.fieldsets[0].fieldsets[0].className).toBe('stuff');
+        expect(fs.fields).to.eql('abcdef'.split(''));
+        expect(fs.fieldsets[0].fieldsets[0].className).to.eql('stuff');
     });
     //TODO - reenable.
     describe('should normalize fields and fieldsets', function () {
@@ -81,7 +81,7 @@ describe('resolvers/fieldset', function () {
                 fields: ['d', 'e', 'f']
             }];
             var {fields} = normalizeFieldsets(inFieldsets, null, {fieldsets: []}, context);
-            expect(fields).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+            expect(fields).to.eql(['a', 'b', 'c', 'd', 'e', 'f']);
         });
         it('should normilize string fieldsets', function () {
             var inFieldsets = [{
@@ -89,9 +89,9 @@ describe('resolvers/fieldset', function () {
             }, 'd, e, f'
             ];
             var {fieldsets, fields} = normalizeFieldsets(inFieldsets, null, {}, context);
-            expect(fields).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-            expect(fieldsets[0].fields).toEqual(['a', 'b', 'c']);
-            expect(fieldsets[1].fields).toEqual(['d', 'e', 'f']);
+            expect(fields).to.eql(['a', 'b', 'c', 'd', 'e', 'f']);
+            expect(fieldsets[0].fields).to.eql(['a', 'b', 'c']);
+            expect(fieldsets[1].fields).to.eql(['d', 'e', 'f']);
         });
 
         it('should normalize nested fieldsets', function () {
@@ -103,10 +103,10 @@ describe('resolvers/fieldset', function () {
             }, 'd, e, f'
             ];
             var {fieldsets, fields} = normalizeFieldsets(inFieldsets, null, {}, context);
-            expect(fields).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-            expect(fieldsets[0].fieldsets[0].fields).toEqual(['a']);
-            expect(fieldsets[0].fieldsets[1].fields).toEqual(['b']);
-            expect(fieldsets[0].fieldsets[2].fields).toEqual(['c']);
+            expect(fields).to.eql(['a', 'b', 'c', 'd', 'e', 'f']);
+            expect(fieldsets[0].fieldsets[0].fields).to.eql(['a']);
+            expect(fieldsets[0].fieldsets[1].fields).to.eql(['b']);
+            expect(fieldsets[0].fieldsets[2].fields).to.eql(['c']);
         });
         it('should normalize nested fieldsets with fieldsets', function () {
             var inFieldsets = [{
@@ -117,9 +117,9 @@ describe('resolvers/fieldset', function () {
             }, 'd, e, f'
             ];
             var {fieldsets, fields} = normalizeFieldsets(inFieldsets, null, {}, context);
-            expect(fields).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-            expect(fieldsets[0].fieldsets[0].fieldsets[0].fields).toEqual(['a']);
-            expect(fieldsets[0].fieldsets[1].fieldsets[0].fields).toEqual(['b']);
+            expect(fields).to.eql(['a', 'b', 'c', 'd', 'e', 'f']);
+            expect(fieldsets[0].fieldsets[0].fieldsets[0].fields).to.eql(['a']);
+            expect(fieldsets[0].fieldsets[1].fieldsets[0].fields).to.eql(['b']);
         });
 
     });
