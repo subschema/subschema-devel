@@ -31,8 +31,8 @@ describe('subschema-component-playground-project-test', function () {
     const oOpen = DownloadButton.open;
 
     function test$open(blob, filename, callback) {
-        expect(blob).toExist();
-        expect(filename).toExist();
+        expect(blob).to.exist;
+        expect(filename).to.exist;
         b = blob;
         f = filename;
         //     oOpen(blob, filename, callback);
@@ -74,12 +74,12 @@ describe('subschema-component-playground-project-test', function () {
             click(buttons[1]);
 
             const downloadBtn = withTag(app, 'button')[1];
-            expect(downloadBtn.innerText.trim()).toBe('Preview');
+            expect(downloadBtn.innerText.trim()).to.eql('Preview');
             click(downloadBtn);
 
             await sleep(500);
-            expect(b).toExist('should have blob');
-            expect(f).toExist('should have filename');
+            expect(b, 'should have blob').to.exist;
+            expect(f, 'should have filename').to.exist;
 
 
             return new Promise((resolve, reject) => {
