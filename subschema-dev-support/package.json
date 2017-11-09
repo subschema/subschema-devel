@@ -56,8 +56,8 @@
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.6.0",
     "raw-loader": "^0.5.1",
-    "react":"^16.0.0",
-    "react-dom":"^16.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-docgen": "3.0.0-beta5",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.6.1",
@@ -68,5 +68,6 @@
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.4.2",
     "webpack-stats-plugin": "^0.1.5"
-  }
+  },
+  "source": "src"
 }

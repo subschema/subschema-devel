@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
 import {Form} from 'subschema';
-import {ReactCSSReplaceTransition, templates} from 'subschema-component-form';
+import { templates} from 'subschema-component-form';
 import UninjectedDisplayValueAndErrors from './DisplayValueAndErrors.jsx';
 import {normalize, source} from 'subschema-project';
 import Compiler from './Compiler';
@@ -156,8 +156,7 @@ export default class SubschemaPlayground extends Component {
                 <div key='code-editor'
                      className={`playgroundCode ${this.state.action == 'edit'
                          ? ' expandedCode' : ''}`}>
-                    <ReactCSSReplaceTransition
-                        key="transition" {...this.props.rollUp}>
+
                         <Compiler onError={this.handleError}
                                   onContextChange={this.handleContextChange}
                                   theme={this.props.theme}
@@ -174,20 +173,15 @@ export default class SubschemaPlayground extends Component {
                                   filename={filename}
                                   errors={errors}
                         />
-
-                    </ReactCSSReplaceTransition>
                 </div>
                 <div key='schema-editor'
                      className={`playgroundCode ${this.state.action == 'schema'
                          ? ' expandedCode' : ''}`}>
-                    <ReactCSSReplaceTransition
-                        key="transition" {...this.props.rollUp}>
                         { this.state.action == 'schema' ?
                             <SchemaEditor value={this.state.context.schema}
                                           onChange={this.handleSchemaChange}/>
                             : null }
 
-                    </ReactCSSReplaceTransition>
                 </div>
                 <div className="playgroundPreview clearfix">
                     {this.renderForm()}

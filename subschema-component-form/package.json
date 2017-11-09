@@ -12,7 +12,14 @@
   "peerDependencies": {
     "lodash": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "prop-types": "*",
+    "subschema-core": "*",
+    "subschema-injection": "*",
+    "subschema-prop-types": "*",
+    "subschema-transitions": "*",
+    "subschema-valuemanager": "*",
+    "react-transition-group": "*"
   },
   "devDependencies": {
     "expect": "^1.20.2",
@@ -34,5 +41,9 @@
     "subschema-utils": "^2.2.11",
     "subschema-validators": "^2.2.11",
     "subschema-valuemanager": "^2.2.11"
-  }
+  },
+  "dependencies": {
+    "react-transition-group": "^2.2.1"
+  },
+  "source": "src"
 }

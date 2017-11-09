@@ -1,20 +1,27 @@
 import PropTypes from 'subschema-prop-types';
 import warning from 'subschema-utils/lib/warning';
-const EMPTY           = {};
+import React from 'react';
+
+const EMPTY = {};
+
 export const settings = {
-    transition: 'rollUp',
-    on        : ['enter', 'leave'],
-    Transition(props) {
+    on                     : ['enter', 'leave'],
+    transitionEnterTimeout : 300,
+    transitionAppearTimeout: 300,
+    transitionLeaveTimeout : 300,
+    Transition({ transitionEnter, transitionLeave, transitionAppear, transitionHeightClass, ...props }) {
+
         warning(false,
             `Please set subschema-core.resolvers.transition.settings.Transition to a transition handler`);
         return EmptyTransition(props);
     }
-
 };
+
 const EmptyTransition = ({ children }) => {
     return Array.isArray(children) ? children[0] : children;
 };
-const NO_TRANSITION   = {
+
+const NO_TRANSITION = {
     Transition: EmptyTransition
 };
 
@@ -36,6 +43,7 @@ export function handleTransition(value, key, props, { loader }) {
               transitionLeaveTimeout,
               transitionEnterTimeout,
               on,
+              transitionHeightClass,
               transitionName,
               ...rest
           } = typeof transition === 'string'
@@ -44,36 +52,43 @@ export function handleTransition(value, key, props, { loader }) {
     const { enter, enterActive, appear, appearActive, leave, leaveActive } = transitionName
                                                                              || EMPTY;
 
-    const _on             = Array.isArray(on) ? on : [on];
-    const _transitionName = (rest.transitionName = {});
+    const _on = Array.isArray(on) ? on : [on];
     //either the original value has the timeout or we have an on
-    if (value.transitionEnterTimeout || _on.indexOf('enter') != -1) {
-        rest.transitionEnterTimeout     = transitionEnterTimeout;
-        rest.transitionName.enter       = enter;
-        rest.transitionName.enterActive = enterActive;
-        rest.transitionEnter            = true;
-    } else {
-        rest.transitionEnter = false;
+    if (enter && (transitionEnterTimeout || _on.includes('enter'))) {
+        rest.timeout    = transitionEnterTimeout;
+        rest.classNames = {
+            ...rest.transitionName,
+            ...rest.classNames,
+            enter,
+            enterActive
+        };
     }
 
-    if (value.transitionAppearTimeout || _on.indexOf('appear') != -1) {
-        rest.transitionAppearTimeout     = transitionAppearTimeout;
-        rest.transitionName.appear       = appear;
-        rest.transitionName.appearActive = appearActive;
-        rest.transitionAppear            = true;
-    } else {
-        rest.transitionAppear = false;
+    if (appear && (transitionAppearTimeout || _on.includes('appear'))) {
+        rest.timeout    = transitionAppearTimeout;
+        rest.classNames = {
+            ...rest.transitionName,
+            ...rest.classNames,
+            appear,
+            appearActive,
+        };
+
     }
 
-    if (value.transitionLeaveTimeout || _on.indexOf('leave') != -1) {
-        rest.transitionLeaveTimeout     = transitionLeaveTimeout;
-        rest.transitionName.leave       = leave;
-        rest.transitionName.leaveActive = leaveActive;
-        rest.transitionLeave            = true;
-    } else {
-        rest.transitionLeave = false;
-    }
+    if (leave && (transitionLeaveTimeout || _on.includes('leave'))) {
+        rest.timeout    = transitionLeaveTimeout;
+        rest.classNames = {
+            ...rest.transitionName,
+            ...rest.classNames,
+            exit:leave,
+            exitActive:leaveActive,
+        };
 
+    }
+    rest.className=transitionHeightClass;
+    if (!rest.classNames) {
+        return null;
+    }
     return rest;
 }
 
@@ -81,6 +96,7 @@ function transition(Clazz, key) {
     Clazz.contextTypes.loader = PropTypes.loader;
     Clazz::this.property(key, handleTransition);
 }
+
 //because es6 modules.
 transition.handleTransition = handleTransition;
 

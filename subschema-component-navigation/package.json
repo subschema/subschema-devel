@@ -28,5 +28,6 @@
     "prop-types": "*",
     "react": "*",
     "react-dom": "*"
-  }
+  },
+  "source": "src"
 }

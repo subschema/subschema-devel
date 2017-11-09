@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import samples from 'subschema-test-samples';
 import  {newSubschemaContext} from 'subschema';
-import {compile, source} from '../lib';
+import {compile, source} from 'subschema-project';
 import {into as _into} from 'subschema-test-support';
 import expect from 'expect';
 

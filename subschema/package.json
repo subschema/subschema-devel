@@ -61,5 +61,6 @@
       "subschema-injection",
       "subschema-loader"
     ]
-  }
+  },
+  "source": "src"
 }

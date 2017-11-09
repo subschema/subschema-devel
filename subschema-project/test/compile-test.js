@@ -1,13 +1,14 @@
 import expect from 'expect';
-import {compile, source} from  '../lib';
-import fixtures from '../node_modules/subschema-test-samples/lib/index';
+import {compile, source} from 'subschema-project';
+
+import fixtures from 'subschema-test-samples';
 
 describe('compile', function () {
     Object.keys(fixtures).forEach((key) => {
         it(`should compile form sample "${key}" `, () => {
-            var sample = fixtures[key];
-            var src = source({sample: {sample}});
-            var transpiled = compile(src);
+            const sample = fixtures[key];
+            const src = source({sample: {sample}});
+            const transpiled = compile(src);
             expect(transpiled.code).toExist();
         });
     });

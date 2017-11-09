@@ -3,7 +3,6 @@
   "version": "2.2.11",
   "description": "Subschema",
   "main": "lib/index.js",
-  "source": "src/index",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
@@ -17,5 +16,6 @@
     "expect": "^1.20.2",
     "rimraf": "^2.6.1",
     "subschema-dev-support": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

@@ -16,7 +16,7 @@
   "peerDependencies": {
     "lodash": "*",
     "react": "*",
-    "react-dom":"*",
+    "react-dom": "*",
     "prop-types": "*"
   },
   "devDependencies": {
@@ -36,5 +36,6 @@
     "subschema-prop-types": "^2.2.11",
     "subschema-utils": "^2.2.11",
     "subschema-validators": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

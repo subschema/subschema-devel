@@ -17,7 +17,7 @@ describe('Form/submit', function () {
         ButtonTemplate = context.loader.loadTemplate('ButtonTemplate')
     });
     afterEach(cleanUp);
-    it.on;y('should submit the form and have handler by name', function (done) {
+    it('should submit the form and have handler by name', function (done) {
         const schema = {
             template: 'ObjectTemplate',
             schema: {

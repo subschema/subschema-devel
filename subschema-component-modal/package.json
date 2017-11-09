@@ -39,5 +39,6 @@
     "subschema-utils": "^2.2.11",
     "subschema-validators": "^2.2.11",
     "subschema-valuemanager": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

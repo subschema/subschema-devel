@@ -38,5 +38,6 @@
     "react": "*",
     "react-dom": "*",
     "subschema": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

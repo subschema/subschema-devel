@@ -1,22 +1,22 @@
 #!/usr/bin/env node
-var path = require('path');
-var conf = require('../babel-helper');
-if (process.argv.indexOf('-s') == -1) {
-    process.argv.push('-s', 'true');
+const { plugins, presets } = require('../babel-helper');
+const { argv }             = process;
+if (!argv.includes('-s')) {
+    argv.push('-s', 'true');
 }
-if (process.argv.indexOf('--out-file') == -1 && process.argv.indexOf('--out-dir') == -1) {
-    process.argv.push('--out-dir', 'lib');
+if (!(argv.includes('--out-file') || argv.includes('--out-dir'))) {
+    argv.push('--out-dir', 'lib');
 }
-if (process.argv.indexOf('--copy-files') == -1 && process.argv.indexOf('-D') == -1) {
-    process.argv.push('--copy-files');
+if (!(argv.includes('--copy-files') || argv.includes('-D'))) {
+    argv.push('--copy-files');
 }
-if (process.argv.indexOf('--presets') == -1) {
-    process.argv.push('--presets', conf.presets);
+if (!argv.includes('--presets')) {
+    argv.push('--presets', presets);
 }
-if (process.argv.indexOf('--plugins') == -1) {
-    process.argv.push('--plugins', conf.plugins);
+if (!argv.includes('--plugins')) {
+    argv.push('--plugins', plugins);
 }
-if (process.argv.indexOf('--out-file') == -1 && process.argv.indexOf('--filename') == -1) {
-    process.argv.push('src');
+if (!(argv.includes('--out-file') || argv.includes('--filename'))) {
+    argv.push('src');
 }
 require('babel-cli/bin/babel');

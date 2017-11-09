@@ -23,14 +23,16 @@ const isDomType = (type) => {
 
 //TODO - figure out something better than this.
 function allowed(obj) {
-    if (!obj) {
-        return obj;
-    }
-    if ('fieldAttrs' in obj || 'dataType' in obj) {
-        const { fieldAttrs, dataType, ...rest } = obj;
-        return rest;
-    }
-    return obj
+    return obj && Object.keys(obj).reduce((ret, key) => {
+        if (key === 'title' && obj[key] === false) {
+            return ret;
+        }
+        if (key === 'fieldAttrs' || key === 'dataType' || obj[key] == null) {
+            return ret;
+        }
+        ret[key] = obj[key];
+        return ret;
+    }, {});
 }
 
 export default class Content extends Component {

@@ -50,5 +50,6 @@
     "subschema-dev-support": "^2.2.11",
     "subschema-project": "^2.2.11",
     "subschema-test-support": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

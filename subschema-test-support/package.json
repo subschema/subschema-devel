@@ -3,14 +3,18 @@
   "version": "2.2.11",
   "description": "Subschema Test Support",
   "main": "lib/index.js",
-  "source": "src/index.js",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "expect": "^1.20.2"
+    "chai": "^4.1.2",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "expect": "^1.20.2",
+    "inherits": "^2.0.3",
+    "node-utils": "^0.0.2"
   },
   "peerDependencies": {
     "react": "*",
@@ -23,5 +27,6 @@
     "subschema-loader": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
     "subschema-valuemanager": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

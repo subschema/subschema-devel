@@ -1,5 +1,5 @@
-var path    = require('path');
-var babelRe = /\/babel-loader\//;
+const path    = require('path');
+const babelRe = /(^|\/)babel-loader(\/|$)/;
 
 function findBabel(v) {
     if (!v) {

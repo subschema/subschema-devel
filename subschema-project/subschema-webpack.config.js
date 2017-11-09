@@ -1,7 +1,8 @@
-var path       = require('path');
-var resolvePkgDir = function(name){
-    return path.resolve(require.resolve(path.join(name, 'package.json')), '..');
-}
+const path = require('path');
+
+const resolvePkgDir = name => path.resolve(
+    require.resolve(path.join(name, 'package.json')), '..');
+
 module.exports = function (options, webpack) {
     webpack.module.rules.push({
         test   : /\.tmpl$/,
@@ -11,11 +12,7 @@ module.exports = function (options, webpack) {
         ]
     });
 
-    const resolveLoader = webpack.resolveLoader
-                          || (webpack.resolveLoader = {});
-
-    (resolveLoader.alias || (resolveLoader.alias = {}))['raw-loader'] =
-        resolvePkgDir('raw-loader');
+    webpack.resolve.alias['babel-core'] = resolvePkgDir('babel-standalone');
 
     webpack.resolve.alias['subschema-raw'] =
         `!raw-loader!!${require.resolve(

@@ -1,5 +1,5 @@
 import React from "react";
-import {generate, compile, project} from "../lib";
+import {generate, compile, project} from "subschema-project";
 import expect from "expect";
 import {into, renderPage, execMock, testEachSample} from "./support";
 

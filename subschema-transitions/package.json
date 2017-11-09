@@ -8,19 +8,19 @@
     "prepublish": "subschema-webpack --no-style-loader",
     "clean": "rimraf ./lib ./dist"
   },
-  "dependencies": {
-    "react-transition-group": "^1.1.1"
-  },
   "devDependencies": {
     "rimraf": "^2.6.1",
     "prop-types": "^15.5.4",
     "subschema-dev-support": "^2.2.11",
     "subschema-prop-types": "^2.2.11",
-    "subschema-utils": "^2.2.11"
+    "subschema-utils": "^2.2.11",
+    "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
     "prop-types": "*",
     "subschema-prop-types": "*",
-    "subschema-utils": "*"
-  }
+    "subschema-utils": "*",
+    "react-transition-group": "*"
+  },
+  "source": "src"
 }

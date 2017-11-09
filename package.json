@@ -10,7 +10,7 @@
     "rebuild": "lerna clean --yes && yarn install && lerna bootstrap && lr-idea",
     "coverage": "SUBSCHEMA_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
     "test": "lerna bootstrap && lerna run test",
-    "bootstrap": "lerna bootstrap && lr-link && lr-idea",
+    "bootstrap": "lerna bootstrap  && lr-idea",
     "demo": "cd subschema-component-demo && yarn run demo",
     "karma": "SUBSCHEMA_DEBUG=1 SUBSCHEMA_TEST_DIR=. ./subschema-dev-support/bin/subschema-karma.js"
   },

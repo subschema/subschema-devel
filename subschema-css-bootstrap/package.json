@@ -2,7 +2,6 @@
   "name": "subschema-css-bootstrap",
   "version": "2.2.11",
   "main": "lib/index.js",
-  "source": "src/index",
   "description": "Bootstrap CSS support for subschema",
   "scripts": {
     "test": "subschema-karma",
@@ -19,5 +18,6 @@
     "rimraf": "^2.6.1",
     "subschema-dev-support": "^2.2.11",
     "subschema-transitions": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

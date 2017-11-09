@@ -1,6 +1,5 @@
-import { availablePlugins, transform } from 'babel-core';
+import { availablePlugins, transform } from 'babel-standalone';
 import form from './form';
-//import babelrc from 'subschema-dev-support/babelrc.json';
 import reactClassDisplayName from 'subschema-dev-support/react-class-display-name';
 import transformClassProps from 'babel-plugin-transform-class-properties';
 import babelrc from './babelrc.json';

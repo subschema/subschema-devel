@@ -2,7 +2,6 @@
   "name": "subschema-prop-types",
   "version": "2.2.11",
   "main": "lib/index",
-  "source": "src/index",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
@@ -16,5 +15,6 @@
     "prop-types": "^15.5.8",
     "rimraf": "^2.6.1",
     "subschema-dev-support": "^2.2.11"
-  }
+  },
+  "source": "src"
 }

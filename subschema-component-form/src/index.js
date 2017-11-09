@@ -25,22 +25,19 @@ import ObjectType from 'subschema-core/lib/Object';
 import _RestrictedMixin from './types/RestrictedMixin';
 import _Dom from './Dom';
 import _css from './css';
-import _ReactCSSReplaceTransition from './ReactCSSReplaceTransition';
-import _ReactCSSTransitionGroupChild from './ReactCSSTransitionGroupChild';
+
 import _resolvers from 'subschema-core/lib/resolvers';
 import _Conditional from 'subschema-core/lib/Conditional';
 import { settings as transitionSettings } from 'subschema-core/lib/resolvers/transition';
+import _ReactCSSReplaceTransition from 'react-transition-group/CSSTransition';
 
 export const Conditional = _Conditional;
 
-export const resolvers        = _resolvers;
-transitionSettings.Transition = _ReactCSSReplaceTransition;
+export const resolvers = _resolvers;
 
 export const ReactCSSReplaceTransition = Conditional.Transition =
-    transitionSettings.Transition;
+    transitionSettings.Transition = _ReactCSSReplaceTransition;
 
-
-export const ReactCSSTransitionGroupChild = _ReactCSSTransitionGroupChild;
 
 export const RestrictedMixin = _RestrictedMixin;
 
