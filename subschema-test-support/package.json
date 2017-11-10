@@ -1,6 +1,6 @@
 {
   "name": "subschema-test-support",
-  "version": "2.2.11",
+  "version": "3.0.0-b1",
   "description": "Subschema Test Support",
   "main": "lib/index.js",
   "scripts": {
@@ -23,11 +23,11 @@
   "devDependencies": {
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^2.2.11",
-    "subschema-injection": "^2.2.11",
-    "subschema-loader": "^2.2.11",
-    "subschema-prop-types": "^2.2.11",
-    "subschema-valuemanager": "^2.2.11"
+    "subschema-dev-support": "^3.0.0-b1",
+    "subschema-injection": "^3.0.0-b1",
+    "subschema-loader": "^3.0.0-b1",
+    "subschema-prop-types": "^3.0.0-b1",
+    "subschema-valuemanager": "^3.0.0-b1"
   },
   "source": "src"
 }

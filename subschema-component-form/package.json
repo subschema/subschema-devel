@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-form",
-  "version": "2.2.11",
+  "version": "3.0.0-b1",
   "description": "Subschema Form and DOM support",
   "main": "lib/index.js",
   "scripts": {
@@ -11,34 +11,34 @@
   },
   "peerDependencies": {
     "lodash": "*",
+    "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "prop-types": "*",
-    "subschema-core": "*",
-    "subschema-injection": "*",
-    "subschema-prop-types": "*",
-    "subschema-transitions": "*",
-    "subschema-valuemanager": "*",
-    "react-transition-group": "*"
+    "react-transition-group": "*",
+    "subschema-core": "^3.0.0-b1",
+    "subschema-injection": "^3.0.0-b1",
+    "subschema-prop-types": "^3.0.0-b1",
+    "subschema-transitions": "^3.0.0-b1",
+    "subschema-valuemanager": "^3.0.0-b1"
   },
   "devDependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-core": "^2.2.11",
-    "subschema-css-bootstrap": "^2.2.11",
-    "subschema-dev-support": "^2.2.11",
-    "subschema-expression": "^2.2.11",
-    "subschema-injection": "^2.2.11",
-    "subschema-loader": "^2.2.11",
-    "subschema-processors": "^2.2.11",
-    "subschema-prop-types": "^2.2.11",
-    "subschema-test-support": "^2.2.11",
-    "subschema-transitions": "^2.2.11",
-    "subschema-utils": "^2.2.11",
-    "subschema-validators": "^2.2.11",
-    "subschema-valuemanager": "^2.2.11"
+    "subschema-core": "^3.0.0-b1",
+    "subschema-css-bootstrap": "^3.0.0-b1",
+    "subschema-dev-support": "^3.0.0-b1",
+    "subschema-expression": "^3.0.0-b1",
+    "subschema-injection": "^3.0.0-b1",
+    "subschema-loader": "^3.0.0-b1",
+    "subschema-processors": "^3.0.0-b1",
+    "subschema-prop-types": "^3.0.0-b1",
+    "subschema-test-support": "^3.0.0-b1",
+    "subschema-transitions": "^3.0.0-b1",
+    "subschema-utils": "^3.0.0-b1",
+    "subschema-validators": "^3.0.0-b1",
+    "subschema-valuemanager": "^3.0.0-b1"
   },
   "dependencies": {
     "react-transition-group": "^2.2.1"

@@ -1,6 +1,6 @@
 {
   "name": "subschema-loader",
-  "version": "2.2.11",
+  "version": "3.0.0-b1",
   "description": "Subschema Loader",
   "main": "lib/index.js",
   "scripts": {
@@ -9,11 +9,11 @@
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "subschema-utils": "^2.2.11"
+    "subschema-utils": "^3.0.0-b1"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^2.2.11"
+    "subschema-dev-support": "^3.0.0-b1"
   },
   "source": "src"
 }

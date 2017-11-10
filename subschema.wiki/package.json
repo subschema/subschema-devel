@@ -1,6 +1,6 @@
 {
   "name": "subschema.wiki",
-  "version": "2.2.11",
+  "version": "3.0.0-b1",
   "description": "Subschema Wiki",
   "main": "src/index.js",
   "scripts": {
@@ -12,15 +12,15 @@
     "react-syntax-highlighter": "^5.6.2"
   },
   "devDependencies": {
-    "subschema-dev-support": "^2.2.11",
     "react": "^16.1.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "subschema-dev-support": "^3.0.0-b1"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^15.0.0",
-    "react-dom": "^16.0.0 || ^15.0.0",
+    "babel-standalone": "*",
     "prop-types": "^16.0.0 || ^15.0.0",
-    "babel-standalone": "*"
+    "react": "^16.0.0 || ^15.0.0",
+    "react-dom": "^16.0.0 || ^15.0.0"
   },
   "source": "src"
 }
