@@ -1,3 +1,4 @@
+import './fix-util';
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
@@ -6,10 +7,11 @@ import injector from 'subschema-injection';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
-/*import { configure } from 'enzyme';
+import { configure, mount as _mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-configure({ adapter: new Adapter() });*/
+configure({ adapter: new Adapter() });
+
 const Simulate = TestUtils.Simulate;
 
 function prettyLog(result) {
@@ -248,7 +250,17 @@ function intoWithState(child, state, debug) {
     }
 }
 
+function mount(node, debug) {
+    if (debug) {
+        const attachTo = document.createElement('div');
+        document.body.appendChild(attachTo);
+        return _mount(node, { attachTo });
+    }
+    return _mount(node);
+}
+
 export {
+    mount,
     cleanUp,
     React,
     ReactDOM,

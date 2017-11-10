@@ -35,7 +35,7 @@ const valueManager = ValueManager({
     }),
     docs            : loader.listDocs().filter(v => v.name !== 'Home').map(
         v => ({ name: v.name, label: v.name.replace(/_/g, ' ') })),
-    subschemaVersion: SUBSCHEMA_VERSION,
+    subschemaVersion: process.env.SUBSCHEMA_VERSION,
     schema
 });
 

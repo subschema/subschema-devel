@@ -72,7 +72,9 @@ if (SUBSCHEMA_COVERAGE || SUBSCHEMA_COVERAGE_DIR
 if (argv.includes('--single-run', 2) && !argv.includes('--browser', 2)) {
     argv.push('--browser', 'Firefox');
 }
-
+if (!env.NODE_ENV) {
+    env.NODE_ENV = 'test';
+}
 env.SUBSCHEMA_MAIN_FIELDS = 1;
 env.SUBSCHEMA_KARMA       = 1;
 //use these aliases by default, when running in karma. This ensures the same

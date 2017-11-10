@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import {
-    byClass, byTag, byTags, byType, cleanUp, click, expect, into, Simulate,
-    TestUtils
+    byClass, byTag, byTags, byType, cleanUp, click, expect, into, mount, node,
+    Simulate, TestUtils
 } from "subschema-test-support";
+
 import { newSubschemaContext } from "subschema";
 
 describe('components/Form', function () {
@@ -20,7 +21,8 @@ describe('components/Form', function () {
     afterEach(cleanUp);
 
     it('should create a form with a schema and value and triggered error only after having been valid',
-        function (done) {
+        function () {
+
             const value = {}, schema = {
                 schema: {
                     name: {
@@ -31,48 +33,41 @@ describe('components/Form', function () {
                 }
             }, errors                = {};
 
-            const root  = into(<Form value={value} schema={schema}
-                                     errors={errors}
-                                     loader={loader}/>);
-            const edit  = TestUtils.scryRenderedComponentsWithType(root,
-                EditorTemplate)[0];
-            const input = byTag(edit, 'input');
-            Simulate.blur(input);
+            const root  = mount(<Form value={value} schema={schema}
+                                      errors={errors}
+                                      loader={loader}/>, true);
+            const edit  = () => root.find(EditorTemplate);
+            const input = edit().find('input');
+            input.simulate('blur');
 
-            expect(edit.props.error).to.not.exist;
+            expect(edit().prop('error')).to.not.exist;
 
-            /*
-             Simulate.change(input, {target: {value: 'dude@g'}});
-             expect(field.state.errors.name).to.not.exist;
-             */
+            input.simulate('change', { target: { value: 'dude@g.com' } });
 
-            Simulate.change(input, { target: { value: 'dude@g.com' } });
+            expect(edit().prop('error')).to.not.exist;
 
-            expect(edit.props.error).to.not.exist;
+            input.simulate('change', { target: { value: 'dude@g' } });
+            expect(edit().prop('error')).to.eql('Invalid email address');
 
-            Simulate.change(input, { target: { value: 'dude@g' } });
-            expect(edit.props.error).to.exist;
-            Simulate.change(input, { target: { value: 'dude@g.com' } });
-
-            expect(edit.props.error).to.not.exist;
+            input.simulate('change', { target: { value: 'dude@g.com' } });
+            expect(edit().prop('error')).to.not.exist;
 
 
-            Simulate.change(input, { target: { value: 'dude@g' } });
+            input.simulate('change', { target: { value: 'dude@g' } });
+            expect(edit().prop('error')).to.eql('Invalid email address');
 
-            expect(edit.props.error).to.exist;
+            input.simulate('blur');
+            expect(edit().prop('error')).to.eql('Invalid email address');
 
-            Simulate.blur(input);
-            expect(edit.props.error).to.exist;
+            input.simulate('change', { target: { value: 'dude@go.com' } });
+            expect(edit().prop('error')).to.not.exist;
 
-            Simulate.change(input, { target: { value: 'dude@go.com' } });
-            expect(edit.props.error).to.not.exist;
+            input.simulate('change', { target: { value: 'dude@g' } });
+            expect(edit().prop('error')).to.eql('Invalid email address');
 
-            Simulate.change(input, { target: { value: 'dude@g' } });
-            expect(edit.props.error).to.exist;
+            input.simulate('change', { target: { value: '' } });
+            expect(edit().prop('error')).to.not.exist;
 
-            Simulate.change(input, { target: { value: '' } });
-            expect(edit.props.error).to.not.exist;
-            done();
         });
     //This should give a warning. and it does, but it makes debuuging harder so
     // let's skip it and leave it for documentation sake.
@@ -311,7 +306,7 @@ describe('components/Form', function () {
         var root   = into(<Form value={{}} schema={schema}
                                 onSubmit={onSubmit}/>);
         var button = byType(root, ButtonTemplate);
-        expect(button,'it should have rendered').to.exist;
+        expect(button, 'it should have rendered').to.exist;
         click(button);
         expect(value).to.exist;
         expect(error).to.exist;

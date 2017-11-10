@@ -1,3 +1,4 @@
+require('./init-env');
 const path                = require('path');
 const babel               = require('./babel-helper');
 const webpackUtils        = require('./webpack-utils');
@@ -29,7 +30,6 @@ const {
           SUBSCHEMA_ENTRY,
           SUBSCHEMA_LIBRARY,
           SUBSCHEMA_LIBRARY_TARGET,
-          SUBSCHEMA_TEST_PATTERN     = "-test\.jsx?$",
           SUBSCHEMA_USE_HOT,
           SUBSCHEMA_DEV_SERVER,
           SUBSCHEMA_USE_STATS_FILE,
@@ -39,24 +39,17 @@ const {
           SUBSCHEMA_PUBLIC,
           SUBSCHEMA_USE_NAME_HASH,
           SUBSCHEMA_ANALYZE,
-          SUBSCHEMA_USE_ANALYTICS,
+          SUBSCHEMA_USE_ANALYTICS
 
       } = process.env;
 
 function autoprefixer() {
-    const browsers = configOrBool(SUBSCHEMA_USE_AUTOPREFIXER, JSON.stringify([
-        '>1%',
-        'last 3 versions',
-        'Firefox ESR',
-        'not ie < 9', // React doesn't support IE8 anyway
-    ]));
+    const browsers = configOrBool(SUBSCHEMA_USE_AUTOPREFIXER);
     if (!browsers) {
         return [];
     }
     return [
-        require('autoprefixer')({
-            browsers: JSON.parse(browsers)
-        })
+        require('autoprefixer')()
     ];
 }
 
@@ -72,9 +65,10 @@ const opts    = {
     publicPath       : configOrBool(SUBSCHEMA_PUBLIC, '/'),
     useSubschemaAlias: false,
     useAutoprefixer  : true,
+    useScopeHoist    : true,
     babel,
     useDefine        : {
-        NODE_ENV,
+        'process.env.NODE_ENV': NODE_ENV,
     },
     useCssModule     : {
         loader : "css-loader",
@@ -164,9 +158,6 @@ if (!(opts.isKarma || opts.isDevServer || opts.isDemo)) {
     if (libraryTarget) {
         output.libraryTarget = libraryTarget;
     }
-    opts.useDefine = Object.assign(opts.useDefine, {
-        SUBSCHEMA_TEST_PATTERN
-    });
 }
 
 
@@ -184,11 +175,13 @@ let webpack = {
     },
     resolve      : {
         extensions: ['.js', '.jsx'],
-        alias     : useDepAlias(useAlias())
+        alias     : useDepAlias(useAlias()),
+
     },
     resolveLoader: {
         modules: [
-            cwd("node_modules"),
+            'node_modules',
+            cwd('node_modules'),
             path.resolve(__dirname, 'node_modules'),
         ],
         alias  : resolveMap(
@@ -289,13 +282,14 @@ webpack.resolve.alias = Object.assign(webpack.resolve.alias,
 
 
 //if (SUBSCHEMA_MAIN_FIELDS) {
-    const mainFields = configOrBool(SUBSCHEMA_MAIN_FIELDS, ['source', 'main']);
-    if (mainFields) {
-        webpack.resolve.mainFields =
-            Array.isArray(mainFields) ? mainFields : mainFields.split(
-                /,\s*/);
-        console.warn(`using mainFields`, webpack.resolve.mainFields);
-    }
+const mainFields = configOrBool(SUBSCHEMA_MAIN_FIELDS, ['source', 'main']);
+if (mainFields) {
+    webpack.resolve.mainFields =
+        Array.isArray(mainFields) ? mainFields : mainFields.split(
+            /,\s*/);
+    console.warn(`using mainFields`, webpack.resolve.mainFields);
+}
+
 //}
 
 function charset(ele) {
@@ -438,7 +432,9 @@ if (opts.useHtml && !opts.isKarma) {
         }, pages[key]));
     }));
 }
-
+if (opts.useScopeHoist) {
+    plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
+}
 if (opts.analyze) {
     //only include for analyzer.
     const BundleAnalyzerPlugin = require(
