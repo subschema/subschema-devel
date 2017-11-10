@@ -13,9 +13,9 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  yarn install
-  lerna run prepublish
-  yarn test
+  - yarn install
+  - yarn run prepublish
+  - yarn test
 
 addons:
   firefox: "52.0"
