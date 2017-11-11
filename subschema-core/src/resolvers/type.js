@@ -46,7 +46,7 @@ export function loadType(val, key, props, context) {
         Type = context.loader.loadType(type);
         warning(Type, 'Could not find a type for %s', type);
 
-        if (!Type.displayName) {
+        if (Type && !Type.displayName) {
             Type.displayName = type;
         }
     } else {

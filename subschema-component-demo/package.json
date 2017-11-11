@@ -22,7 +22,7 @@
     "subschema-component-playground": "^3.0.0-b1",
     "subschema-component-wizard": "^3.0.0-b1",
     "subschema-core": "^3.0.0-b1",
-    "subschema-css-bootstrap": "^3.0.0-b1",
+    "subschema-styles-bootstrap": "^3.0.0-b1",
     "subschema-expression": "^3.0.0-b1",
     "subschema-injection": "^3.0.0-b1",
     "subschema-loader": "^3.0.0-b1",
@@ -43,7 +43,6 @@
     "prop-types": "*"
   },
   "devDependencies": {
-    "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",

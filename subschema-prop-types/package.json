@@ -4,14 +4,16 @@
   "main": "lib/index",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
-    "prepublish": "subschema-babel",
+    "prepublish": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js",
     "clean": "rimraf ./lib ./dist"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0"
   },
   "peerDependencies": {
     "prop-types": "*"
   },
   "devDependencies": {
-    "prop-types": "^15.6.0",
     "rimraf": "^2.6.2",
     "subschema-dev-support": "^3.0.0-b1"
   },

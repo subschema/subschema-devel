@@ -9,7 +9,6 @@
     "clean": "rimraf ./lib ./dist"
   },
   "devDependencies": {
-    "prop-types": "^15.6.0",
     "react-transition-group": "^2.2.1",
     "rimraf": "^2.6.2",
     "subschema-dev-support": "^3.0.0-b1",
@@ -17,7 +16,6 @@
     "subschema-utils": "^3.0.0-b1"
   },
   "peerDependencies": {
-    "prop-types": "*",
     "react-transition-group": "*",
     "subschema-prop-types": "^3.0.0-b1",
     "subschema-utils": "^3.0.0-b1"

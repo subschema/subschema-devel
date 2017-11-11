@@ -6,7 +6,6 @@ import warning from 'subschema-utils/lib/warning';
 
 export default class ModalTemplate extends Component {
     static propTypes = {
-        path            : PropTypes.path,
         stash           : PropTypes.stash,
         unstashOnUnmount: PropTypes.unstash,
         clearStash      : PropTypes.clearStash,

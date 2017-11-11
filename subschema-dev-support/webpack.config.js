@@ -278,7 +278,7 @@ let webpack = {
 
 
 webpack.resolve.alias = Object.assign(webpack.resolve.alias,
-    resolveMap('react', 'react-dom', 'prop-types'));
+    resolveMap('react', 'react-dom'));
 
 
 //if (SUBSCHEMA_MAIN_FIELDS) {
@@ -433,7 +433,7 @@ if (opts.useHtml && !opts.isKarma) {
     }));
 }
 if (opts.useScopeHoist) {
-    plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
+    //  plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
 }
 if (opts.analyze) {
     //only include for analyzer.
@@ -463,6 +463,6 @@ if (SUBSCHEMA_DEBUG) {
     console.log('options');
     console.dir(opts);
     console.log('webpack configuration');
-    console.log(JSON.stringify(webpack, null, 2));
+    console.dir(webpack);
 }
 module.exports = webpack;

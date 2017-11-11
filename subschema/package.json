@@ -7,7 +7,7 @@
     "compile-default-loader": "rimraf -f lib/DefaultLoader.js*; ./bin/subschema-make-loader.js | subschema-babel --out-file ./lib/DefaultLoader.js",
     "compile-lib": "subschema-babel && yarn run compile-default-loader",
     "compile-server": "subschema-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
-    "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom,prop-types subschema-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
+    "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom subschema-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
     "compile-web-debug": "subschema-webpack --no-externalize-peers --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
     "compile-web-noreact": "subschema-webpack -p  --output-path dist --output-filename subschema-noreact.js",
     "karma": "subschema-karma",
@@ -16,7 +16,6 @@
     "clean": "rimraf ./lib ./dist"
   },
   "peerDependencies": {
-    "prop-types": "16.x || ^15.5.0",
     "react": "16.x || ^15.5.0",
     "react-dom": "16.x || ^15.5.0"
   },
@@ -28,7 +27,7 @@
     "subschema-component-modal": "^3.0.0-b1",
     "subschema-component-wizard": "^3.0.0-b1",
     "subschema-core": "^3.0.0-b1",
-    "subschema-css-bootstrap": "^3.0.0-b1",
+    "subschema-styles-bootstrap": "^3.0.0-b1",
     "subschema-expression": "^3.0.0-b1",
     "subschema-injection": "^3.0.0-b1",
     "subschema-loader": "^3.0.0-b1",
@@ -41,7 +40,6 @@
     "subschema-valuemanager": "^3.0.0-b1"
   },
   "devDependencies": {
-    "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
@@ -49,17 +47,17 @@
   },
   "subschema": {
     "exclude": [
-      "subschema",
-      "subschema-core",
       "subschema-dev-support",
       "subschema.wiki",
       "subschema-test-support",
       "subschema-expression",
       "subschema-valuemanager",
-      "subschema-prop-types",
       "subschema-utils",
       "subschema-injection",
-      "subschema-loader"
+      "subschema-loader",
+      "subschema-native",
+      "subschema-test-samples",
+      "subschema-component-demo"
     ]
   },
   "source": "src"

@@ -1,5 +1,5 @@
 {
-  "name": "subschema-css-bootstrap",
+  "name": "subschema-styles-bootstrap",
   "version": "3.0.0-b1",
   "main": "lib/index.js",
   "description": "Bootstrap CSS support for subschema",

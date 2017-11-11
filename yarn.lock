@@ -6582,6 +6582,12 @@ style-loader@^0.19.0:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+subschema-css-bootstrap@^3.0.0-b1:
+  version "3.0.0-b1"
+  resolved "https://registry.yarnpkg.com/subschema-css-bootstrap/-/subschema-css-bootstrap-3.0.0-b1.tgz#54667d262686819389229b84ca011a2f44e5f085"
+  dependencies:
+    bootstrap "^3.3.7"
+
 supports-color@4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.4.0.tgz#883f7ddabc165142b2a61427f3352ded195d1a3e"

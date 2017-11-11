@@ -1,5 +1,5 @@
 import React from 'react';
-import 'subschema-css-bootstrap/lib/style.css';
+import 'subschema-styles-bootstrap/lib/style.css';
 import {
     byClass, byComponent, byComponents, byName, change, cleanUp, click, expect,
     filterProp, findNode, into, Simulate, TestUtils
@@ -7,7 +7,7 @@ import {
 
 import form from 'subschema-component-form';
 import list from 'subschema-component-list';
-import css from 'subschema-css-bootstrap';
+import css from 'subschema-styles-bootstrap';
 
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 

@@ -10,7 +10,7 @@ import {
 } from 'subschema-component-form';
 import * as _processors from 'subschema-processors';
 import { transitions } from 'subschema-transitions';
-import bootstrap from 'subschema-css-bootstrap';
+import bootstrap from 'subschema-styles-bootstrap';
 
 const newSubschemaContext = (opts) => {
     let {

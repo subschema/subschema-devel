@@ -11,7 +11,6 @@
   },
   "peerDependencies": {
     "lodash": "*",
-    "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "subschema-component-form": "^3.0.0-b1",

@@ -15,7 +15,6 @@
     "history": "^4.6.1"
   },
   "devDependencies": {
-    "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
@@ -26,7 +25,6 @@
     "subschema-prop-types": "^3.0.0-b1"
   },
   "peerDependencies": {
-    "prop-types": "*",
     "react": "*",
     "react-dom": "*"
   },

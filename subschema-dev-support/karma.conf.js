@@ -27,13 +27,13 @@ if (!webpack.resolve.alias.test) {
 }
 console.warn('running tests in ', webpack.resolve.alias.test);
 
-webpack.devtool         = 'inline-source-map';
-webpack.target          = 'web';
-webpack.node            = webpack.node || {};
-webpack.node.fs         = 'empty';
-webpack.node.net        = 'empty';
-webpack.node.console    = false;
-webpack.node.util       = true;
+webpack.devtool      = 'inline-source-map';
+webpack.target       = 'web';
+webpack.node         = webpack.node || {};
+webpack.node.fs      = 'empty';
+webpack.node.net     = 'empty';
+webpack.node.console = false;
+webpack.node.util    = true;
 //webpack.resolve.alias.util = require.resolve('util/util.js');
 //webpack.resolve.alias['util/util.js'] = require.resolve('util/util.js');
 webpack.output.pathinfo = true;
@@ -158,7 +158,8 @@ module.exports = function (config) {
         karmaConf.browsers = ['Firefox'];
     }
     if (SUBSCHEMA_DEBUG) {
-        console.warn('karma-webpack', JSON.stringify(karmaConf, null, 2));
+        console.log('karma-conf');
+        console.dir(karmaConf);c
     }
     config.set(karmaConf);
 };

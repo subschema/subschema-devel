@@ -3,7 +3,7 @@ import {
     byTag, byTypes, change, click, expect, into, intoWithState
 } from 'subschema-test-support';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-import 'subschema-css-bootstrap';
+import 'subschema-styles-bootstrap';
 import autocomplete, {
     Autocomplete, AutocompleteItemTemplate, styles
 } from 'subschema-component-autocomplete';

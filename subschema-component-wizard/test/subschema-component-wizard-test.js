@@ -4,7 +4,7 @@ import {
     into,
 } from 'subschema-test-support';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-import BootstrapStyles from 'subschema-css-bootstrap';
+import BootstrapStyles from 'subschema-styles-bootstrap';
 import { types } from 'subschema-component-form';
 import { templates } from 'subschema-component-wizard';
 

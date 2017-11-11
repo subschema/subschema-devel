@@ -17,7 +17,6 @@
   "peerDependencies": {
     "babel-standalone": "*",
     "lodash": "*",
-    "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "react-transition-group": "*",
@@ -39,7 +38,6 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-standalone": "^6.26.0",
     "lodash": "^4.17.4",
-    "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-transition-group": "^2.2.1",
