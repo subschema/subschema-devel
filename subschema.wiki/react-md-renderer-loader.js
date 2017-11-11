@@ -8,34 +8,37 @@
 'use strict';
 
 
-var assign      = require('markdown-it/lib/common/utils').assign;
-var unescapeAll = require('markdown-it/lib/common/utils').unescapeAll;
-var escapeHtml  = require('markdown-it/lib/common/utils').escapeHtml;
-var MarkdownIt  = require('markdown-it');
+const assign      = require('markdown-it/lib/common/utils').assign;
+const unescapeAll = require('markdown-it/lib/common/utils').unescapeAll;
+const escapeHtml  = require('markdown-it/lib/common/utils').escapeHtml;
+const MarkdownIt  = require('markdown-it');
 
 ////////////////////////////////////////////////////////////////////////////////
 
-var default_rules = {};
+const default_rules = {};
 
 
 default_rules.code_inline = function (tokens, idx, options, env, slf) {
-    var token = tokens[idx];
+    const token = tokens[idx];
 
-    return '<code' + slf.renderAttrs(token) + '>{' + JSON.stringify(tokens[idx].content) + '}</code>';
+    return '<code' + slf.renderAttrs(token) + '>{' + JSON.stringify(
+        tokens[idx].content) + '}</code>';
 };
 
 
 default_rules.code_block = function (tokens, idx, options, env, slf) {
-    var token = tokens[idx];
+    const token = tokens[idx];
 
-    return '<pre' + slf.renderAttrs(token) + '><code>{' + JSON.stringify(tokens[idx].content) + '}</code></pre>\n';
+    return '<pre' + slf.renderAttrs(token) + '><code>{' + JSON.stringify(
+        tokens[idx].content) + '}</code></pre>\n';
 };
 
 
 default_rules.fence = function (tokens, idx, options, env, slf) {
-    var token    = tokens[idx],
-        info     = token.info ? unescapeAll(token.info).trim() : '',
-        langName = '',
+    const token = tokens[idx],
+          info  = token.info ? unescapeAll(token.info).trim() : '';
+
+    let langName = '',
         highlighted, i, tmpAttrs, tmpToken;
 
     if (info) {
@@ -43,7 +46,8 @@ default_rules.fence = function (tokens, idx, options, env, slf) {
     }
 
     if (options.highlight) {
-        highlighted = options.highlight(token.content, langName) || escapeHtml(token.content);
+        highlighted = options.highlight(token.content, langName) || escapeHtml(
+            token.content);
     } else {
         highlighted = escapeHtml(token.content);
     }
@@ -52,9 +56,9 @@ default_rules.fence = function (tokens, idx, options, env, slf) {
         return highlighted + '\n';
     }
 
-    // If language exists, inject class gently, without mudofying original token.
-    // May be, one day we will add .clone() for token and simplify this part, but
-    // now we prefer to keep things local.
+    // If language exists, inject class gently, without mudofying original
+    // token. May be, one day we will add .clone() for token and simplify this
+    // part, but now we prefer to keep things local.
     if (info) {
         i        = token.attrIndex('class');
         tmpAttrs = token.attrs ? token.attrs.slice() : [];
@@ -67,7 +71,7 @@ default_rules.fence = function (tokens, idx, options, env, slf) {
 
         // Fake token just to render attributes
         tmpToken = {
-            attrs:tmpAttrs
+            attrs: tmpAttrs
         };
 
         return highlighted;
@@ -75,13 +79,13 @@ default_rules.fence = function (tokens, idx, options, env, slf) {
 
 
     return '<pre><code' + slf.renderAttrs(token) + '>'
-        + highlighted
-        + '</code></pre>\n';
+           + highlighted
+           + '</code></pre>\n';
 };
 
 
 default_rules.image = function (tokens, idx, options, env, slf) {
-    var token = tokens[idx];
+    const token = tokens[idx];
 
     // "alt" attr MUST be set, even if empty. Because it's mandatory and
     // should be placed on proper position for tests.
@@ -131,12 +135,12 @@ function Renderer() {
      * ##### Example
      *
      * ```javascript
-     * var md = require('markdown-it')();
+     * const md = require('markdown-it')();
      *
      * md.renderer.rules.strong_open  = function () { return '<b>'; };
      * md.renderer.rules.strong_close = function () { return '</b>'; };
      *
-     * var result = md.renderInline(...);
+     * const result = md.renderInline(...);
      * ```
      *
      * Each rule is called as independed static function with fixed signature:
@@ -148,12 +152,13 @@ function Renderer() {
    * }
      * ```
      *
-     * See [source code](https://github.com/markdown-it/markdown-it/blob/master/lib/renderer.js)
+     * See [source
+     * code](https://github.com/markdown-it/markdown-it/blob/master/lib/renderer.js)
      * for more details and examples.
      **/
     this.rules = assign({}, default_rules);
     this.imports = {
-        'React, {Component as $MDComponent}':'react'
+        'React, {Component as $MDComponent}': 'react'
     };
     this.prelude = {};
 }
@@ -165,7 +170,7 @@ function Renderer() {
  * Render token attributes to string.
  **/
 Renderer.prototype.renderAttrs = function renderAttrs(token) {
-    var i, l, result;
+    let i, l, result;
 
     if (!token.attrs) {
         return '';
@@ -183,7 +188,8 @@ Renderer.prototype.renderAttrs = function renderAttrs(token) {
                 name = 'htmlFor';
                 break;
         }
-        result += ' ' + escapeHtml(name) + '="' + escapeHtml(token.attrs[i][1]) + '"';
+        result +=
+            ' ' + escapeHtml(name) + '="' + escapeHtml(token.attrs[i][1]) + '"';
     }
 
     return result;
@@ -200,7 +206,7 @@ Renderer.prototype.renderAttrs = function renderAttrs(token) {
  * in [[Renderer#rules]].
  **/
 Renderer.prototype.renderToken = function renderToken(tokens, idx, options) {
-    var nextToken,
+    let nextToken,
         result = '',
         needLf = false,
         token  = tokens[idx];
@@ -245,9 +251,10 @@ Renderer.prototype.renderToken = function renderToken(tokens, idx, options) {
                     //
                     needLf = false;
 
-                } else if (nextToken.nesting === -1 && nextToken.tag === token.tag) {
-                    // Opening tag + closing tag of the same type. E.g. `<li></li>`.
-                    //
+                } else if (nextToken.nesting === -1 && nextToken.tag
+                                                       === token.tag) {
+                    // Opening tag + closing tag of the same type. E.g.
+                    // `<li></li>`.
                     needLf = false;
                 }
             }
@@ -269,11 +276,11 @@ Renderer.prototype.renderToken = function renderToken(tokens, idx, options) {
  * The same as [[Renderer.render]], but for single token of `inline` type.
  **/
 Renderer.prototype.renderInline = function (tokens, options, env) {
-    var type,
+    let type,
         result = '',
         rules  = this.rules;
 
-    for (var i = 0, len = tokens.length; i < len; i++) {
+    for (let i = 0, len = tokens.length; i < len; i++) {
         type = tokens[i].type;
 
         if (typeof rules[type] !== 'undefined') {
@@ -294,13 +301,13 @@ Renderer.prototype.renderInline = function (tokens, options, env) {
  * - env (Object): additional data from parsed input (references, for example)
  *
  * Special kludge for image `alt` attributes to conform CommonMark spec.
- * Don't try to use it! Spec requires to show `alt` content with stripped markup,
- * instead of simple escaping.
+ * Don't try to use it! Spec requires to show `alt` content with stripped
+ * markup, instead of simple escaping.
  **/
 Renderer.prototype.renderInlineAsText = function (tokens, options, env) {
-    var result = '';
+    let result = '';
 
-    for (var i = 0, len = tokens.length; i < len; i++) {
+    for (let i = 0, len = tokens.length; i < len; i++) {
         if (tokens[i].type === 'text') {
             result += tokens[i].content;
         } else if (tokens[i].type === 'image') {
@@ -322,7 +329,7 @@ Renderer.prototype.renderInlineAsText = function (tokens, options, env) {
  * this method directly.
  **/
 Renderer.prototype.render = function (tokens, options, env) {
-    var i, len, type,
+    let i, len, type,
         result = ``,
         rules  = this.rules;
 
@@ -349,23 +356,26 @@ export default class Markdown extends $MDComponent {
         }
 }`;
 };
+
 function renderPrelude(key) {
     const value = this[key];
     if (!value) {
         return '';
     }
     return key;
-};
+}
 
 function renderImport(key) {
     const value = this[key];
 
     return `import ${key} from '${value}'`;
-};
+}
 
 
 const stringify = (str) => {
-    if (str == null) return '';
+    if (str == null) {
+        return '';
+    }
 
     return JSON.stringify(str);
 };
@@ -375,15 +385,16 @@ module.exports = function (source) {
 
     if (!md) {
         const langMap  = {
-            'es6':'javascript',
-            'js' :'javascript',
-            'jsx':'javascript'
+            'es6': 'javascript',
+            'js' : 'javascript',
+            'jsx': 'javascript'
         };
         //  const options = loaderUtils.getOptions(this);
         const renderer = new Renderer();
-        md             = MarkdownIt({
-            xhtmlOut :true,
-            highlight:function (str, lang) {
+
+        md = MarkdownIt({
+            xhtmlOut : true,
+            highlight: function (str, lang) {
                 lang = lang && lang.trim() || 'text';
 
 
@@ -398,15 +409,24 @@ module.exports = function (source) {
                 }
 
                 if (!resolved) {
-                    return `<code className="unknown-lang lang-${lang || 'nolang'}">{${JSON.stringify(str)}}</code>`;
+                    return `<code className="unknown-lang lang-${lang
+                                                                 || 'nolang'}">{${JSON.stringify(
+                        str)}}</code>`;
                 }
-                renderer.imports['MDhighlighter$, { registerLanguage  as $mdRl} '] = 'react-syntax-highlighter/dist/light';
-                renderer.imports['$mdLang']                                        = resolvedLang;
-                renderer.imports['$mdStyle']                                       = 'react-syntax-highlighter/dist/styles/docco';
+                renderer.imports['MDhighlighter$, { registerLanguage  as $mdRl} '] =
+                    'react-syntax-highlighter/dist/light';
+                renderer.imports['$mdLang']                                        =
+                    resolvedLang;
+                renderer.imports['$mdStyle']                                       =
+                    'react-syntax-highlighter/dist/styles/docco';
 
                 renderer.prelude[`$mdRl(${stringify(lng)}, $mdLang);\n`] = true;
 
-                return `<MDhighlighter$ style={$mdStyle} language={${stringify(lng)}}>{${stringify(str.trim())}}</MDhighlighter$>`; // use external default escaping
+                return `<MDhighlighter$ style={$mdStyle} language={${stringify(
+                    lng)}}>{${stringify(str.trim())}}</MDhighlighter$>`; // use
+                                                                         // external
+                                                                         // default
+                                                                         // escaping
             }
         });
 

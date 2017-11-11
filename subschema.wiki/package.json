@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "server": "subschema-webpack-dev-server",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "rimraf ./lib ./dist",
+    "prepublish": "subschema-webpack"
   },
   "dependencies": {
     "markdown-it": "^8.3.1",
