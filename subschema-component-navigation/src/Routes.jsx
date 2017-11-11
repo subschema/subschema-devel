@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import route from '@funjs/route-parser/dist/index.umd';
 
@@ -21,7 +21,7 @@ function matcher(obj) {
     }
 }
 
-export default class Routes extends React.Component {
+export default class Routes extends Component {
     static template = false;
 
     static matcher = matcher;

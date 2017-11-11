@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import expect from 'expect';
+import {expect} from 'chai';
 import { renderToStaticMarkup } from 'react-dom/server';
 import Content from 'subschema-core/lib/Content';
 import ValueManager from 'subschema-valuemanager';
@@ -121,7 +121,7 @@ describe('components/RenderContent', function () {
                 const IContent     = ctx(Content,
                     newSubschemaContext({ valueManager }));
                 expect(renderToStaticMarkup(<IContent key='t1' {...test}/>))
-                    .toBe(key);
+                    .to.eql(key);
             });
         });
     });
@@ -162,7 +162,7 @@ describe('components/RenderContent', function () {
                     <h2>Me too.</h2>
                 </IContent>
             );
-            expect(result).toBe(
+            expect(result).to.eql(
                 '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><h1>See I&#x27;m Here</h1><h2>Me too.</h2></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
 
@@ -234,7 +234,7 @@ describe('components/RenderContent', function () {
              </div>
              */
             //@formatter:on
-            expect(result).toBe(
+            expect(result).to.eql(
                 '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><span><h1>See I&#x27;m Here</h1></span><span>more</span></span><span class="a-child"><span>stuff</span><span><h2>Me too.</h2></span><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
     it('should render an content object with a mixed array of type and className and wrap children',
@@ -301,7 +301,7 @@ describe('components/RenderContent', function () {
              </div>
              */
             //   @formatter:on
-            expect(result).toBe(
+            expect(result).to.eql(
                 '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><h1>See I&#x27;m Here</h1><span>more</span></span><span class="a-child"><span>stuff</span><h2>Me too.</h2><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
     it('should render an content object with a mixed array of type and className and wrap only one child',
@@ -360,7 +360,7 @@ describe('components/RenderContent', function () {
              </div>
              */
             //   @formatter:on
-            expect(result).toBe(
+            expect(result).to.eql(
                 '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><h2>Me too.</h2><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
     it('should render a list', function () {
@@ -388,7 +388,7 @@ describe('components/RenderContent', function () {
 
         // @formatter:off
         //   @formatter:on
-        expect(result).toBe(
+        expect(result).to.eql(
             '<ul id="stuff"><li class="list-item"><button value="mybutton">remove</button><div>Me too.</div></li><li class="list-item"><button value="mybutton">remove</button><span>Again</span></li></ul>');
     });
     it('should render a simple list', function () {
@@ -409,7 +409,7 @@ describe('components/RenderContent', function () {
         // @formatter:off
         //   @formatter:on
         expect(result)
-            .toBe('<ul id="stuff"><li>Me too.</li><li>Again</li></ul>');
+            .to.eql('<ul id="stuff"><li>Me too.</li><li>Again</li></ul>');
     });
 });
 

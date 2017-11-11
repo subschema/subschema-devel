@@ -1,58 +1,63 @@
 import React from 'react';
-import {
-    into,
-    byComponents,
-}  from 'subschema-test-support';
-import {newSubschemaContext} from 'subschema';
-import {setupFunc} from '../support';
+import { byComponents, into, } from 'subschema-test-support';
+import { newSubschemaContext } from 'subschema';
 
 describe("subschema-test-samples/FieldSetConditional", function () {
     this.timeout(50000);
     it('should render', function (done) {
-        const schema = {
-            schema: {
+        const schema                         = {
+            schema   : {
                 phoneOrEmail: {
-                    type: 'Radio',
-                    title: false,
-                    options: [{label: "Phone", val: "phone"}, {label: "Email", val: "email"}],
+                    type   : 'Radio',
+                    title  : false,
+                    options: [{
+                        label: "Phone",
+                        val  : "phone"
+                    }, { label: "Email", val: "email" }],
                 },
-                "phone": {
+                "phone"     : {
                     "type": "Text"
                 },
                 "canWePhone": "Checkbox",
                 "canWeEmail": "Checkbox",
-                "email": {
+                "email"     : {
                     "type": "Text"
                 }
             },
-            fieldsets: [{legend: "Would you prefer us contact you via?", fields: "phoneOrEmail"},
+            fieldsets: [
                 {
-                    legend: "Phone",
-                    buttons: ["Call Me"],
-                    fields: ["phone", "canWePhone"],
+                    legend: "Would you prefer us contact you via?",
+                    fields: "phoneOrEmail"
+                },
+                {
+                    legend     : "Phone",
+                    buttons    : ["Call Me"],
+                    fields     : ["phone", "canWePhone"],
                     conditional: {
-                        listen: "phoneOrEmail",
-                        operator: "==",
-                        value: "phone",
+                        listen    : "phoneOrEmail",
+                        operator  : "==",
+                        value     : "phone",
                         transition: "rollUp"
 
                     }
                 },
                 {
-                    legend: "Email",
-                    buttons: ["Email Me"],
-                    fields: ["email", "canWeEmail"],
+                    legend     : "Email",
+                    buttons    : ["Email Me"],
+                    fields     : ["email", "canWeEmail"],
                     conditional: {
-                        listen: "phoneOrEmail",
-                        operator: "==",
-                        value: "email",
+                        listen    : "phoneOrEmail",
+                        operator  : "==",
+                        value     : "email",
                         transition: "rollUp"
                     }
                 }]
         };
-        const {Form, loader, valueManager} = newSubschemaContext();
-        const FieldSetTemplate = loader.loadTemplate('FieldSetTemplate');
-        const form = into(<Form schema={schema}/>, true);
+        const { Form, loader, valueManager } = newSubschemaContext();
+        const FieldSetTemplate               = loader.loadTemplate(
+            'FieldSetTemplate');
+        const form                           = into(<Form schema={schema}/>,
+            true);
         byComponents(form, FieldSetTemplate, 1);
         valueManager.update('phoneOrEmail', 'phone');
 

@@ -16,7 +16,7 @@ describe('subschema-test-samples/CustomType', function () {
         const form = into(<Form  {...context}/>, true);
 
         const SwitchButton = Subschema.loader.loadType('SwitchButton');
-        expect(SwitchButton).toExist();
-        expect(byComponent(form, SwitchButton)).toExist();
+        expect(SwitchButton).to.exist;
+        expect(byComponent(form, SwitchButton)).to.exist;
     })
 });

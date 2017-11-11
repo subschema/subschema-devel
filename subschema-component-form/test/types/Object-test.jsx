@@ -31,17 +31,13 @@ describe('types/Object', function () {
 
     it('should not other objects', function () {
         const {Form, context, ...rest} = newSubschemaContext();
-        var form = into(<Form {...rest} schema={schema}/>, true);
+        const  form = into(<Form {...rest} schema={schema}/>, true);
 
-        var obj = TestUtils.scryRenderedComponentsWithType(form, ObjectType)[0];
-        var [n1, n2, n3] = TestUtils.scryRenderedComponentsWithType(obj, TextInput);
-        var test = TestUtils.findRenderedDOMComponentWithClass(form, 'stuff');
+        const  obj = TestUtils.scryRenderedComponentsWithType(form, ObjectType)[0];
+        const  [n1, n2, n3] = TestUtils.scryRenderedComponentsWithType(obj, TextInput);
+        const  test = TestUtils.findRenderedDOMComponentWithClass(form, 'stuff');
 
-        expect(obj).toExist();
-        expect(n1).toExist();
-        expect(n2).toExist();
-        expect(n3).toExist();
-        expect(test).toExist();
+
         Simulate.focus(findNode(n1));
         Simulate.blur(findNode(n1));
         Simulate.focus(findNode(n2));
@@ -49,18 +45,14 @@ describe('types/Object', function () {
     it('should not validate nested objects', function () {
         const {Form, context} = newSubschemaContext();
 
-        var vm = ValueManager({}, {'nested.n2': [{message: 'borked'}]});
-        var form = into(<Form schema={schema} valueManager={vm}/>, true);
+        const  vm = ValueManager({}, {'nested.n2': [{message: 'borked'}]});
+        const  form = into(<Form schema={schema} valueManager={vm}/>, true);
 
-        var obj = TestUtils.scryRenderedComponentsWithType(form, ObjectType)[0];
-        var [n1, n2, n3] = TestUtils.scryRenderedComponentsWithType(obj, TextInput);
-        var test = TestUtils.findRenderedDOMComponentWithClass(form, 'stuff');
+        const  obj = TestUtils.scryRenderedComponentsWithType(form, ObjectType)[0];
+        const  [n1, n2, n3] = TestUtils.scryRenderedComponentsWithType(obj, TextInput);
+        const  test = TestUtils.findRenderedDOMComponentWithClass(form, 'stuff');
 
-        expect(obj).toExist();
-        expect(n1).toExist();
-        expect(n2).toExist();
-        expect(n3).toExist();
-        expect(test).toExist();
+
         Simulate.focus(findNode(n1));
         Simulate.blur(findNode(n1));
         Simulate.focus(findNode(n2));

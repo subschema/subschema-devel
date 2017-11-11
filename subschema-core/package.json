@@ -1,10 +1,9 @@
 {
   "name": "subschema-core",
-  "version": "2.2.10",
+  "version": "3.0.0-b1",
   "description": "Backbone Forms like declaritive forms for react",
   "main": "lib/index.js",
   "scripts": {
-    "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
     "clean": "rimraf ./lib ./dist"
   },
@@ -14,24 +13,23 @@
     "backbone-forms"
   ],
   "peerDependencies": {
-    "lodash": "*"
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
-    "expect": "^1.20.2",
-    "lodash": "^4.17.4",
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "rimraf": "^2.6.1",
-    "subschema-dev-support": "^2.2.10",
-    "subschema-test-support": "^2.2.10"
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "rimraf": "^2.6.2",
+    "subschema-dev-support": "^3.0.0-b1",
+    "subschema-test-support": "^3.0.0-b1"
   },
   "dependencies": {
-    "subschema-expression": "^2.2.10",
-    "subschema-injection": "^2.2.10",
-    "subschema-loader": "^2.2.10",
-    "subschema-prop-types": "^2.2.10",
-    "subschema-utils": "^2.2.10",
-    "subschema-validators": "^2.2.10"
-  }
+    "subschema-expression": "^3.0.0-b1",
+    "subschema-injection": "^3.0.0-b1",
+    "subschema-loader": "^3.0.0-b1",
+    "subschema-prop-types": "^3.0.0-b1",
+    "subschema-utils": "^3.0.0-b1",
+    "subschema-validators": "^3.0.0-b1"
+  },
+  "source": "src"
 }

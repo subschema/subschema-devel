@@ -1,4 +1,4 @@
-var camelCase = require('lodash/camelCase');
+const { camelCase } = require('subschema-utils').default;
 
 function writeImport(cmd) {
     return `import ${camelCase(cmd)} from '${cmd}'`
@@ -8,12 +8,14 @@ function writeLoader(cmd) {
     return `loader.addLoader(${camelCase(cmd)})`
 }
 
+const EXCLUDES = ['subschema', 'subschema-prop-types'];
 module.exports = function (dependencies = []) {
     if (dependencies.dependencies) {
         dependencies = dependencies.dependencies;
     }
+    dependencies = dependencies.filter(v => !EXCLUDES.includes(v));
     return {
-        code: `
+        code     : `
 import loaderFactory from 'subschema-loader';
 
 //Automagically imported

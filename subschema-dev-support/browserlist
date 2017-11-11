@@ -1,0 +1,9 @@
+[production]
+last 2 version
+ie 9
+
+[development]
+last 1 Chrome versions
+
+[test]
+last 1 Chrome versions

@@ -15,11 +15,10 @@ describe('templates/ButtonsTemplate', function () {
                 }]
             }
         }/>, true);
-        expect(form).toExist();
         const btns = byComponents(byComponent(form, ButtonsTemplate), ButtonTemplate, 3);
         for (let btn of btns) {
             const btnN = findNode(btn);
-            expect(btnN.classList.contains('btn')).toBe(true);
+            expect(btnN.classList.contains('btn')).to.eql(true);
         }
     });
     it('should render buttons with actions', function () {
@@ -33,12 +32,11 @@ describe('templates/ButtonsTemplate', function () {
                 }]
             }
         }/>, true);
-        expect(form).toExist();
         const btns = byComponents(byComponent(form, ButtonsTemplate), ButtonTemplate, 3);
         for (let btn of btns) {
             const btnN = findNode(btn);
-            expect(btnN.classList.contains('btn')).toBe(true, 'should have btn');
+            expect(btnN.classList.contains('btn')).to.eql(true, 'should have btn');
         }
-        expect(findNode(btns[0]).classList.contains('btn-primary')).toBe(true, 'should have primary');
+        expect(findNode(btns[0]).classList.contains('btn-primary')).to.eql(true, 'should have primary');
     })
 });

@@ -1,8 +1,8 @@
 import PT from '../lib/index';
-import expect from 'expect';
+import { expect } from 'chai';
 import PropTypes from 'prop-types';
 
-describe('PropTypes', function () {
+describe('subschema-prop-types', function () {
 
     it('should enumerate proptypes to names', function () {
         const out = PT.propTypesToNames({
@@ -12,11 +12,14 @@ describe('PropTypes', function () {
             mycss  : PT.cssClass.isRequired,
             myarr  : PT.arrayString.isRequired
         });
-        expect(out.myprop).toEqual('arrayString');
-        expect(out.myevent).toEqual('event');
-        expect(out.mystr).toEqual('string');
-        expect(out.mycss).toEqual('*cssClass');
-        expect(out.myarr).toEqual('*arrayString');
+        console.log(JSON.stringify(out));
+        expect(out).to.eql({
+            "myprop" : "arrayString",
+            "myevent": "event",
+            "mystr"  : "string",
+            "mycss"  : "*cssClass",
+            "myarr"  : "*arrayString"
+        });
 
     });
 
@@ -43,36 +46,35 @@ describe('PropTypes', function () {
                 "content"  : false
             }]
         }];
-        let stored;
         PropTypes.checkPropTypes(PT.content, { content }, 'content', 'Test',
             function getStack(e) {
-                stored = e;
+                expect(e).to.be.null;
             });
-        expect(stored, 'should not have errorred').toNotExist();
+
     });
     it('should invalidate something complex like content', function () {
-        const content = { className: 1 }
+        const content = { className: 1 };
         let stored;
         PropTypes.checkPropTypes(PT.content, { content }, 'content', 'Test',
             () => {
                 stored = true;
             });
-        expect(stored, 'should not have errorred').toExist();
+        expect(stored, 'should  have errorred').to.be.true;
     });
     it('should wrap chains', function () {
 
         const test = PT.oneOf(["this", "or", "that"], "thisorthat");
-        expect(test.displayName).toBe('thisorthat');
-        let stored = false;
-        const getStack = ()=>stored = true;
+        expect(test.displayName).to.eql('thisorthat');
+        let stored     = false;
+        const getStack = () => stored = true;
 
         PropTypes.checkPropTypes({ test }, { test: "that" }, 'test',
             'Test',
             getStack);
-        expect(stored, 'should not have errorred').toBe(false);
+        expect(stored, 'should not have errorred').to.be.false;
         stored = false;
         PropTypes.checkPropTypes({ test }, { test: "nothtat" }, 'test', 'Test',
             getStack);
-        expect(stored, 'should  have errorred').toBe(true);
+        expect(stored, 'should  have errorred').to.be.true;
     })
 });

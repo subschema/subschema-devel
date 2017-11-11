@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from 'subschema-prop-types';
-import {into, Simulate, byTag} from "subschema-test-support";
+import { byTag, into, Simulate } from "subschema-test-support";
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 import formContext from 'subschema-component-form';
-import expect from 'expect';
+import { expect } from 'chai';
 
 class TestForm extends Component {
     static propTypes = {
@@ -11,7 +11,7 @@ class TestForm extends Component {
     };
 
     render() {
-        const {children, ...props} = this.props;
+        const { children, ...props } = this.props;
         return <form {...props}>
             <h1>What</h1>
             {children}
@@ -21,45 +21,48 @@ class TestForm extends Component {
 
 describe("resolvers/submit", function () {
     it('should submit ', function (done) {
-        const {Form, context} = newSubschemaContext();
-        const {loader, valueManager} = context;
+        const { Form, context }        = newSubschemaContext();
+        const { loader, valueManager } = context;
         loader.addLoader(formContext);
         valueManager.addSubmitListener(null, (e, err, value, path) => {
             e && e.preventDefault();
-            expect(Object.keys(value).length).toBe(0);
-            expect(err['hello']).toExist();
-            expect(err['deep.test']).toExist();
+            expect(Object.keys(value).length).to.eql(0);
+            expect(err).to.eql({
+                "deep.test": [{ "type": "required", "message": "Required" }],
+                "hello"    : [{ "type": "required", "message": "Required" }]
+            });
             done();
         });
-        loader.addTemplate({TestForm});
+        loader.addTemplate({ TestForm });
 
         const schema = {
             schema: {
                 "hello": {
-                    "type": "Text",
+                    "type"      : "Text",
                     "validators": ["required"]
                 },
-                "deep": {
-                    "type": "Object",
-                    "template": "TestForm",
+                "deep" : {
+                    "type"     : "Object",
+                    "template" : "TestForm",
                     "subSchema": {
-                        "schema": {
+                        "schema"   : {
                             "test": {
-                                "type": "Text",
+                                "type"      : "Text",
                                 "validators": ["required"]
                             }
                         },
                         "fieldsets": [{
                             "fields": "test",
-                            buttons: ["submit"]
+                            buttons : ["submit"]
                         }]
                     }
                 }
             }
         };
-        const form = into(<Form template="ObjectTemplate" loader={loader} schema={schema}
-                                valueManager={valueManager}/>, true);
-        const f = byTag(form, "form");
+        const form   = into(<Form template="ObjectTemplate" loader={loader}
+                                  schema={schema}
+                                  valueManager={valueManager}/>, true);
+        const f      = byTag(form, "form");
         Simulate.submit(f);
         //  f.submit();
 

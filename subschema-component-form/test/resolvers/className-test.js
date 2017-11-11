@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 import { byComponent, intoWithContext } from 'subschema-test-support';
-import expect from 'expect';
+import {expect} from 'chai';
 const { className } = PropTypes;
 
 describe('resolvers/className', function () {
@@ -40,7 +40,7 @@ describe('resolvers/className', function () {
         const Injected = injector.inject(TestContainer);
         const inst     = byComponent(
             intoWithContext(<Injected />, context, true), TestContainer);
-        expect(inst.props.className).toBe('abc');
+        expect(inst.props.className).to.eql('abc');
     });
     it('should load default className with stuff', function () {
         const {context}            = newSubschemaContext();
@@ -60,6 +60,6 @@ describe('resolvers/className', function () {
         const inst     = byComponent(
             intoWithContext(<Injected />, context, true),
             TestContainerDefault);
-        expect(inst.props.className).toBe('the hell ghi here missing');
+        expect(inst.props.className).to.eql('the hell ghi here missing');
     })
 });

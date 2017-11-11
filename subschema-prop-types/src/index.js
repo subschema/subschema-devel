@@ -1,19 +1,9 @@
 import {
-    any,
-    arrayOf,
-    bool,
-    func,
-    instanceOf,
-    objectOf,
-    node,
-    number,
-    object,
-    oneOf,
-    oneOfType,
-    shape,
-    string
+    any, arrayOf, bool, func, instanceOf, node, number, object, objectOf, oneOf,
+    oneOfType, shape, string
 } from 'prop-types';
 
+import customPropType from './customPropType';
 
 const RawPropTypes = {
     any,
@@ -30,44 +20,15 @@ const RawPropTypes = {
     shape,
     string
 }
+
 //we'll re-export these for convenience in the babel6 world.
 
 
-function customPropType(type, name) {
-
-    //wrap type because React may return the same function, especially in
-    // production mode
-    const typeSpecName = (...args) => {
-        if (args.length > 2) {
-            return type(...args);
-        }
-        return customPropType(type(args[0]), args[1]);
-    };
-
-
-    Object.defineProperty(typeSpecName, 'isRequired', {
-        enumerable  : false,
-        value       : (...args) => type.isRequired(...args),
-        configurable: false,
-        writable    : false
-    });
-    if (name) {
-        Object.defineProperty(typeSpecName, 'displayName', {
-            enumerable  : false,
-            value       : name,
-            configurable: false,
-            writable    : false
-        });
-
-        typeSpecName[name] = type;
-    }
-    return typeSpecName;
-}
-
 function propTypeToName(propType) {
     return _propTypeToName(propType, api) || _propTypeToName(propType,
-            RawPropTypes);
+        RawPropTypes);
 }
+
 function _propTypeToName(propType, _api) {
     const keys = Object.keys(_api), l = keys.length;
     for (let i = 0; i < l; i++) {
@@ -80,6 +41,7 @@ function _propTypeToName(propType, _api) {
         }
     }
 }
+
 function lazyFunction(f) {
     return function () {
         return f.apply(this, arguments);
@@ -93,6 +55,7 @@ function propTypesToNames(props) {
         return ret;
     }, {});
 }
+
 const deprecated  = function (message) {
     return function deprecated$propType(props, propName, componentName) {
         return propName in props ? new Error(
@@ -357,7 +320,8 @@ const schema = customPropType(oneOfType([string, object, shape({
 
 const array = customPropType(arrayOf(any), 'array');
 
-const validators = customPropType(oneOfType([arrayString, arrayOf(validators)]),
+const validators = customPropType(
+    oneOfType([arrayString, arrayOf(oneOfType[func, string])]),
     'validators');
 
 const operator = customPropType(oneOfType([string, func, instanceOf(RegExp)]),
@@ -491,8 +455,7 @@ const api = {
 
 };
 
-export default
-({
+export default ({
     propTypesToNames,
     propTypeToName,
     customPropType,

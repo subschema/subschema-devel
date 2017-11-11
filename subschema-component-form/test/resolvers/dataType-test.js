@@ -1,4 +1,4 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import React, {Component} from 'react';
 import resolvers from 'subschema-core/lib/resolvers';
 import {intoWithContext, byComponent,findNode, change} from 'subschema-test-support';
@@ -30,7 +30,7 @@ describe('resolvers/dataType', function () {
 
         const et = byComponent(inst, TargetTest);
         const node = findNode(et);
-        expect(et.props.type).toBe('text');
+        expect(et.props.type).to.eql('text');
      //   expect(et.props.someType).toNotExist('dataType should not be passed');
 
     });
@@ -45,7 +45,7 @@ describe('resolvers/dataType', function () {
 
         const et = byComponent(inst, TargetTest);
         const node = findNode(et);
-        expect(et.props.type).toBe('text');
+        expect(et.props.type).to.eql('text');
 
     });
     it('should set dataType by defaultProps', function () {
@@ -62,7 +62,7 @@ describe('resolvers/dataType', function () {
 
         const et = byComponent(inst, TargetTest);
         const node = findNode(et);
-        expect(et.props.type).toBe('text');
+        expect(et.props.type).to.eql('text');
 
     });
 
@@ -79,7 +79,7 @@ describe('resolvers/dataType', function () {
         const inst = intoWithContext(<Injected dataType="stuff"/>, {}, true);
 
         const et = byComponent(inst, TargetTest);
-        expect(et.props.type).toBe('stuff');
+        expect(et.props.type).to.eql('stuff');
 
     });
 
@@ -96,7 +96,7 @@ describe('resolvers/dataType', function () {
         const inst = intoWithContext(<Injected dataType="stuff"/>, {}, true);
 
         const et = byComponent(inst, TargetTest);
-        expect(et.props.type).toBe('stuff');
+        expect(et.props.type).to.eql('stuff');
 
     });
     it('should set dataType by defaultProps overrider by component with overrides with defaults and configs', function () {
@@ -111,7 +111,7 @@ describe('resolvers/dataType', function () {
         const inst = intoWithContext(<Injected/>, {}, true);
 
         const et = byComponent(inst, TargetTest);
-        expect(et.props.type).toBe('other');
+        expect(et.props.type).to.eql('other');
 
     });
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import expect from "expect";
+import {expect} from 'chai';
 import {renderToString} from "react-dom/server";
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 
@@ -15,7 +15,7 @@ describe('subschema-core/Form#validate', function () {
             }
         };
         const content = renderToString(<Form schema={{schema}} value={{}} validate={true}/>);
-        expect(content).toMatch(/Required/);
+        expect(content).to.match(/Required/);
     });
 
     it('should not validate a form on init isomorphically', function () {
@@ -29,7 +29,7 @@ describe('subschema-core/Form#validate', function () {
             }
         };
         const content = renderToString(<Form schema={{schema}} value={{}}/>);
-        expect(content).toNotMatch(/Required/);
+        expect(content).not.to.match(/Required/);
     });
 
     it('should not validate a form on init isomorphically but passed an error', function () {
@@ -44,8 +44,8 @@ describe('subschema-core/Form#validate', function () {
         const {Form} = newSubschemaContext();
         const content = renderToString(<Form schema={{schema}} value={{}} errors={{test: [{message: 'Super'}]}}
                                              validate={true}/>);
-        expect(content).toNotMatch(/Required/);
-        expect(content).toMatch(/Super/);
+        expect(content).not.to.match(/Required/);
+        expect(content).to.match(/Super/);
     });
 
     it('should not validate a form on init isomorphically but passed an error without validate', function () {
@@ -59,8 +59,8 @@ describe('subschema-core/Form#validate', function () {
         };
         const {Form} = newSubschemaContext();
         const content = renderToString(<Form schema={{schema}} value={{}} errors={{test: [{message: 'Super'}]}}/>);
-        expect(content).toNotMatch(/Required/);
-        expect(content).toMatch(/Super/);
+        expect(content).not.to.match(/Required/);
+        expect(content).to.match(/Super/);
     });
 
 

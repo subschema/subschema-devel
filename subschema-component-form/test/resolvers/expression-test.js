@@ -1,6 +1,6 @@
 "use strict";
 import React, {Component} from 'react';
-import expect from 'expect';
+import {expect} from 'chai';
 import ValueManager from 'subschema-valuemanager';
 import PropTypes from 'subschema-prop-types';
 import resolvers from 'subschema-core/lib/resolvers';
@@ -34,18 +34,18 @@ describe('resolvers/expression', function () {
 
         const et = byComponent(inst, ExpressionTest);
 
-        expect(et).toExist();
-        expect(et.props.expr).toBe('hi stuff');
-        expect(et.props.expr1).toBe(' .');
+        expect(et).to.exist;
+        expect(et.props.expr).to.eql('hi stuff');
+        expect(et.props.expr1).to.eql(' .');
         valueManager.update('hello.more', 'I am');
-        expect(et.props.expr1).toBe('I am .');
+        expect(et.props.expr1).to.eql('I am .');
 
         valueManager.update('hello.test', 'cool');
-        expect(et.props.expr1).toBe('I am cool.');
-        expect(et.props.expr).toBe('hi stuff');
+        expect(et.props.expr1).to.eql('I am cool.');
+        expect(et.props.expr).to.eql('hi stuff');
         valueManager.update('other', 'huh');
-        expect(et.props.expr).toBe('hi huh');
-        expect(et.props.expr1).toBe('I am cool.');
+        expect(et.props.expr).to.eql('hi huh');
+        expect(et.props.expr1).to.eql('I am cool.');
     });
 
 });

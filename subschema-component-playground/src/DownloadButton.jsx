@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
 import {generate} from 'subschema-project';
 import {saveAs as _saveAs} from 'browser-filesaver';
-import kebabCase from 'lodash/kebabCase';
-
+import {kebabCase} from 'subschema-utils';
 export default class DownloadButton extends Component {
 
     static propTypes = {

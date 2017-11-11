@@ -1,4 +1,4 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import {loadOperator} from 'subschema-core/lib/resolvers/operator';
 import loaderFactory from 'subschema-loader';
 describe("resolvers/operator", function () {
@@ -19,7 +19,7 @@ describe("resolvers/operator", function () {
 
     Object.keys(ops).forEach((key)=> {
         it(`should 0 ${key} "0" be ${ops[key]}`, function () {
-            expect(loadOperator(key)(0, '0')).toBe(ops[key], `${key} operator ${ops[key]}`);
+            expect(loadOperator(key)(0, '0')).to.eql(ops[key], `${key} operator ${ops[key]}`);
         });
     });
 
@@ -32,22 +32,22 @@ describe("resolvers/operator", function () {
         loader.addOperator('tobe', tobe);
         const ctx = {loader};
 
-        expect(loadOperator('tobe', null, null, ctx)('tobe')).toBe(true, 'is tobe');
-        expect(loadOperator('tobe', null, null, ctx)('or not tobe')).toBe(false, 'is not tobe');
+        expect(loadOperator('tobe', null, null, ctx)('tobe')).to.eql(true, 'is tobe');
+        expect(loadOperator('tobe', null, null, ctx)('or not tobe')).to.eql(false, 'is not tobe');
 
     });
 
     it('should resolve a regex', function () {
 
 
-        expect(loadOperator(/^test$/)('test')).toBe(true, 'is test');
-        expect(loadOperator(/^$/)('or not tobe')).toBe(false, 'is not tobe');
+        expect(loadOperator(/^test$/)('test')).to.eql(true, 'is test');
+        expect(loadOperator(/^$/)('or not tobe')).to.eql(false, 'is not tobe');
 
     });
     it('should resolve a function', function () {
 
-        expect(loadOperator(tobe)('tobe')).toBe(true, 'is tobe');
-        expect(loadOperator(tobe)('or not tobe')).toBe(false, 'is not tobe');
+        expect(loadOperator(tobe)('tobe')).to.eql(true, 'is tobe');
+        expect(loadOperator(tobe)('or not tobe')).to.eql(false, 'is not tobe');
 
     });
 

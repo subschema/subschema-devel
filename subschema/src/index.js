@@ -1,26 +1,7 @@
 import React from 'react';
-import _DefaultLoader from './DefaultLoader';
-import importer from './importer';
-import _ValueManager from 'subschema-valuemanager';
-import { newSubschemaContext as _newSubschemaContext } from 'subschema-core';
+import Subschema, { newSubschemaContext as _newSubschemaContext } from './init';
 
-export function newSubschemaContext(defaultLoaders             = [_DefaultLoader],
-                                    defaultResolvers,
-                                    defaultPropTypes,
-                                    defaultInjectionFactory,
-                                    defaultValueManagerFactory = _ValueManager,
-                                    defaultSubschema) {
-    const ctx        = _newSubschemaContext(defaultLoaders, defaultResolvers,
-        defaultPropTypes, defaultInjectionFactory, defaultValueManagerFactory,
-        defaultSubschema);
-    ctx.ValueManager = defaultValueManagerFactory;
-    ctx.importer     = importer(ctx, React);
-
-    return ctx;
-}
-
-const Subschema = newSubschemaContext();
-
+export const newSubschemaContext       = _newSubschemaContext;
 export const injector                  = Subschema.injector;
 export const valueManager              = Subschema.valueManager;
 export const loader                    = Subschema.loader;
@@ -43,7 +24,6 @@ export const transitions               = Subschema.transitions;
 export const processors                = Subschema.processors;
 export const styles                    = Subschema.styles;
 export const resolvers                 = Subschema.resolvers;
-export const ReactCSSReplaceTransition = Subschema.ReactCSSReplaceTransition;
-export const SUBSCHEMA_VERSION         = SUBSCHEMA_VERSION;
+export const SUBSCHEMA_VERSION         = process.env.SUBSCHEMA_VERSION;
 
 export default Subschema;

@@ -1,5 +1,5 @@
 "use strict";
-import expect from 'expect';
+import {expect} from 'chai';
 import React, {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
@@ -37,11 +37,11 @@ describe("resolvers/value", function () {
             valueManager
         }, true);
 
-        expect(inst).toExist();
+        expect(inst).to.exist;
         const vtc = byComponent(inst, ValueTestClass);
-        expect(vtc).toExist();
-        expect(vtc.props.value).toBe('abc');
+        expect(vtc).to.exist;
+        expect(vtc.props.value).to.eql('abc');
         valueManager.update('test', 'huh')
-        expect(vtc.props.value).toBe('huh');
+        expect(vtc.props.value).to.eql('huh');
     });
 });

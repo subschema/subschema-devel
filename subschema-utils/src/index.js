@@ -1,18 +1,49 @@
-import extend from 'lodash/extend';
-import isFunction from 'lodash/isFunction';
-import isString from 'lodash/isString';
-import isRegExp from 'lodash/isRegExp';
-import isDate from 'lodash/isDate';
-import isBoolean from 'lodash/isBoolean';
-import isArray from 'lodash/isArray';
-import isNumber from 'lodash/isNumber';
-import isObject from 'lodash/isObject';
-import find from 'lodash/find';
-import unique from 'lodash/uniq';
-import noop from 'lodash/noop';
-import each from 'lodash/each';
-import values from 'lodash/values';
-import warning from './warning';
+import _extend from 'lodash/extend';
+import _isFunction from 'lodash/isFunction';
+import _isString from 'lodash/isString';
+import _isRegExp from 'lodash/isRegExp';
+import _isDate from 'lodash/isDate';
+import _isBoolean from 'lodash/isBoolean';
+import _isArray from 'lodash/isArray';
+import _isNumber from 'lodash/isNumber';
+import _isObject from 'lodash/isObject';
+import _find from 'lodash/find';
+import _unique from 'lodash/uniq';
+import _noop from 'lodash/noop';
+import _each from 'lodash/each';
+import _values from 'lodash/values';
+import _camelCase from 'lodash/camelCase';
+import _kebabCase from 'lodash/kebabCase';
+import _get from 'lodash/get';
+import _capitalize from 'lodash/capitalize';
+import _defaults from 'lodash/defaults';
+import _escape from 'lodash/escape';
+import _warning from './warning';
+import _isPlainObject from 'lodash/isPlainObject';
+
+
+export const extend        = _extend;
+export const isFunction    = _isFunction;
+export const isString      = _isString;
+export const isRegExp      = _isRegExp;
+export const isDate        = _isDate;
+export const isBoolean     = _isBoolean;
+export const isArray       = _isArray;
+export const isNumber      = _isNumber;
+export const isObject      = _isObject;
+export const find          = _find;
+export const unique        = _unique;
+export const noop          = _noop;
+export const each          = _each;
+export const values        = _values;
+export const camelCase     = _camelCase;
+export const kebabCase     = _kebabCase;
+export const get           = _get;
+export const capitalize    = _capitalize;
+export const defaults      = _defaults;
+export const escape        = _escape;
+export const warning       = _warning;
+export const isPlainObject = _isPlainObject;
 
 export const FREEZE_OBJ = Object.freeze({});
 export const FREEZE_ARR = Object.freeze([]);
@@ -44,14 +75,15 @@ export function flattenFields(feildset) {
     return [];
 
 }
+
 const keyTestPattern = /\{path\}/g;
 
 export function resolveKey(path, key) {
     if (!key) {
         return path;
     }
-    if (path && key && keyTestPattern.test(key) ){
-            return resolveKey(path, key.replace(keyTestPattern, path));
+    if (path && key && keyTestPattern.test(key)) {
+        return resolveKey(path, key.replace(keyTestPattern, path));
     }
     if (key[0] != '.') {
         return key;
@@ -192,6 +224,7 @@ export function inherits(Clazz) {
     } while (Proto !== Object && Proto != null);
     return false;
 }
+
 /**
  * When f1 and f2 are defined-
  *
@@ -219,25 +252,14 @@ export function nextFunc(f1, f2) {
     };
 }
 
-export {
-    extend,
-    isFunction,
-    isString,
-    isRegExp,
-    isDate,
-    isBoolean,
-    isArray,
-    isNumber,
-    isObject,
-    find,
-    unique,
-    noop,
-    each,
-    values,
-    warning
-}
-
 export default {
+    defaults,
+    isPlainObject,
+    camelCase,
+    escape,
+    kebabCase,
+    get,
+    capitalize,
     warning,
     extend,
     isFunction,

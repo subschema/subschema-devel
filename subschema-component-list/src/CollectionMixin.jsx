@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { clone, noop, resolveKey } from 'subschema-utils';
+import { clone, defaults, noop, resolveKey } from 'subschema-utils';
 import UninjectedObjectType from 'subschema-core/lib/Object';
 import PropTypes from 'subschema-prop-types';
-import defaults from 'lodash/defaults';
 import renderTemplate from 'subschema-core/lib/RenderTemplate';
 
 export const settings = {
@@ -339,14 +338,14 @@ export default class CollectionMixin extends Component {
     render() {
         const { className, listContainerClass } = this.props;
         return (<div className={className}>
-            {this.props.addAt === 'top' ? this.renderAdd() : null }
+            {this.props.addAt === 'top' ? this.renderAdd() : null}
             <ul key='container' className={listContainerClass}>
                 {this.props.addAt == 'top-list' ? this.renderAddInList() : null}
                 {this.renderRows()}
                 {this.props.addAt == 'bottom-list' ? this.renderAddInList()
                     : null}
             </ul>
-            {this.props.addAt === 'bottom' ? this.renderAdd() : null }
+            {this.props.addAt === 'bottom' ? this.renderAdd() : null}
         </div>);
     }
 

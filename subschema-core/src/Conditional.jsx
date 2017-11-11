@@ -98,25 +98,28 @@ export default class Conditional extends Component {
         }) : <span key='false-conditional'/>;
     }
 
-    renderContent() {
-
-        const isMatch = this.props.operator(this.props.listen,
+    isMatch() {
+        return this.props.operator(this.props.listen,
             this.props.value);
+    }
+
+    renderContent(matches) {
         // console.log('isMatch', this.props.listen, this.props.value);
-        return isMatch ? this.renderTemplate() : this.renderFalseTemplate();
+        return matches ? this.renderTemplate() : this.renderFalseTemplate();
 
     }
 
 
     render() {
-
-        if (!this.props.transition ) {
-            return this.renderContent();
+        const matches = this.isMatch();
+        if (!this.props.transition) {
+            return this.renderContent(matches);
         }
-        const { Transition, ...tprops } = this.props.transition;
+        const { Transition, className, ...tprops } = this.props.transition;
 
-        return <Transition {...tprops}>
-            {this.renderContent()}
-        </Transition>
+        return (<Transition key={matches ? 'in' : 'out'}
+                            in={matches} {...tprops}>
+            {this.renderContent(matches)}
+        </Transition>);
     }
 }

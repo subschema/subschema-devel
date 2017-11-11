@@ -1,4 +1,4 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
@@ -62,9 +62,9 @@ describe('resolvers/targetEvent', function () {
 
         const et   = byComponent(inst, TargetTest);
         const node = findNode(et);
-        expect(et.props.type).toBe('text');
+        expect(et.props.type).to.eql('text');
         change(et, 'world');
-        expect(valueManager.path('hello')).toBe('world');
+        expect(valueManager.path('hello')).to.eql('world');
     });
     it('should allow for default functions to be ignored', function () {
 
@@ -76,7 +76,7 @@ describe('resolvers/targetEvent', function () {
         }, true);
 
         const et = byComponent(inst, Target2Test);
-        expect(et.props.onChange).toNotBe(Target2Test.defaultProps.onChange);
+        expect(et.props.onChange).to.not.eql(Target2Test.defaultProps.onChange);
 
     });
     it('should allow for default functions not to be ignored',
@@ -93,7 +93,7 @@ describe('resolvers/targetEvent', function () {
             }, true);
 
             const et = byComponent(inst, Target2Test);
-            expect(et.props.onChange).toBe(f);
+            expect(et.props.onChange).to.eql(f);
 
         });
 });

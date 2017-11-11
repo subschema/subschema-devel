@@ -25,9 +25,8 @@ describe('subschema-component-list-mixed', function () {
             valueManager={valueManager}
             loader={loader}
         />, true);
-        expect(form).toExist();
         let mixed = byComponent(form, Mixed);
-        expect(byComponents(mixed, ListItemTemplate).length).toBe(2);
+        expect(byComponents(mixed, ListItemTemplate).length).to.eql(2);
         let addBtn = byClass(mixed, 'btn-add')[0];
         click(addBtn);
         let createTemplate = byComponent(mixed, CollectionCreateTemplate);
@@ -40,7 +39,7 @@ describe('subschema-component-list-mixed', function () {
         click(byComponents(byComponent(mixed, CollectionCreateTemplate), ButtonTemplate)[1]);
 
         expect(byComponents(mixed, ListItemTemplate).length,
-            `Expect 3 components`).toBe(3);
+            `Expect 3 components`).to.eql(3);
     });
     //Disturbingly this fails when the other test is enabled.
     it.skip('should render a Mixed without data', function () {
@@ -53,7 +52,6 @@ describe('subschema-component-list-mixed', function () {
             schema={Questionaire.schema}
             loader={loader}
         />, true);
-        expect(form).toExist();
         let mixed = byComponent(form, Mixed);
         byComponents(mixed, ListItemTemplate, 0);
         let addBtn = byComponent(mixed, ButtonTemplate);
@@ -67,7 +65,7 @@ describe('subschema-component-list-mixed', function () {
         click(radio);
         click(byComponents(byComponent(mixed, CollectionCreateTemplate), ButtonTemplate)[1]);
 
-        expect(byComponents(mixed, ListItemTemplate).length).toBe(1);
+        expect(byComponents(mixed, ListItemTemplate).length).to.eql(1);
     });
 });
 const Questionaire = {

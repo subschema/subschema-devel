@@ -4,7 +4,7 @@ import {warning} from 'subschema-utils';
  * A list of packages that are exported for subschema.  Use this to
  * test and run pure browser based subschema.
  *
- * @type {{react-dom: (*), subschema-core: *, subschema-injection: *, subschema-expression: *, subschema-loader: *, subschema-prop-types: *, subschema-processors: *, subschema-transitions: *, subschema-utils: *, subschema-valuemanager: *, subschema-validators: *, subschema-component-form: *, subschema-component-list: *, subschema-css-bootstrap: *, subschema-component-modal: *, subschema-component-autocomplete: *, subschema-component-wizard: *}}
+ * @type {{react-dom: (*), subschema-core: *, subschema-injection: *, subschema-expression: *, subschema-loader: *, subschema-prop-types: *, subschema-processors: *, subschema-transitions: *, subschema-utils: *, subschema-valuemanager: *, subschema-validators: *, subschema-component-form: *, subschema-component-list: *, subschema-styles-bootstrap: *, subschema-component-modal: *, subschema-component-autocomplete: *, subschema-component-wizard: *}}
  */
 export const EXPORTS = {
     "react-dom": require("react-dom"),
@@ -20,7 +20,7 @@ export const EXPORTS = {
     "subschema-validators": require("subschema-validators"),
     "subschema-component-form": require("subschema-component-form"),
     "subschema-component-list": require("subschema-component-list"),
-    "subschema-css-bootstrap": require("subschema-css-bootstrap"),
+    "subschema-css-bootstrap": require("subschema-styles-bootstrap"),
     "subschema-component-modal": require("subschema-component-modal"),
     "subschema-component-autocomplete": require("subschema-component-autocomplete"),
     "subschema-component-wizard": require("subschema-component-wizard")

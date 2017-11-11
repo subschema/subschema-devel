@@ -29,8 +29,7 @@ describe('subschema-test-samples/NestedForms', function () {
                     {legend: 'Second Legend', fields: 'second.test'}]
             }}
         />, true);
-        expect(form).toExist();
-        expect(byComponents(form, FieldSetTemplate).length, 'should find three FieldSetTemplate').toBe(3)
+        expect(byComponents(form, FieldSetTemplate).length, 'should find three FieldSetTemplate').to.eql(3)
     });
     it('should render simple nested', function () {
         const form = into(<Form
@@ -47,8 +46,7 @@ describe('subschema-test-samples/NestedForms', function () {
                 fieldsets: [{fields: 'second.test, first', legend: 'All'}]
             }}
         />, true);
-        expect(form).toExist();
-        expect(byComponents(form, FieldSetTemplate).length).toBe(2)
+        expect(byComponents(form, FieldSetTemplate).length).to.eql(2)
     });
     it('should render nested forms', () => {
         const valueManager = Subschema.valueManager = ValueManager(NestedForms.data);
@@ -57,12 +55,11 @@ describe('subschema-test-samples/NestedForms', function () {
 
         const street = byId(form, 'address.street');
 
-        expect(street).toExist('should render street');
 
-        expect(street.value).toBe('1 First St');
+        expect(street.value).to.eql('1 First St');
 
         valueManager.update('address.street', 'Something');
-        expect(byId(form, 'address.street').value).toBe('Something');
+        expect(byId(form, 'address.street').value).to.eql('Something');
 
     });
 });

@@ -1,9 +1,8 @@
 {
   "name": "subschema-expression",
-  "version": "2.2.10",
+  "version": "3.0.0-b1",
   "description": "Expressions for subschema",
   "main": "lib/index.js",
-  "source": "src/index",
   "scripts": {
     "compile": "subschema-babel",
     "test": "subschema-babel && subschema-mocha",
@@ -11,11 +10,11 @@
     "clean": "rimraf ./lib ./dist"
   },
   "devDependencies": {
-    "expect": "^1.20.2",
-    "rimraf": "^2.6.1",
-    "subschema-dev-support": "^2.2.10"
+    "rimraf": "^2.6.2",
+    "subschema-dev-support": "^3.0.0-b1"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
-  }
+    "subschema-utils":  "^3.0.0-b1"
+  },
+  "source": "src"
 }

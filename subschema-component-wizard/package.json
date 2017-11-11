@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-wizard",
-  "version": "2.2.10",
+  "version": "3.0.0-b1",
   "description": "Subschema Wizard Component",
   "main": "lib/index.js",
   "scripts": {
@@ -10,34 +10,32 @@
     "clean": "rimraf ./lib ./dist"
   },
   "peerDependencies": {
-    "lodash": "*",
     "react": "*",
     "react-dom": "*",
-    "subschema-component-form": "^2.2.10",
-    "subschema-core": "^2.2.10",
-    "subschema-processors": "^2.2.10",
-    "subschema-prop-types": "^2.2.10",
-    "subschema-utils": "^2.2.10"
+    "subschema-component-form": "^3.0.0-b1",
+    "subschema-core": "^3.0.0-b1",
+    "subschema-processors": "^3.0.0-b1",
+    "subschema-prop-types": "^3.0.0-b1",
+    "subschema-utils": "^3.0.0-b1"
   },
   "devDependencies": {
-    "expect": "^1.20.2",
-    "lodash": "^4.17.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "rimraf": "^2.6.1",
-    "subschema-component-form": "^2.2.10",
-    "subschema-core": "^2.2.10",
-    "subschema-css-bootstrap": "^2.2.10",
-    "subschema-dev-support": "^2.2.10",
-    "subschema-expression": "^2.2.10",
-    "subschema-injection": "^2.2.10",
-    "subschema-loader": "^2.2.10",
-    "subschema-processors": "^2.2.10",
-    "subschema-prop-types": "^2.2.10",
-    "subschema-test-support": "^2.2.10",
-    "subschema-transitions": "^2.2.10",
-    "subschema-utils": "^2.2.10",
-    "subschema-validators": "^2.2.10",
-    "subschema-valuemanager": "^2.2.10"
-  }
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "rimraf": "^2.6.2",
+    "subschema-component-form": "^3.0.0-b1",
+    "subschema-core": "^3.0.0-b1",
+    "subschema-css-bootstrap": "^3.0.0-b1",
+    "subschema-dev-support": "^3.0.0-b1",
+    "subschema-expression": "^3.0.0-b1",
+    "subschema-injection": "^3.0.0-b1",
+    "subschema-loader": "^3.0.0-b1",
+    "subschema-processors": "^3.0.0-b1",
+    "subschema-prop-types": "^3.0.0-b1",
+    "subschema-test-support": "^3.0.0-b1",
+    "subschema-transitions": "^3.0.0-b1",
+    "subschema-utils": "^3.0.0-b1",
+    "subschema-validators": "^3.0.0-b1",
+    "subschema-valuemanager": "^3.0.0-b1"
+  },
+  "source": "src"
 }

@@ -1,6 +1,7 @@
 // Karma configuration
-const webpack = require('./webpack.config');
-const path    = require('path');
+const webpack             = require('./webpack.config');
+const path                = require('path');
+const { resolveMap, cwd } = require('./webpack-utils');
 
 const {
           SUBSCHEMA_KARMA_FILES  = '',
@@ -8,6 +9,9 @@ const {
           SUBSCHEMA_COVERAGE     = '',
           SUBSCHEMA_COVERAGE_DIR = '',
           SUBSCHEMA_DEBUG,
+          SUBSCHEMA_CHROME_DIR   = path.resolve(process.env.HOME,
+              '.subschema-chrome'),
+          SUBSCHEMA_TEST_MODULE  = cwd('test'),
           TRAVIS
       } = process.env;
 
@@ -19,14 +23,22 @@ if (!webpack.output) {
 
 //muck with webpack
 if (!webpack.resolve.alias.test) {
-    webpack.resolve.alias.test = path.resolve(process.cwd(), 'test');
+    webpack.resolve.alias.test = SUBSCHEMA_TEST_MODULE;
 }
 console.warn('running tests in ', webpack.resolve.alias.test);
 
-webpack.devtool = '#inline-source-map';
+webpack.devtool      = 'inline-source-map';
+webpack.target       = 'web';
+webpack.node         = webpack.node || {};
+webpack.node.fs      = 'empty';
+webpack.node.net     = 'empty';
+webpack.node.console = false;
+webpack.node.util    = true;
+//webpack.resolve.alias.util = require.resolve('util/util.js');
+//webpack.resolve.alias['util/util.js'] = require.resolve('util/util.js');
+webpack.output.pathinfo = true;
 
-
-
+Object.assign(webpack.resolve.alias, resolveMap('subschema-test-support'));
 
 if (useCoverage) {
     console.warn(`enabling code coverage for karma`);
@@ -34,8 +46,7 @@ if (useCoverage) {
         {
             test   : /\.jsx?$/,
             // instrument only testing sources with Istanbul
-            include: [/subschema*/, path.join(process.cwd(),
-                'src'), path.join(process.cwd(), 'public')],
+            include: [/subschema*/, cwd('src'), cwd('public')],
             use    : 'istanbul-instrumenter-loader'
         }
     );
@@ -49,10 +60,11 @@ if (SUBSCHEMA_KARMA_FILES) {
 }
 
 module.exports = function (config) {
+
     const karmaConf = {
 
         // base path, that will be used to resolve files and exclude
-        basePath: path.resolve(process.cwd()),
+        basePath: cwd(),
 
 
         // frameworks to use
@@ -65,7 +77,7 @@ module.exports = function (config) {
         customLaunchers: {
             Chrome_with_debugging: {
                 base         : 'Chrome',
-                chromeDataDir: path.resolve(process.cwd(), '..', '.chrome')
+                chromeDataDir: SUBSCHEMA_CHROME_DIR
             },
             Chrome_travis_ci     : {
                 base : 'Chrome',
@@ -75,7 +87,7 @@ module.exports = function (config) {
 
         // list of preprocessors
         preprocessors: {
-            [test]: ['webpack']
+            [test]: ['webpack', 'sourcemap']
         },
 
 
@@ -146,7 +158,8 @@ module.exports = function (config) {
         karmaConf.browsers = ['Firefox'];
     }
     if (SUBSCHEMA_DEBUG) {
-        console.warn('karma-webpack %o', karmaConf);
+        console.log('karma-conf');
+        console.dir(karmaConf);c
     }
     config.set(karmaConf);
 };

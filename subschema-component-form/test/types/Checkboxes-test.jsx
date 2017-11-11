@@ -1,97 +1,80 @@
 import {
-    React,
-    Form,
-    ValueManager,
-    check,
-    intoWithState,
-    into,
-    byType,
-    byTags,
-    byComponent,
-    byComponents,
-    findNode,
-    click,
-    change,
-    byTag,
-    TestUtils,
-    expect,
-    Simulate
+    byComponent, byComponents, byTag, byTags, byType, change, check, click,
+    expect, findNode, Form, into, intoWithState, React, Simulate, TestUtils,
+    ValueManager
 } from 'subschema-test-support';
-import {types} from 'subschema-component-form';
-const {Checkboxes, Checkbox} = types;
+import { types } from 'subschema-component-form';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+
+const { Checkboxes, Checkbox } = types;
 
 describe('types/Checkboxes', function () {
     this.timeout(50000);
     it('should create checkboxes', function () {
         const {
-            Form,
-            context,
-            valueManager
-        } = newSubschemaContext();
+                  Form,
+                  context,
+                  valueManager
+              } = newSubschemaContext();
 
-        var root = into(<Form valueManager={valueManager} schema={{
+        var root         = into(<Form valueManager={valueManager} schema={{
             schema: {
                 group1: {
                     options: ['one', 'two', 'three'],
-                    type: 'Checkboxes'
+                    type   : 'Checkboxes'
                 }
 
             }
         }}/>, true);
-        expect(root).toExist('form should exist');
         const checkboxes = byTags(root, 'input');
 
-        expect(checkboxes.length).toBe(3);
+        expect(checkboxes.length).to.eql(3);
         const cb0 = checkboxes[0];
-        expect(cb0).toExist();
         Simulate.change(cb0, {
             target: {
                 checked: true,
-                value: 'one'
+                value  : 'one'
             }
         });
-//        change(cb0, 'one');
-        expect(valueManager.path('group1.0')).toBe('one');
+        expect(valueManager.path('group1.0')).to.eql('one');
 
     });
 
     it('should create checkboxes in groups', function () {
         const {
-            valueManager,
-            context,
-            Form
-        } = newSubschemaContext();
+                  valueManager,
+                  context,
+                  Form
+              } = newSubschemaContext();
 
-        var root = into(<Form valueManager={valueManager} schema={{
+        var root         = into(<Form valueManager={valueManager} schema={{
             schema: {
                 groupsOfGroups: {
-                    title: 'Group of Groups',
+                    title  : 'Group of Groups',
                     options: [
                         {
                             group: 'North America', options: [
-                            {val: 'ca', label: 'Canada'},
-                            {val: 'us', label: 'United States'}
+                            { val: 'ca', label: 'Canada' },
+                            { val: 'us', label: 'United States' }
                         ]
                         },
                         {
                             group: 'Europe', options: [
-                            {val: 'es', label: 'Spain'},
-                            {val: 'fr', label: 'France'},
-                            {val: 'uk', label: 'United Kingdom'}
+                            { val: 'es', label: 'Spain' },
+                            { val: 'fr', label: 'France' },
+                            { val: 'uk', label: 'United Kingdom' }
                         ]
                         }
                     ],
-                    type: 'Checkboxes'
+                    type   : 'Checkboxes'
                 }
 
 
             }
         }}/>, true);
-        expect(root).toExist('form should exist');
         const checkboxes = byTags(root, 'input');
-        expect(checkboxes.length).toBe(5);
-        expect(byTags(root, 'legend').length).toBe(2);
+        expect(checkboxes.length).to.eql(5);
+        expect(byTags(root, 'legend').length).to.eql(2);
     });
 
 

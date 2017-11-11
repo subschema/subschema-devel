@@ -1,8 +1,7 @@
 {
-  "name": "subschema-css-bootstrap",
-  "version": "2.2.10",
+  "name": "subschema-styles-bootstrap",
+  "version": "3.0.0-b1",
   "main": "lib/index.js",
-  "source": "src/index",
   "description": "Bootstrap CSS support for subschema",
   "scripts": {
     "test": "subschema-karma",
@@ -13,11 +12,12 @@
     "bootstrap": "^3.3.7"
   },
   "peerDependencies": {
-    "subschema-transitions": "^2.2.10"
+    "subschema-transitions": "^3.0.0-b1"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
-    "subschema-dev-support": "^2.2.10",
-    "subschema-transitions": "^2.2.10"
-  }
+    "rimraf": "^2.6.2",
+    "subschema-dev-support": "^3.0.0-b1",
+    "subschema-transitions": "^3.0.0-b1"
+  },
+  "source": "src"
 }

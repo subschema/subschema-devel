@@ -1,41 +1,43 @@
 import React from 'react';
-import { findNode, into, expect, change} from 'subschema-test-support';
-import {types} from 'subschema-component-form';
+import { change, expect, findNode, into } from 'subschema-test-support';
+import { types } from 'subschema-component-form';
 
-const {Text} = types;
+const { Text } = types;
 
 describe('types/Text', function () {
     it('should create a input with a value', function () {
-        var text = into(<Text value="abc" onChange={(e)=>e}/>);
-        expect(text).toExist();
-        var node = findNode(text);
-        expect(node.value).toBe('abc');
+        const text = into(<Text value="abc" onChange={(e) => e}/>);
+        expect(text).to.exist;
+        const node = findNode(text);
+        expect(node.value).to.eql('abc');
 
     });
+
     it('should trigger on change when changed', function () {
-        var args = [], onChange = (e)=> {
+        const args = [], onChange = (e) => {
             args.push(e.target.value)
         };
-        var text = into(<Text className="stuff" value="abc" onChange={onChange}/>);
-        expect(text).toExist();
-        var node = findNode(text);
-        expect(node.value).toBe('abc');
+        const text = into(<Text className="stuff" value="abc"
+                                onChange={onChange}/>);
+        expect(text).to.exist;
+        const node = findNode(text);
+        expect(node.value).to.eql('abc');
         change(node, 'def');
-        expect(args[0]).toBe('def');
-        expect(node.className).toBe('stuff');
-        expect(node.value).toBe('abc');
-        var attrs = toAttr(node);
-        expect(Object.keys(attrs).length).toBe(4);
-        expect(attrs.class).toBe('stuff');
-        expect(attrs.type).toBe('text');
+        expect(args[0]).to.eql('def');
+        expect(node.className).to.eql('stuff');
+        expect(node.value).to.eql('abc');
+        const attrs = toAttr(node);
+        expect(Object.keys(attrs).length).to.eql(3);
+        expect(attrs.class).to.eql('stuff');
+        expect(attrs.type).to.eql('text');
 
     });
 
     function toAttr(node) {
-        var attributes = findNode(node).attributes;
-        var obj = {};
+        const attributes = findNode(node).attributes;
+        const obj        = {};
 
-        for (var i = 0, len = attributes.length; i < len; i++) {
+        for (let i = 0, len = attributes.length; i < len; i++) {
             obj[attributes[i].name] = attributes[i].value;
         }
         return obj;

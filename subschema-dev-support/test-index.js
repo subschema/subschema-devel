@@ -1,3 +1,3 @@
 require('babel-polyfill');
-var testsContext = require.context("test", true, /-test\.jsx?$/);
+const testsContext = require.context("test", true, /-test\.jsx?$/);
 testsContext.keys().forEach(testsContext);

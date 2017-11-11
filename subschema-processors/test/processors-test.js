@@ -1,4 +1,4 @@
-import expect from 'expect';
+import {expect} from 'chai';
 import processors from '../lib';
 
 describe('subschema-processors', function(){

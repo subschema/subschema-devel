@@ -2,23 +2,22 @@
 
 import React from 'react';
 import PropTypes from 'subschema-prop-types';
-import {FREEZE_OBJ} from 'subschema-utils';
+import { FREEZE_OBJ } from 'subschema-utils';
 
-const DOM = React.DOM || FREEZE_OBJ;
 
 //Expose for configurability
 export const settings = {
     type: 'span'
 };
 
-export function loadType(val, key, props, {loader, injector}) {
+export function loadType(val, key, props, { loader, injector }) {
 
-    const {type, ...rest} = typeof val === 'string' ? {
+    const { type, ...rest } = typeof val === 'string' ? {
         ...settings,
         type: val
-    } : val == null ? settings : {...settings, ...val};
+    } : val == null ? settings : { ...settings, ...val };
 
-    if (DOM[type]) {
+    if (typeof type === 'string' && type[0].toLowerCase() == type[0]) {
         return type;
     }
 
@@ -30,7 +29,7 @@ export function loadType(val, key, props, {loader, injector}) {
 
 export default function type(Clazz, key, propList, OrigClazz) {
 
-    Clazz.contextTypes.loader = PropTypes.loader;
+    Clazz.contextTypes.loader   = PropTypes.loader;
     Clazz.contextTypes.injector = PropTypes.injector;
 
 

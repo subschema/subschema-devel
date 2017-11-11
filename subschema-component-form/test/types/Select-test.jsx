@@ -19,15 +19,15 @@ describe('types/Select', function () {
     it('should create a select', function () {
         var sel = into(<Select options={[{val: 1, label: 'One'}, {val: 2, label: 'Two'}]} path="test"
                                onChange={onChange}/>);
-        expect(sel).toExist();
-        expect(values.length).toBe(0);
+        expect(sel).to.exist;
+        expect(values.length).to.eql(0);
         var options = byTags(sel, 'option');
-        expect(options.length).toBe(2, 'should have to options');
-        expect(options[0].value).toBe('1');
-        expect(options[1].value).toBe('2');
+        expect(options.length).to.eql(2, 'should have to options');
+        expect(options[0].value).to.eql('1');
+        expect(options[1].value).to.eql('2');
         select(sel, 1);
-        expect(values.length).toBe(1);
-        expect(values[0]).toBe('2');
+        expect(values.length).to.eql(1);
+        expect(values[0]).to.eql('2');
 
     });
 
@@ -35,20 +35,20 @@ describe('types/Select', function () {
         var sel = into(<Select multiple={true} options={[{val: 1, label: 'One'}, {val: 2, label: 'Two'}]}
                                path="test" onChange={onChange}/>);
 
-        expect(sel).toExist();
-        expect(values.length).toBe(0);
+        expect(sel).to.exist;
+        expect(values.length).to.eql(0);
         var options = byTags(sel, 'option');
-        expect(options.length).toBe(2, 'should have to options');
-        expect(options[0].value).toBe('1');
-        expect(options[1].value).toBe('2');
+        expect(options.length).to.eql(2, 'should have to options');
+        expect(options[0].value).to.eql('1');
+        expect(options[1].value).to.eql('2');
         select(sel, 1);
-        expect(values.length).toBe(1);
-        expect(values[0][0]).toBe('2');
+        expect(values.length).to.eql(1);
+        expect(values[0][0]).to.eql('2');
 
         select(sel, 0);
-        expect(values.length).toBe(2);
-        expect(values[0][0]).toBe('2');
-        expect(values[1][0]).toBe('1');
+        expect(values.length).to.eql(2);
+        expect(values[0][0]).to.eql('2');
+        expect(values[1][0]).to.eql('1');
 
     });
 
@@ -58,20 +58,20 @@ describe('types/Select', function () {
         const form = into(<Form {...context} schema={{schema: {select: {type: 'Select', options: [1, 2, 3]}}}}
                                 valueManager={vm}/>, true);
 
-        expect(form).toExist();
-        expect(values.length).toBe(0);
+        expect(form).to.exist;
+        expect(values.length).to.eql(0);
         const sel = byTag(form, 'select');
 
         const options = byTags(form, 'option');
 
-        expect(options.length).toBe(3, 'should have to options');
-        expect(options[0].value).toBe('1');
-        expect(options[1].value).toBe('2');
-        expect(options[2].value).toBe('3');
-        expect(sel.value).toBe('2');
+        expect(options.length).to.eql(3, 'should have to options');
+        expect(options[0].value).to.eql('1');
+        expect(options[1].value).to.eql('2');
+        expect(options[2].value).to.eql('3');
+        expect(sel.value).to.eql('2');
 
         vm.update('select', 3);
-        expect(sel.value).toBe('3');
+        expect(sel.value).to.eql('3');
     });
 
 
@@ -92,23 +92,23 @@ describe('types/Select', function () {
             schema={{schema: {select: {type: 'Select', validators: [noThree], options: [1, 2, 3]}}}}
         />, true);
 
-        expect(form).toExist();
-        expect(values.length).toBe(0);
+        expect(form).to.exist;
+        expect(values.length).to.eql(0);
         const sel = byTag(form, 'select');
 
         const options = byTags(form, 'option');
 
-        expect(options.length).toBe(3, 'should have to options');
-        expect(options[0].value).toBe('1');
-        expect(options[1].value).toBe('2');
-        expect(options[2].value).toBe('3');
-        expect(sel.value).toBe('2');
+        expect(options.length).to.eql(3, 'should have to options');
+        expect(options[0].value).to.eql('1');
+        expect(options[1].value).to.eql('2');
+        expect(options[2].value).to.eql('3');
+        expect(sel.value).to.eql('2');
 
         vm.update('select', 3);
-        expect(sel.value).toBe('3');
-        expect(vm.errorsFor('select')[0].message).toBe('No threes for you');
+        expect(sel.value).to.eql('3');
+        expect(vm.errorsFor('select')[0].message).to.eql('No threes for you');
         vm.update('select', 2);
-        expect(vm.errorsFor('select')).toNotExist();
+        expect(vm.errorsFor('select')).to.not.exist;
     });
 
 });

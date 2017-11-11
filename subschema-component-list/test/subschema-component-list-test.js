@@ -1,5 +1,5 @@
 import React from 'react';
-import 'subschema-css-bootstrap/lib/style.css';
+import 'subschema-styles-bootstrap/lib/style.css';
 import {
     byClass, byComponent, byComponents, byName, change, cleanUp, click, expect,
     filterProp, findNode, into, Simulate, TestUtils
@@ -7,7 +7,7 @@ import {
 
 import form from 'subschema-component-form';
 import list from 'subschema-component-list';
-import css from 'subschema-css-bootstrap';
+import css from 'subschema-styles-bootstrap';
 
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 
@@ -18,6 +18,7 @@ const { ButtonTemplate, EditorTemplate }              = form.templates;
 function controlBtn(task, action) {
     return filterProp(byComponents(task, ButtonTemplate), 'action', action)[0];
 }
+
 function newContext() {
     const ctx = newSubschemaContext();
     ctx.loader.addLoader(form);
@@ -25,6 +26,7 @@ function newContext() {
     ctx.loader.addLoader(css);
     return ctx;
 }
+
 const debug = false;
 describe('subschema-component-list-test', function () {
 
@@ -47,9 +49,9 @@ describe('subschema-component-list-test', function () {
         const btn = filterProp(buttons, 'action', 'submit')[1];
         click(btn);
         const value = root.getValue();
-        expect(value.tasks, 'tasks should exist').toExist();
+        expect(value.tasks, 'tasks should exist').to.exist;
         expect(value.tasks[c], `tasks[${c}] should equal`)
-            .toEqual(`Hello, world ${c}`);
+            .to.eql(`Hello, world ${c}`);
         const tasks = byComponents(root, ListItemTemplate);
         return tasks[c];
     }
@@ -67,7 +69,7 @@ describe('subschema-component-list-test', function () {
         const btn  = btns[0];
         Simulate.submit(findNode(btn));
         const value = root.getValue();
-        expect(input.value).toEqual('Hello, world ' + c);
+        expect(input.value).to.eql('Hello, world ' + c);
         return tasks[c];
     }
 
@@ -101,17 +103,16 @@ describe('subschema-component-list-test', function () {
             ListItemTemplate);
         const addBtn = byClass(root, 'btn-add')[0];
 
-        expect(addBtn).toNotExist('add button does not exist');
-        expect(tasks[0]).toExist('task 1');
-        expect(tasks[1]).toExist('task 2');
-        expect(tasks[2]).toExist('task 3');
+        expect(addBtn, 'add button does not exist').to.not.exist;
+        expect(tasks[0]).to.exist;
+        expect(tasks[1]).to.exist;
+        expect(tasks[2]).to.exist;
         const span = byClass(tasks[0], 'clickable')[0];
         click(span);
 
-        const edit = byComponent(root, CollectionCreateTemplate);
-        expect(edit).toExist('should find CollectionCreateTemplate');
+        const edit  = byComponent(root, CollectionCreateTemplate);
         const input = byName(edit, '@edit@tasks.value');
-        expect(findNode(input).value).toBe('one', 'value should be one');
+        expect(findNode(input).value).to.eql('one', 'value should be one');
 
     });
     it('should render a list with data is not editable', function () {
@@ -136,14 +137,14 @@ describe('subschema-component-list-test', function () {
                                   value={data}/>, debug);
         const addBtn = byClass(root, 'btn-add')[0];
 
-        expect(addBtn).toNotExist();
+        expect(addBtn).to.not.exist;
         const tasks = byComponents(root, ListItemTemplate);
-        expect(tasks.length).toBe(3);
+        expect(tasks.length).to.eql(3);
         tasks.forEach(function (task) {
-            expect(controlBtn(task, 'up')).toNotExist();
-            expect(controlBtn(task, 'down')).toNotExist();
-            expect(controlBtn(task, 'delete')).toNotExist();
-        })
+            expect(controlBtn(task, 'up')).to.not.exist;
+            expect(controlBtn(task, 'down')).to.not.exist;
+            expect(controlBtn(task, 'delete')).to.not.exist;
+        });
         root = null;
     });
     /**
@@ -170,26 +171,26 @@ describe('subschema-component-list-test', function () {
                                  valueManager={valueManager}/>,
             debug);
         const tasks = byComponents(root, ListItemTemplate);
-        expect(root).toExist();
-        expect(tasks.length).toEqual(0);
+        expect(root).to.exist;
+        expect(tasks.length).to.eql(0);
 
 
         const a0 = add(root, 0);
-        expect(byClass(a0, 'btn-up')[0]).toNotExist();
-        expect(byClass(a0, 'btn-delete')[0]).toExist();
-        expect(byClass(a0, 'btn-down')[0]).toNotExist();
+        expect(byClass(a0, 'btn-up')[0]).to.not.exist;
+        expect(byClass(a0, 'btn-delete')[0]).to.exist;
+        expect(byClass(a0, 'btn-down')[0]).to.not.exist;
 
         /*
          var a1 = add(root, 1);
-         expect(byClass(a1, 'btn-up')[0]).toExist();
-         expect(byClass(a1, 'btn-delete')[0]).toExist();
-         expect(byClass(a1, 'btn-down')[0]).toNotExist();
+         expect(byClass(a1, 'btn-up')[0]).to.exist;
+         expect(byClass(a1, 'btn-delete')[0]).to.exist;
+         expect(byClass(a1, 'btn-down')[0]).to.not.exist;
 
          var a2 = add(root, 2);
-         expect(byClass(a2, 'btn-up')[0]).toExist();
-         expect(byClass(a0, 'btn-delete')[0]).toExist();
-         expect(byClass(a2, 'btn-down')[0]).toNotExist();
-         expect(byClass(a1, 'btn-down')[0]).toExist();
+         expect(byClass(a2, 'btn-up')[0]).to.exist;
+         expect(byClass(a0, 'btn-delete')[0]).to.exist;
+         expect(byClass(a2, 'btn-down')[0]).to.not.exist;
+         expect(byClass(a1, 'btn-down')[0]).to.exist;
 
 
          click(byClass(a0, 'btn-delete')[0]);
@@ -252,6 +253,6 @@ describe('subschema-component-list-test', function () {
             debug);
         const found  = TestUtils.scryRenderedComponentsWithType(root,
             EditorTemplate);
-        expect(found[0].props.error).toEqual('Can not be 2');
+        expect(found[0].props.error).to.eql('Can not be 2');
     });
 });

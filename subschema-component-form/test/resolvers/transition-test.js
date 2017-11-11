@@ -1,106 +1,80 @@
 import React from 'react';
-import expect from 'expect';
+import { expect } from 'chai';
 import resolvers from 'subschema-core/lib/resolvers';
-const {transition} = resolvers;
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { newSubschemaContext } from 'subschema-core';
+import transitions from 'subschema-transitions';
+import loaderFactory from 'subschema-loader';
+
+const { transition } = resolvers;
 
 describe("resolvers/transition", function () {
-    const {loader} = newSubschemaContext();
-    for (let [name, timeout]  of [['slideLeft', 500]]) {
-        it(`should load transistion ${name} with timeout ${timeout}`, function () {
-            const {
-                transitionHeightClass,
-                transitionAppearTimeout,
-                transitionLeaveTimeout,
-                transitionEnterTimeout,
-                transitionName:{
-                    enter, enterActive, leave, leaveActive, appear, appearActive
-                    }} = loader.loadTransition(name);
-            expect(enter).toExist('enter');
-            expect(leave).toExist('leave');
-            expect(appear).toExist('appear');
-            expect(enterActive).toExist('enterActive');
-            expect(leaveActive).toExist('leaveActive');
-            expect(appearActive).toExist('appearActive');
-            expect(transitionAppearTimeout).toBe(timeout, 'transitionAppearTimeout');
-            expect(transitionLeaveTimeout).toBe(timeout, 'transitionleaveTimeout');
-            expect(transitionEnterTimeout).toBe(timeout, 'transitionEnterTimeout');
-            expect(transitionHeightClass).toExist('transitionHeightClass');
-        });
-    }
+    let loader;
+    before(function () {
+        loader = loaderFactory();
+        loader.addLoader(transitions);
+    });
+
 
     it('should resolve transition, slideLeft no appear', function () {
-        const timeout = 500;
-        const {
-            transitionHeightClass,
-            transitionAppearTimeout,
-            transitionLeaveTimeout,
-            transitionEnterTimeout,
-            transitionName:{
-                enter, enterActive, leave, leaveActive, appear, appearActive
-                }} =  transition.handleTransition('slideLeft', 'stuff', {}, {loader});
-
-        expect(enter).toExist('enter');
-        expect(leave).toExist('leave');
-        expect(appear).toNotExist('appear');
-        expect(enterActive).toExist('enterActive');
-        expect(leaveActive).toExist('leaveActive');
-        expect(appearActive).toNotExist('appearActive');
-        expect(transitionAppearTimeout).toNotExist('transitionAppearTimeout');
-        expect(transitionLeaveTimeout).toBe(timeout, 'transitionleaveTimeout');
-        expect(transitionEnterTimeout).toBe(timeout, 'transitionEnterTimeout');
-        expect(transitionHeightClass).toExist('transitionHeightClass');
+        const timeout                 = 500;
+        const { Transition, ...resp } = transition.handleTransition('slideLeft',
+            'stuff', {},
+            { loader });
+        expect(resp).to.eql({
+            "timeout"   : {enter: 500, appear: 500, exit: 500},
+            "classNames": {
+                "enter"       : "transitions__slideLeftEnter___3b_Rw",
+                "enterActive" : "transitions__slideLeftEnterActive___1AI3C",
+                "appear"      : "transitions__slideLeftAppear___1Hfkk",
+                "appearActive": "transitions__slideLeftAppearActive___AfFFk",
+                "exit"        : "transitions__slideLeftLeave___3_25V",
+                "exitActive"  : "transitions__slideLeftLeaveActive___3H6Pk"
+            },
+            "className" : "transitions__slideLeftHeight___iynS8"
+        });
 
     });
     it('should resolve transition, slideLeft with appear', function () {
-        const timeout = 500;
-        const {
-            transitionHeightClass,
-            transitionAppearTimeout,
-            transitionLeaveTimeout,
-            transitionEnterTimeout,
-            transitionName:{
-                enter, enterActive, leave, leaveActive, appear, appearActive
-                }} =  transition.handleTransition({transition: 'slideLeft', on: ['appear']}, 'stuff', {}, {loader});
-
-        expect(enter).toNotExist('enter');
-        expect(leave).toNotExist('leave');
-        expect(appear).toExist('appear');
-        expect(enterActive).toNotExist('enterActive');
-        expect(leaveActive).toNotExist('leaveActive');
-        expect(appearActive).toExist('appearActive');
-        expect(transitionAppearTimeout).toExist(timeout, 'transitionAppearTimeout');
-        expect(transitionLeaveTimeout).toNotExist('transitionleaveTimeout');
-        expect(transitionEnterTimeout).toNotExist('transitionEnterTimeout');
-        expect(transitionHeightClass).toExist('transitionHeightClass');
+        const timeout                 = 500;
+        const { Transition, ...resp } = transition.handleTransition(
+            { transition: 'slideLeft', on: ['appear'] }, 'stuff', {},
+            { loader });
+        expect(resp).to.eql({
+            "timeout"   : {enter: 500, appear: 500, exit: 500},
+            "classNames": {
+                "enter"       : "transitions__slideLeftEnter___3b_Rw",
+                "enterActive" : "transitions__slideLeftEnterActive___1AI3C",
+                "appear"      : "transitions__slideLeftAppear___1Hfkk",
+                "appearActive": "transitions__slideLeftAppearActive___AfFFk",
+                "exit"        : "transitions__slideLeftLeave___3_25V",
+                "exitActive"  : "transitions__slideLeftLeaveActive___3H6Pk"
+            },
+            "className" : "transitions__slideLeftHeight___iynS8"
+        });
 
     });
-    it('should resolve transition, slideLeft with appear with custom timeout', function () {
-        const timeout = 200;
-        const {
-            transitionHeightClass,
-            transitionAppearTimeout,
-            transitionLeaveTimeout,
-            transitionEnterTimeout,
-            transitionName:{
-                enter, enterActive, leave, leaveActive, appear, appearActive
-                }} =  transition.handleTransition({
-            transition: 'slideLeft',
-            transitionAppearTimeout: timeout,
-            on: ['appear']
-        }, 'stuff', {}, {loader});
+    it('should resolve transition, slideLeft with appear with custom timeout',
+        function () {
+            const timeout                 = 200;
+            const { Transition, ...resp } = transition.handleTransition({
+                transition             : 'slideLeft',
+                transitionAppearTimeout: timeout,
+                on                     : ['appear']
+            }, 'stuff', {}, { loader });
 
-        expect(enter).toNotExist('enter');
-        expect(leave).toNotExist('leave');
-        expect(appear).toExist('appear');
-        expect(enterActive).toNotExist('enterActive');
-        expect(leaveActive).toNotExist('leaveActive');
-        expect(appearActive).toExist('appearActive');
-        expect(transitionAppearTimeout).toExist(timeout, 'transitionAppearTimeout');
-        expect(transitionLeaveTimeout).toNotExist('transitionleaveTimeout');
-        expect(transitionEnterTimeout).toNotExist('transitionEnterTimeout');
-        expect(transitionHeightClass).toExist('transitionHeightClass');
+            expect(resp).to.eql({
+                "timeout": {enter: 500, appear: 500, exit: 500},
+                "classNames": {
+                    "enter": "transitions__slideLeftEnter___3b_Rw",
+                    "enterActive": "transitions__slideLeftEnterActive___1AI3C",
+                    "appear": "transitions__slideLeftAppear___1Hfkk",
+                    "appearActive": "transitions__slideLeftAppearActive___AfFFk",
+                    "exit": "transitions__slideLeftLeave___3_25V",
+                    "exitActive": "transitions__slideLeftLeaveActive___3H6Pk"
+                },
+                "className": "transitions__slideLeftHeight___iynS8"
+            });
 
-    });
+        });
 
 });

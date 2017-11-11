@@ -6,35 +6,35 @@
  * server/client.  Until then....
  */
 require('source-map-support').install();
-var React = require('react');
-var ReactServer = require('react-dom/server');
-var expect = require('expect');
-var samples = require('subschema-test-samples');
-var setupFunc = require('../support').setupFunc;
+const React = require('react');
+const ReactServer = require('react-dom/server');
+const expect = require('expect');
+const samples = require('subschema-test-samples');
+const setupFunc = require('../support').setupFunc;
 
 describe('subschema-test-samples/server', function () {
     ['First', 'Second'].forEach(function (key) {
         describe(key + ' Run', function () {
-            var subschema = require('../dist/subschema-server.js');
-            var newSubschemaContext = subschema.newSubschemaContext;
+            const subschema = require('../dist/subschema-server.js');
+            const newSubschemaContext = subschema.newSubschemaContext;
 
             Object.keys(samples).forEach(function (key) {
-                var sample = samples[key];
+                const sample = samples[key];
                 it(`render sample ${key} with data`, function () {
-                    var Subschema = newSubschemaContext();
-                    var ValueManager = Subschema.ValueManager;
-                    var Form = Subschema.Form;
-                    var loader = Subschema.loader;
-                    var valueManager = ValueManager(sample.data);
+                    const Subschema = newSubschemaContext();
+                    const ValueManager = Subschema.ValueManager;
+                    const Form = Subschema.Form;
+                    const loader = Subschema.loader;
+                    const valueManager = ValueManager(sample.data);
                     setupFunc(sample)(Subschema.importer, sample.schema);
-                    var form = ReactServer.renderToString(React.createElement(Form, {
+                    const form = ReactServer.renderToString(React.createElement(Form, {
                         schema: sample.schema,
                         loader: loader,
                         valueManager: valueManager
                     }));
-                    expect(form).toExist(`form should exist for ${key}`);
-                    expect(form).toMatch(/^</);
-                    expect(form).toMatch(/>$/);
+                    expect(form,`form should exist for ${key}`).to.exist;
+                    expect(form).to.match(/^</);
+                    expect(form).to.match(/>$/);
 
                 });
             });
