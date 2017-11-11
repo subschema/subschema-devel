@@ -1,6 +1,6 @@
 {
   "name": "subschema-prop-types",
-  "version": "3.0.0-b1",
+  "version": "3.0.0-b3",
   "main": "lib/index",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b1"
+    "subschema-dev-support": "^3.0.0-b3"
   },
   "source": "src"
 }

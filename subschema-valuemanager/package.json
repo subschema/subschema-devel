@@ -1,6 +1,6 @@
 {
   "name": "subschema-valuemanager",
-  "version": "3.0.0-b1",
+  "version": "3.0.0-b3",
   "description": "Subschema",
   "main": "lib/index.js",
   "scripts": {
@@ -9,11 +9,11 @@
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "subschema-utils": "^3.0.0-b1"
+    "subschema-utils": "^3.0.0-b3"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b1"
+    "subschema-dev-support": "^3.0.0-b3"
   },
   "source": "src"
 }

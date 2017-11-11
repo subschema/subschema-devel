@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-wizard",
-  "version": "3.0.0-b1",
+  "version": "3.0.0-b3",
   "description": "Subschema Wizard Component",
   "main": "lib/index.js",
   "scripts": {
@@ -12,30 +12,30 @@
   "peerDependencies": {
     "react": "*",
     "react-dom": "*",
-    "subschema-component-form": "^3.0.0-b1",
-    "subschema-core": "^3.0.0-b1",
-    "subschema-processors": "^3.0.0-b1",
-    "subschema-prop-types": "^3.0.0-b1",
-    "subschema-utils": "^3.0.0-b1"
+    "subschema-component-form": "^3.0.0-b3",
+    "subschema-core": "^3.0.0-b3",
+    "subschema-processors": "^3.0.0-b3",
+    "subschema-prop-types": "^3.0.0-b3",
+    "subschema-utils": "^3.0.0-b3"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-component-form": "^3.0.0-b1",
-    "subschema-core": "^3.0.0-b1",
+    "subschema-component-form": "^3.0.0-b3",
+    "subschema-core": "^3.0.0-b3",
     "subschema-css-bootstrap": "^3.0.0-b1",
-    "subschema-dev-support": "^3.0.0-b1",
-    "subschema-expression": "^3.0.0-b1",
-    "subschema-injection": "^3.0.0-b1",
-    "subschema-loader": "^3.0.0-b1",
-    "subschema-processors": "^3.0.0-b1",
-    "subschema-prop-types": "^3.0.0-b1",
-    "subschema-test-support": "^3.0.0-b1",
-    "subschema-transitions": "^3.0.0-b1",
-    "subschema-utils": "^3.0.0-b1",
-    "subschema-validators": "^3.0.0-b1",
-    "subschema-valuemanager": "^3.0.0-b1"
+    "subschema-dev-support": "^3.0.0-b3",
+    "subschema-expression": "^3.0.0-b3",
+    "subschema-injection": "^3.0.0-b3",
+    "subschema-loader": "^3.0.0-b3",
+    "subschema-processors": "^3.0.0-b3",
+    "subschema-prop-types": "^3.0.0-b3",
+    "subschema-test-support": "^3.0.0-b3",
+    "subschema-transitions": "^3.0.0-b3",
+    "subschema-utils": "^3.0.0-b3",
+    "subschema-validators": "^3.0.0-b3",
+    "subschema-valuemanager": "^3.0.0-b3"
   },
   "source": "src"
 }

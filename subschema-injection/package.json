@@ -1,6 +1,6 @@
 {
   "name": "subschema-injection",
-  "version": "3.0.0-b1",
+  "version": "3.0.0-b3",
   "description": "Subschema Injection System.",
   "main": "lib/index",
   "scripts": {
@@ -14,7 +14,7 @@
   "devDependencies": {
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b1"
+    "subschema-dev-support": "^3.0.0-b3"
   },
   "source": "src"
 }
