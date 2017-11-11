@@ -51,26 +51,18 @@ function envSplice(envName, argName) {
     }
     return false;
 }
-
-function envSpliceMulti(envName, argName) {
-    let idx;
-    if ((idx = indexOfArg(argName)) !== -1) {
-        const allArgs = [];
-        for (let end = idx + 1, length = argv.length; end < length; end++) {
-            if (argv[end].startsWith('-')) {
-                break;
-            }
-            allArgs.push(argv[end])
+if ((idx = argv.indexOf('--entry')) !== -1) {
+    const entryArgs = [];
+    for (let i = idx + 1, l = argv.length; i < l; i++) {
+        if (argv[i].startsWith('-')) {
+            break;
         }
-        argv.splice(idx, allArgs.length + 1);
-        env[envName] =
-            JSON.stringify(allArgs).replace(/^"(.+?)"$/, '$1');
-        return true;
+        entryArgs.push(argv[i]);
     }
-    return false;
+    argv.splice(idx, entryArgs.length + 1);
+    env.SUBSCHEMA_ENTRY = JSON.stringify(entryArgs).replace(/^"(.+?)"$/, '$1');
 }
 
-envSpliceMulti('SUBSCHEMA_ENTRY', '--entry');
 
 if (hasArg('-p', '--production')) {
     env.NODE_ENV = 'production';
