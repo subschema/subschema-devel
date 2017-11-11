@@ -110,7 +110,7 @@ if (!opts.isUseStyleLoader) {
     const useNameHash       = opts.useNameHash === true ? '[hash].style.css'
         : typeof opts.useNameHash === 'string' ? opts.useNameHash : 'style.css';
     const ExtractTextPlugin = require('extract-text-webpack-plugin');
-    const extractCSS        = new ExtractTextPlugin(useNameHash);
+    const extractCSS        = new ExtractTextPlugin(useNameHash.replace(/(\.js)$/, '.css'));
     opts.useStyle           = function useStyleExtractText(...args) {
         const conf = { use: args.filter(Boolean) };
         if (opts.publicPath) {
@@ -356,18 +356,34 @@ if (opts.useHot) {
 
 //we take this away from webpack so we an expose it to the config.
 if (SUBSCHEMA_ENTRY) {
-    const entry      = {};
-    let entryNoParse = JSON.parse('"' + SUBSCHEMA_ENTRY + '"');
-    if (!Array.isArray(entryNoParse)) {
-        entryNoParse = entryNoParse.split(/,\s*/);
+    let entry = {};
+    let entryNoParse;
+    try {
+        entryNoParse = JSON.parse(SUBSCHEMA_ENTRY);
+    } catch (e) {
+        entryNoParse = JSON.parse('"' + SUBSCHEMA_ENTRY + '"');
     }
-    for (let i = 0, l = entryNoParse.length; i < l; i++) {
-        let parts = entryNoParse[i].split('=', 2);
-        if (!parts[1]) {
-            entry[path.basename(parts[0])] = parts[0];
-        } else {
-            entry[parts[0]] = parts[1];
+    const isStr = typeof entryNoParse === 'string';
+    if (isStr || Array.isArray(entryNoParse)) {
+        entryNoParse = isStr ? entryNoParse.split(/,\s*/) : entryNoParse;
+
+        for (let i = 0, l = entryNoParse.length; i < l; i++) {
+            let parts = entryNoParse[i].split('=', 2);
+            let key   = parts[0], value = parts[1];
+            if (!value) {
+                value = key;
+                key   = path.basename(key);
+            }
+            if (entry[key]) {
+                if (Array.isArray(entry[key])) {
+                    entry[key].push(value);
+                } else {
+                    entry[key] = [entry[key], value];
+                }
+            }
         }
+    } else {
+        entry = entryNoParse;
     }
     webpack.entry = entry;
 } else {
