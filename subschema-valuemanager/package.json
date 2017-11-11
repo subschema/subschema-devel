@@ -9,7 +9,6 @@
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
     "subschema-utils": "^3.0.0-b1"
   },
   "devDependencies": {

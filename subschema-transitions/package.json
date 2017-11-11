@@ -16,7 +16,7 @@
     "subschema-utils": "^3.0.0-b1"
   },
   "peerDependencies": {
-    "react-transition-group": "*",
+    "react-transition-group": "^2.2.1",
     "subschema-prop-types": "^3.0.0-b1",
     "subschema-utils": "^3.0.0-b1"
   },

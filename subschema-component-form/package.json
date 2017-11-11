@@ -10,7 +10,6 @@
     "clean": "rimraf ./lib ./dist"
   },
   "peerDependencies": {
-    "lodash": "*",
     "react": "*",
     "react-dom": "*",
     "react-transition-group": "*",

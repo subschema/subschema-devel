@@ -1,9 +1,8 @@
-import 'subschema-component-playground/lib/global-fix';
 import React, { Component } from 'react';
 import ValueManager from 'subschema-valuemanager';
 import { Form } from 'subschema';
 import samples from 'subschema-test-samples';
-import kebabCase from 'lodash/kebabCase';
+import { kebabCase } from 'subschema-utils';
 import { saveAs } from 'browser-filesaver';
 
 //A simple Schema for this configuration
@@ -85,8 +84,8 @@ export default class App extends Component {
 
         const valueManager = this.valueManager =
             this.props.valueManager || ValueManager({
-                samples: 'Basic'
-            });
+                                        samples: 'Basic'
+                                    });
 
 
         valueManager.addListener('samples', function (value) {

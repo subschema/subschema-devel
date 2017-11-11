@@ -1,8 +1,7 @@
 import samples from "subschema-test-support-samples";
 import generate from "./generate";
 import fs from "fs";
-import camelCase from "lodash/camelCase";
-import kebabCase from "lodash/kebabCase";
+import { camelCase, kebabCase } from 'subschema-utils';
 
 function help(error) {
     var code = 0;
@@ -42,11 +41,15 @@ function handleArgs(args) {
     var sample = samples['Basic'];
     for (var i = 0, l = args.length; i < l; i++) {
         var arg = args[i];
-        if (/^-h|--help$/.test(arg)) return help();
-        if (/^-l|--list$/.test(arg)) return list();
+        if (/^-h|--help$/.test(arg)) {
+            return help();
+        }
+        if (/^-l|--list$/.test(arg)) {
+            return list();
+        }
         if (/^(-t|--template(=.*)?)$/.test(arg)) {
             var key = arg.split('=', 2)[1] || args[++i];
-            sample = samples[key];
+            sample  = samples[key];
             if (!config) {
                 help(`Invalid Project Template: "${key}"`)
             }
@@ -56,15 +59,15 @@ function handleArgs(args) {
     }
 
     writeFile(filename, generate({
-        jsName: camelCase(filename),
-        title: filename,
+        jsName : camelCase(filename),
+        title  : filename,
         project: {
-            name: kebabCase(filename),
+            name       : kebabCase(filename),
             description: sample.description,
-            version: '1.0.0'
+            version    : '1.0.0'
         },
-        demo: {},
-        schema: sample.schema,
+        demo   : {},
+        schema : sample.schema,
         sample
     }, 'project', 'nodebuffer'))
 
@@ -87,7 +90,8 @@ function readPkg() {
     try {
         var pkg = require('./package.json')
     } catch (e) {
-        help('No package.json found, consider running "npm init" to create one ');
+        help(
+            'No package.json found, consider running "npm init" to create one ');
     }
     return pkg;
 }

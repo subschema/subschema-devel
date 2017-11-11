@@ -102,6 +102,7 @@ if (envSplice('SUBSCHEMA_DEMO', '--demo')) {
     envMap('SUBSCHEMA_OUTPUT_FILENAME', '--output-filename');
     envMap('SUBSCHEMA_OUTPUT_LIBRARY', '--output-library');
     envMap('SUBSCHEMA_OUTPUT_LIBRARY_TARGET', '--output-library-target');
+    envMap('SUBSCHEMA_TARGET', '--target');
     envSplice('SUBSCHEMA_PUBLIC', '--public');
     envRemove('SUBSCHEMA_NO_STYLE_LOADER', '--no-style-loader');
     envSplice('SUBSCHEMA_USE_STATS_FILE', '--use-stats-file');

@@ -24,7 +24,7 @@ describe('subschema-component-wizard', function () {
             done();
         }
 
-        var root     = into(<Form template="WizardTemplate" loader={loader}
+        const root   = into(<Form template="WizardTemplate" loader={loader}
                                   valueManager={valueManager}
                                   onSubmit={onSubmit} schema={{
             schema   : {

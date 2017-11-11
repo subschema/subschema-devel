@@ -1,4 +1,4 @@
-const camelCase = require('lodash/camelCase');
+const { camelCase } = require('subschema-utils').default;
 
 function writeImport(cmd) {
     return `import ${camelCase(cmd)} from '${cmd}'`

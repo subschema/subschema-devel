@@ -6,8 +6,6 @@
   "scripts": {
     "server": "subschema-webpack-dev-server",
     "prepublish": "subschema-webpack",
-    "karma": "subschema-karma",
-    "test": "subschema-karma",
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
@@ -18,7 +16,6 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema": "^3.0.0-b1",
     "subschema-core": "^3.0.0-b1",
     "subschema-css-bootstrap": "^3.0.0-b1",
     "subschema-dev-support": "^3.0.0-b1",

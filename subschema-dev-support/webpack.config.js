@@ -21,6 +21,7 @@ const {
               ? 'production'
               : 'development',
           SUBSCHEMA_DEBUG,
+          SUBSCHEMA_TARGET           = 'web',
           SUBSCHEMA_LOCAL_IDENT      = '[name]__[local]___[hash:base64:5]',
           SUBSCHEMA_USE_AUTOPREFIXER = 1,
           SUBSCHEMA_OUTPUT_PATH,
@@ -66,6 +67,7 @@ const opts    = {
     useSubschemaAlias: false,
     useAutoprefixer  : true,
     useScopeHoist    : true,
+    useTarget        : SUBSCHEMA_TARGET,
     babel,
     useDefine        : {
         'process.env.NODE_ENV': NODE_ENV,
@@ -282,7 +284,9 @@ webpack.resolve.alias = Object.assign(webpack.resolve.alias,
 
 
 //if (SUBSCHEMA_MAIN_FIELDS) {
-const mainFields = configOrBool(SUBSCHEMA_MAIN_FIELDS, ['source', 'main']);
+const mainFields = configOrBool(SUBSCHEMA_MAIN_FIELDS,
+    opts.useTarget === 'web' ? ['source', 'browser', 'main']
+        : ['source', 'main']);
 if (mainFields) {
     webpack.resolve.mainFields =
         Array.isArray(mainFields) ? mainFields : mainFields.split(

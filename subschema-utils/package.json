@@ -8,13 +8,13 @@
     "prepublish": "subschema-babel",
     "clean": "rimraf ./lib ./dist"
   },
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "subschema-dev-support": "^3.0.0-b1",
+    "lodash": "^4.17.4"
+  },
   "peerDependencies": {
     "lodash": "*"
-  },
-  "devDependencies": {
-    "lodash": "^4.17.4",
-    "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b1"
   },
   "source": "src"
 }
