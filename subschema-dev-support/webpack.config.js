@@ -110,7 +110,7 @@ if (!opts.isUseStyleLoader) {
     const useNameHash       = opts.useNameHash === true ? '[hash].style.css'
         : typeof opts.useNameHash === 'string' ? opts.useNameHash : 'style.css';
     const ExtractTextPlugin = require('extract-text-webpack-plugin');
-    const extractCSS        = new ExtractTextPlugin(useNameHash);
+    const extractCSS        = new ExtractTextPlugin(useNameHash.replace(/(\.js)$/, '.css'));
     opts.useStyle           = function useStyleExtractText(...args) {
         const conf = { use: args.filter(Boolean) };
         if (opts.publicPath) {
