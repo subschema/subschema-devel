@@ -1,11 +1,12 @@
 {
   "name": "subschema.wiki",
-  "version": "3.0.0-b1",
+  "version": "3.0.0-b2",
   "description": "Subschema Wiki",
   "main": "src/index.js",
   "scripts": {
     "server": "subschema-webpack-dev-server",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "rimraf ./lib ./dist",
+    "prepublish": "subschema-webpack"
   },
   "dependencies": {
     "markdown-it": "^8.3.1",
@@ -14,7 +15,7 @@
   "devDependencies": {
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b1"
+    "subschema-dev-support": "^3.0.0-b2"
   },
   "peerDependencies": {
     "babel-standalone": "*",
