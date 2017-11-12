@@ -110,7 +110,8 @@ if (!opts.isUseStyleLoader) {
     const useNameHash       = opts.useNameHash === true ? '[hash].style.css'
         : typeof opts.useNameHash === 'string' ? opts.useNameHash : 'style.css';
     const ExtractTextPlugin = require('extract-text-webpack-plugin');
-    const extractCSS        = new ExtractTextPlugin(useNameHash);
+    const extractCSS        = new ExtractTextPlugin(
+        useNameHash.replace(/(\.js)$/, '.css'));
     opts.useStyle           = function useStyleExtractText(...args) {
         const conf = { use: args.filter(Boolean) };
         if (opts.publicPath) {
@@ -368,8 +369,8 @@ if (SUBSCHEMA_ENTRY) {
         entryNoParse = isStr ? entryNoParse.split(/,\s*/) : entryNoParse;
 
         for (let i = 0, l = entryNoParse.length; i < l; i++) {
-            let parts = entryNoParse[i].split('=', 2);
-            let key   = parts[0], value = parts[1];
+            const parts = entryNoParse[i].split('=', 2);
+            let key     = parts[0], value = parts[1];
             if (!value) {
                 value = key;
                 key   = path.basename(key);

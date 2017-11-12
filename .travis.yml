@@ -16,6 +16,7 @@ install:
   - yarn install
   - yarn run prepublish
   - yarn test
+  - yarn run demo
 
 addons:
   firefox: "52.0"
