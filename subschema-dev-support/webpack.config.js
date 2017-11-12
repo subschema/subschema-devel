@@ -381,6 +381,8 @@ if (SUBSCHEMA_ENTRY) {
                 } else {
                     entry[key] = [entry[key], value];
                 }
+            } else {
+                entry[key] = value;
             }
         }
     } else {
