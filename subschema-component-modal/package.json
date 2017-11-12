@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-modal",
-  "version": "3.0.0-b5",
+  "version": "3.0.0-b6",
   "description": "Subschema Modal Component",
   "main": "lib/index.js",
   "scripts": {
@@ -12,29 +12,29 @@
   "peerDependencies": {
     "react": "*",
     "react-dom": "*",
-    "subschema-component-form": "^3.0.0-b5",
-    "subschema-core": "^3.0.0-b5",
-    "subschema-prop-types": "^3.0.0-b5",
-    "subschema-utils": "^3.0.0-b5"
+    "subschema-component-form": "^3.0.0-b6",
+    "subschema-core": "^3.0.0-b6",
+    "subschema-prop-types": "^3.0.0-b6",
+    "subschema-utils": "^3.0.0-b6"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-component-form": "^3.0.0-b5",
-    "subschema-core": "^3.0.0-b5",
+    "subschema-component-form": "^3.0.0-b6",
+    "subschema-core": "^3.0.0-b6",
     "subschema-css-bootstrap": "^3.0.0-b1",
-    "subschema-dev-support": "^3.0.0-b5",
-    "subschema-expression": "^3.0.0-b5",
-    "subschema-injection": "^3.0.0-b5",
-    "subschema-loader": "^3.0.0-b5",
-    "subschema-processors": "^3.0.0-b5",
-    "subschema-prop-types": "^3.0.0-b5",
-    "subschema-test-support": "^3.0.0-b5",
-    "subschema-transitions": "^3.0.0-b5",
-    "subschema-utils": "^3.0.0-b5",
-    "subschema-validators": "^3.0.0-b5",
-    "subschema-valuemanager": "^3.0.0-b5"
+    "subschema-dev-support": "^3.0.0-b6",
+    "subschema-expression": "^3.0.0-b6",
+    "subschema-injection": "^3.0.0-b6",
+    "subschema-loader": "^3.0.0-b6",
+    "subschema-processors": "^3.0.0-b6",
+    "subschema-prop-types": "^3.0.0-b6",
+    "subschema-test-support": "^3.0.0-b6",
+    "subschema-transitions": "^3.0.0-b6",
+    "subschema-utils": "^3.0.0-b6",
+    "subschema-validators": "^3.0.0-b6",
+    "subschema-valuemanager": "^3.0.0-b6"
   },
   "source": "src"
 }

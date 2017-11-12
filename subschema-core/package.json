@@ -1,6 +1,6 @@
 {
   "name": "subschema-core",
-  "version": "3.0.0-b5",
+  "version": "3.0.0-b6",
   "description": "Backbone Forms like declaritive forms for react",
   "main": "lib/index.js",
   "scripts": {
@@ -20,16 +20,16 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b5",
-    "subschema-test-support": "^3.0.0-b5"
+    "subschema-dev-support": "^3.0.0-b6",
+    "subschema-test-support": "^3.0.0-b6"
   },
   "dependencies": {
-    "subschema-expression": "^3.0.0-b5",
-    "subschema-injection": "^3.0.0-b5",
-    "subschema-loader": "^3.0.0-b5",
-    "subschema-prop-types": "^3.0.0-b5",
-    "subschema-utils": "^3.0.0-b5",
-    "subschema-validators": "^3.0.0-b5"
+    "subschema-expression": "^3.0.0-b6",
+    "subschema-injection": "^3.0.0-b6",
+    "subschema-loader": "^3.0.0-b6",
+    "subschema-prop-types": "^3.0.0-b6",
+    "subschema-utils": "^3.0.0-b6",
+    "subschema-validators": "^3.0.0-b6"
   },
   "source": "src"
 }
