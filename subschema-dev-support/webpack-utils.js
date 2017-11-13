@@ -12,6 +12,7 @@ const {
           SUBSCHEMA_EXTERNALIZE_PEERS,
           SUBSCHEMA_KARMA,
           SUBSCHEMA_NO_DEPENDENCY_ALIASES,
+          SUBSCHEMA_INCLUDE,
       } = process.env;
 
 const asArray = Function.call.bind(Array.prototype.slice);
@@ -184,9 +185,13 @@ function _filteredDependencies({
                                }        = pkg(),
                                includes,
                                excludes = []) {
+    let all = [name];
+    if (SUBSCHEMA_INCLUDE) {
+        all = all.concat(SUBSCHEMA_INCLUDE.split(/,\s*/));
+    }
 
-    return [name].concat(keys(dependencies, peerDependencies)
-        .filter(isAliasable(includes, excludes)));
+    return unique(all.concat(keys(dependencies, peerDependencies)
+        .filter(isAliasable(includes, excludes))));
 }
 
 function wrapFunc(f) {

@@ -4,10 +4,13 @@ describe(
     () => it('😀', () => {
     }));
 
-(testContext => {
-    testContext.keys().forEach(testContext);
-})(require.context("test", true, /-test\.jsx?$/));
+(tc => tc.keys().forEach(key => {
+    describe(key, function () {
+        tc(key);
+    });
+}))(require.context("test", true, /-test\.jsx?$/));
 
 describe(`finished '${process.env.SUBSCHEMA_TEST_MODULE}'`, function () {
-    it('🙄', () => {});
+    it('🙄', () => {
+    });
 });
