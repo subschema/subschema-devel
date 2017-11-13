@@ -53,10 +53,10 @@ if (useCoverage) {
         }
     );
 }
-console.dir(webpack);
-webpack.plugins.push(new webpackObj.ContextReplacementPlugin(/^test$/,
-    new RegExp(SUBSCHEMA_TEST_PATTERN), true));
-
+if (SUBSCHEMA_TEST_PATTERN) {
+    webpack.plugins.push(new webpackObj.ContextReplacementPlugin(/^test$/,
+        new RegExp(SUBSCHEMA_TEST_PATTERN), true));
+}
 const files = [test];
 if (SUBSCHEMA_KARMA_FILES) {
     files.unshift(...SUBSCHEMA_KARMA_FILES.split(/,\s*/));
