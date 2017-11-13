@@ -185,8 +185,8 @@ function _filteredDependencies({
                                includes,
                                excludes = []) {
 
-    return [name].concat(keys(dependencies, peerDependencies))
-                 .filter(isAliasable(includes, excludes));
+    return [name].concat(keys(dependencies, peerDependencies)
+        .filter(isAliasable(includes, excludes)));
 }
 
 function wrapFunc(f) {

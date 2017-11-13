@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-playground",
-  "version": "3.0.0-b2",
+  "version": "3.0.0-b6",
   "description": "A tool for editing and playing with subschema components",
   "scripts": {
     "karma": "subschema-karma",
@@ -14,37 +14,37 @@
     "brace": "^0.10.0",
     "browser-filesaver": "^1.1.1",
     "react-ace": "^5.0.1",
-    "subschema-project": "^3.0.0-b2",
+    "subschema-project": "^3.0.0-b6",
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema": "^3.0.0-b2",
-    "subschema-component-autocomplete": "^3.0.0-b2",
-    "subschema-component-form": "^3.0.0-b2",
-    "subschema-component-list": "^3.0.0-b2",
-    "subschema-component-modal": "^3.0.0-b2",
-    "subschema-component-wizard": "^3.0.0-b2",
-    "subschema-dev-support": "^3.0.0-b2",
-    "subschema-processors": "^3.0.0-b2",
-    "subschema-prop-types": "^3.0.0-b2",
-    "subschema-styles-bootstrap": "^3.0.0-b2",
-    "subschema-test-samples": "^3.0.0-b2",
-    "subschema-test-support": "^3.0.0-b2",
-    "subschema-transitions": "^3.0.0-b2",
-    "subschema-validators": "^3.0.0-b2",
-    "subschema-valuemanager": "^3.0.0-b2"
+    "subschema": "^3.0.0-b6",
+    "subschema-component-autocomplete": "^3.0.0-b6",
+    "subschema-component-form": "^3.0.0-b6",
+    "subschema-component-list": "^3.0.0-b6",
+    "subschema-component-modal": "^3.0.0-b6",
+    "subschema-component-wizard": "^3.0.0-b6",
+    "subschema-dev-support": "^3.0.0-b6",
+    "subschema-processors": "^3.0.0-b6",
+    "subschema-prop-types": "^3.0.0-b6",
+    "subschema-styles-bootstrap": "^3.0.0-b6",
+    "subschema-test-samples": "^3.0.0-b6",
+    "subschema-test-support": "^3.0.0-b6",
+    "subschema-transitions": "^3.0.0-b6",
+    "subschema-validators": "^3.0.0-b6",
+    "subschema-valuemanager": "^3.0.0-b6"
   },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*",
-    "subschema": "^3.0.0-b2",
-    "subschema-component-form": "^3.0.0-b2",
-    "subschema-prop-types": "^3.0.0-b2",
-    "subschema-styles-bootstrap": "^3.0.0-b2",
-    "subschema-valuemanager": "^3.0.0-b2"
+    "subschema": "^3.0.0-b6",
+    "subschema-component-form": "^3.0.0-b6",
+    "subschema-prop-types": "^3.0.0-b6",
+    "subschema-styles-bootstrap": "^3.0.0-b6",
+    "subschema-valuemanager": "^3.0.0-b6"
   },
   "source": "src"
 }

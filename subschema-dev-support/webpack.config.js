@@ -40,7 +40,8 @@ const {
           SUBSCHEMA_PUBLIC,
           SUBSCHEMA_USE_NAME_HASH,
           SUBSCHEMA_ANALYZE,
-          SUBSCHEMA_USE_ANALYTICS
+          SUBSCHEMA_USE_ANALYTICS,
+          SUBSCHEMA_TEST_PATTERN,
 
       } = process.env;
 
@@ -381,6 +382,8 @@ if (SUBSCHEMA_ENTRY) {
                 } else {
                     entry[key] = [entry[key], value];
                 }
+            } else {
+                entry[key] = value;
             }
         }
     } else {
@@ -389,7 +392,9 @@ if (SUBSCHEMA_ENTRY) {
     webpack.entry = entry;
 } else {
     if (opts.isDemo || configOrBool(SUBSCHEMA_DEV_SERVER)) {
-        webpack.entry = { index: cwd('public', 'index') };
+        if (!webpack.entry || (Object.keys(webpack.entry).length === 1)) {
+            webpack.entry = { index: cwd('public', 'index') };
+        }
     } else if (!webpack.entry && !opts.isKarma) {
         webpack.entry = { index: cwd('src', 'index') };
     }

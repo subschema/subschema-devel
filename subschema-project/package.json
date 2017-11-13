@@ -1,6 +1,6 @@
 {
   "name": "subschema-project",
-  "version": "3.0.0-b2",
+  "version": "3.0.0-b6",
   "description": "Subschema Project Generator",
   "main": "dist/index.js",
   "scripts": {
@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "jszip": "^3.1.5",
-    "subschema-dev-support": "^3.0.0-b2",
-    "subschema-test-samples": "^3.0.0-b2"
+    "subschema-dev-support": "^3.0.0-b6",
+    "subschema-test-samples": "^3.0.0-b6"
   },
   "peerDependencies": {
     "babel-standalone": "*",
     "react": "*",
     "react-dom": "*",
     "react-transition-group": "*",
-    "subschema": "^3.0.0-b2",
-    "subschema-core": "^3.0.0-b2",
-    "subschema-valuemanager": "^3.0.0-b2"
+    "subschema": "^3.0.0-b6",
+    "subschema-core": "^3.0.0-b6",
+    "subschema-valuemanager": "^3.0.0-b6"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -40,10 +40,10 @@
     "react-dom": "^16.1.0",
     "react-transition-group": "^2.2.1",
     "rimraf": "^2.6.2",
-    "subschema": "^3.0.0-b2",
-    "subschema-core": "^3.0.0-b2",
-    "subschema-utils": "^3.0.0-b2",
-    "subschema-valuemanager": "^3.0.0-b2"
+    "subschema": "^3.0.0-b6",
+    "subschema-core": "^3.0.0-b6",
+    "subschema-utils": "^3.0.0-b6",
+    "subschema-valuemanager": "^3.0.0-b6"
   },
   "source": "src"
 }

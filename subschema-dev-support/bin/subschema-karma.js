@@ -11,27 +11,6 @@ const {
           npm_lifecycle_event,
       } = env;
 
-function check(file, parent) {
-    const p = path.resolve(parent, file);
-    if (!fs.existsSync(p)) {
-        return false;
-    }
-    if (fs.lstatSync(p).isDirectory()) {
-        const files = fs.readdirSync(p);
-        for (let i = 0, l = files.length; i < l; i++) {
-            if (check(files[i], p)) {
-                return true;
-            }
-        }
-    }
-    return /-test\.jsx?$/.test(file)
-}
-
-if (!check('test', cwd())) {
-    console.warn('no tests for project',
-        require(path.resolve(cwd(), 'package.json')).name);
-    process.exit(0);
-}
 
 function indexOfArg() {
     const args = argv.slice(2);

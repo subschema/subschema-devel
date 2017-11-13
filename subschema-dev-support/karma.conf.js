@@ -1,6 +1,8 @@
 // Karma configuration
 const webpack             = require('./webpack.config');
+const webpackObj          = require('webpack');
 const path                = require('path');
+const fs                  = require('fs');
 const { resolveMap, cwd } = require('./webpack-utils');
 
 const {
@@ -11,7 +13,9 @@ const {
           SUBSCHEMA_DEBUG,
           SUBSCHEMA_CHROME_DIR   = path.resolve(process.env.HOME,
               '.subschema-chrome'),
-          SUBSCHEMA_TEST_MODULE  = cwd('test'),
+          SUBSCHEMA_TEST_MODULE  = fs.existsSync(cwd('test')) ? cwd('test')
+              : cwd(),
+          SUBSCHEMA_TEST_PATTERN = '-test\.jsx?',
           TRAVIS
       } = process.env;
 
@@ -20,6 +24,7 @@ const test        = path.resolve(SUBSCHEMA_TEST_DIR, 'test-index.js');
 if (!webpack.output) {
     webpack.output = {};
 }
+
 
 //muck with webpack
 if (!webpack.resolve.alias.test) {
@@ -51,13 +56,19 @@ if (useCoverage) {
         }
     );
 }
-
-
+if (SUBSCHEMA_TEST_PATTERN) {
+    webpack.plugins.push(new webpackObj.ContextReplacementPlugin(/^test$/,
+        new RegExp(SUBSCHEMA_TEST_PATTERN), true));
+}
 const files = [test];
 if (SUBSCHEMA_KARMA_FILES) {
     files.unshift(...SUBSCHEMA_KARMA_FILES.split(/,\s*/));
     console.warn(`using files ${files}`);
 }
+webpack.plugins.push(new webpackObj.DefinePlugin({
+    'process.env.SUBSCHEMA_TEST_MODULE' : JSON.stringify(SUBSCHEMA_TEST_MODULE),
+    'process.env.SUBSCHEMA_TEST_PATTERN': JSON.stringify(SUBSCHEMA_TEST_PATTERN)
+}));
 
 module.exports = function (config) {
 
@@ -159,7 +170,8 @@ module.exports = function (config) {
     }
     if (SUBSCHEMA_DEBUG) {
         console.log('karma-conf');
-        console.dir(karmaConf);c
+        console.dir(karmaConf);
+        c
     }
     config.set(karmaConf);
 };
