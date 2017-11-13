@@ -4,8 +4,6 @@
   "description": "Subschema samples",
   "main": "lib/index.js",
   "scripts": {
-    "karma": "subschema-karma",
-    "test": "subschema-karma",
     "prepublish": "subschema-webpack --use-externals react,react-dom,subschema",
     "clean": "rimraf ./lib ./dist"
   },

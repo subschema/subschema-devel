@@ -40,7 +40,8 @@ const {
           SUBSCHEMA_PUBLIC,
           SUBSCHEMA_USE_NAME_HASH,
           SUBSCHEMA_ANALYZE,
-          SUBSCHEMA_USE_ANALYTICS
+          SUBSCHEMA_USE_ANALYTICS,
+          SUBSCHEMA_TEST_PATTERN,
 
       } = process.env;
 

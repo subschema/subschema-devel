@@ -4,7 +4,6 @@
   "description": "Subschema Test Support",
   "main": "lib/index.js",
   "scripts": {
-    "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
     "clean": "rimraf ./lib ./dist"
   },
