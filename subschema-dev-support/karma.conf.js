@@ -171,7 +171,6 @@ module.exports = function (config) {
     if (SUBSCHEMA_DEBUG) {
         console.log('karma-conf');
         console.dir(karmaConf);
-        c
     }
     config.set(karmaConf);
 };
