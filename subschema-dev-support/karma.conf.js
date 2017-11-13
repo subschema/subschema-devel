@@ -1,5 +1,6 @@
 // Karma configuration
 const webpack             = require('./webpack.config');
+const webpackObj          = require('webpack');
 const path                = require('path');
 const { resolveMap, cwd } = require('./webpack-utils');
 
@@ -12,6 +13,7 @@ const {
           SUBSCHEMA_CHROME_DIR   = path.resolve(process.env.HOME,
               '.subschema-chrome'),
           SUBSCHEMA_TEST_MODULE  = cwd('test'),
+          SUBSCHEMA_TEST_PATTERN = '-test\.jsx?',
           TRAVIS
       } = process.env;
 
@@ -51,7 +53,9 @@ if (useCoverage) {
         }
     );
 }
-
+console.dir(webpack);
+webpack.plugins.push(new webpackObj.ContextReplacementPlugin(/^test$/,
+    new RegExp(SUBSCHEMA_TEST_PATTERN), true));
 
 const files = [test];
 if (SUBSCHEMA_KARMA_FILES) {
@@ -159,7 +163,8 @@ module.exports = function (config) {
     }
     if (SUBSCHEMA_DEBUG) {
         console.log('karma-conf');
-        console.dir(karmaConf);c
+        console.dir(karmaConf);
+        c
     }
     config.set(karmaConf);
 };
