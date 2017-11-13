@@ -1,6 +1,6 @@
 {
   "name": "subschema-processors",
-  "version": "3.0.0-b6",
+  "version": "3.0.0-b7",
   "description": "Subschema Processors System.",
   "main": "lib/index.js",
   "scripts": {
@@ -9,11 +9,11 @@
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "subschema-utils": "^3.0.0-b6"
+    "subschema-utils": "^3.0.0-b7"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b6"
+    "subschema-dev-support": "^3.0.0-b7"
   },
   "source": "src"
 }
