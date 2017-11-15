@@ -1,6 +1,6 @@
 {
   "name": "subschema-expression",
-  "version": "3.0.0-b8",
+  "version": "3.0.0-b9",
   "description": "Expressions for subschema",
   "main": "lib/index.js",
   "scripts": {
@@ -11,10 +11,10 @@
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b8"
+    "subschema-dev-support": "^3.0.0-b9"
   },
   "dependencies": {
-    "subschema-utils": "^3.0.0-b8"
+    "subschema-utils": "^3.0.0-b9"
   },
   "source": "src"
 }
