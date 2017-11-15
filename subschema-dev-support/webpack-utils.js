@@ -20,15 +20,33 @@ const cwd     = (...args) => path.resolve(SUBSCHEMA_PROJECT_DIR, ...args);
 const project = cwd;
 
 function resolvePkgDir(name) {
-    return path.resolve(require.resolve(path.join(name, 'package.json')), '..');
+
+    try {
+        return path.resolve(require.resolve(path.join(name, 'package.json')),
+            '..');
+    } catch (e) {
+        if (pkg().name === name) {
+            return cwd();
+        }
+    }
+    throw new Error(`could not resolve package.json in ${name} or ${cwd()}`)
 }
 
+const PKG_CACHE = {};
 
 function pkg() {
+
     const _pkg = cwd('package.json');
+
+    if (PKG_CACHE[_pkg]) {
+        return PKG_CACHE[_pkg]
+    }
+
     debug(`using package`, _pkg);
-    return require(_pkg);
+    return (PKG_CACHE[_pkg] = require(_pkg));
+
 }
+
 
 function dependency(current, ...rest) {
     if (current == pkg().name) {

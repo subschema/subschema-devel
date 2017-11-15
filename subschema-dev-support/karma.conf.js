@@ -52,7 +52,13 @@ if (useCoverage) {
             test   : /\.jsx?$/,
             // instrument only testing sources with Istanbul
             include: [/subschema*/, cwd('src'), cwd('public')],
-            use    : 'istanbul-instrumenter-loader'
+            use    : {
+                loader : 'istanbul-instrumenter-loader',
+                options: {
+                    esModules: true
+                }
+            },
+            enforce: 'post',
         }
     );
 }
@@ -165,6 +171,17 @@ module.exports = function (config) {
             require('karma-webpack')
         ]
     };
+    if (useCoverage) {
+        karmaConf.reporters.push('coverage-istanbul');
+
+        karmaConf.coverageIstanbulReporter = {
+            reports: ['lcovonly', 'text-summary'],
+            fixWebpackSourcePaths  : true,
+            skipFilesWithNoCoverage: true,
+            dir                    : SUBSCHEMA_COVERAGE_DIR
+        };
+        karmaConf.plugins.push('karma-coverage-istanbul-reporter')
+    }
     if (TRAVIS) {
         karmaConf.browsers = ['Firefox'];
     }
