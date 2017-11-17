@@ -9,7 +9,8 @@
     "transform-function-bind",
     "transform-class-properties",
     "transform-async-to-generator",
-    "transform-export-extensions"
+    "transform-export-extensions",
+    "transform-runtime"
   ],
   "babelrc": false,
   "ignore": "**/lib/**"
