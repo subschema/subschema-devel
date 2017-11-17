@@ -1,6 +1,6 @@
 {
   "name": "subschema-utils",
-  "version": "3.0.0-b10",
+  "version": "3.0.0-b11",
   "description": "Subschema Utils",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "devDependencies": {
     "lodash": "^4.17.4",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b10"
+    "subschema-dev-support": "^3.0.0-b11"
   },
   "peerDependencies": {
     "lodash": "*"

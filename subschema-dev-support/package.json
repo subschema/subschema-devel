@@ -1,6 +1,6 @@
 {
   "name": "subschema-dev-support",
-  "version": "3.0.0-b10",
+  "version": "3.0.0-b11",
   "description": "Tools for developing with subschema and webpack",
   "scripts": {
     "clean": "rimraf ./lib ./dist"
