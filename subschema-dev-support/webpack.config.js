@@ -459,7 +459,7 @@ if (opts.useHtml && !opts.isKarma) {
     }));
 }
 if (opts.useScopeHoist) {
-    //  plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
+    plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
 }
 if (opts.analyze) {
     //only include for analyzer.
