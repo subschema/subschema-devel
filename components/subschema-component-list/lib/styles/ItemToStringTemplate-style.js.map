@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/styles/ItemToStringTemplate-style.js"],"names":["module","exports","label"],"mappings":";;AAAAA,OAAOC,OAAP,GAAiB;AACbC,WAAO;AADM,CAAjB","file":"ItemToStringTemplate-style.js","sourcesContent":["module.exports = {\n    label: \"brf-value list-group-item-text\"\n}"]}

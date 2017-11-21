@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/styles/CollectionMixin-style.js"],"names":["module","exports","addBtn","iconAdd"],"mappings":";;AACAA,OAAOC,OAAP,GAAiB;AACbC,YAAQ,wBADK;AAEbC,aAAS;AAFI,CAAjB","file":"CollectionMixin-style.js","sourcesContent":["\nmodule.exports = {\n    addBtn: 'btn btn-xs btn-default',\n    iconAdd: \"icon-add\"\n};"]}
