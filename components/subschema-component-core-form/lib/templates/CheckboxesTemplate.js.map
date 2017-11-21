@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/templates/CheckboxesTemplate.jsx"],"names":[],"mappings":";;;;;;AAAA","file":"CheckboxesTemplate.js","sourcesContent":["import CheckboxTemplate from './CheckboxTemplate';\nexport default CheckboxTemplate;\n"]}

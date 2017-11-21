@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/styles/List-style.js"],"names":["module","exports","item"],"mappings":";;AAAAA,OAAOC,OAAP,GAAiB;AACbC,UAAM;AADO,CAAjB","file":"List-style.js","sourcesContent":["module.exports = {\n    item: \"brf-value list-group-item-text\"\n};"]}
