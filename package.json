@@ -22,10 +22,12 @@
     "rimraf": "^2.6.2"
   },
   "workspaces": [
-    "plugins",
-    "resolvers",
-    "core",
-    "devtools"
+    "presets/*",
+    "plugins/*",
+    "examples/*"
+    "resolvers/*",
+    "core/*",
+    "devtools/*"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
