@@ -22,31 +22,10 @@
     "rimraf": "^2.6.2"
   },
   "workspaces": [
-    "subschema-core",
-    "subschema-injection",
-    "subschema-expression",
-    "subschema-loader",
-    "subschema-prop-types",
-    "subschema-processors",
-    "subschema-transitions",
-    "subschema-utils",
-    "subschema-valuemanager",
-    "subschema-validators",
-    "subschema-test-support",
-    "subschema-dev-support",
-    "subschema-component-form",
-    "subschema-component-list",
-    "subschema-styles-bootstrap",
-    "subschema-component-modal",
-    "subschema-component-autocomplete",
-    "subschema-component-wizard",
-    "subschema",
-    "subschema-test-samples",
-    "subschema-component-navigation",
-    "subschema-project",
-    "subschema-component-playground",
-    "subschema-component-demo",
-    "subschema.wiki"
+    "plugins",
+    "resolvers",
+    "core",
+    "devtools"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
