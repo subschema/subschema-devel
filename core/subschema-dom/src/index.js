@@ -1,4 +1,3 @@
-"use strict";
 import _EventListener from 'fbjs/lib/EventListener';
 import ReactDOM from 'react-dom';
 
