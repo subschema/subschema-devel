@@ -1,6 +1,6 @@
 {
   "name": "subschema-test-support",
-  "version": "3.0.0-b11",
+  "version": "3.0.0-b12",
   "description": "Subschema Test Support",
   "main": "lib/index.js",
   "scripts": {
@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "enzyme": "^3.1.1",
-    "enzyme-adapter-react-16": "^1.0.4",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "util": "^0.10.3"
   },
   "peerDependencies": {
@@ -20,11 +20,11 @@
   "devDependencies": {
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11",
-    "subschema-injection": "^3.0.0-b11",
-    "subschema-loader": "^3.0.0-b11",
-    "subschema-prop-types": "^3.0.0-b11",
-    "subschema-valuemanager": "^3.0.0-b11"
+    "subschema-dev-support": "^3.0.0-b12",
+    "subschema-injection": "^3.0.0-b12",
+    "subschema-loader": "^3.0.0-b12",
+    "subschema-prop-types": "^3.0.0-b12",
+    "subschema-valuemanager": "^3.0.0-b12"
   },
   "source": "src"
 }

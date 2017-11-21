@@ -1,6 +1,6 @@
 {
   "name": "subschema-validators",
-  "version": "3.0.0-b11",
+  "version": "3.0.0-b12",
   "description": "Subschema Validators",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11"
+    "subschema-dev-support": "^3.0.0-b12"
   },
   "source": "src"
 }

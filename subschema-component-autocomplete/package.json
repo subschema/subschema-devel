@@ -1,6 +1,6 @@
 {
   "name": "subschema-component-autocomplete",
-  "version": "3.0.0-b11",
+  "version": "3.0.0-b12",
   "description": "Subschema Autocomplete",
   "main": "lib/index.js",
   "scripts": {
@@ -12,30 +12,30 @@
   "peerDependencies": {
     "react": "*",
     "react-dom": "*",
-    "subschema-component-form": "^3.0.0-b11",
-    "subschema-core": "^3.0.0-b11",
-    "subschema-processors": "^3.0.0-b11",
-    "subschema-prop-types": "^3.0.0-b11",
-    "subschema-utils": "^3.0.0-b11"
+    "subschema-component-form": "^3.0.0-b12",
+    "subschema-core": "^3.0.0-b12",
+    "subschema-processors": "^3.0.0-b12",
+    "subschema-prop-types": "^3.0.0-b12",
+    "subschema-utils": "^3.0.0-b12"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-component-form": "^3.0.0-b11",
-    "subschema-core": "^3.0.0-b11",
+    "subschema-component-form": "^3.0.0-b12",
+    "subschema-core": "^3.0.0-b12",
     "subschema-css-bootstrap": "^3.0.0-b1",
-    "subschema-dev-support": "^3.0.0-b11",
-    "subschema-expression": "^3.0.0-b11",
-    "subschema-injection": "^3.0.0-b11",
-    "subschema-loader": "^3.0.0-b11",
-    "subschema-processors": "^3.0.0-b11",
-    "subschema-prop-types": "^3.0.0-b11",
-    "subschema-test-support": "^3.0.0-b11",
-    "subschema-transitions": "^3.0.0-b11",
-    "subschema-utils": "^3.0.0-b11",
-    "subschema-validators": "^3.0.0-b11",
-    "subschema-valuemanager": "^3.0.0-b11"
+    "subschema-dev-support": "^3.0.0-b12",
+    "subschema-expression": "^3.0.0-b12",
+    "subschema-injection": "^3.0.0-b12",
+    "subschema-loader": "^3.0.0-b12",
+    "subschema-processors": "^3.0.0-b12",
+    "subschema-prop-types": "^3.0.0-b12",
+    "subschema-test-support": "^3.0.0-b12",
+    "subschema-transitions": "^3.0.0-b12",
+    "subschema-utils": "^3.0.0-b12",
+    "subschema-validators": "^3.0.0-b12",
+    "subschema-valuemanager": "^3.0.0-b12"
   },
   "source": "src"
 }
