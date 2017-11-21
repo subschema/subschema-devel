@@ -39,3 +39,5 @@ dist/*
 */.happypack
 
 */package-lock.json
+*/lib
+lib
