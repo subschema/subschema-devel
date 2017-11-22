@@ -46,4 +46,8 @@ function fieldsets(Clazz, key) {
     Clazz::this.property(key, normal);
 }
 fieldsets.normalizeFieldsets = normalizeFieldsets;
-export default fieldsets;
+export default {
+    resolver: {
+        fieldset: fieldsets
+    }
+};

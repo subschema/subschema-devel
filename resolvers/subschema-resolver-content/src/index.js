@@ -15,9 +15,13 @@ export function loadContent(content, key, props, {injector}) {
     }
 }
 
-export default function content(Clazz, key) {
+export default {
+    resolver: {
+        content: function(Clazz, key) {
 
-    Clazz.contextTypes.injector = PropTypes.injector;
-    Clazz::this.property(key, loadContent);
+            Clazz.contextTypes.injector = PropTypes.injector;
+            Clazz::this.property(key, loadContent);
 
-};
+        }
+    }
+};;

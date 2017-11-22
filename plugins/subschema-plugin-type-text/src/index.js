@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
-export default class Text extends PureComponent {
+
+export class Text extends PureComponent {
 
     static defaultProps = {
         type : 'text',
@@ -26,3 +27,8 @@ export default class Text extends PureComponent {
     }
 }
 
+export default ({
+    type: {
+        Text
+    }
+})

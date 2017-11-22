@@ -5,7 +5,7 @@ import PropTypes from 'subschema-prop-types';
  * Hidden does need a template, and does not care about errors.
  * but we will
  */
-export default class Hidden extends PureComponent {
+export class Hidden extends PureComponent {
     static noTemplate = true;
     //only unnormal is asJSON, which will set the value to json rather than a
     // string so that it can be used to hold hidden state of complex
@@ -30,3 +30,9 @@ export default class Hidden extends PureComponent {
                           : value}/>
     }
 }
+
+export default ({
+    type: {
+        Hidden
+    }
+})

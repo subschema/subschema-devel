@@ -100,4 +100,8 @@ function transition(Clazz, key) {
 //because es6 modules.
 transition.handleTransition = handleTransition;
 
-export default transition;
+export default {
+    resolver: {
+        transition: transition
+    }
+};

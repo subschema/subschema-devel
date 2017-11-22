@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 
-export default class TextArea extends PureComponent {
+export class TextArea extends PureComponent {
     static propTypes = {
         onChange   : PropTypes.targetEvent,
         onBlur     : PropTypes.blurValidate,
@@ -22,3 +22,9 @@ export default class TextArea extends PureComponent {
         return <textarea {...fieldAttrs} {...props}/>
     }
 }
+
+export default ({
+    type: {
+        TextArea
+    }
+})

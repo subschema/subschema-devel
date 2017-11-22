@@ -3,9 +3,10 @@ import PropTypes from 'subschema-prop-types';
 import { noop, path as _path, unique, warning } from 'subschema-utils';
 import UninjectedField from 'subschema-plugin-field';
 import UninjectedFieldSet from 'subschema-plugin-fieldset';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import renderTemplate from 'subschema-rendertemplate';
 
-export default class ObjectType extends PureComponent {
+export class ObjectType extends PureComponent {
+    static displayName = 'ObjectType';
 
     static template = false;
 
@@ -132,3 +133,10 @@ export default class ObjectType extends PureComponent {
     }
 
 }
+
+export default ({
+    type: {
+        Object: ObjectType,
+        ObjectType
+    }
+})

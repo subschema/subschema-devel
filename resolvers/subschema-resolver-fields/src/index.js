@@ -10,6 +10,10 @@ export function normalizeFields(fields) {
     }
     return fields;
 }
-export default function fields(Clazz, key) {
-    Clazz::this.property(key, normalizeFields);
-}
+export default {
+    resolver: {
+        fields: function(Clazz, key) {
+            Clazz::this.property(key, normalizeFields);
+        }
+    }
+};

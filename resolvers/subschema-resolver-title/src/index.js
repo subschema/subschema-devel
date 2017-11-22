@@ -12,8 +12,12 @@ function resolve(value, key, props) {
     return titlelize(val.split(/\./).pop());
 }
 
-export default function valueEvent(Clazz, key) {
+export default {
+    resolver: {
+        valueEvent: function(Clazz, key) {
 
-    Clazz::this.property(key, resolve);
+            Clazz::this.property(key, resolve);
 
-}
+        }
+    }
+};

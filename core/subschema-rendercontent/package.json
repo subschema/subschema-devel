@@ -1,5 +1,5 @@
 {
-  "name": "subschema-plugin-rendertemplate",
+  "name": "subschema-rendercontent",
   "version": "4.0.0-b-1",
   "scripts": {
     "test": "subschema-karma",

@@ -2,6 +2,10 @@ function loadProcessor(value, key, props, {loader}){
     return loader.loadProcessor(value);
 }
 
-export default function processor(Clazz, key){
-    Clazz::this.property(key, loadProcessor);
-}
+export default {
+    resolver: {
+        processor: function(Clazz, key) {
+            Clazz::this.property(key, loadProcessor);
+        }
+    }
+};

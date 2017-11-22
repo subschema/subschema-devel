@@ -19,10 +19,14 @@ function resolve(value, key, props, { valueManager, noValidate }) {
         valueManager.onSubmit(e, errors, value, resolvedPath);
     }
 }
-export default function submit(Clazz, key) {
+export default {
+    resolver: {
+        submit: function(Clazz, key) {
 
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
-    Clazz.contextTypes.noValidate   = PropTypes.bool;
-    Clazz::this.property(key, resolve)
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
+            Clazz.contextTypes.noValidate   = PropTypes.bool;
+            Clazz::this.property(key, resolve)
 
-}
+        }
+    }
+};

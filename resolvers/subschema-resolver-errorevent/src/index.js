@@ -6,10 +6,14 @@ function errorUpdate(value, key, props, {valueManager}) {
     return val => valueManager.updateErrors(resolvedKey, val);
 }
 
-export default function errorEvent(Clazz, key) {
+export default {
+    resolver: {
+        errorEvent: function(Clazz, key) {
 
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
-    Clazz::this.property(key, errorUpdate);
+            Clazz::this.property(key, errorUpdate);
 
-}
+        }
+    }
+};

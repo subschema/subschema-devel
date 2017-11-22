@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 
-export default class CheckboxesGroupTemplate extends Component {
+export class CheckboxesGroupTemplate extends Component {
     static propTypes = {
         legend: PropTypes.node,
-        style: PropTypes.style
+        style : PropTypes.style
     };
 
     render() {
@@ -14,3 +14,9 @@ export default class CheckboxesGroupTemplate extends Component {
         </fieldset>);
     }
 }
+
+export default ({
+    template: {
+        CheckboxesGroupTemplate
+    }
+});

@@ -1,11 +1,11 @@
 import PropTypes from 'subschema-prop-types';
-import {warning} from 'subschema-utils';
+import { warning } from 'subschema-utils';
 
 export const settings = {
     propTypes: {
         className: PropTypes.cssClass,
-        id: PropTypes.id,
-        htmlFor: PropTypes.htmlFor
+        id       : PropTypes.id,
+        htmlFor  : PropTypes.htmlFor
         // fieldClass: PropTypes.fieldClass
     }
 };
@@ -32,14 +32,15 @@ export function loadTemplateRecursive(current, next = {}, context) {
         return loadTemplateRecursive(Template, next, context);
 
     } else if (typeof current === 'function') {
-        const {propTypes, defaultProps, template, ...restNext} = next;
+        const { propTypes, defaultProps, template, ...restNext } = next;
 
         return {
             ...restNext,
             Template: context.injector.inject(current, propTypes, defaultProps)
         }
     } else if ('template' in current) {
-        return loadTemplateRecursive(current.template, {...next, ...current}, context);
+        return loadTemplateRecursive(current.template, { ...next, ...current },
+            context);
     }
 
     return {
@@ -52,12 +53,16 @@ export function loadTemplate(value, key, props, context) {
     return loadTemplateRecursive(value, settings, context);
 }
 
-export default function resolve$template(Clazz, key) {
+export function template(Clazz, key) {
 
-
-    Clazz.contextTypes.loader = PropTypes.loader;
+    Clazz.contextTypes.loader   = PropTypes.loader;
     Clazz.contextTypes.injector = PropTypes.injector;
 
     Clazz::this.property(key, loadTemplate);
+}
 
+export default {
+    resolver: {
+        template
+    }
 };

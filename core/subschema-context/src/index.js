@@ -27,6 +27,7 @@ export default function newSubschemaContext(defaultLoaders         = [],
     rest.loader = formDefaultProps.loader = defaultLoader;
     rest.injector = formDefaultProps.injector = defaultInjectorFactory;
     rest.valueManager = formDefaultProps.valueManager = defaultValueManager();
+    rest.ValueManager = defaultValueManager;
     return rest;
 
 }

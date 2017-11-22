@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function ObjectTemplate(props) {
-    var {children, className, fieldAttrs, ...rest} = props;
-    return (<div className={className} {...fieldAttrs}>
-        {children}
-    </div>);
+export class ObjectTemplate extends Component {
+    static displayName = 'ObjectTemplate';
+
+    render() {
+        const { children, className, fieldAttrs, ...rest } = this.props;
+        return (<div className={className} {...fieldAttrs}>
+            {children}
+        </div>);
+    }
 }
-ObjectTemplate.displayName = 'ObjectTemplate';
+
+export default ({
+    template: {
+        ObjectTemplate
+    }
+});

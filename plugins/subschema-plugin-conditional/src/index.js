@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import renderTemplate from 'subschema-rendertemplate';
 import { settings } from 'subschema-resolver-transition';
 
 export default class Conditional extends Component {

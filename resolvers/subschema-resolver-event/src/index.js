@@ -5,6 +5,10 @@ function handleEvent(value) {
     return value;
 }
 
-export default function event(Clazz, key) {
-    Clazz::this.property(key, handleEvent);
-}
+export default {
+    resolver: {
+        event: function(Clazz, key) {
+            Clazz::this.property(key, handleEvent);
+        }
+    }
+};

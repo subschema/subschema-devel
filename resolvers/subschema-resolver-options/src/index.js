@@ -24,6 +24,10 @@ function toOptions(nval) {
 function asOptions(val) {
     return toArray(val).map(toOptions);
 }
-export default function options(Clazz, key) {
-    Clazz::this.property(key, asOptions);
-}
+export default {
+    resolver: {
+        options: function(Clazz, key) {
+            Clazz::this.property(key, asOptions);
+        }
+    }
+};

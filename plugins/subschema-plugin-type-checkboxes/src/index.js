@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 import { FREEZE_ARR as options, path } from 'subschema-utils';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import renderTemplate from 'subschema-rendertemplate';
 
-export default class Checkboxes extends PureComponent {
+export class Checkboxes extends PureComponent {
     //override added input Class Names.
     static inputClassName = ' ';
 
@@ -119,3 +119,9 @@ export default class Checkboxes extends PureComponent {
             this.props.options, this.props.path)}</div>
     }
 }
+
+export default ({
+    type: {
+        Checkboxes
+    }
+});

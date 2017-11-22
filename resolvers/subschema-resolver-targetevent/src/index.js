@@ -13,10 +13,14 @@ function resolve(value, key, props, { valueManager }) {
         valueManager.update(resolvedPath, e.target.value)
     }
 }
-export default function targetEvent(Clazz, key) {
+export default {
+    resolver: {
+        targetEvent: function(Clazz, key) {
 
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
-    Clazz::this.property(key, resolve)
+            Clazz::this.property(key, resolve)
 
-}
+        }
+    }
+};

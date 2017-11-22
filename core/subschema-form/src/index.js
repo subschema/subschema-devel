@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import ObjectType from 'subschema-plugin-object';
+import {ObjectType} from 'subschema-plugin-object';
 
 export default class Form extends Component {
+
     static displayName       = "Form";
+
     static defaultValueManager;
+
     static childContextTypes = {
         validate  : PropTypes.bool,
         noValidate: PropTypes.bool, ...PropTypes.contextTypes

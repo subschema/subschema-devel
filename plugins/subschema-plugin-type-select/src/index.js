@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 import { isArray } from 'subschema-utils';
 
-export default class Select extends PureComponent {
+export class Select extends PureComponent {
 
 
     static propTypes = {
@@ -85,3 +85,9 @@ export default class Select extends PureComponent {
     }
 
 }
+
+export default ({
+    type: {
+        Select
+    }
+});

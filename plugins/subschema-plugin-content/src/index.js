@@ -1,6 +1,5 @@
 import React, { Children, Component, createElement } from "react";
-import { isArray, isObject, isString } from "subschema-utils";
-import {warning} from "subschema-utils";
+import { isArray, isObject, isString, warning } from "subschema-utils";
 import PropTypes from "subschema-prop-types";
 import DefaultWrapper from "subschema-plugin-contentwrapper";
 
@@ -35,7 +34,7 @@ function allowed(obj) {
     }, {});
 }
 
-export default class Content extends Component {
+export class Content extends Component {
     static isContainer = true;
 
     static contextTypes = {
@@ -168,3 +167,9 @@ export default class Content extends Component {
         return ret;
     }
 }
+
+export default ({
+    type: {
+        Content
+    }
+})

@@ -41,9 +41,13 @@ function stash$resolver(value, key, props, { valueManager }) {
 };
 
 
-export default function stash(Clazz, key) {
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+export default {
+    resolver: {
+        stash: function(Clazz, key) {
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
 
-    Clazz::this.property(key, stash$resolver);
-}
+            Clazz::this.property(key, stash$resolver);
+        }
+    }
+};

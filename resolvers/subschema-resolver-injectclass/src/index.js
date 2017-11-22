@@ -13,8 +13,12 @@ export function injectClass(value, key, props, {injector}) {
 
 }
 
-export default function inject(Clazz, key) {
+export default {
+    resolver: {
+        injectClass(Clazz, key) {
 
-    Clazz.contextTypes.injector = PropTypes.injector;
-    Clazz::this.property(key, injectClass);
-}
+            Clazz.contextTypes.injector = PropTypes.injector;
+            Clazz::this.property(key, injectClass);
+        }
+    }
+};

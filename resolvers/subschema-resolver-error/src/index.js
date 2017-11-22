@@ -28,9 +28,13 @@ function handleErrorListeners(value, key, props, {valueManager, validate}) {
     }, this, /**false so it doesn't override*/false).remove;
 }
 
-export default function error(Clazz, key) {
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
-    Clazz.contextTypes.validate = PropTypes.bool;
-    Clazz::this.listener(key, handleErrorListeners);
+export default {
+    resolver: {
+        error: function(Clazz, key) {
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
+            Clazz.contextTypes.validate = PropTypes.bool;
+            Clazz::this.listener(key, handleErrorListeners);
 
-}
+        }
+    }
+};

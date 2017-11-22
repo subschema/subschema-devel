@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 
-export default class Checkbox extends PureComponent {
+export class Checkbox extends PureComponent {
 
     static inputClassName = ' ';
 
@@ -41,7 +41,13 @@ export default class Checkbox extends PureComponent {
         return <input {...props} value={value == null ? '' : value}
                       className={className + ' ' + (checked ? checkedClass
                           : '')}
-                      checked={checked == null ? false : checked }
+                      checked={checked == null ? false : checked}
                       onChange={this.handleChange}/>
     }
 }
+
+export default ({
+    type: {
+        Checkbox
+    }
+})

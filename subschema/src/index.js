@@ -7,13 +7,19 @@ import _newSubschemaContext from 'subschema-context';
 export function newSubschemaContext(defaultLoaders = [DefaultLoader],
                                     defaultInjectionFactory,
                                     defaultValueManagerFactory) {
-    const ctx        = _newSubschemaContext(defaultLoaders,
+    const ctx    = _newSubschemaContext(defaultLoaders,
         defaultInjectionFactory, defaultValueManagerFactory);
-    ctx.ValueManager = defaultValueManagerFactory;
-    ctx.importer     = importer(ctx, React);
+    ctx.importer = importer(ctx, React);
 
     return ctx;
 }
 
-export default newSubschemaContext();
+const def = newSubschemaContext();
+
+export const Form         = def.Form;
+export const ValueManager = def.ValueManager;
+export const valueManager = def.valueManager;
+export const importer = def.importer;
+
+export default def;
 

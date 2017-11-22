@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { extend, isString } from 'subschema-utils';
 import PropTypes from 'subschema-prop-types';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import renderTemplate from 'subschema-rendertemplate';
 
-export default class ButtonsTemplate extends Component {
+export class ButtonsTemplate extends Component {
     static defaultProps = {
         buttonTemplate: 'ButtonTemplate',
         buttons       : [{
@@ -13,7 +13,7 @@ export default class ButtonsTemplate extends Component {
             template: 'Button',
             primary : true
         }],
-        onButtonClick (event, action, btn, value) {
+        onButtonClick(event, action, btn, value) {
 
         }
     };
@@ -68,7 +68,7 @@ export default class ButtonsTemplate extends Component {
                 btn.buttonClass =
                     `${btn.buttonClass} ${this.props.primaryClass}`;
             }
-            if (!btn.action){
+            if (!btn.action) {
                 btn.action = b;
             }
             return btn;
@@ -92,3 +92,7 @@ export default class ButtonsTemplate extends Component {
     }
 
 }
+
+export default ({
+    template: { ButtonsTemplate }
+})

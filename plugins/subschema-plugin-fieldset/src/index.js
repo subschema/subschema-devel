@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import RenderContent from 'subschema-plugin-rendercontent';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import RenderContent from 'subschema-rendercontent';
+import renderTemplate from 'subschema-rendertemplate';
+
 /**
  * Manages the the fieldset.  It  uses FieldSetTemplate or similar, but now
  * it renders the buttons, so the Template does not have to handle that.
@@ -11,15 +12,16 @@ function cleanField(src) {
     const { buttons, field, template, legend, transition, content, conditional, fieldsets, ...rest } = src;
     return rest;
 }
-function hasCancel({ action }) {
-    return action === 'cancel' || action === 'close' || action === 'reset';
-}
+
+
 export default class FieldSet extends Component {
     static contextTypes = {
         valueManager: PropTypes.valueManager
     };
-    static displayName  = "FieldSet";
-    static propTypes    = {
+
+    static displayName = "FieldSet";
+
+    static propTypes = {
         fieldsets      : PropTypes.fieldset,
         conditional    : PropTypes.conditional,
         buttons        : PropTypes.buttons,

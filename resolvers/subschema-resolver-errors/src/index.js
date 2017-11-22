@@ -24,9 +24,13 @@ function handleErrorsListeners(value, key, props, {valueManager}) {
  * @param Clazz
  * @param key
  */
-export default function errors(Clazz, key) {
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+export default {
+    resolver: {
+        errors: function(Clazz, key) {
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
-    Clazz::this.listener(key, handleErrorsListeners);
+            Clazz::this.listener(key, handleErrorsListeners);
 
-}
+        }
+    }
+};

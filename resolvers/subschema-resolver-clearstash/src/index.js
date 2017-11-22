@@ -15,15 +15,19 @@ export function clearStash$resolver(value, key, props, { valueManager }) {
     return clearStash
 }
 
-export default function clearStash(Clazz, key) {
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+export default {
+    resolver: {
+        clearStash: function(Clazz, key) {
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
-    Clazz::this.property(key, clearStash$resolver);
+            Clazz::this.property(key, clearStash$resolver);
 
-    Clazz::this.extendPrototype('componentWillUnmount', function () {
-        if (this.state[key] && this.state[key].onUnmount === true) {
-            this.state[key]();
+            Clazz::this.extendPrototype('componentWillUnmount', function () {
+                if (this.state[key] && this.state[key].onUnmount === true) {
+                    this.state[key]();
+                }
+            });
         }
-    });
-}
+    }
+};
 

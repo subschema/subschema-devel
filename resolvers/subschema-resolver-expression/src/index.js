@@ -42,12 +42,16 @@ function handleExpression(value, key, props, {valueManager, loader}) {
     return ret;
 }
 
-export default function expression$resolver(Clazz, key) {
+export default {
+    resolver: {
+        expression$resolver: function(Clazz, key) {
 
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
-    Clazz.contextTypes.loader = PropTypes.loader;
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
+            Clazz.contextTypes.loader = PropTypes.loader;
 
-    Clazz::this.listener(key, handleExpression);
+            Clazz::this.listener(key, handleExpression);
 
 
-}
+        }
+    }
+};

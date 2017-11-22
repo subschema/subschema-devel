@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import { FREEZE_OBJ as field } from 'subschema-utils';
 
-export default class FieldSetTemplate extends Component {
+export class FieldSetTemplate extends Component {
     static propTypes = {
         buttons  : PropTypes.renderedTemplate,
         legend   : PropTypes.node,
@@ -29,3 +29,9 @@ export default class FieldSetTemplate extends Component {
                </div>
     }
 }
+
+export default ({
+    template: {
+        FieldSetTemplate
+    }
+});

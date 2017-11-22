@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, ClassSheet} from 'react-native';
 import EditorTemplate from 'subschema-component-form/lib/templates/EditorTemplate';
-import {style} from '../PropTypes';
 const {propTypes, defaultProps} = EditorTemplate;
 
 export default class EditorTemplateNative extends React.Component {

@@ -91,8 +91,12 @@ function buttonNormalizer(value) {
     }
     return { buttons };
 }
-export default function buttons(Clazz, key) {
+export default {
+    resolver: {
+        buttons: function(Clazz, key) {
 
 
-    Clazz::this.property(key, buttonNormalizer);
-}
+            Clazz::this.property(key, buttonNormalizer);
+        }
+    }
+};

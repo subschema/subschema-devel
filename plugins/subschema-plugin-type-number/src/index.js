@@ -5,7 +5,7 @@ const noRe  = /^(-|\+)?([0-9]*\.)?$/,
       numRe = /^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/;
 
 
-export default class NumberInput extends PureComponent {
+export class NumberInput extends PureComponent {
 
     static propTypes = {
         onBlur     : PropTypes.blurValidate,
@@ -64,3 +64,10 @@ export default class NumberInput extends PureComponent {
                       onChange={this.handleDateChange}/>
     }
 }
+
+export default ({
+    type: {
+        NumberInput,
+        Number
+    }
+})

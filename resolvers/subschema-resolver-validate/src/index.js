@@ -65,9 +65,13 @@ export function loadValidators(value, key, props, context) {
 
 }
 
-export default function validate(Clazz, key) {
-    Clazz.contextTypes.loader       = PropTypes.loader;
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+export default {
+    resolver: {
+        validate: function(Clazz, key) {
+            Clazz.contextTypes.loader       = PropTypes.loader;
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
-    Clazz::this.property(key, loadValidators);
-}
+            Clazz::this.property(key, loadValidators);
+        }
+    }
+};

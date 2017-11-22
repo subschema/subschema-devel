@@ -11,11 +11,15 @@ function validateFields$resolver(value, key, props, { valueManager }) {
 
 }
 
-export default function validateFields(Clazz, key) {
+export default {
+    resolver: {
+        validateFields: function(Clazz, key) {
 
 
-    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+            Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
 
-    Clazz::this.property(key, validateFields$resolver);
-}
+            Clazz::this.property(key, validateFields$resolver);
+        }
+    }
+};

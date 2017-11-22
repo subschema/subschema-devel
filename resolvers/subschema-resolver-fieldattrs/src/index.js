@@ -30,22 +30,26 @@ function remove(all, key) {
     }
     return all;
 }
-export default function fieldAttrs(Clazz, key, propKeys) {
+export default {
+    resolver: {
+        fieldAttrs: function(Clazz, key, propKeys) {
 
-    //keeps the property from leaking to the wrapped class.
-    remove(Clazz._copyPropTypeKeys, key);
+            //keeps the property from leaking to the wrapped class.
+            remove(Clazz._copyPropTypeKeys, key);
 
-    const ClazzP = Clazz.prototype;
+            const ClazzP = Clazz.prototype;
 
-    ClazzP.componentWillMount = applyFuncs(function () {
-        this::handleAttrs(this.props[key], key, propKeys);
-    }, ClazzP.componentWillMount);
+            ClazzP.componentWillMount = applyFuncs(function () {
+                this::handleAttrs(this.props[key], key, propKeys);
+            }, ClazzP.componentWillMount);
 
-    ClazzP.componentWillReceiveProps = applyFuncs(function (newProps) {
-        if (this.props[key] !== newProps[key]) {
-            this::handleAttrs(newProps[key], key, propKeys);
+            ClazzP.componentWillReceiveProps = applyFuncs(function (newProps) {
+                if (this.props[key] !== newProps[key]) {
+                    this::handleAttrs(newProps[key], key, propKeys);
+                }
+            }, ClazzP.componentWillReceiveProps);
+
+
         }
-    }, ClazzP.componentWillReceiveProps);
-
-
-}
+    }
+};

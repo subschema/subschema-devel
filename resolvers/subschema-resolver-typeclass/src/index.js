@@ -49,9 +49,13 @@ export function forType(OrigClazz, value) {
         value || OrigClazz.inputClassName || settings.inputClassName).join(' ');
 }
 
-export default function typeClass(Clazz, key, propList, OrigClazz) {
+export default {
+    resolver: {
+        typeClass: function(Clazz, key, propList, OrigClazz) {
 
-    Clazz::this.property(key, function (value) {
-        return forType(OrigClazz, value);
-    });
-}
+            Clazz::this.property(key, function (value) {
+                return forType(OrigClazz, value);
+            });
+        }
+    }
+};

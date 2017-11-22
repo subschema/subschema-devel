@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import { createValidator } from 'subschema-resolver-validate';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import renderTemplate from 'subschema-rendertemplate';
 
 export default class Field extends Component {
     static displayName  = "Field";

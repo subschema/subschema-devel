@@ -38,9 +38,13 @@ export function normalize(value, key, props, { injector }) {
  * @param Clazz
  * @param key
  */
-export default function conditional(Clazz, key) {
+export default {
+    resolver: {
+        conditional: function(Clazz, key) {
 
-    Clazz.contextTypes.injector = PropTypes.injector;
+            Clazz.contextTypes.injector = PropTypes.injector;
 
-    Clazz::this.property(key, normalize);
-}
+            Clazz::this.property(key, normalize);
+        }
+    }
+};

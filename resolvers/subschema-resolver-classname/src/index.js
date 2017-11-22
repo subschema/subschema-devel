@@ -61,28 +61,32 @@ function resolveStyle(value, Style = {}, loader, ret = []) {
  * @param propList
  * @param OrigClazz
  */
-export default function className(Clazz, key, propList, OrigClazz) {
-    Clazz.contextTypes.loader = PropTypes.loader;
-    Clazz::this.property(key,
-        function style$resolver(value, key, props, { loader }) {
-            if (value == null) {
-                value =
-                    key.replace(settings.pattern, '$1') || settings.className;
-            } else if (!(typeof value == 'string' || Array.isArray(value))) {
-                return value;
-            }
-            const Style = loadStyle(OrigClazz, loader);
-            if (Style) {
-                value = resolveStyle(value, Style, loader);
-            }
-            if (Array.isArray(value)) {
-                value = value.join(' ');
-            }
+export default {
+    resolver: {
+        className: function(Clazz, key, propList, OrigClazz) {
+            Clazz.contextTypes.loader = PropTypes.loader;
+            Clazz::this.property(key,
+                function style$resolver(value, key, props, { loader }) {
+                    if (value == null) {
+                        value =
+                            key.replace(settings.pattern, '$1') || settings.className;
+                    } else if (!(typeof value == 'string' || Array.isArray(value))) {
+                        return value;
+                    }
+                    const Style = loadStyle(OrigClazz, loader);
+                    if (Style) {
+                        value = resolveStyle(value, Style, loader);
+                    }
+                    if (Array.isArray(value)) {
+                        value = value.join(' ');
+                    }
 
-            return value;
+                    return value;
 
-        });
-}
+                });
+        }
+    }
+};
 function loadStyle(OrigClazz, loader) {
     let Style = OrigClazz.displayName ? loader.loadStyle(OrigClazz.displayName)
         : loader.loadStyle(OrigClazz.name);

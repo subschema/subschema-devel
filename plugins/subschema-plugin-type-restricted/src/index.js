@@ -4,7 +4,7 @@ import RestrictedMixin from './RestrictedMixin';
 import PropTypes from 'subschema-prop-types';
 import { noop } from 'subschema-utils';
 
-export default class Restricted extends RestrictedMixin {
+export class Restricted extends RestrictedMixin {
     static contextTypes = PropTypes.contextTypes;
 
     static defaultProps = {
@@ -54,3 +54,9 @@ export default class Restricted extends RestrictedMixin {
                       onChange={this.handleValueChange}/>
     }
 }
+
+export default ({
+    type: {
+        Restricted
+    }
+});

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 
-export default class DateInput extends PureComponent {
+export class DateInput extends PureComponent {
 
     static propTypes = {
         onBlur     : PropTypes.blurValidate,
@@ -39,3 +39,10 @@ export default class DateInput extends PureComponent {
                       value={this.asInputValue(value)}/>
     }
 }
+
+export default ({
+    type: {
+        Date: DateInput,
+        DateInput
+    }
+});

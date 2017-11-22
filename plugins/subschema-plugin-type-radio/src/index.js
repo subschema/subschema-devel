@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { path as tpath } from 'subschema-utils';
-import renderTemplate from 'subschema-plugin-rendertemplate';
+import renderTemplate from 'subschema-rendertemplate';
 import PropTypes from 'subschema-prop-types';
 
 function compare(val, val2) {
@@ -13,7 +13,7 @@ function compare(val, val2) {
     return ('' + val === '' + val2);
 }
 
-export default class RadioInput extends PureComponent {
+export class RadioInput extends PureComponent {
     static inputClassName = '  ';
 
 
@@ -89,3 +89,10 @@ export default class RadioInput extends PureComponent {
 
     }
 }
+
+export default ({
+    type: {
+        RadioInput,
+        Radio: RadioInput
+    }
+})

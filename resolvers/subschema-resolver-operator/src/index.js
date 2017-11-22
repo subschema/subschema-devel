@@ -83,7 +83,11 @@ export function loadOperator(operator, key, props, context) {
 
 }
 
-export default function operator(Clazz, key) {
-    Clazz.contextTypes.loader = PropTypes.loader;
-    Clazz::this.property(key, loadOperator);
-}
+export default {
+    resolver: {
+        operator: function(Clazz, key) {
+            Clazz.contextTypes.loader = PropTypes.loader;
+            Clazz::this.property(key, loadOperator);
+        }
+    }
+};

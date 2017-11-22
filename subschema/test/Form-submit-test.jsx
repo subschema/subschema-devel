@@ -52,11 +52,11 @@ describe('Form/submit', function () {
 
         const content = into(<Form schema={schema}
                                    valueManager={valueManager}/>, true);
-        const forms   = byTags(content, 'form');
+        const forms   = content.find('form');
         expect(forms.length).to.eql(2, 'found 2 forms');
-        expect(forms[0].name).to.eql('form1');
-        expect(forms[1].name).to.eql('form2');
-        Simulate.submit(forms[1]);
+        expect(forms.at(0).prop('name')).to.eql('form1');
+        expect(forms.at(1).prop('name')).to.eql('form2');
+        forms.at(1).simulate('submit');
 
     });
 
@@ -115,9 +115,10 @@ describe('Form/submit', function () {
         const content = into(<Form schema={schema}
                                    valueManager={valueManager}/>, true);
         const forms   = byTags(content, 'form');
-        expect(forms.length).to.eql(2, 'found 2 forms');
-        Simulate.submit(forms[1]);
-        Simulate.submit(forms[0]);
+        expect(forms).to.have.length(2, 'found 2 forms');
+        forms.at(1).simulate('submit');
+        forms.at(0).simulate('submit');
+
 
     });
 

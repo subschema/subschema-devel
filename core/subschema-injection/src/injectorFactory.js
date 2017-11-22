@@ -52,7 +52,13 @@ export default function injector(resolvers = new Map()) {
         if (isIterable(resolvers)) {
             resolvers = new Map(resolvers);
         } else if (resolvers && typeof resolvers.loadResolver == 'function') {
-            resolveProp = resolvers.loadResolver;
+            resolveProp = function (key) {
+                if (!key) {
+                    return;
+                }
+                return resolvers.loadResolver(key) || resolvers.loadResolver(
+                    key.displayName);
+            }
         } else {
             throw new Error(
                 'resolvers must be iterable or have a loadResolver function');

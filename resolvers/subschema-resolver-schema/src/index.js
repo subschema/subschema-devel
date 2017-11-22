@@ -146,4 +146,8 @@ function schema(Clazz, key) {
 }
 
 schema.normalizeSchema = normalizeSchema;
-export default schema;
+export default {
+    resolver: {
+        schema: schema
+    }
+};
