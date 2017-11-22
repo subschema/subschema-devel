@@ -1,0 +1,15 @@
+{
+  "name": "subschema-example-carmake",
+  "version": "4.0.0-b-1",
+  "scripts": {
+    "test": "subschema-karma",
+    "karma": "subschema-karma",
+    "build": "subschema-webpack"
+  },
+  "dependencies": {
+    "subschema-utils": "^4.0.0-b-1"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  }
+}

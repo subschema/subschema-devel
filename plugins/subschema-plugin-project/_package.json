@@ -1,0 +1,24 @@
+{
+  "name": "subschema-plugin-project",
+  "version": "4.0.0-b-1",
+  "description": "Subschema Project Generator",
+  "main": "lib/index.js",
+  "scripts": {
+    "karma": "subschema-karma",
+    "test": "subschema-karma",
+    "prepublish": "subschema-webpack --devtool sourcemap",
+    "clean": "rimraf ./lib ./dist"
+  },
+  "dependencies": {
+    "jszip": "^3.1.5"
+  },
+  "devDependencies": {
+    "subschema-preset-examples": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1",
+    "subschema-valuemanager": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "subschema": {
+    "webpack": "./subschema-webpack.config.js"
+  }
+}
