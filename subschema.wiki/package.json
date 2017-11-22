@@ -1,6 +1,6 @@
 {
   "name": "subschema.wiki",
-  "version": "3.0.0-b11",
+  "version": "4.0.0-b-1",
   "description": "Subschema Wiki",
   "main": "src/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "devDependencies": {
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "peerDependencies": {
     "babel-standalone": "*",

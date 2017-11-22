@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import ObjectType from './Object';
+import ObjectType from 'subschema-plugin-object';
 
 export default class Form extends Component {
     static displayName       = "Form";

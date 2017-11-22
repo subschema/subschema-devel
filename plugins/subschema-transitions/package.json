@@ -1,24 +1,20 @@
 {
   "name": "subschema-transitions",
-  "version": "3.0.0-b11",
+  "version": "4.0.0-b-1",
   "description": "Subschema Transitions",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
     "test": "subschema-webpack --no-style-loader && subschema-mocha",
     "prepublish": "subschema-webpack --no-style-loader",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "react-transition-group": "^2.2.1",
+    "subschema-prop-types": "^4.0.0-b-1",
+    "subschema-utils": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "react-transition-group": "^2.2.1",
-    "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11",
-    "subschema-prop-types": "^3.0.0-b11",
-    "subschema-utils": "^3.0.0-b11"
-  },
-  "peerDependencies": {
-    "react-transition-group": "^2.2.1",
-    "subschema-prop-types": "^3.0.0-b11",
-    "subschema-utils": "^3.0.0-b11"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src"
 }

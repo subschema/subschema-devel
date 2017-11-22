@@ -1,0 +1,32 @@
+{
+  "name": "subschema-dev-babel",
+  "version": "4.0.0-b-1",
+  "description": "Tools for developing babel with subschema",
+  "main": "index.js",
+  "scripts": {
+    "clean": "subschema-clean"
+  },
+  "bin": {
+    "subschema-babel": "bin/subschema-babel.js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "subschema-dev-browserslist": "4.0.0-b-1",
+    "rimraf": "^2.6.2"
+  },
+  "subschema": {
+    "webpack": "./src/webpack.config.js"
+  }
+}

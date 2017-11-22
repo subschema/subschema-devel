@@ -1,9 +1,9 @@
 // Karma configuration
-const webpack             = require('./webpack.config');
+const webpack             = require('subschema-dev-webpack');
 const webpackObj          = require('webpack');
 const path                = require('path');
 const fs                  = require('fs');
-const { resolveMap, cwd } = require('./webpack-utils');
+const { resolveMap, cwd } = require('subschema-dev-utils');
 
 const {
           SUBSCHEMA_KARMA_FILES  = '',

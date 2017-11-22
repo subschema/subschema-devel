@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import RenderContent from './RenderContent';
-import renderTemplate from './RenderTemplate';
+import RenderContent from 'subschema-plugin-rendercontent';
+import renderTemplate from 'subschema-plugin-rendertemplate';
 /**
  * Manages the the fieldset.  It  uses FieldSetTemplate or similar, but now
  * it renders the buttons, so the Template does not have to handle that.

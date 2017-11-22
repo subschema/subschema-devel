@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Content from 'subschema-core/lib/Content';
+import Content from 'subschema-plugin-content';
 import PropTypes from 'subschema-prop-types';
 
 export default class CollectionCreateTemplate extends Component {

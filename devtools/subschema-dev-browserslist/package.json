@@ -1,0 +1,5 @@
+{
+  "name": "subschema-dev-browserslist",
+  "version": "4.0.0-b-1",
+  "main": "./index.js"
+}

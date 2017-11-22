@@ -1,30 +1,28 @@
 {
   "name": "subschema-test-support",
-  "version": "3.0.0-b11",
+  "version": "4.0.0-b-1",
   "description": "Subschema Test Support",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "rimraf ./lib ./dist"
+    "prepublish": "subschema-babel"
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "enzyme": "^3.1.1",
-    "enzyme-adapter-react-16": "^1.0.4",
-    "util": "^0.10.3"
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "util": "^0.10.3",
+    "react": "^16.1.0",
+    "rimraf": "^2.6.2",
+    "subschema-dev-support": "^4.0.0-b-1",
+    "subschema-injection": "^4.0.0-b-1",
+    "subschema-loader": "^4.0.0-b-1",
+    "subschema-prop-types": "^4.0.0-b-1",
+    "subschema-valuemanager": "^4.0.0-b-1",
+    "subschema-preset-resolvers": "^4.0.0-b-1"
   },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
-  },
-  "devDependencies": {
-    "react": "^16.1.0",
-    "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11",
-    "subschema-injection": "^3.0.0-b11",
-    "subschema-loader": "^3.0.0-b11",
-    "subschema-prop-types": "^3.0.0-b11",
-    "subschema-valuemanager": "^3.0.0-b11"
   },
   "source": "src"
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { noop } from 'subschema-utils';
-import UninjectedButtons from 'subschema-component-form/lib/templates/ButtonsTemplate';
+import UninjectedButtons from 'subschema-plugin-template-buttons';
 import PropTypes from 'subschema-prop-types';
 
 export default class ListItemTemplate extends Component {

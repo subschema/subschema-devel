@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 
-var noRe  = /^(-|\+)?([0-9]*\.)?$/,
-    numRe = /^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/;
+const noRe  = /^(-|\+)?([0-9]*\.)?$/,
+      numRe = /^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/;
 
 
 export default class NumberInput extends PureComponent {

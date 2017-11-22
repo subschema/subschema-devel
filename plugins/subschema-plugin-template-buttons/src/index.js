@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { extend, isString } from 'subschema-utils';
 import PropTypes from 'subschema-prop-types';
-import { RenderTemplate as renderTemplate } from 'subschema-core';
+import renderTemplate from 'subschema-plugin-rendertemplate';
 
 export default class ButtonsTemplate extends Component {
     static defaultProps = {

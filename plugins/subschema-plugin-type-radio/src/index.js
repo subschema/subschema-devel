@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { path as tpath } from 'subschema-utils';
-import { RenderTemplate as renderTemplate } from 'subschema-core';
+import renderTemplate from 'subschema-plugin-rendertemplate';
 import PropTypes from 'subschema-prop-types';
 
 function compare(val, val2) {

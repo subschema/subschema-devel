@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import renderTemplate from './RenderTemplate';
-import { settings } from './resolvers/transition';
+import renderTemplate from 'subschema-plugin-rendertemplate';
+import { settings } from 'subschema-resolvers-transition';
 
 export default class Conditional extends Component {
     static contextTypes = PropTypes.contextTypes;

@@ -22,9 +22,9 @@
     "rimraf": "^2.6.2"
   },
   "workspaces": [
-    "presets/*",
+    "examples/*",
     "plugins/*",
-    "examples/*"
+    "presets/*",
     "resolvers/*",
     "core/*",
     "devtools/*"

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Text from './Text';
+import Text from 'subschema-plugin-type-text';
 
 export default class Password extends Text {
     static defaultProps = {

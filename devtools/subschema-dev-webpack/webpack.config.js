@@ -1,8 +1,9 @@
-require('./init-env');
+require('subschema-dev-browserslist');
 const path                = require('path');
-const babel               = require('./babel-helper');
-const webpackUtils        = require('./webpack-utils');
+const babel               = require('subschema-dev-babel');
+const webpackUtils        = require('subschema-dev-utils');
 const webpackObject       = require('webpack');
+const OptionsManager      = require('subschema-dev-optionsmanager').default;
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const deps                = webpackUtils.deps,
       configOrBool        = webpackUtils.configOrBool,
@@ -55,6 +56,7 @@ function autoprefixer() {
     ];
 }
 
+const optionsManager = new OptionsManager().scan();
 
 const plugins = [];
 const opts    = {
@@ -205,15 +207,7 @@ let webpack = {
     externals,
     module       : {
         rules: [
-            {
-                test   : /\.jsx?$/,
-                //       exclude: /(node_modules|bower_components)/,
-                include: [/\/test\/*/, /\/src\/*/, /\/public\/*/, /subschema[^/]*\/src\/*/],
-                use    : [{
-                    loader : 'babel-loader',
-                    options: babel
-                }]
-            },
+
             {
                 test: /\.css$/,
                 use : opts.useStyle(opts.useCss)
@@ -401,11 +395,14 @@ if (SUBSCHEMA_ENTRY) {
 }
 
 //This is where the magic happens
-let customConf = useCustomConf();
-opts.webpack   = webpackObject;
-if (customConf) {
-    webpack = customConf(opts, webpack);
-}
+optionsManager.webpack.forEach( (option, key) => {
+    console.log('loading ', key);
+    const tmpWebpack = option.package.call(opts, option.config, webpack);
+    if (tmpWebpack) {
+        webpack = tmpWebpack;
+    }
+});
+
 if (opts.useDefine) {
     webpack.plugins.push(
         new webpackObject.DefinePlugin(

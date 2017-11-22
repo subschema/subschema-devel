@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import RenderContent from 'subschema-core/lib/RenderContent';
-import warning from 'subschema-utils/lib/warning';
+import RenderContent from 'subschema-plugin-rendercontent';
+import {warning} from 'subschema-utils';
 
 
 export default class ModalTemplate extends Component {

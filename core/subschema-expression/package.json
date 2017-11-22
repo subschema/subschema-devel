@@ -1,20 +1,20 @@
 {
   "name": "subschema-expression",
-  "version": "3.0.0-b11",
+  "version": "4.0.0-b-1",
   "description": "Expressions for subschema",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
     "compile": "subschema-babel",
     "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "subschema-clean"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "dependencies": {
-    "subschema-utils": "^3.0.0-b11"
+    "subschema-utils": "^4.0.0-b-1"
   },
   "source": "src"
 }

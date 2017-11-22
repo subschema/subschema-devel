@@ -1,21 +1,7 @@
-Subschema Project
+subschema-plugin-project
 ===
-Allows for downloading Webpack Projects from a button
 
-##Demo
-See it in action [here](http://subschema.github.io/subschema-project)
-
-Or run it 
-
+## Installation
 ```sh
-  git clone https://github.com/subschema-devel/subschema-project.git
-  cd subschema-project
-  npm install
-  npm run hot &
-  open http://localhost:8082
+ $ yarn install subschema-plugin-project
 ```
-
-##Installation
-```sh
- $ npm install subschema-project
-``

@@ -1,4 +1,3 @@
-require('babel-polyfill');
 describe(
     `started '${process.env.SUBSCHEMA_TEST_MODULE}' with pattern '/${process.env.SUBSCHEMA_TEST_PATTERN}/'`,
     () => it('😀', () => {

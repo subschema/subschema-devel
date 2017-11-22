@@ -1,7 +1,8 @@
 import React from 'react';
 import WizardMixin from './WizardMixin';
 import PropTypes from 'subschema-prop-types';
-import { ObjectType, RenderTemplate as renderTemplate } from 'subschema-core';
+import ObjectType from 'subschema-plugin-type-object';
+import renderTemplate from 'subschema-plugin-rendertemplate';
 
 function donner(done) {
     done();

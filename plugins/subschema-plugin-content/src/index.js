@@ -1,8 +1,8 @@
 import React, { Children, Component, createElement } from "react";
 import { isArray, isObject, isString } from "subschema-utils";
-import warning from "subschema-utils/lib/warning";
+import {warning} from "subschema-utils";
 import PropTypes from "subschema-prop-types";
-import DefaultWrapper from "./ContentWrapper";
+import DefaultWrapper from "subschema-plugin-contentwrapper";
 
 const has = Function.call.bind(Object.prototype.hasOwnProperty);
 

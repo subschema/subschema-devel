@@ -5,7 +5,7 @@ if [ -z $NAME ]; then
   echo "$0 <name> is required"
   exit 1
 fi
-VERSION=${VERSION:"3.0.0-b15"}
+VERSION=${2:-"4.0.0-b-1"}
 
 pkg(){
 if [ -f package.json ]; then
@@ -16,7 +16,7 @@ fi
 cat <<EOF> package.json
 {
   "name":"$NAME",
-  "version":"$VERSION"
+  "version":"$VERSION",
   "scripts":{
      "test":"subschema-karma",
      "karma":"subschema-karma",
@@ -25,7 +25,7 @@ cat <<EOF> package.json
   "dependencies":{
     "subschema-util":"^$VERSION"
   },
-  "devDependencies"{
+  "devDependencies":{
     "subschema-dev-support":"^$VERSION"
   }
 }
@@ -49,3 +49,6 @@ ${NAME}
 \`\`\`
 EOF
 }
+
+pkg
+readme

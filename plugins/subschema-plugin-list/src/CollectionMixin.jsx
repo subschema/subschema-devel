@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { clone, defaults, noop, resolveKey } from 'subschema-utils';
-import UninjectedObjectType from 'subschema-core/lib/Object';
+import UninjectedObjectType from 'subschema-plugin-object';
 import PropTypes from 'subschema-prop-types';
-import renderTemplate from 'subschema-core/lib/RenderTemplate';
+import renderTemplate from 'subschema-plugin-rendertemplate';
 
 export const settings = {
     //configure the path that nested editing happens at.

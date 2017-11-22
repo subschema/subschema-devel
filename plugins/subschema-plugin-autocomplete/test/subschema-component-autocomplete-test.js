@@ -6,13 +6,13 @@ import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext'
 import 'subschema-styles-bootstrap';
 import autocomplete, {
     Autocomplete, AutocompleteItemTemplate, styles
-} from 'subschema-component-autocomplete';
+} from '../src';
 import { OptionsProcessor } from 'subschema-processors';
 import { types as formTypes } from 'subschema-component-form';
 function noop() {
 
 }
-describe('subschema-component-autocomplete', function () {
+describe('subschema-plugin-autocomplete', function () {
     this.timeout(50000);
     var options = [
         { label: 'ABC', val: 'abc' },

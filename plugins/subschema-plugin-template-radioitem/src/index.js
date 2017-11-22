@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import UninjectedContent from "subschema-core/lib/Content";
+import UninjectedContent from 'subschema-plugin-content';
 import PropTypes from "subschema-prop-types";
 
 export default class RadioItemTemplate extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import UninjectedField from 'subschema-core/lib/Field';
-import UninjectedFieldSet from 'subschema-core/lib/FieldSet';
+import UninjectedField from 'subschema-plugin-field';
+import UninjectedFieldSet from 'subschema-plugin-fieldset';
 import { flattenFields as fields } from 'subschema-utils';
 function donner(d) {
     d && d();

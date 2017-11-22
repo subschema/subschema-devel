@@ -1,17 +1,16 @@
 {
   "name": "subschema-utils",
-  "version": "3.0.0-b11",
+  "version": "4.0.0-b-1",
   "description": "Subschema Utils",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "subschema-clean"
   },
   "devDependencies": {
     "lodash": "^4.17.4",
-    "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "peerDependencies": {
     "lodash": "*"

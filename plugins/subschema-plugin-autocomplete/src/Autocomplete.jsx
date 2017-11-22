@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Dom from 'subschema-component-form/lib/Dom';
+import Dom from 'subschema-dom';
 import PropTypes from 'subschema-prop-types';
-import { RenderTemplate as renderTemplate } from 'subschema-core';
+import renderTemplate  from 'subschema-plugin-rendertemplate';
 
 export default class Autocomplete extends Component {
 

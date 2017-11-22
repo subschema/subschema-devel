@@ -1,4 +1,5 @@
-require('./init-env');
+require('subschema-dev-browserslist');
+
 const path = require('path');
 
 function _resolve(value) {

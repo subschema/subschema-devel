@@ -1,21 +1,21 @@
 {
   "name": "subschema-prop-types",
-  "version": "3.0.0-b11",
-  "main": "lib/index",
+  "version": "4.0.0-b-1",
+  "main": "lib",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
     "prepublish": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "subschema-clean"
   },
   "dependencies": {
-    "prop-types": "^15.6.0"
+    "subschema-utils": "^4.0.0-b-1"
   },
   "peerDependencies": {
     "prop-types": "*"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b11"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src"
 }

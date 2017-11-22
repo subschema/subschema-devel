@@ -5,7 +5,6 @@ import ValueManager from 'subschema-valuemanager';
 import loader from 'subschema-loader';
 import injector from 'subschema-injection';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 import { configure, mount as _mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

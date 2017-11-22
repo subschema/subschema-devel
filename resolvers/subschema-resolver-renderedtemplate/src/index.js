@@ -1,5 +1,5 @@
 import React from 'react';
-import renderTemplate from '../RenderTemplate';
+import renderTemplate from 'subschema-plugin-rendertemplate';
 /**
  * Renders a component into a node.
  *

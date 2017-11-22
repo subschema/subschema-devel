@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "subschema-prop-types";
-import UninjectedContent from "subschema-core/lib/Content";
+import UninjectedContent from 'subschema-plugin-content';
 
 export default class EditorTemplate extends Component {
     static propTypes = {
