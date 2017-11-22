@@ -20,7 +20,7 @@ export class BaseInjectComponent extends Component {
         const { _copyPropTypeKeys, Clazz } = this.constructor;
         const props                        = onlyKeys(_copyPropTypeKeys,
             this.state, this.props);
-        return <Clazz {...props} {...this.state }>{this.props.children}</Clazz>
+        return <Clazz {...props} {...this.state}>{this.props.children}</Clazz>
     }
 }
 
@@ -30,6 +30,7 @@ function hasAnyKeys(obj) {
     }
     return Object.keys(obj).length > 0;
 }
+
 function isIterable(obj) {
     // checks for null and undefined
     if (obj == null) {
@@ -37,6 +38,7 @@ function isIterable(obj) {
     }
     return obj[Symbol.iterator] !== void(0)
 }
+
 export default function injector(resolvers = new Map()) {
     let resolveProp = function resolveProp(propType) {
         if (propType == null) {
@@ -61,7 +63,7 @@ export default function injector(resolvers = new Map()) {
     const Injector = {
 
         resolveProp,
-        resolver(propType, resolve){
+        resolver(propType, resolve) {
             if (propType == null || resolve == null) {
                 throw new Error('must define both a propType and a resolver');
             }
@@ -78,9 +80,10 @@ export default function injector(resolvers = new Map()) {
         listener,
         property,
         extendPrototype,
-        createWrapperClass(Clazz, copyPropTypeKeys){
+        createWrapperClass(Clazz, copyPropTypeKeys) {
 
             const { name, displayName } = Clazz;
+
             //BaseInjectComponent is just a marker class.
             class InjectedClass extends BaseInjectComponent {
                 static defaultProps      = {};
@@ -88,6 +91,7 @@ export default function injector(resolvers = new Map()) {
                 static Clazz             = Clazz;
                 static _copyPropTypeKeys = copyPropTypeKeys;
             }
+
             InjectedClass.displayName = `${displayName || name}$Wrapper`;
             return InjectedClass
         },
@@ -103,9 +107,9 @@ export default function injector(resolvers = new Map()) {
          * @returns {*}
          */
 
-        inject(Clazz, extraPropTypes, extraProps){
+        inject(Clazz, extraPropTypes, extraProps) {
             const hasExtra = hasAnyKeys(extraPropTypes) || hasAnyKeys(
-                    extraProps);
+                extraProps);
 
             const { defaultProps, propTypes, injectedProps, injectedPropTypes } = Clazz;
 
@@ -119,8 +123,12 @@ export default function injector(resolvers = new Map()) {
 
             const injected = propTypeKeys.reduce((injectedClass, key) => {
 
-                const resolver = this.resolveProp(
-                    keyIn(key, injectedPropTypes, propTypes, extraPropTypes));
+                const canResolveKey = keyIn(key, injectedPropTypes, propTypes,
+                    extraPropTypes);
+                if (!canResolveKey) {
+                    return injectedClass;
+                }
+                const resolver = this.resolveProp(canResolveKey);
                 //resolver is null, nothing to do just return.
                 if (resolver == null) {
                     return injectedClass;
@@ -128,7 +136,7 @@ export default function injector(resolvers = new Map()) {
                 //injectedClass may be null if it didn't have any extras.  So
                 // we will create if it is.
                 injectedClass = injectedClass || this.createWrapperClass(Clazz,
-                        copyPropTypeKeys);
+                    copyPropTypeKeys);
 
                 //Add default props to this thing.
                 injectedClass.defaultProps[key] =

@@ -36,8 +36,8 @@ export default class Form extends Component {
         ObjectType
     };
 
-    constructor(props, context, whatever) {
-        super(props, context, whatever);
+    constructor(props, context, ...rest) {
+        super(props, context, ...rest);
         this.loader   = props.loader;
         this.injector =
             typeof props.injector === 'function' ? props.injector(this.loader)

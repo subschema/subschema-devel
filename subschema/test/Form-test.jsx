@@ -20,7 +20,7 @@ describe('components/Form', function () {
     });
     afterEach(cleanUp);
 
-    it('should create a form with a schema and value and triggered error only after having been valid',
+    it.only('should create a form with a schema and value and triggered error only after having been valid',
         function () {
 
             const value = {}, schema = {

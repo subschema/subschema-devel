@@ -1,6 +1,6 @@
 "use strict";
 
-const conf = require('./babel-helper');
+const conf = require('./index');
 const Module = require('module');
 const path = require('path');
 const babelRegister = require('babel-register');
@@ -9,7 +9,7 @@ const project = path.join(__dirname, '..');
 //only look into ern- projects that have a src directory.
 conf.only = /subschema[^/]*\/(src|test|lib)/;
 const cwd = process.cwd();
-if (!process.env.SUBSCHEMA_NO_PATH_FIX) {
+/*if (!process.env.SUBSCHEMA_NO_PATH_FIX) {
     Module._load = function (file, parent) {
         const isRelative = file.startsWith('.');
 
@@ -30,6 +30,6 @@ if (!process.env.SUBSCHEMA_NO_PATH_FIX) {
         }
         return oload(file, parent);
     };
-}
+}*/
 babelRegister(conf);
 
