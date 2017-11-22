@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import PropTypes from 'subschema-prop-types';
 import { FREEZE_OBJ } from 'subschema-utils';

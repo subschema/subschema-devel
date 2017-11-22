@@ -88,10 +88,10 @@ function writeFile(filename, content, options) {
 
 function readPkg() {
     try {
-        var pkg = require('./package.json')
+        var pkg = require('./_package.json')
     } catch (e) {
         help(
-            'No package.json found, consider running "npm init" to create one ');
+            'No _package.json found, consider running "npm init" to create one ');
     }
     return pkg;
 }

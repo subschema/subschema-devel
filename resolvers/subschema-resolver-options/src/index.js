@@ -1,4 +1,3 @@
-"use strict";
 import {toArray} from "subschema-utils";
 
 function toOptions(nval) {

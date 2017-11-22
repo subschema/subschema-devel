@@ -1,9 +1,7 @@
-"use strict";
-
 import PropTypes from "subschema-prop-types";
 import {FREEZE_OBJ} from "subschema-utils";
-import {normalizeFieldsets} from "./fieldset";
-import {loadTemplate} from "./template";
+import {normalizeFieldsets} from "subschema-resolver-fieldset";
+import {loadTemplate} from "subschema-resolver-template";
 /**
  * So a schema can be
  * EX: {

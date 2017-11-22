@@ -9,7 +9,7 @@ VERSION=${2:-"4.0.0-b-1"}
 
 pkg(){
 if [ -f package.json ]; then
-  echo "package.json exists $NAME";
+  echo "_package.json exists $NAME";
   return 1
 fi
 

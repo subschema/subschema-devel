@@ -8,7 +8,6 @@ import {warning} from 'subschema-utils';
  */
 export const EXPORTS = {
     "react-dom": require("react-dom"),
-    "subschema-core": require("subschema-core"),
     "subschema-injection": require("subschema-injection"),
     "subschema-expression": require("subschema-expression"),
     "subschema-loader": require("subschema-loader"),
@@ -18,12 +17,12 @@ export const EXPORTS = {
     "subschema-utils": require("subschema-utils"),
     "subschema-valuemanager": require("subschema-valuemanager"),
     "subschema-validators": require("subschema-validators"),
-    "subschema-component-form": require("subschema-component-form"),
-    "subschema-component-list": require("subschema-component-list"),
+    "subschema-form": require("subschema-form"),
+    "subschema-plugin-list": require("subschema-plugin-list"),
     "subschema-css-bootstrap": require("subschema-styles-bootstrap"),
-    "subschema-component-modal": require("subschema-component-modal"),
-    "subschema-component-autocomplete": require("subschema-component-autocomplete"),
-    "subschema-component-wizard": require("subschema-component-wizard")
+    "subschema-plugin-modal": require("subschema-plugin-modal"),
+    "subschema-plugin-autocomplete": require("subschema-plugin-autocomplete"),
+    "subschema-plugin-type-wizard": require("subschema-plugin-type-wizard")
 };
 function descend(obj, paths) {
     const copy = paths.concat();

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {newSubschemaContext} from 'subschema';
 import {availablePlugins, transform} from 'babel-core';
-import {normalize, source, babelrc as babelrcOrig} from 'subschema-project';
+import {normalize, source, babelrc as babelrcOrig} from 'subschema-plugin-project';
 import Editor from './Editor';
-import form from 'subschema-project/lib/form';
+import form from 'subschema-plugin-project/lib/form';
 
 
 //expose for configuration.

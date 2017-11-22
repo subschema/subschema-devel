@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-console.log(require('../src/DefaultLoader.js')(require('subschema-dev-support/webpack-utils').filteredDependencies(require(`${process.cwd()}/package.json`))).code);
+const OptionsManager = new (require('subschema-dev-optionsmanager').default);
+console.log(require('../src/DefaultLoader.js')(Array.from(OptionsManager.plugins.keys())).code);

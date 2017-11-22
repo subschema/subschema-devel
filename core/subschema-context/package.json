@@ -1,0 +1,19 @@
+{
+  "name": "subschema-context",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema-injection": "^4.0.0-b-1",
+    "subschema-valuemanager": "^4.0.0-b-1",
+    "subschema-loader": "^4.0.0-b-1",
+    "subschema-utils": "^4.0.0-b-1",
+    "subschema-form": "^4.0.0-b-1"
+  },
+  "devDependencies": {
+    "subschema-dev-babel": "^4.0.0-b-1"
+  },
+  "scripts": {
+    "prepublish": "subschema-babel"
+  },
+  "source": "src",
+  "main": "lib"
+}

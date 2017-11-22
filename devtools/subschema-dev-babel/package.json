@@ -27,6 +27,6 @@
     "rimraf": "^2.6.2"
   },
   "subschema": {
-    "webpack": "./src/webpack.config.js"
+    "webpack": "./webpack.config.js"
   }
 }

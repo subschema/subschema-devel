@@ -1,5 +1,3 @@
-"use strict";
-
 function loadProcessor(value, key, props, {loader}){
     return loader.loadProcessor(value);
 }

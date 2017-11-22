@@ -1,5 +1,3 @@
-"use strict";
-
 function idValue(value, key, props) {
     if (value == null) return props.path;
     return value;

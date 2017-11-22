@@ -1,9 +1,7 @@
-"use strict";
-
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "subschema-prop-types";
-import {toArray, noop} from "subschema-utils";
-import warning from "subschema-utils/lib/warning";
+import { noop, toArray, warning } from "subschema-utils";
+
 function initValidators(nval) {
     if (typeof nval === 'function') {
         return nval;
@@ -16,19 +14,19 @@ function initValidators(nval) {
     return this.loadValidator(nval.type)(nval);
 }
 
-export function createValidator(value, path, {loader, valueManager}) {
+export function createValidator(value, path, { loader, valueManager }) {
 
     const validators = toArray(value).map(initValidators, loader)
     if (validators.length === 0) {
         return null;
     }
 
-    const validator = (...args)=> {
+    const validator = (...args) => {
         let v, vm = valueManager;
         if (args.length === 2) {
-            v = args[0];
+            v  = args[0];
             vm = args[1];
-        }else{
+        } else {
             v = vm.path(path);
         }
         const length = validators.length;
@@ -54,11 +52,12 @@ export function createValidator(value, path, {loader, valueManager}) {
 }
 
 export function loadValidators(value, key, props, context) {
-    const validator = createValidator(value || props.validators, props.path, context);
+    const validator = createValidator(value || props.validators, props.path,
+        context);
     if (validator == null) {
         return noop;
     }
-    return (...args)=> {
+    return (...args) => {
         const errors = validator(...args);
         context.valueManager.updateErrors(props.path, errors);
         return errors;
@@ -67,7 +66,7 @@ export function loadValidators(value, key, props, context) {
 }
 
 export default function validate(Clazz, key) {
-    Clazz.contextTypes.loader = PropTypes.loader;
+    Clazz.contextTypes.loader       = PropTypes.loader;
     Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
     Clazz::this.property(key, loadValidators);

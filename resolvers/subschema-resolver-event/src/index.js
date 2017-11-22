@@ -1,5 +1,3 @@
-"use strict";
-
 import {noop} from 'subschema-utils';
 
 function handleEvent(value) {

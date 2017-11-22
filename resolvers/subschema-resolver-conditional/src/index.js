@@ -1,7 +1,6 @@
-"use strict";
 
 import PropTypes from 'subschema-prop-types';
-import UninjectedConditional from '../Conditional';
+import UninjectedConditional from 'subschema-plugin-conditional';
 
 export const settings = {
     operator   : "truthy",

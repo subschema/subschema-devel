@@ -1,5 +1,3 @@
-"use strict";
-
 import {push, toArray,isString} from 'subschema-utils';
 
 export function normalizeFieldsets(fieldsets, fields) {

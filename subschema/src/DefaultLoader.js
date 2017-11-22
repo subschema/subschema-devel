@@ -8,12 +8,10 @@ function writeLoader(cmd) {
     return `loader.addLoader(${camelCase(cmd)})`
 }
 
-const EXCLUDES = ['subschema', 'subschema-prop-types'];
 module.exports = function (dependencies = []) {
     if (dependencies.dependencies) {
         dependencies = dependencies.dependencies;
     }
-    dependencies = dependencies.filter(v => !EXCLUDES.includes(v));
     return {
         code     : `
 import loaderFactory from 'subschema-loader';

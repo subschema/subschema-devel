@@ -15,10 +15,10 @@ const parse = (filename) => {
 
 
 class Option {
-    constructor(pluginPath, config, parent) {
-        this.pluginPath = pluginPath;
-        this.config     = config;
-        this.parent     = parent;
+    constructor(plugin, config, parent) {
+        this.plugin = plugin;
+        this.config = config;
+        this.parent = parent;
     }
 }
 
@@ -64,10 +64,12 @@ export default class OptionsManager {
                     ignoreRc ? { ...conf, ignoreRc } : conf, parent);
             }
             return this;
-        }
+        };
+
+        this.scan();
     }
 
-    options = new Map();
+    plugins = new Map();
     webpack = new Map();
 
     processOpts = (name, {
@@ -77,24 +79,30 @@ export default class OptionsManager {
         webpack,
     } = {}, pkg) => {
         if (webpack) {
-            if (!webpack.has(name)) {
-                const webpackPlugin = Array.isArray(webpack) ? require(
-                    webpack[0])
-                    : require(webpack);
+            if (!this.webpack.has(name)) {
+                const webpackPlugin = Array.isArray(webpack) ? webpack[0]
+                    : webpack;
                 const webpackConf   = Array.isArray(webpack) ? webpack[1] : {};
-                webpack.set(name, new Option(webpackPlugin, webpackConf, pkg));
+                this.webpack.set(name,
+                    new Option(
+                        webpackPlugin.startsWith('.') ? require(
+                            this.resolveFromPkgDir(name, webpackPlugin))
+                            : require(webpackPlugin)
+                        ,
+                        webpackConf, pkg));
             }
 
         }
         if (plugins) {
             plugins.forEach(plugin => {
                 //plugin can have configuration.
+                //first one wins
                 const pluginName = Array.isArray(plugin) ? plugin[0] : plugin;
                 const pluginConf = Array.isArray(plugin) ? plugin[1] : {};
-                if (this.options.has(pluginName)) {
+                if (this.plugins.has(pluginName)) {
                     return;
                 }
-                this.options.set(pluginName,
+                this.plugins.set(pluginName,
                     new Option(pluginName, pluginConf, pkg));
 
                 if (ignoreRc !== true) {

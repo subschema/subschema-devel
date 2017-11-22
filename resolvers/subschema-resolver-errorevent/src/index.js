@@ -1,5 +1,3 @@
-"use strict";
-
 import {resolveKey} from "subschema-utils";
 import PropTypes from "subschema-prop-types";
 

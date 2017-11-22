@@ -7,11 +7,8 @@ const OptionsManager      = require('subschema-dev-optionsmanager').default;
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const deps                = webpackUtils.deps,
       configOrBool        = webpackUtils.configOrBool,
-      useAlias            = webpackUtils.useAlias,
       useExternals        = webpackUtils.useExternals,
       useExternalizePeers = webpackUtils.useExternalizePeers,
-      useCustomConf       = webpackUtils.useCustomConf,
-      useDepAlias         = webpackUtils.useDepAlias,
       camelCased          = webpackUtils.camelCased,
       resolveMap          = webpackUtils.resolveMap,
       cwd                 = webpackUtils.cwd;
@@ -56,7 +53,9 @@ function autoprefixer() {
     ];
 }
 
-const optionsManager = new OptionsManager().scan();
+const optionsManager = new OptionsManager();
+optionsManager.processOpts('subschema-dev-babel',
+    { webpack: './webpack.config' }, require('./package.json'));
 
 const plugins = [];
 const opts    = {
@@ -181,8 +180,7 @@ let webpack = {
     },
     resolve      : {
         extensions: ['.js', '.jsx'],
-        alias     : useDepAlias(useAlias()),
-
+        alias     : {}
     },
     resolveLoader: {
         modules: [
@@ -395,9 +393,11 @@ if (SUBSCHEMA_ENTRY) {
 }
 
 //This is where the magic happens
-optionsManager.webpack.forEach( (option, key) => {
-    console.log('loading ', key);
-    const tmpWebpack = option.package.call(opts, option.config, webpack);
+console.dir(optionsManager.webpack);
+optionsManager.webpack.forEach((option, key) => {
+    console.log('loading ', key, option);
+    const tmpWebpack = option.plugin.call(opts, option.config, webpack,
+        optionsManager);
     if (tmpWebpack) {
         webpack = tmpWebpack;
     }

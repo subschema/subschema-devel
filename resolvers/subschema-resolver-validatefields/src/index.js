@@ -1,4 +1,4 @@
-import { extractFields } from './stash';
+import { extractFields } from 'subschema-resolver-stash';
 import PropTypes from 'subschema-prop-types';
 
 function validateFields$resolver(value, key, props, { valueManager }) {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Basic} from 'subschema-test-samples';
+import Basic from 'subschema-example-basic';
 import PropTypes from 'subschema-prop-types';
 import DownloadButton from './DownloadButton.jsx';
 import {capitalize, camelCase} from 'subschema-utils';

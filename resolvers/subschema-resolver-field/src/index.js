@@ -1,11 +1,8 @@
-"use strict";
-
 import PropTypes from 'subschema-prop-types';
 import {FREEZE_OBJ} from 'subschema-utils';
-import {loadTemplate} from './template';
-import {loadType} from './type';
-import Conditional from '../Conditional';
-import warning from 'subschema-utils/lib/warning';
+import {loadTemplate} from 'subschema-resolver-template';
+import {loadType} from 'subschema-resolver-type';
+import {warning} from 'subschema-utils';
 
 export const settings = {
     type: 'Text',

@@ -1,5 +1,5 @@
 import PropTypes from 'subschema-prop-types';
-import warning from 'subschema-utils/lib/warning';
+import {warning} from 'subschema-utils';
 
 export const settings = {
     propTypes: {

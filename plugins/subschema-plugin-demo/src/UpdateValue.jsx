@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "subschema-prop-types";
 import { camelCase, capitalize } from "subschema-utils";
-import { DownloadButton } from "subschema-component-playground";
+import { DownloadButton } from "subschema-plugin-playground";
 import { loader } from './PropTypes';
 
 export default class UpdateValue extends Component {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ObjectType  as UninjectedObjectType } from 'subschema-core';
+import UninjectedObjectType from 'subschema-plugin-object';
 import PropTypes from 'subschema-prop-types';
 /**
  * Get a schema from a valueManager value.

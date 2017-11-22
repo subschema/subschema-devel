@@ -1,7 +1,7 @@
 import PropTypes from "subschema-prop-types";
 import expression from "subschema-expression";
 import {resolveKey, applyFuncs, FREEZE_OBJ} from "subschema-utils";
-import warning from "subschema-utils/lib/warning";
+import {warning} from "subschema-utils";
 function handleExpression(value, key, props, {valueManager, loader}) {
     const expressionVals = {};
     const {listen, format, formatters = []} = expression(value);

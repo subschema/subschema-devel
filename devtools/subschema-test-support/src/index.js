@@ -11,7 +11,6 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-const Simulate = TestUtils.Simulate;
 
 function prettyLog(result) {
     console.log(JSON.stringify(result, null, '\t'));
@@ -33,18 +32,18 @@ function cleanUp() {
 let __id = 0;
 
 function into(node, debug) {
-    const ele     = document.createElement('div');
-    ele.className = `__test__inserted__`;
-    ele.id        = `__test_${__id++}`;
+    const appendTo     = document.createElement('div');
+    appendTo.className = `__test__inserted__`;
+    appendTo.id        = `__test_${__id++}`;
     if (debug === true) {
-        document.body.appendChild(ele);
+        document.body.appendChild(appendTo);
     }
-    return ReactDOM.render(node, ele);
+    return _mount(node, { appendTo });
 }
 
 function notByType(node, type, description) {
-    var ret = byTypes(node, type);
-    expect(ret[0], description).to.not.exist;
+    const ret = byTypes(node, type);
+    expect(ret.at(0), description).to.not.exist;
 }
 
 function expected(nodes, length) {
@@ -58,21 +57,19 @@ function expected(nodes, length) {
 }
 
 function byTypes(node, type, length) {
-    return expected(TestUtils.scryRenderedComponentsWithType(node, type),
-        length);
+    return expected(node.find(type), length);
 }
 
 function byType(node, type) {
-    return TestUtils.findRenderedComponentWithType(node, type);
+    return node.find(type);
 }
 
 function byTag(node, tag) {
-    return TestUtils.findRenderedDOMComponentWithTag(node, tag);
+    return node.find(`${tag}`);
 }
 
 function byTags(node, tag, length) {
-    return expected(TestUtils.scryRenderedDOMComponentsWithTag(node, tag),
-        length);
+    return expected(node.find(`${tag}`), length);
 }
 
 function onlyOne(node) {
@@ -82,21 +79,15 @@ function onlyOne(node) {
     return node[0];
 }
 
-function byName(root, name) {
-    return onlyOne(TestUtils.findAllInRenderedTree(root, function (inst) {
-        if (!TestUtils.isDOMComponent(inst)) {
-            return false;
-        }
-        var inode = findNode(inst);
-        return inode.name === name;
-    }));
+function byName(root, prop) {
+    return root.find({ prop })
 }
 
 
 function filterProp(node, property, value) {
     node = Array.isArray(node) ? node : [node];
     return node.filter((n) => {
-        var props = (n instanceof Element) ? n.attributes : n.props;
+        const props = (n instanceof Element) ? n.attributes : n.props;
         if (property in props) {
             if (value === null) {
                 return true;
@@ -109,54 +100,44 @@ function filterProp(node, property, value) {
 }
 
 function byId(node, id) {
-    var all = TestUtils.findAllInRenderedTree(node, function (inst) {
-        if (!TestUtils.isDOMComponent(inst)) {
-            return false;
-        }
-        var inode = findNode(inst);
-        return inode.id === id;
-    });
-    return onlyOne(all);
+    return onlyOne(node.find(`#${id}`));
 }
 
 function click(node) {
-    Simulate.click(findNode(node));
+    node.simulate('click');
     return node;
 }
 
 function change(node, value) {
-    Simulate.change(findNode(node), { target: { value } });
+    node.simulate('change', { target: { value } });
     return node;
 }
 
 function check(node, checked, value) {
-    Simulate.change(findNode(node), { target: { checked, value } });
+    node.simulate('change', { target: { checked, value } });
     return node;
 }
 
 function blur(node) {
-    Simulate.blur(findNode(node));
+    node.simulate('blur');
     return node;
 }
 
 function focus(node) {
-    Simulate.focus(findNode(node));
+    node.simulate('focus')
     return node;
 }
 
 function byComponent(node, comp) {
-    return onlyOne(
-        TestUtils.scryRenderedComponentsWithType(asNode(node), comp));
+    return onlyOne(node.find(comp));
 }
 
 function byComponents(node, comp, length) {
-    return expected(
-        TestUtils.scryRenderedComponentsWithType(asNode(node), comp), length);
+    return expected(node.filterWhere(comp), length);
 }
 
 function byClass(node, className) {
-    return TestUtils.scryRenderedDOMComponentsWithClass(asNode(node),
-        className);
+    return node.find(`.${className}`);
 }
 
 function asNode(node) {
@@ -203,16 +184,16 @@ function context(childContext = defChildContext, childContextTypes = {
 }
 
 function intoWithContext(child, ctx, debug, contextTypes) {
-    var Context = context(ctx, contextTypes);
+    const Context = context(ctx, contextTypes);
     return byType(into(<Context>{child}</Context>, debug), child.type);
 }
 
 
 function select(composit, index) {
-    var node     = findNode(composit);
-    var multiple = node.multiple;
+    const node     = findNode(composit);
+    const multiple = node.multiple;
 
-    var options = byTags(composit, 'option')
+    const options = byTags(composit, 'option')
     expect(options[index], `${index} should exist`).to.exist;
     if (!multiple) {
         options.forEach((option, idx) => {
@@ -222,7 +203,7 @@ function select(composit, index) {
         options[index].selected = !options[index].selected;
     }
 
-    Simulate.change(node, {
+    node.simulate('change', {
         target: {
             options,
             value: multiple ? options.map((o) => o.value) : options[index].value
@@ -263,8 +244,6 @@ export {
     cleanUp,
     React,
     ReactDOM,
-    TestUtils,
-    Simulate,
     intoWithState,
     into,
     context,
