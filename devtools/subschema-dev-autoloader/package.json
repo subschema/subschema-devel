@@ -1,0 +1,26 @@
+{
+  "name": "subschema-dev-autoloader",
+  "version": "4.0.0-b-1",
+  "bin": {
+    "subschema-autoloader": "bin/subschema-autoloader.js"
+  },
+  "scripts": {
+    "clean": "subschema-clean",
+    "prepublish": "subschema-babel"
+  },
+  "source": "src",
+  "main": "lib",
+  "dependencies": {
+    "subschema-dev-optionsmanager": "^4.0.0-b-1",
+    "subschema-dev-utils": "^4.0.0-b-1"
+  },
+  "devDependencies": {
+    "subschema-dev-babel": "^4.0.0-b-1"
+  },
+  "subschema": {
+    "webpack": "./subschema-webpack.config",
+    "options": {
+      "loader": false
+    }
+  }
+}

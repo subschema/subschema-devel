@@ -2,15 +2,14 @@
   "name": "subschema.wiki",
   "version": "4.0.0-b-1",
   "description": "Subschema Wiki",
-  "main": "src/index.js",
+  "main": "lib",
   "scripts": {
     "server": "subschema-webpack-dev-server",
     "clean": "rimraf ./lib ./dist",
     "prepublish": "subschema-webpack"
   },
   "dependencies": {
-    "markdown-it": "^8.3.1",
-    "react-syntax-highlighter": "^5.6.2"
+    "subschema-webpack-markdown": "^4.0.0-b-1"
   },
   "devDependencies": {
     "react": "^16.1.0",
@@ -18,9 +17,20 @@
     "subschema-dev-support": "^4.0.0-b-1"
   },
   "peerDependencies": {
-    "babel-standalone": "*",
-    "react": "^16.0.0 || ^15.0.0",
-    "react-dom": "^16.0.0 || ^15.0.0"
+    "babel-standalone": "*"
   },
-  "source": "src"
+  "source": "src",
+  "subschema": {
+    "options": {
+      "loader": "Doc"
+    },
+    "plugins": [
+      [
+        "subschema-webpack-markdown",
+        {
+          "loader": false
+        }
+      ]
+    ]
+  }
 }

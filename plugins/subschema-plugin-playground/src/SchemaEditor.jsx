@@ -1,5 +1,4 @@
 import React, {PureComponent} from "react";
-import {Editor} from "subschema-component-playground";
 import PropTypes from "subschema-prop-types";
 import AceEditor from "react-ace";
 import "brace/theme/chrome";

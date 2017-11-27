@@ -44,7 +44,7 @@ function handleExpression(value, key, props, {valueManager, loader}) {
 
 export default {
     resolver: {
-        expression$resolver: function(Clazz, key) {
+        expression: function(Clazz, key) {
 
             Clazz.contextTypes.valueManager = PropTypes.valueManager;
             Clazz.contextTypes.loader = PropTypes.loader;

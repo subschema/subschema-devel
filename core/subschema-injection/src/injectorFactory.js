@@ -59,6 +59,8 @@ export default function injector(resolvers = new Map()) {
                 return resolvers.loadResolver(key) || resolvers.loadResolver(
                     key.displayName);
             }
+        } else if (typeof resolvers === 'function') {
+            resolveProp = resolvers;
         } else {
             throw new Error(
                 'resolvers must be iterable or have a loadResolver function');

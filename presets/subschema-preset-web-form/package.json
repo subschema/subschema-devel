@@ -6,8 +6,6 @@
     "subschema-plugin-conditional": "4.0.0-b-1",
     "subschema-plugin-content": "4.0.0-b-1",
     "subschema-plugin-contentwrapper": "4.0.0-b-1",
-    "subschema-plugin-field": "4.0.0-b-1",
-    "subschema-plugin-fieldset": "4.0.0-b-1",
     "subschema-plugin-list": "4.0.0-b-1",
     "subschema-plugin-modal": "4.0.0-b-1",
     "subschema-plugin-object": "4.0.0-b-1",
@@ -42,8 +40,6 @@
       "subschema-plugin-conditional",
       "subschema-plugin-content",
       "subschema-plugin-contentwrapper",
-      "subschema-plugin-field",
-      "subschema-plugin-fieldset",
       "subschema-plugin-list",
       "subschema-plugin-modal",
       "subschema-plugin-object",
@@ -72,5 +68,7 @@
       "subschema-transitions",
       "subschema-validators"
     ]
-  }
+  },
+  "source": "src",
+  "main": "lib"
 }

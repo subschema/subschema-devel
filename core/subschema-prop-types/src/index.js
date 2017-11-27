@@ -3,7 +3,7 @@ import {
     oneOfType, shape, string
 } from 'prop-types';
 
-import customPropType from './customPropType';
+import  _customPropType, {resolvePropType} from './customPropType';
 
 const RawPropTypes = {
     any,
@@ -23,24 +23,13 @@ const RawPropTypes = {
 
 //we'll re-export these for convenience in the babel6 world.
 
-
-function propTypeToName(propType) {
-    return _propTypeToName(propType, api) || _propTypeToName(propType,
-        RawPropTypes);
+//    propTypesToNames,
+//propTypeToName,
+//    customPropType,
+export function propTypeToName(propType) {
+    return resolvePropType(propType);
 }
-
-function _propTypeToName(propType, _api) {
-    const keys = Object.keys(_api), l = keys.length;
-    for (let i = 0; i < l; i++) {
-        let key = keys[i], f = _api[key];
-        if (f.isRequired === propType) {
-            return '*' + key;
-        }
-        if (f === propType) {
-            return key;
-        }
-    }
-}
+export const customPropType = _customPropType;
 
 function lazyFunction(f) {
     return function () {
@@ -49,7 +38,7 @@ function lazyFunction(f) {
 }
 
 
-function propTypesToNames(props) {
+export function propTypesToNames(props) {
     return Object.keys(props).reduce((ret, k) => {
         ret[k] = propTypeToName(props[k]);
         return ret;
@@ -456,9 +445,7 @@ const api = {
 };
 
 export default ({
-    propTypesToNames,
-    propTypeToName,
-    customPropType,
+
     className,
     conditional,
     blurValidate,

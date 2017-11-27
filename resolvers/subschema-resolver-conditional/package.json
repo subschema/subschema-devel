@@ -10,7 +10,7 @@
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1",
-    "subschema-plugin-conditional":"^4.0.0-b-1"
+    "subschema-plugin-conditional": "^4.0.0-b-1"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1"

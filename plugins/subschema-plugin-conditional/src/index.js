@@ -3,7 +3,7 @@ import PropTypes from 'subschema-prop-types';
 import renderTemplate from 'subschema-rendertemplate';
 import { settings } from 'subschema-resolver-transition';
 
-export default class Conditional extends Component {
+export class Conditional extends Component {
     static contextTypes = PropTypes.contextTypes;
     static displayName  = "Conditional";
     static Transition   = settings.Transition;
@@ -123,3 +123,9 @@ export default class Conditional extends Component {
         </Transition>);
     }
 }
+
+export default ({
+    type: {
+        Conditional
+    }
+});

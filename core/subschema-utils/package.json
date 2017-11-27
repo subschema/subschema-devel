@@ -15,5 +15,6 @@
   "peerDependencies": {
     "lodash": "*"
   },
-  "source": "src"
+  "source": "src",
+  "dependencies": {}
 }

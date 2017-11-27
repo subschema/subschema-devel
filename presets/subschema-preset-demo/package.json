@@ -1,0 +1,21 @@
+{
+  "name": "subschema-preset-demo",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema-plugin-demo": "^4.0.0-b-1",
+    "subschema-webpack-markdown": "^4.0.0-b-1"
+  },
+  "subschema": {
+    "plugins": [
+      "subschema-plugin-demo",
+      [
+        "subschema-webpack-markdown",
+        {
+          "loader": false
+        }
+      ]
+    ]
+  },
+  "source": "src",
+  "main": "lib"
+}

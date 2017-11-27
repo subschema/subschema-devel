@@ -2,9 +2,9 @@
   "name": "subschema",
   "version": "4.0.0-b-1",
   "description": "Subschema",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
-    "compile-default-loader": " ./bin/subschema-make-loader.js | subschema-babel --out-file  ./lib/DefaultLoader.js",
+    "compile-default-loader": "subschema-autoloader | subschema-babel --out-file  ./lib/DefaultLoader.js",
     "compile-lib": "subschema-babel && yarn run compile-default-loader",
     "compile-server": "subschema-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
     "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom subschema-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
@@ -22,7 +22,8 @@
   "dependencies": {
     "subschema-preset-web-form": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
-    "subschema-context": "^4.0.0-b-1"
+    "subschema-context": "^4.0.0-b-1",
+    "subschema-dev-autoloader": "^4.0.0-b-1"
   },
   "devDependencies": {
     "react": "^16.1.0",
@@ -33,6 +34,17 @@
   },
   "subschema": {
     "webpack": "./subschema-webpack.config",
+    "options": {
+      "loader": false
+    },
+    "plugins": [
+      [
+        "subschema-dev-autoloader",
+        {
+          "loader": false
+        }
+      ]
+    ],
     "presets": [
       "subschema-preset-web-form",
       "subschema-preset-resolvers"

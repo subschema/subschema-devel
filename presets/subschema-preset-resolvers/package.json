@@ -90,5 +90,7 @@
       "subschema-resolver-value",
       "subschema-resolver-valueevent"
     ]
-  }
+  },
+  "source": "src",
+  "main": "lib"
 }

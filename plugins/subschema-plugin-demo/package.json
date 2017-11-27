@@ -5,12 +5,15 @@
   "scripts": {
     "karma": "subschema-karma",
     "test": "subschema-karma",
-    "prepublish": "subschema-webpack",
+    "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
     "history": "^4.6.1",
-    "hpack.js": "^2.1.6"
+    "hpack.js": "^2.1.6",
+    "subschema-plugin-project": "^4.0.0-b-1",
+    "subschema-plugin-navigation": "^4.0.0-b-1",
+    "subschema-plugin-playground": "^4.0.0-b-1"
   },
   "peerDepenencies": {
     "react": "*",
@@ -22,13 +25,15 @@
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
     "subschema-dev-support": "^4.0.0-b-1",
-    "subschema-plugin-project": "^4.0.0-b-1",
     "subschema-test-support": "^4.0.0-b-1"
   },
   "source": "src",
+  "main": "lib",
   "subschema": {
     "plugins": [
-      "subschema-plugin-project"
+      "subschema-plugin-project",
+      "subschema-plugin-navigation",
+      "subschema-plugin-playground"
     ]
   }
 }

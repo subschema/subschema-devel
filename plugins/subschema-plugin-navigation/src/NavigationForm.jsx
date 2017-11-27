@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from 'subschema-plugin-form';
+import Form from 'subschema-form';
 import HistoryTypes from './PropTypes';
 import qs from 'querystring';
 

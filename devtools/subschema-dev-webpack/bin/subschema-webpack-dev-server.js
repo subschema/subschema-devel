@@ -6,7 +6,7 @@ const env  = process.env;
 
 env.SUBSCHEMA_DEV_SERVER = env.SUBSCHEMA_DEV_SERVER || 1;
 env.SUBSCHEMA_USE_HTML   = env.SUBSCHEMA_USE_HTML || 1;
-
+env.SUBSCHEMA_MAIN_FIELDS = env.SUBSCHEMA_MAIN_FIELDS || 1;
 if (!env.NODE_ENV) {
     env.NODE_ENV = 'development';
 }

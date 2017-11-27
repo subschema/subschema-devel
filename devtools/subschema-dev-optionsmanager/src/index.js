@@ -23,6 +23,10 @@ class Option {
 }
 
 export default class OptionsManager {
+
+    plugins = new Map();
+    webpack = new Map();
+
     constructor({ prefix = 'SUBSCHEMA', envPrefix, confPrefix, rcFile } = {}) {
 
         envPrefix  = envPrefix || prefix.toUpperCase();
@@ -55,22 +59,36 @@ export default class OptionsManager {
                 ...relto);
         };
 
-        this.scan = (name, ignoreRc, parent) => {
-            const pkg  = require(this.resolveFromPkgDir(name, 'package.json'));
-            const conf = pkg[confPrefix] || parse(
+        this.resolveConfig = function (name) {
+            const pkg = require(this.resolveFromPkgDir(name, 'package.json'));
+            return pkg[confPrefix] || parse(
                 this.resolveFromPkgDir(pkg.name, rcFile));
+        };
+
+        this.scan = (name, ignoreRc, parent) => {
+            if (Array.isArray(name)) {
+                throw new Error(
+                    `${name} can not be an array import from ${parent
+                                                               && parent.name}`);
+
+            }
+            const conf = this.resolveConfig(name);
+
             if (conf) {
-                this.processOpts(pkg.name,
+                this.processOpts(name,
                     ignoreRc ? { ...conf, ignoreRc } : conf, parent);
             }
             return this;
         };
 
-        this.scan();
+        this.scan(this.topPackage.name, false, this.topPackage);
     }
 
-    plugins = new Map();
-    webpack = new Map();
+    newOption(plugin, config, parent) {
+        const opt          = new Option(plugin, config, parent);
+        opt.optionsManager = this;
+        return opt;
+    }
 
     processOpts = (name, {
         presets,
@@ -78,44 +96,63 @@ export default class OptionsManager {
         ignoreRc,
         webpack,
     } = {}, pkg) => {
+
+        if (plugins) {
+            plugins.forEach(plugin => {
+                //plugin can have configuration.
+                //first one wins
+                const pluginName = Array.isArray(plugin) ? plugin[0] : plugin;
+                const pluginConf = Array.isArray(plugin) ? plugin[1]
+                    : (this.resolveConfig(plugin) || {}).options;
+
+                if (/-preset-/.test(pluginName)) {
+                    console.warn(
+                        'please make sure that a preset [%s] is not being loaded from "%s" as a plugin',
+                        pluginName, name);
+                }
+
+                if (this.plugins.has(pluginName)) {
+                    return;
+                }
+                this.plugins.set(pluginName,
+                    this.newOption(pluginName, pluginConf, pkg));
+
+                if (ignoreRc !== true) {
+                    this.scan(pluginName, ignoreRc, pkg);
+                }
+            })
+        }
+
+        if (presets) {
+            //presets do not have configuration.
+            presets.forEach(presetName => {
+                if (Array.isArray(presetName)) {
+                    console.warn(
+                        'presets can not be an array and can not be configured, add the plugin you wish to configure individual plugins');
+                    return;
+                }
+                if (/-plugin-/.test(presetName)) {
+                    console.warn(
+                        'please make sure that a plugin [%s]  is not being loaded from as a preset from "%s"',
+                        presetName, name);
+                }
+                this.scan(presetName, ignoreRc, pkg)
+            });
+        }
+        //last so we can gather all presets.
         if (webpack) {
             if (!this.webpack.has(name)) {
                 const webpackPlugin = Array.isArray(webpack) ? webpack[0]
                     : webpack;
                 const webpackConf   = Array.isArray(webpack) ? webpack[1] : {};
                 this.webpack.set(name,
-                    new Option(
+                    this.newOption(
                         webpackPlugin.startsWith('.') ? require(
                             this.resolveFromPkgDir(name, webpackPlugin))
-                            : require(webpackPlugin)
-                        ,
-                        webpackConf, pkg));
+                            : require(webpackPlugin), webpackConf, pkg));
             }
+        }
 
-        }
-        if (plugins) {
-            plugins.forEach(plugin => {
-                //plugin can have configuration.
-                //first one wins
-                const pluginName = Array.isArray(plugin) ? plugin[0] : plugin;
-                const pluginConf = Array.isArray(plugin) ? plugin[1] : {};
-                if (this.plugins.has(pluginName)) {
-                    return;
-                }
-                this.plugins.set(pluginName,
-                    new Option(pluginName, pluginConf, pkg));
-
-                if (ignoreRc !== true) {
-                    this.scan(plugin, ignoreRc, pkg);
-                }
-            })
-        }
-        if (presets) {
-            //presets do not have configuration.
-            presets.forEach(child => {
-                this.scan(this.resolveFromPkgDir(child), ignoreRc, pkg)
-            });
-        }
     }
 
 }

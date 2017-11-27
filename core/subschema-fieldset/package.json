@@ -1,5 +1,5 @@
 {
-  "name": "subschema-plugin-field",
+  "name": "subschema-fieldset",
   "version": "4.0.0-b-1",
   "scripts": {
     "test": "subschema-karma",
@@ -10,8 +10,8 @@
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1",
-    "subschema-resolver-validate": "^4.0.0-b-1",
-    "subschema-rendertemplate": "^4.0.0-b-1"
+    "subschema-rendertemplate": "^4.0.0-b-1",
+    "subschema-rendercontent": "^4.0.0-b-1"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1"

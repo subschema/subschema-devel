@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import RenderContent from 'subschema-plugin-rendercontent';
+import RenderContent from 'subschema-rendercontent';
 import {warning} from 'subschema-utils';
 
 

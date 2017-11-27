@@ -399,13 +399,13 @@ module.exports = function (source) {
 
 
                 const lng          = langMap[lang] || lang;
-                const resolvedLang = `react-syntax-highlighter/dist/languages/${lng}`;
+                const resolvedLang = `react-syntax-highlighter/languages/hljs/${lng}`;
                 let resolved       = false;
                 try {
                     require.resolve(resolvedLang);
                     resolved = true;
                 } catch (e) {
-                    console.log(`no language highlighting for ${lang}`);
+                    console.log(`no language highlighting for ${resolvedLang}`);
                 }
 
                 if (!resolved) {
@@ -414,11 +414,11 @@ module.exports = function (source) {
                         str)}}</code>`;
                 }
                 renderer.imports['MDhighlighter$, { registerLanguage  as $mdRl} '] =
-                    'react-syntax-highlighter/dist/light';
+                    'react-syntax-highlighter/light';
                 renderer.imports['$mdLang']                                        =
                     resolvedLang;
                 renderer.imports['$mdStyle']                                       =
-                    'react-syntax-highlighter/dist/styles/docco';
+                    'react-syntax-highlighter/styles/hljs/atom-one-light';
 
                 renderer.prelude[`$mdRl(${stringify(lng)}, $mdLang);\n`] = true;
 

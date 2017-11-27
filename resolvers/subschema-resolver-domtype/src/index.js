@@ -27,7 +27,7 @@ export function loadType(val, key, props, { loader, injector }) {
 
 export default {
     resolver: {
-        type: function(Clazz, key, propList, OrigClazz) {
+        domType: function(Clazz, key, propList, OrigClazz) {
 
             Clazz.contextTypes.loader   = PropTypes.loader;
             Clazz.contextTypes.injector = PropTypes.injector;

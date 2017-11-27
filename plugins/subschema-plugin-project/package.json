@@ -2,7 +2,7 @@
   "name": "subschema-plugin-project",
   "version": "4.0.0-b-1",
   "description": "Subschema Project Generator",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
     "karma": "subschema-karma",
     "test": "subschema-karma",
@@ -15,10 +15,14 @@
   "devDependencies": {
     "subschema-preset-examples": "^4.0.0-b-1",
     "subschema-dev-support": "^4.0.0-b-1",
-    "subschema-valuemanager": "^4.0.0-b-1"
+    "subschema-valuemanager": "^4.0.0-b-1",
+    "subschema": "^4.0.0-b-1"
   },
   "source": "src",
   "subschema": {
-    "webpack": "./subschema-webpack.config.js"
+    "webpack": "./subschema-webpack.config.js",
+    "presets": [
+      "subschema-preset-examples"
+    ]
   }
 }

@@ -22,6 +22,8 @@
     "rimraf": "^2.6.2"
   },
   "workspaces": [
+    "subschema.wiki",
+    "demo",
     "subschema",
     "examples/*",
     "plugins/*",

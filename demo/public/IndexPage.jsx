@@ -1,30 +1,35 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 
-import UninjectedNewProject from 'subschema-component-demo/lib/NewProject';
+import { types } from 'subschema-plugin-demo';
 
 const seperator = ' | ';
+
 export default class IndexPage extends Component {
+
     static defaultProps = {
-        NewProject: UninjectedNewProject
+        NewProject: types.NewProject
     };
+
     static propTypes = {
         NewProject: PropTypes.injectClass
     };
 
     render() {
-        const {NewProject} = this.props;
+        const { NewProject } = this.props;
         return (
             <div className="jumbotron clearfix">
                 <h1>Subschema</h1>
 
                 <p>This is app shows how to use Subschema</p>
 
-                <p>Wherever it shows <b>Show Example Code</b> you can click to see the code that geneated the form, and
+                <p>Wherever it shows <b>Show Example Code</b> you can click to
+                    see the code that geneated the form, and
                     you can edit
                     the code in place,seeing the result immediately.</p>
 
-                <p>You can see how it works by loading <b>Errors</b> and <b>Data</b>, from the buttons up in the menu
+                <p>You can see how it works by loading <b>Errors</b> and
+                    <b>Data</b>, from the buttons up in the menu
                     bar, or editing the code inline</p>
 
                 <p>Here are some ideas of things you can do with Subschema.</p>
@@ -62,7 +67,9 @@ export default class IndexPage extends Component {
 
                 </dl>
 
-                <p><a className="btn btn-primary btn-lg" href="https://github.com/subschema/subschema/wiki" role="button">Learn
+                <p><a className="btn btn-primary btn-lg"
+                      href="https://github.com/subschema/subschema/wiki"
+                      role="button">Learn
                     more</a></p>
                 <hr/>
                 <p>Or you can create a brand new project</p>

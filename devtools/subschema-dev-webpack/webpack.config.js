@@ -55,7 +55,8 @@ function autoprefixer() {
 
 const optionsManager = new OptionsManager();
 optionsManager.processOpts('subschema-dev-babel',
-    { webpack: './webpack.config' }, require('./package.json'));
+    { webpack: './subschema-webpack.config', options: { loader: false } },
+    require('./package.json'));
 
 const plugins = [];
 const opts    = {
@@ -393,13 +394,17 @@ if (SUBSCHEMA_ENTRY) {
 }
 
 //This is where the magic happens
-console.dir(optionsManager.webpack);
 optionsManager.webpack.forEach((option, key) => {
-    console.log('loading ', key, option);
-    const tmpWebpack = option.plugin.call(opts, option.config, webpack,
-        optionsManager);
-    if (tmpWebpack) {
-        webpack = tmpWebpack;
+    if (option.config !== false) {
+        console.log('loading webpack plugin', key);
+
+        const tmpWebpack = option.plugin.call(opts, option.config, webpack,
+            optionsManager);
+        if (tmpWebpack) {
+            webpack = tmpWebpack;
+        }
+    } else {
+        console.log('disabled oading webpack plugin', key);
     }
 });
 

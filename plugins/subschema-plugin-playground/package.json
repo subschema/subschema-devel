@@ -1,0 +1,38 @@
+{
+  "name": "subschema-plugin-playground",
+  "version": "4.0.0-b-1",
+  "description": "A tool for editing and playing with subschema components",
+  "scripts": {
+    "karma": "subschema-karma",
+    "test": "subschema-karma",
+    "server": "subschema-webpack-dev-server",
+    "prepublish": "subschema-webpack",
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "babel-standalone": "^6.24.0",
+    "brace": "^0.10.0",
+    "browser-filesaver": "^1.1.1",
+    "react-ace": "^5.0.1",
+    "subschema-plugin-project": "^4.0.0-b-1",
+    "subschema-preset-resolvers": "^4.0.0-b-1",
+    "subschema-preset-web-form": "^4.0.0-b-1",
+    "subschema-valuemanager": "^4.0.0-b-1",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "main": "lib",
+  "subschema": {
+    "webpack": "./subschema-webpack.config.js",
+    "plugins": [
+      "subschema-plugin-project"
+    ],
+    "presets": [
+      "subschema-preset-web-form",
+      "subschema-preset-resolvers"
+    ]
+  }
+}

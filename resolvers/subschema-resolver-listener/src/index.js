@@ -17,7 +17,7 @@ function handleListeners(value, key, props, context) {
 
 export default {
     resolver: {
-        listen: function(Clazz, key) {
+        listener: function(Clazz, key) {
             Clazz.contextTypes.valueManager = PropTypes.valueManager;
 
             Clazz::this.listener(key, handleListeners);

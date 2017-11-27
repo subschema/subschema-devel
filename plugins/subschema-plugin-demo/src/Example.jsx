@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "subschema-prop-types";
-import {SubschemaPlayground as UninjectedSubschemaPlayground} from "subschema-component-playground";
+import {SubschemaPlayground as UninjectedSubschemaPlayground} from "subschema-plugin-playground";
 import {loader} from "./PropTypes";
 export default class Example extends Component {
 

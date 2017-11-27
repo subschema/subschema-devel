@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import { Form } from 'subschema';
-import UninjectedButtonsTemplate from 'subschema-plugin-template-buttons';
+import { ButtonsTemplate as UninjectedButtonsTemplate } from 'subschema-plugin-template-buttons';
 import UninjectedDisplayValueAndErrors from './DisplayValueAndErrors.jsx';
-import { normalize, source } from 'subschema-project';
+import { normalize, source } from 'subschema-plugin-project';
 import Compiler from './Compiler';
 import SchemaEditor from './SchemaEditor';
 import ExportButtons from './ExportButtons';

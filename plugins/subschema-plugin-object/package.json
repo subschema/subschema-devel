@@ -2,10 +2,10 @@
   "name": "subschema-plugin-object",
   "version": "4.0.0-b-1",
   "dependencies": {
-    "subschema-plugin-field": "^4.0.0-b-1",
-    "subschema-plugin-fieldset": "^4.0.0-b-1",
     "subschema-utils": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1",
+    "subschema-field": "^4.0.0-b-1",
+    "subschema-fieldset": "^4.0.0-b-1",
     "subschema-rendertemplate": "^4.0.0-b-1"
   },
   "scripts": {

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
 import { noop, path as _path, unique, warning } from 'subschema-utils';
-import UninjectedField from 'subschema-plugin-field';
-import UninjectedFieldSet from 'subschema-plugin-fieldset';
+import UninjectedField from 'subschema-field';
+import UninjectedFieldSet from 'subschema-fieldset';
 import renderTemplate from 'subschema-rendertemplate';
 
 export class ObjectType extends PureComponent {

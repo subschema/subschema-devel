@@ -2,7 +2,6 @@
   "name": "subschema-dev-babel",
   "version": "4.0.0-b-1",
   "description": "Tools for developing babel with subschema",
-  "main": "index.js",
   "scripts": {
     "clean": "subschema-clean"
   },
@@ -27,6 +26,6 @@
     "rimraf": "^2.6.2"
   },
   "subschema": {
-    "webpack": "./webpack.config.js"
+    "webpack": "./subschema-webpack.config.js"
   }
 }

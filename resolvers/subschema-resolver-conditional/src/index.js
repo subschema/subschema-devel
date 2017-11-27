@@ -1,11 +1,11 @@
-
 import PropTypes from 'subschema-prop-types';
-import UninjectedConditional from 'subschema-plugin-conditional';
+import { Conditional as UninjectedConditional } from 'subschema-plugin-conditional';
 
 export const settings = {
     operator   : "truthy",
     Conditional: UninjectedConditional
 };
+
 /**
  * Normalizes conditional prop,
  * @param value
@@ -32,6 +32,7 @@ export function normalize(value, key, props, { injector }) {
     };
     return conditional;
 }
+
 /**
  * Configures the configurable object.
  *
@@ -40,7 +41,7 @@ export function normalize(value, key, props, { injector }) {
  */
 export default {
     resolver: {
-        conditional: function(Clazz, key) {
+        conditional: function (Clazz, key) {
 
             Clazz.contextTypes.injector = PropTypes.injector;
 

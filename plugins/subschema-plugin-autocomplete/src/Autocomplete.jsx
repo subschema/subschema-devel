@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dom from 'subschema-dom';
 import PropTypes from 'subschema-prop-types';
-import renderTemplate  from 'subschema-plugin-rendertemplate';
+import renderTemplate  from 'subschema-rendertemplate';
 
 export default class Autocomplete extends Component {
 

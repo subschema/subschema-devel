@@ -1,28 +1,21 @@
 import React from "react";
 import { render } from "react-dom";
 import { loader, ValueManager } from "subschema";
-import samples from "subschema-test-samples";
 import Index from "./IndexPage.jsx";
 import schema from "./schema.json";
 import createHistory from "history/createHashHistory";
-import navigation, { NavigationForm } from "subschema-component-navigation";
-import playground from 'subschema-component-playground';
-import { DynamicSchema } from "subschema-component-demo";
+import { DynamicSchema } from "subschema-plugin-demo";
 import docs from "subschema.wiki";
-import demo from 'subschema-component-demo';
+import {NavigationForm} from 'subschema-plugin-navigation';
 import "subschema-transitions/lib/style.css";
 //import "./sample.lessp";
 const history = createHistory({
     hashType: 'slash' // Google's legacy AJAX URL format
 
 });
-loader.addLoader(navigation);
-loader.addLoader(playground);
-loader.addLoader(demo);
 loader.addType({ Index });
 loader.loaderType('Example');
 loader.loaderType('Doc');
-loader.addExamples(samples);
 loader.addDocs(docs);
 
 const valueManager = ValueManager({

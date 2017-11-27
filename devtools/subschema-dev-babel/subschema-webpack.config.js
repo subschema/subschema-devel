@@ -8,6 +8,7 @@ module.exports = ({
                       }
                   }, webpack) => {
 
+
     webpack.module.rules.push({
         test,
         include,

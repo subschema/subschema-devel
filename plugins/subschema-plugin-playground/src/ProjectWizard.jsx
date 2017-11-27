@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import ValueManager from 'subschema-valuemanager';
-import Form from 'subschema-plugin-form';
-import samples from 'subschema-test-samples';
 import { kebabCase } from 'subschema-utils';
 import { saveAs } from 'browser-filesaver';
+import { Form, loader } from 'subschema';
 
 //A simple Schema for this configuration
 export const schema = {
     schema     : {
         samples    : {
             type       : 'Select',
-            options    : Object.keys(samples),
+//figure this out.
+//
+            options    : loader.listExamples().map(v => v.name),
             placeholder: 'Custom Project'
         },
         jsName     : {
