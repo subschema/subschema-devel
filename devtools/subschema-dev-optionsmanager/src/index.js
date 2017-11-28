@@ -1,4 +1,4 @@
-import { join, resolve } from 'path';
+import { join, relative, resolve } from 'path';
 import { existsSync, readFileSync } from 'fs';
 
 const parse = (filename) => {
@@ -59,24 +59,28 @@ export default class OptionsManager {
                 ...relto);
         };
 
-        this.resolveConfig = function (name) {
-            const pkg = require(this.resolveFromPkgDir(name, 'package.json'));
+        this.resolveConfig = function (pkg) {
+            if (typeof pkg === 'string') {
+                pkg = require(`${pkg}/package.json`);
+            }
             return pkg[confPrefix] || parse(
                 this.resolveFromPkgDir(pkg.name, rcFile));
         };
 
         this.scan = (name, ignoreRc, parent) => {
+            const pkg = name === this.topPackage.name ? this.topPackage
+                : require(`${name}/package.json`);
             if (Array.isArray(name)) {
                 throw new Error(
                     `${name} can not be an array import from ${parent
                                                                && parent.name}`);
 
             }
-            const conf = this.resolveConfig(name);
+            const conf = this.resolveConfig(pkg);
 
             if (conf) {
-                this.processOpts(name,
-                    ignoreRc ? { ...conf, ignoreRc } : conf, parent);
+                this.processOpts(name, ignoreRc ? { ...conf, ignoreRc } : conf,
+                    parent, pkg);
             }
             return this;
         };
@@ -90,6 +94,17 @@ export default class OptionsManager {
         return opt;
     }
 
+    resolve(pkg, value) {
+        if (value.startsWith('.')) {
+            if (pkg.name !== this.topPackage.name) {
+                return relative(this.cwd(),
+                    require.resolve(resolve(pkg.name, value)));
+            }
+        }
+        return value;
+
+    }
+
     processOpts = (name, {
         presets,
         plugins,
@@ -101,7 +116,7 @@ export default class OptionsManager {
             plugins.forEach(plugin => {
                 //plugin can have configuration.
                 //first one wins
-                const pluginName = Array.isArray(plugin) ? plugin[0] : plugin;
+                let pluginName   = Array.isArray(plugin) ? plugin[0] : plugin;
                 const pluginConf = Array.isArray(plugin) ? plugin[1]
                     : (this.resolveConfig(plugin) || {}).options;
 
@@ -110,10 +125,12 @@ export default class OptionsManager {
                         'please make sure that a preset [%s] is not being loaded from "%s" as a plugin',
                         pluginName, name);
                 }
+                pluginName = this.resolve(pkg, pluginName);
 
                 if (this.plugins.has(pluginName)) {
                     return;
                 }
+
                 this.plugins.set(pluginName,
                     this.newOption(pluginName, pluginConf, pkg));
 
@@ -142,14 +159,14 @@ export default class OptionsManager {
         //last so we can gather all presets.
         if (webpack) {
             if (!this.webpack.has(name)) {
-                const webpackPlugin = Array.isArray(webpack) ? webpack[0]
+                let webpackPlugin = Array.isArray(webpack) ? webpack[0]
                     : webpack;
-                const webpackConf   = Array.isArray(webpack) ? webpack[1] : {};
+                const webpackConf = Array.isArray(webpack) ? webpack[1] : {};
+
+                const webpackModule = require(this.resolve(pkg, webpackPlugin));
+
                 this.webpack.set(name,
-                    this.newOption(
-                        webpackPlugin.startsWith('.') ? require(
-                            this.resolveFromPkgDir(name, webpackPlugin))
-                            : require(webpackPlugin), webpackConf, pkg));
+                    this.newOption(webpackModule, webpackConf, pkg));
             }
         }
 
