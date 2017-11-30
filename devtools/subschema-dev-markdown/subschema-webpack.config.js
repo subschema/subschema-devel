@@ -11,7 +11,7 @@ module.exports =
                     loader : 'babel-loader',
                     options: babel
                 }, {
-                    loader: require.resolve('subschema-webpack-markdown'),
+                    loader: require.resolve('subschema-dev-markdown'),
                 }]
             });
         return webpack;

@@ -14,7 +14,13 @@
     "subschema-utils": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-dev-support": "^4.0.0-b-1",
+    "subschema-dev-less": "^4.0.0-b-1"
   },
-  "source": "src"
+  "source": "src",
+  "subschema": {
+    "plugins": [
+      "subschema-dev-less"
+    ]
+  }
 }

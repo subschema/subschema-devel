@@ -3,13 +3,13 @@
   "version": "4.0.0-b-1",
   "dependencies": {
     "subschema-plugin-demo": "^4.0.0-b-1",
-    "subschema-webpack-markdown": "^4.0.0-b-1"
+    "subschema-dev-markdown": "^4.0.0-b-1"
   },
   "subschema": {
     "plugins": [
       "subschema-plugin-demo",
       [
-        "subschema-webpack-markdown",
+        "subschema-dev-markdown",
         {
           "loader": false
         }

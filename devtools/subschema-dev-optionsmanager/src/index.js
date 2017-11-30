@@ -1,7 +1,15 @@
-import { join, relative, resolve } from 'path';
+import { join, resolve } from 'path';
 import { existsSync, readFileSync } from 'fs';
 
-const parse = (filename) => {
+const select = (...args) => {
+    for (let i = 0, l = args.length; i < l; i++) {
+        if (args[i] !== void(0)) {
+            return args[i];
+        }
+    }
+};
+
+const parse      = (filename) => {
     if (!existsSync(filename)) {
         return;
     }
@@ -12,13 +20,31 @@ const parse = (filename) => {
         return null;
     }
 };
-
+const nameConfig = (value) => {
+    if (Array.isArray(value)) {
+        return value;
+    }
+    return [value];
+};
 
 class Option {
     constructor(plugin, config, parent) {
+        if (!plugin) {
+            throw new OptionError(`Option must have a plugin ${parent}`);
+        }
         this.plugin = plugin;
         this.config = config;
         this.parent = parent;
+    }
+
+    toJSON() {
+        return {
+            plugin: typeof this.plugin === 'function' ? (this.plugin.name
+                                                         || '[function]')
+                : this.plugin,
+            config: this.config,
+            parent: `[${this.parent && this.parent.name}]`
+        }
     }
 }
 
@@ -26,6 +52,7 @@ export default class OptionsManager {
 
     plugins = new Map();
     webpack = new Map();
+
 
     constructor({ prefix = 'SUBSCHEMA', envPrefix, confPrefix, rcFile } = {}) {
 
@@ -59,7 +86,7 @@ export default class OptionsManager {
                 ...relto);
         };
 
-        this.resolveConfig = function (pkg) {
+        this.resolveConfig = (pkg) => {
             if (typeof pkg === 'string') {
                 pkg = require(`${pkg}/package.json`);
             }
@@ -94,14 +121,13 @@ export default class OptionsManager {
         return opt;
     }
 
-    resolve(pkg, value) {
+    resolve(name, value) {
         if (value.startsWith('.')) {
-            if (pkg.name !== this.topPackage.name) {
-                return relative(this.cwd(),
-                    require.resolve(resolve(pkg.name, value)));
+            if (name === this.topPackage.name) {
+                return this.resolveFromPkgDir(name, value);
             }
         }
-        return value;
+        return join(name, value);
 
     }
 
@@ -110,31 +136,44 @@ export default class OptionsManager {
         plugins,
         ignoreRc,
         webpack,
+        options,
+        env,
     } = {}, pkg) => {
-
+        const envOveride = env && process.env.NODE_ENV
+                           && env[process.env.NODE_ENV];
+        if (envOveride) {
+            return this.processOpts(name, {
+                presets : select(envOveride.presets || presets),
+                options : select(envOveride.options || options),
+                plugins : select(envOveride.plugins || plugins),
+                webpack : select(envOveride.webpack || webpack),
+                ignoreRc: select(envOveride.ignoreRc || ignoreRc),
+            }, pkg);
+        }
         if (plugins) {
             plugins.forEach(plugin => {
                 //plugin can have configuration.
                 //first one wins
-                let pluginName   = Array.isArray(plugin) ? plugin[0] : plugin;
-                const pluginConf = Array.isArray(plugin) ? plugin[1]
-                    : (this.resolveConfig(plugin) || {}).options;
+                const [pluginName, pluginOptions = (this.resolveConfig(
+                    pluginName) || {}).options]  = nameConfig(plugin);
 
                 if (/-preset-/.test(pluginName)) {
                     console.warn(
                         'please make sure that a preset [%s] is not being loaded from "%s" as a plugin',
                         pluginName, name);
                 }
-                pluginName = this.resolve(pkg, pluginName);
+                const isLocalPlugin     = pluginName.startsWith('.');
+                const resolvePluginName = isLocalPlugin
+                    ? this.resolveFromPkgDir(pkg.name, pluginName) : pluginName;
 
-                if (this.plugins.has(pluginName)) {
+                if (this.plugins.has(resolvePluginName)) {
                     return;
                 }
 
-                this.plugins.set(pluginName,
-                    this.newOption(pluginName, pluginConf, pkg));
+                this.plugins.set(resolvePluginName,
+                    this.newOption(resolvePluginName, pluginOptions, pkg));
 
-                if (ignoreRc !== true) {
+                if (!(ignoreRc || isLocalPlugin)) {
                     this.scan(pluginName, ignoreRc, pkg);
                 }
             })
@@ -158,18 +197,43 @@ export default class OptionsManager {
         }
         //last so we can gather all presets.
         if (webpack) {
+            if (webpack === true) {
+                webpack = './subschema-webpack.config.js';
+            }
             if (!this.webpack.has(name)) {
-                let webpackPlugin = Array.isArray(webpack) ? webpack[0]
-                    : webpack;
-                const webpackConf = Array.isArray(webpack) ? webpack[1] : {};
+                const [webpackPlugin, webpackConf] = nameConfig(webpack);
 
-                const webpackModule = require(this.resolve(pkg, webpackPlugin));
+                const webpackPluginLoc = this.resolveFromPkgDir(name,
+                    webpackPlugin);
 
-                this.webpack.set(name,
-                    this.newOption(webpackModule, webpackConf, pkg));
+                try {
+                    const webpackModule = require(webpackPluginLoc);
+                    this.webpack.set(name,
+                        this.newOption(webpackModule, webpackConf, pkg));
+                } catch (e) {
+                    throw new OptionError(`Could not locate "${join(name,
+                        webpackPlugin)}" in package "${pkg.name}" - ${webpackPluginLoc}`);
+                }
             }
         }
+    };
 
+    toJSON() {
+        return {
+            plugins: this.plugins,
+            webpack: this.webpack
+        }
     }
 
+}
+
+export class OptionError extends Error {
+    constructor(message) {
+        super(message);
+        // Maintains proper stack trace for where our error was thrown (only
+        // available on V8)
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, OptionError);
+        }
+    }
 }

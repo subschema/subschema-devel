@@ -3,7 +3,7 @@
   "version": "4.0.0-b-1",
   "description": "Tools for developing with subschema and karma",
   "scripts": {
-    "clean": "subschema-clean"
+    "test": "subschema-mocha"
   },
   "bin": {
     "subschema-karma": "bin/subschema-karma.js"
@@ -22,6 +22,13 @@
     "karma-webpack": "^2.0.5"
   },
   "subschema": {
-    "webpack": "./src/webpack.config.js"
+    "options": {
+      "loader": false
+    },
+    "env": {
+      "test": {
+        "webpack": true
+      }
+    }
   }
 }

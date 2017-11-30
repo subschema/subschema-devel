@@ -1,80 +1,27 @@
 // Karma configuration
-const webpack             = require('subschema-dev-webpack');
-const webpackObj          = require('webpack');
-const path                = require('path');
-const fs                  = require('fs');
-const { resolveMap, cwd } = require('subschema-dev-utils');
+const webpack = require('subschema-dev-webpack');
+const path    = require('path');
+const { cwd } = require('subschema-dev-utils');
 
 const {
           SUBSCHEMA_KARMA_FILES  = '',
-          SUBSCHEMA_TEST_DIR     = __dirname,
           SUBSCHEMA_COVERAGE     = '',
           SUBSCHEMA_COVERAGE_DIR = '',
           SUBSCHEMA_DEBUG,
           SUBSCHEMA_CHROME_DIR   = path.resolve(process.env.HOME,
               '.subschema-chrome'),
-          SUBSCHEMA_TEST_MODULE  = fs.existsSync(cwd('test')) ? cwd('test')
-              : cwd(),
-          SUBSCHEMA_TEST_PATTERN = '-test\.jsx?',
           TRAVIS
       } = process.env;
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+
 const useCoverage = !!SUBSCHEMA_COVERAGE || !!SUBSCHEMA_COVERAGE_DIR;
-const test        = path.resolve(SUBSCHEMA_TEST_DIR, 'test-index.js');
-if (!webpack.output) {
-    webpack.output = {};
-}
 
-
-//muck with webpack
-if (!webpack.resolve.alias.test) {
-    webpack.resolve.alias.test = SUBSCHEMA_TEST_MODULE;
-}
-console.warn('running tests in ', webpack.resolve.alias.test);
-
-webpack.devtool      = 'inline-source-map';
-webpack.target       = 'web';
-webpack.node         = webpack.node || {};
-webpack.node.fs      = 'empty';
-webpack.node.net     = 'empty';
-webpack.node.console = false;
-webpack.node.util    = true;
-//webpack.resolve.alias.util = require.resolve('util/util.js');
-//webpack.resolve.alias['util/util.js'] = require.resolve('util/util.js');
-webpack.output.pathinfo = true;
-
-Object.assign(webpack.resolve.alias, resolveMap('subschema-test-support'));
-
-if (useCoverage) {
-    console.warn(`enabling code coverage for karma`);
-    webpack.module.rules.unshift(
-        {
-            test   : /\.jsx?$/,
-            // instrument only testing sources with Istanbul
-            include: [/subschema*/, cwd('src'), cwd('public')],
-            use    : {
-                loader : 'istanbul-instrumenter-loader',
-                options: {
-                    esModules: true
-                }
-            },
-            enforce: 'post',
-        }
-    );
-}
-if (SUBSCHEMA_TEST_PATTERN) {
-    webpack.plugins.push(new webpackObj.ContextReplacementPlugin(/^test$/,
-        new RegExp(SUBSCHEMA_TEST_PATTERN), true));
-}
-const files = [test];
+const files = Object.values(webpack.entry);
 if (SUBSCHEMA_KARMA_FILES) {
     files.unshift(...SUBSCHEMA_KARMA_FILES.split(/,\s*/));
     console.warn(`using files ${files}`);
 }
-webpack.plugins.push(new webpackObj.DefinePlugin({
-    'process.env.SUBSCHEMA_TEST_MODULE' : JSON.stringify(SUBSCHEMA_TEST_MODULE),
-    'process.env.SUBSCHEMA_TEST_PATTERN': JSON.stringify(SUBSCHEMA_TEST_PATTERN)
-}));
 
 module.exports = function (config) {
 
@@ -104,7 +51,7 @@ module.exports = function (config) {
 
         // list of preprocessors
         preprocessors: {
-            [test]: ['webpack', 'sourcemap']
+            [webpack.entry.test]: ['webpack', 'sourcemap']
         },
 
 
@@ -175,7 +122,7 @@ module.exports = function (config) {
         karmaConf.reporters.push('coverage-istanbul');
 
         karmaConf.coverageIstanbulReporter = {
-            reports: ['lcovonly', 'text-summary'],
+            reports                : ['lcovonly', 'text-summary'],
             fixWebpackSourcePaths  : true,
             skipFilesWithNoCoverage: true,
             dir                    : SUBSCHEMA_COVERAGE_DIR

@@ -4,7 +4,6 @@ const babel               = require('subschema-dev-babel');
 const webpackUtils        = require('subschema-dev-utils');
 const webpackObject       = require('webpack');
 const OptionsManager      = require('subschema-dev-optionsmanager').default;
-const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const deps                = webpackUtils.deps,
       configOrBool        = webpackUtils.configOrBool,
       useExternals        = webpackUtils.useExternals,
@@ -20,11 +19,8 @@ const {
               : 'development',
           SUBSCHEMA_DEBUG,
           SUBSCHEMA_TARGET           = 'web',
-          SUBSCHEMA_LOCAL_IDENT      = '[name]__[local]___[hash:base64:5]',
-          SUBSCHEMA_USE_AUTOPREFIXER = 1,
           SUBSCHEMA_OUTPUT_PATH,
           SUBSCHEMA_MAIN_FIELDS,
-          SUBSCHEMA_USE_HTML,
           SUBSCHEMA_OUTPUT_FILENAME,
           SUBSCHEMA_ENTRY,
           SUBSCHEMA_LIBRARY,
@@ -38,25 +34,12 @@ const {
           SUBSCHEMA_PUBLIC,
           SUBSCHEMA_USE_NAME_HASH,
           SUBSCHEMA_ANALYZE,
-          SUBSCHEMA_USE_ANALYTICS,
-          SUBSCHEMA_TEST_PATTERN,
-
+          SUBSCHEMA_USE_ANALYTICS
       } = process.env;
 
-function autoprefixer() {
-    const browsers = configOrBool(SUBSCHEMA_USE_AUTOPREFIXER);
-    if (!browsers) {
-        return [];
-    }
-    return [
-        require('autoprefixer')()
-    ];
-}
 
 const optionsManager = new OptionsManager();
-optionsManager.processOpts('subschema-dev-babel',
-    { webpack: './subschema-webpack.config', options: { loader: false } },
-    require('./package.json'));
+optionsManager.scan('subschema-dev-webpack', false, require('./package.json'));
 
 const plugins = [];
 const opts    = {
@@ -75,33 +58,6 @@ const opts    = {
     useDefine        : {
         'process.env.NODE_ENV': NODE_ENV,
     },
-    useCssModule     : {
-        loader : "css-loader",
-        options: {
-            modules       : true,
-            importLoaders : 1,
-            localIdentName: SUBSCHEMA_LOCAL_IDENT,
-        }
-    },
-    useCss           : {
-        loader : "css-loader",
-        options: {
-            importLoaders: 1,
-        }
-    },
-    usePostCss       : {
-        loader : 'postcss-loader',
-        options: {
-            plugins: autoprefixer
-        }
-    },
-    useLess          : {
-        loader : "less-loader",
-        options: {
-            strictMath: true,
-            noIeCompat: true
-        }
-    },
     useNameHash      : configOrBool(SUBSCHEMA_USE_NAME_HASH,
         '[name]-[hash].js'),
     analytics        : configOrBool(SUBSCHEMA_USE_ANALYTICS),
@@ -109,38 +65,6 @@ const opts    = {
 };
 
 
-if (!opts.isUseStyleLoader) {
-    const useNameHash       = opts.useNameHash === true ? '[hash].style.css'
-        : typeof opts.useNameHash === 'string' ? opts.useNameHash : 'style.css';
-    const ExtractTextPlugin = require('extract-text-webpack-plugin');
-    const extractCSS        = new ExtractTextPlugin(
-        useNameHash.replace(/(\.js)$/, '.css'));
-    opts.useStyle           = function useStyleExtractText(...args) {
-        const conf = { use: args.filter(Boolean) };
-        if (opts.publicPath) {
-            conf.publicPath = opts.publicPath;
-        }
-        return extractCSS.extract(conf);
-    };
-    plugins.push(extractCSS);
-} else {
-    opts.useStyle = function useStyleWithStyleLoader(...args) {
-        return ['style-loader'].concat(args.filter(Boolean));
-    };
-}
-
-opts.useStatsFile = configOrBool(SUBSCHEMA_USE_STATS_FILE)
-if (opts.useStatsFile) {
-    const filename = opts.useStatsFile === true ? 'stats.json'
-        : opts.useStatsFile;
-    plugins.push(new (require("webpack-stats-plugin").StatsWriterPlugin)({
-        filename,
-        transform(data, opts) {
-            const [main, css] = data.assetsByChunkName["null"];
-            return JSON.stringify({ main, css }, null, 2);
-        }
-    }));
-}
 
 const output = {
     filename: configOrBool(SUBSCHEMA_OUTPUT_FILENAME, opts.useNameHash)
@@ -190,16 +114,9 @@ let webpack = {
             path.resolve(__dirname, 'node_modules'),
         ],
         alias  : resolveMap(
-            'style-loader',
-            'css-loader',
-            'postcss-loader',
-            'less-loader',
             'raw-loader',
-            'file-loader',
-            'url-loader',
-            'file-loader',
-            'json-loader',
-            'babel-loader')
+            'json-loader'
+        )
     },
     output,
     plugins,
@@ -207,64 +124,6 @@ let webpack = {
     module       : {
         rules: [
 
-            {
-                test: /\.css$/,
-                use : opts.useStyle(opts.useCss)
-            },
-            {
-
-                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                use : {
-                    loader : 'url-loader',
-                    options: {
-                        limit   : 10000,
-                        mimetype: 'application/font-woff',
-
-                    }
-                }
-            },
-            {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                use : {
-                    loader : 'url-loader',
-                    options: {
-                        limit   : 10000,
-                        mimetype: 'application/octet-stream'
-                    }
-                }
-            },
-            {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                use : { loader: 'file-loader' }
-            },
-            {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                use : {
-                    loader : 'url-loader',
-                    options: {
-                        limit   : 10000,
-                        mimetype: 'image/svg+xml'
-                    }
-                }
-            },
-            {
-                test: /\.(png|je?pg|gif?f|mpe?g)$/,
-                use : {
-                    loader : 'file-loader',
-                    options: {
-                        limit: 10000,
-                    }
-                }
-            },
-            {
-                test  : /\.less$/,
-                loader:
-                    opts.useStyle(
-                        opts.useCssModule,
-                        opts.useLess,
-                        opts.usePostCss)
-
-            },
             {
                 test  : /\.json$/,
                 loader: 'json-loader'
@@ -291,56 +150,11 @@ if (mainFields) {
 
 //}
 
-function charset(ele) {
-    if (!ele.attributes) {
-        ele.attributes = {};
-    }
-    if (!ele.attributes.charset) {
-        ele.attributes.charset = 'UTF-8';
-    }
-}
 
-const ogenerateAssetTags = HtmlWebpackPlugin.prototype.generateAssetTags;
-
-HtmlWebpackPlugin.prototype.generateAssetTags = function (assets) {
-    const ret = ogenerateAssetTags.call(this, assets);
-    ret.body.forEach(charset);
-    ret.head.forEach(charset);
-    return ret;
-};
-
-opts.HtmlWebpackPlugin = HtmlWebpackPlugin;
-
-opts.useHtml = configOrBool(SUBSCHEMA_USE_HTML);
-if (opts.useHtml) {
-    console.warn(`using html plugin`);
-
-    opts.useHtml = {
-        title     : (deps.description ? deps.description : deps.name),
-        hash      : opts.useNameHash,
-        template  : opts.useHtml ? path.resolve(__dirname,
-            'public',
-            opts.analytics ? 'index_analytics.ejs' : 'index.ejs')
-            : opts.useHtml,
-        filename  : 'index.html',
-        publicPath: opts.publicPath,
-        analytics : opts.analytics
-    };
-}
 
 opts.useHot = configOrBool(SUBSCHEMA_USE_HOT);
 
-if (opts.useHot) {
-    webpack.devtool = 'cheap-module-source-map';
-    babel.plugins.unshift(require.resolve("react-hot-loader/babel"));
-    webpack.resolve.alias['webpack/hot/dev-server'] =
-        require.resolve('webpack/hot/dev-server.js');
 
-    webpack.resolve.alias['only-dev-server'] =
-        require.resolve('webpack/hot/only-dev-server.js');
-
-    console.warn('using hot loading');
-}
 ((idx) => {
     if (idx != -1) {
         opts.target = process.argv[idx + 1];
@@ -394,19 +208,24 @@ if (SUBSCHEMA_ENTRY) {
 }
 
 //This is where the magic happens
-optionsManager.webpack.forEach((option, key) => {
-    if (option.config !== false) {
-        console.log('loading webpack plugin', key);
-
-        const tmpWebpack = option.plugin.call(opts, option.config, webpack,
-            optionsManager);
-        if (tmpWebpack) {
-            webpack = tmpWebpack;
+try {
+    optionsManager.webpack.forEach((option, key) => {
+        if (option.config !== false) {
+            console.warn('loading webpack plugin', key);
+            const tmpWebpack = option.plugin.call(opts, option.config || {},
+                webpack,
+                optionsManager);
+            if (tmpWebpack) {
+                webpack = tmpWebpack;
+            }
+        } else {
+            console.warn('disabled loading webpack plugin', key);
         }
-    } else {
-        console.log('disabled oading webpack plugin', key);
-    }
-});
+    });
+} catch (e) {
+    console.warn('optionsManager', JSON.stringify(optionsManager, null, 2));
+    throw e;
+}
 
 if (opts.useDefine) {
     webpack.plugins.push(
@@ -417,79 +236,16 @@ if (opts.useDefine) {
             }, {})));
 }
 
-if (opts.useHot) {
-    const preEntry = ['only-dev-server'];
-    if (typeof webpack.entry == 'string') {
-        webpack.entry = preEntry.concat(webpack.entry);
-    } else if (Array.isArray(webpack.entry)) {
-        webpack.entry = webpack.entry.map(entry => preEntry.concat(entry));
-    } else if (webpack.entry) {
-        webpack.entry =
-            Object.keys(webpack.entry).reduce(function (ret, key) {
-                ret[key] = preEntry.concat(webpack.entry[key]);
-                return ret;
-            }, {});
-    } else {
-        console.warn(
-            `could not find an webpack.entry, hot loading may not work`);
-    }
-}
 
-//Think hard if this should be the default.
-if (opts.useSubschemaAlias) {
-    const subschemaKey = opts.useSubschemaAlias === true ? 'subschema'
-        : opts.useSubschemaAlias;
-    try {
-        webpack.resolve.alias[subschemaKey] =
-            require.resolve('subschema/dist/subschema-noreact');
-    } catch (e) {
-        console.warn('could not resolve subschema alias', e);
-    }
-
-}
-
-if (opts.useHtml && !opts.isKarma) {
-    /**
-     * Allows for a page per entry.
-     */
-    plugins.push(...Object.keys(webpack.entry).map(key => {
-        const config = opts.useHtml;
-        const pages  = config.pages || {};
-        return new opts.HtmlWebpackPlugin(Object.assign({}, config, {
-            filename: `${key}.html`,
-        }, pages[key]));
-    }));
-}
 if (opts.useScopeHoist) {
     plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
 }
-if (opts.analyze) {
-    //only include for analyzer.
-    const BundleAnalyzerPlugin = require(
-        'webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-    (function (analyze = {}) {
-        switch (opts.analyze) {
-            case 'server':
-                break;
-            case 'static': {
-                analyze.reportFilename = project('report.html');
-                analyze.analyzerMode   = 'static';
-                break;
-            }
-            default: {
-                analyze = JSON.parse(opts.analyze);
-            }
-        }
-        console.warn(`analyzing project`);
-        plugins.push(new BundleAnalyzerPlugin(analyze));
-    })();
-}
 if (SUBSCHEMA_DEBUG) {
     /* console.log('webpack opts %s, webpack %O', JSON.stringify(opts), JSON.stringify(webpack));*/
     console.log('DEBUG is on');
-    console.log('options');
-    console.dir(opts);
+    console.log('optionsManager');
+    console.log(JSON.stringify(optionsManager, null, 2));
     console.log('webpack configuration');
     console.dir(webpack);
 }

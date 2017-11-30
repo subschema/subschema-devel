@@ -1,0 +1,24 @@
+{
+  "name": "subschema-dev-uglify",
+  "version": "4.0.0-b-1",
+  "description": "uglify support for subschema",
+  "dependencies": {
+    "uglifyjs-webpack-plugin": "^1.1.1"
+  },
+  "devDependencies": {
+    "subschema-dev-mocha": "^4.0.0-b-1"
+  },
+  "scripts": {
+    "test": "subschema-mocha"
+  },
+  "subschema": {
+    "options": {
+      "loader": false
+    },
+    "env": {
+      "production": {
+        "webpack": true
+      }
+    }
+  }
+}

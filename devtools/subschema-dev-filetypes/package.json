@@ -1,0 +1,15 @@
+{
+  "name": "subschema-dev-filetypes",
+  "version": "4.0.0-b-1",
+  "description": "Loadin file types via webpack",
+  "dependencies": {
+    "url-loader": "^0.6.2",
+    "file-loader": "^1.1.5"
+  },
+  "subschema": {
+    "webpack": true,
+    "options": {
+      "loader": false
+    }
+  }
+}

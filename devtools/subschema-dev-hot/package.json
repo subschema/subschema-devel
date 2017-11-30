@@ -1,0 +1,14 @@
+{
+  "name": "subschema-dev-hot",
+  "version": "4.0.0-b-1",
+  "description": "hmr for subschema",
+  "dependencies": {
+    "react-hot-loader": "^3.1.2"
+  },
+  "subschema": {
+    "webpack": true,
+    "options": {
+      "loader": false
+    }
+  }
+}

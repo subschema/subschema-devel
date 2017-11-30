@@ -1,5 +1,10 @@
+import { configure, mount as _mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
+
 describe(
-    `started '${process.env.SUBSCHEMA_TEST_MODULE}' with pattern '/${process.env.SUBSCHEMA_TEST_PATTERN}/'`,
+    `started '${SUBSCHEMA_TEST_MODULE}'`,
     () => it('😀', () => {
     }));
 
@@ -7,9 +12,9 @@ describe(
     describe(key, function () {
         tc(key);
     });
-}))(require.context("test", true, /-test\.jsx?$/));
+}))(require.context("test", true));
 
-describe(`finished '${process.env.SUBSCHEMA_TEST_MODULE}'`, function () {
+describe(`finished '${SUBSCHEMA_TEST_MODULE}'`, function () {
     it('🙄', () => {
     });
 });

@@ -1,5 +1,5 @@
 {
-  "name": "subschema-webpack-markdown",
+  "name": "subschema-dev-markdown",
   "version": "4.0.0-b-1",
   "scripts": {
     "test": "subschema-karma",
@@ -20,7 +20,7 @@
   "source": "src",
   "main": "lib",
   "subschema": {
-    "webpack": "./subschema-webpack.config.js",
+    "webpack": true,
     "options": {
       "loader": false
     }
