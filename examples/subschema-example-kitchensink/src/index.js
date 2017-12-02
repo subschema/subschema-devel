@@ -7,5 +7,6 @@ module.exports = {
     imports: {
         'subschema': ['loader']
     },
-    props: ["loader"]
+    props: ["loader"],
+    setupTxt   : require('!!raw-loader!./setup.js')
 };

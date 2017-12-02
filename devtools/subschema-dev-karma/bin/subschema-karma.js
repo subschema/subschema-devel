@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 const path               = require('path');
 const { env, argv, cwd } = process;
-
+if (!env.NODE_ENV) {
+    env.NODE_ENV = 'test';
+}
 const {
           SUBSCHEMA_COVERAGE,
           SUBSCHEMA_COVERAGE_DIR,
           SUBSCHEMA_COVERAGE_USE_GLOBAL,
-          SUBSCHEMA_USE_ALIASES,
           npm_lifecycle_event,
       } = env;
 
@@ -55,10 +56,5 @@ if (!env.NODE_ENV) {
 }
 env.SUBSCHEMA_MAIN_FIELDS = 1;
 env.SUBSCHEMA_KARMA       = 1;
-//use these aliases by default, when running in karma. This ensures the same
-// version of react, react-dom are used for all tests, regardless of imports.
-env.SUBSCHEMA_USE_ALIASES = SUBSCHEMA_USE_ALIASES
-    ? `react,react-dom,${SUBSCHEMA_USE_ALIASES}`
-    : `react,react-dom`;
 
 require('karma-cli/bin/karma');

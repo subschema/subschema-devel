@@ -17,5 +17,6 @@ module.exports = {
     props: ["loader"],
     data: {
         areYouSure: true
-    }
+    },
+    setupTxt   : require('!!raw-loader!./setup.js')
 };

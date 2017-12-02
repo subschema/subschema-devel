@@ -72,7 +72,7 @@ if (configOrBool(SUBSCHEMA_COVERAGE)
         '--include=src/**/*.js', mocha);
     mocha = path.resolve(__dirname, '..', 'node_modules', '.bin', 'nyc');
 } else {
-    argv.push('-r', resolvePkgDir('babel-polyfill'));
+    argv.push('-r', require.resolve('babel-polyfill'));
 }
 argv.push('-r', require.resolve('subschema-dev-babel/babel-register'));
 argv.push(SUBSCHEMA_MOCHA_TEST);

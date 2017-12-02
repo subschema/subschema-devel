@@ -1,4 +1,4 @@
-import {titlelize } from 'subschema-utils';
+import { titlelize } from 'subschema-utils';
 
 function resolve(value, key, props) {
     if (value === false) {
@@ -14,7 +14,7 @@ function resolve(value, key, props) {
 
 export default {
     resolver: {
-        valueEvent: function(Clazz, key) {
+        title(Clazz, key) {
 
             Clazz::this.property(key, resolve);
 

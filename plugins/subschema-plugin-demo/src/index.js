@@ -5,16 +5,16 @@ import _DynamicSchema from "./DynamicSchema";
 import _UpdateValue from "./UpdateValue";
 import _NewProject from "./NewProject";
 import _Doc from "./Doc";
-import { loader as _loader } from "./loader-resolver";
-
-
+import  loader  from "./loader-resolver";
+import PropTypes from './PropTypes';
 export const DynamicSchema = _DynamicSchema;
 export const Example       = _Example;
 export const UpdateValue   = _UpdateValue;
 export const NewProject    = _NewProject;
 export const Doc           = _Doc;
 
-export const resolvers = new Map([['loader', _loader]]);
+export const resolvers = new Map([[PropTypes.loader, loader]]);
+
 
 export const types     = {
 

@@ -40,5 +40,6 @@ module.exports = {
                 val: 'casual'
             }
         ]
-    }
+    },
+    setupTxt   : require('!!raw-loader!./setup.js')
 };

@@ -2,7 +2,7 @@
   "name": "subschema-dev-optionsmanager",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "subschema-karma",
+    "test": "subschema-mocha",
     "karma": "subschema-karma",
     "clean": "subschema-clean",
     "prepublish": "subschema-babel"
@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "subschema-dev-babel": "^4.0.0-b-1",
-    "subschema-dev-mocha": "^4.0.0-b-1"
+    "subschema-dev-mocha": "^4.0.0-b-1",
+    "app-module-path":"^2.2.0"
   },
   "source": "src",
   "main": "lib"

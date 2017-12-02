@@ -28,6 +28,7 @@ export class CheckboxTemplate extends Component {
 
 export default ({
     template: {
-        CheckboxTemplate
+        CheckboxTemplate,
+        CheckboxesTemplate: CheckboxTemplate
     }
 })

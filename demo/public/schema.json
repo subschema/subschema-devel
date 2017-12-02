@@ -30,12 +30,11 @@
       "type": "Navigate",
       "template": false,
       "label": "{.label}",
-      "href": "#/docs/{.name}"
+      "href": "/docs/{.val}"
     },
     "samples": {
       "type": "Navigate",
-      "template": false,
-      "href": "#/{.}"
+      "template": false
     },
     "main": {
       "type": "Routes",

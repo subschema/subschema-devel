@@ -1,4 +1,6 @@
 // Karma configuration
+process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+
 const webpack = require('subschema-dev-webpack');
 const path    = require('path');
 const { cwd } = require('subschema-dev-utils');
@@ -13,11 +15,11 @@ const {
           TRAVIS
       } = process.env;
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'test';
 
 const useCoverage = !!SUBSCHEMA_COVERAGE || !!SUBSCHEMA_COVERAGE_DIR;
-
+console.log('karma webpack', webpack.entry);
 const files = Object.values(webpack.entry);
+console.log('not here');
 if (SUBSCHEMA_KARMA_FILES) {
     files.unshift(...SUBSCHEMA_KARMA_FILES.split(/,\s*/));
     console.warn(`using files ${files}`);

@@ -5,11 +5,19 @@
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "subschema-dev-babel": "^4.0.0-b-1",
     "subschema-dev-mocha": "^4.0.0-b-1",
     "subschema-dev-browserslist": "^4.0.0-b-1",
     "subschema-dev-karma": "^4.0.0-b-1",
-    "subschema-dev-webpack": "^4.0.0-b-1"
+    "subschema-dev-webpack": "^4.0.0-b-1",
+    "subschema-dev-webpack-dev-server": "^4.0.0-b-1",
+    "subschema-dev-fonts": "^4.0.0-b-1",
+    "subschema-dev-filetypes": "^4.0.0-b-1",
+    "subschema-dev-uglify": "^4.0.0-b-1",
+    "subschema-dev-css": "^4.0.0-b-1",
+    "subschema-dev-autoloader": "^4.0.0-b-1",
+    "subschema-dev-less": "^4.0.0-b-1",
+    "subschema-dev-hot": "^4.0.0-b-1",
+    "subschema-dev-analyze": "^4.0.0-b-1"
   },
   "bin": {
     "subschema-babel": "bin/subschema-babel.js",
@@ -18,5 +26,59 @@
     "subschema-mocha": "bin/subschema-mocha.js",
     "subschema-webpack": "bin/subschema-webpack.js",
     "subschema-webpack-dev-server": "bin/subschema-webpack-dev-server.js"
+  },
+  "subschema": {
+    "options": {
+      "loader": false
+    },
+    "plugins": [
+      "subschema-dev-fonts",
+      "subschema-dev-css",
+      "subschema-dev-less",
+      "subschema-dev-autoloader",
+      "subschema-dev-filetypes",
+      "subschema-dev-babel",
+      "subschema-dev-browserslist"
+    ],
+    "env": {
+      "development": {
+        "plugins": [
+          "subschema-dev-fonts",
+          "subschema-dev-css",
+          "subschema-dev-less",
+          "subschema-dev-autoloader",
+          "subschema-dev-filetypes",
+          "subschema-dev-babel",
+          "subschema-dev-browserslist",
+          "subschema-dev-webpack-dev-server",
+          "subschema-dev-html",
+          "subschema-dev-hot"
+        ]
+      },
+      "test": {
+        "plugins": [
+          "subschema-dev-fonts",
+          "subschema-dev-css",
+          "subschema-dev-less",
+          "subschema-dev-autoloader",
+          "subschema-dev-filetypes",
+          "subschema-dev-babel",
+          "subschema-dev-browserslist",
+          "subschema-dev-karma"
+        ]
+      },
+      "production": {
+        "plugins": [
+          "subschema-dev-fonts",
+          "subschema-dev-css",
+          "subschema-dev-less",
+          "subschema-dev-autoloader",
+          "subschema-dev-filetypes",
+          "subschema-dev-babel",
+          "subschema-dev-browserslist",
+          "subschema-dev-html"
+        ]
+      }
+    }
   }
 }

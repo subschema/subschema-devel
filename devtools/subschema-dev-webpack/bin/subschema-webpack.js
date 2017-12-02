@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const optionsManager        = require('subschema-dev-optionsmanager/instance');
 const path                  = require('path');
 const { configOrBool, cwd } = require('subschema-dev-utils');
 const { argv, env }         = process;
@@ -51,6 +52,7 @@ function envSplice(envName, argName) {
     }
     return false;
 }
+
 if ((idx = argv.indexOf('--entry')) !== -1) {
     const entryArgs = [];
     for (let i = idx + 1, l = argv.length; i < l; i++) {

@@ -5,8 +5,7 @@ import Index from "./IndexPage.jsx";
 import schema from "./schema.json";
 import createHistory from "history/createHashHistory";
 import { DynamicSchema } from "subschema-plugin-demo";
-import docs from "subschema.wiki";
-import {NavigationForm} from 'subschema-plugin-navigation';
+import { NavigationForm } from 'subschema-plugin-navigation';
 import "subschema-transitions/lib/style.css";
 //import "./sample.lessp";
 const history = createHistory({
@@ -16,18 +15,20 @@ const history = createHistory({
 loader.addType({ Index });
 loader.loaderType('Example');
 loader.loaderType('Doc');
-loader.addDocs(docs);
+const typeToOption = ({ name: label }) => ({
+    label,
+    val: label
+});
+
+const docs    = loader.listDocs().map(({ name: val }) => ({
+    val,
+    label: val.replace(/_/g, ' ')
+}));
+const samples = loader.listExamples().map(typeToOption);
 
 const valueManager = ValueManager({
-    samples         : loader.listExamples().map(v => {
-        if (v.value && !v.value.name) {
-            v.value.name = v.name;
-        }
-        return v.name
-
-    }),
-    docs            : loader.listDocs().filter(v => v.name !== 'Home').map(
-        v => ({ name: v.name, label: v.name.replace(/_/g, ' ') })),
+    samples,
+    docs,
     subschemaVersion: process.env.SUBSCHEMA_VERSION,
     schema
 });

@@ -1,0 +1,7 @@
+{
+  "name": "with-rc",
+  "version": 1,
+  "dependencies": {
+    "with-rc": "1"
+  }
+}

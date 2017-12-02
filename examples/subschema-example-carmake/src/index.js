@@ -26,5 +26,6 @@ module.exports = {
     data: {
         make: 'audi',
         model: '4000'
-    }
+    },
+    setupTxt   : require('!!raw-loader!./setup.js')
 };

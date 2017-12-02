@@ -1,24 +1,26 @@
 require('subschema-dev-browserslist');
-const path                = require('path');
-const babel               = require('subschema-dev-babel');
-const webpackUtils        = require('subschema-dev-utils');
-const webpackObject       = require('webpack');
-const OptionsManager      = require('subschema-dev-optionsmanager').default;
-const deps                = webpackUtils.deps,
-      configOrBool        = webpackUtils.configOrBool,
-      useExternals        = webpackUtils.useExternals,
-      useExternalizePeers = webpackUtils.useExternalizePeers,
-      camelCased          = webpackUtils.camelCased,
-      resolveMap          = webpackUtils.resolveMap,
-      cwd                 = webpackUtils.cwd;
+const path           = require('path');
+const optionsManager = require('subschema-dev-optionsmanager/instance').default;
+const webpackUtils   = require('subschema-dev-utils');
+const {
+          DefinePlugin,
+          optimize: {
+              ModuleConcatenationPlugin
+          }
+      }              = require('webpack');
+const configOrBool   = webpackUtils.configOrBool,
+      camelCased     = webpackUtils.camelCased,
+      resolveMap     = webpackUtils.resolveMap,
+      cwd            = webpackUtils.cwd,
+      pkg            = webpackUtils.pkg;
 
 
 const {
-          NODE_ENV                   = process.argv.includes('-p')
+          NODE_ENV         = process.argv.includes('-p')
               ? 'production'
               : 'development',
           SUBSCHEMA_DEBUG,
-          SUBSCHEMA_TARGET           = 'web',
+          SUBSCHEMA_TARGET = 'web',
           SUBSCHEMA_OUTPUT_PATH,
           SUBSCHEMA_MAIN_FIELDS,
           SUBSCHEMA_OUTPUT_FILENAME,
@@ -27,10 +29,8 @@ const {
           SUBSCHEMA_LIBRARY_TARGET,
           SUBSCHEMA_USE_HOT,
           SUBSCHEMA_DEV_SERVER,
-          SUBSCHEMA_USE_STATS_FILE,
           SUBSCHEMA_KARMA,
           SUBSCHEMA_DEMO,
-          SUBSCHEMA_NO_STYLE_LOADER,
           SUBSCHEMA_PUBLIC,
           SUBSCHEMA_USE_NAME_HASH,
           SUBSCHEMA_ANALYZE,
@@ -38,32 +38,17 @@ const {
       } = process.env;
 
 
-const optionsManager = new OptionsManager();
-optionsManager.scan('subschema-dev-webpack', false, require('./package.json'));
-
 const plugins = [];
 const opts    = {
-    isProduction     : NODE_ENV === 'production',
-    isKarma          : configOrBool(SUBSCHEMA_KARMA),
-    isDemo           : configOrBool(SUBSCHEMA_DEMO),
-    isDevServer      : configOrBool(SUBSCHEMA_DEV_SERVER),
-    isUseStyleLoader : !configOrBool(SUBSCHEMA_NO_STYLE_LOADER,
-        true),
-    publicPath       : configOrBool(SUBSCHEMA_PUBLIC, '/'),
-    useSubschemaAlias: false,
-    useAutoprefixer  : true,
-    useScopeHoist    : true,
-    useTarget        : SUBSCHEMA_TARGET,
-    babel,
-    useDefine        : {
-        'process.env.NODE_ENV': NODE_ENV,
-    },
-    useNameHash      : configOrBool(SUBSCHEMA_USE_NAME_HASH,
-        '[name]-[hash].js'),
-    analytics        : configOrBool(SUBSCHEMA_USE_ANALYTICS),
-    analyze          : configOrBool(SUBSCHEMA_ANALYZE, 'static'),
+    isProduction : NODE_ENV === 'production',
+    isKarma      : optionsManager.enabled('subschema-dev-karma'),
+    isDemo       : optionsManager.enabled('subschema-dev-server'),
+    isDevServer  : optionsManager.enabled('subschema-dev-webpack'),
+    publicPath   : configOrBool(SUBSCHEMA_PUBLIC, '/'),
+    useScopeHoist: true,
+    useTarget    : SUBSCHEMA_TARGET,
+    analyze      : configOrBool(SUBSCHEMA_ANALYZE, 'static'),
 };
-
 
 
 const output = {
@@ -74,35 +59,27 @@ const output = {
 };
 
 //if its not anything else its a library.
+let externals = [];
 if (!(opts.isKarma || opts.isDevServer || opts.isDemo)) {
     opts.isLibrary      = true;
     const library       = configOrBool(SUBSCHEMA_LIBRARY),
           libraryTarget = configOrBool(SUBSCHEMA_LIBRARY_TARGET, 'umd');
 
     if (library === true || library === false) {
-        output.library = camelCased(
-            require(cwd('package.json')).name);
+        output.library = camelCased(pkg().name);
     } else {
         output.library = library;
     }
     if (libraryTarget) {
         output.libraryTarget = libraryTarget;
     }
+    externals = Object.keys(pkg().peerDependencies || {});
 }
-
-
-const externals = useExternalizePeers(useExternals({}));
+//Any time a peerDependencies is defined, we will make it an
+// extenral
 
 let webpack = {
-    devServer    : {
-        //      hot: true,
-        filename          : 'index.js',
-        historyApiFallback: true,
-        inline            : true,
-        contentBase       : cwd('public'),
-        publicPath        : opts.publicPath,
-        port              : 8082
-    },
+
     resolve      : {
         extensions: ['.js', '.jsx'],
         alias     : {}
@@ -149,7 +126,6 @@ if (mainFields) {
 }
 
 //}
-
 
 
 opts.useHot = configOrBool(SUBSCHEMA_USE_HOT);
@@ -212,11 +188,16 @@ try {
     optionsManager.webpack.forEach((option, key) => {
         if (option.config !== false) {
             console.warn('loading webpack plugin', key);
-            const tmpWebpack = option.plugin.call(opts, option.config || {},
-                webpack,
-                optionsManager);
-            if (tmpWebpack) {
-                webpack = tmpWebpack;
+            if (typeof option.plugin === 'function') {
+                const tmpWebpack = option.plugin.call(opts, option.config || {},
+                    webpack,
+                    optionsManager);
+                if (tmpWebpack) {
+                    webpack = tmpWebpack;
+                }
+            } else if (option.plugin) {
+                //TODO - better merge.
+                webpack = Object.assign({}, webpack, option.plugin);
             }
         } else {
             console.warn('disabled loading webpack plugin', key);
@@ -229,7 +210,7 @@ try {
 
 if (opts.useDefine) {
     webpack.plugins.push(
-        new webpackObject.DefinePlugin(
+        new DefinePlugin(
             Object.keys(opts.useDefine).reduce(function (ret, key) {
                 ret[key] = JSON.stringify(opts.useDefine[key]);
                 return ret;
@@ -238,7 +219,7 @@ if (opts.useDefine) {
 
 
 if (opts.useScopeHoist) {
-    plugins.push(new webpackObject.optimize.ModuleConcatenationPlugin());
+    webpack.plugins.push(new ModuleConcatenationPlugin());
 }
 
 if (SUBSCHEMA_DEBUG) {

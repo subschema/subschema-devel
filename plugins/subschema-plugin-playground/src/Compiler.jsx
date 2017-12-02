@@ -51,6 +51,12 @@ export default class Compiler extends Component {
     componentWillMount() {
         this.editorCodeFromSampleText(this.props);
     }
+    componentDidCatch(error, info) {
+        // Display fallback UI
+        this.setState({ hasError: true });
+        // You can also log the error to an error reporting service
+        console.log(error, info);
+    }
 
     editorCodeFromSampleText(newProps) {
         const { setupTxt, useData, useErrors, value, imports, props, schema, errors } = newProps;

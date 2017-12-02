@@ -60,7 +60,12 @@ export default class Routes extends Component {
         }
         return component;
     };
-
+    componentDidCatch(error, info) {
+        // Display fallback UI
+        this.setState({ hasError: true });
+        // You can also log the error to an error reporting service
+        console.log(error, info);
+    }
     render() {
         const { pathname } = this.props;
         let to             = this.matches(pathname, this.resolve);

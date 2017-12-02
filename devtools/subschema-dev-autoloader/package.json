@@ -12,7 +12,8 @@
   "main": "lib",
   "dependencies": {
     "subschema-dev-optionsmanager": "^4.0.0-b-1",
-    "subschema-dev-utils": "^4.0.0-b-1"
+    "subschema-dev-utils": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "devDependencies": {
     "subschema-dev-babel": "^4.0.0-b-1"

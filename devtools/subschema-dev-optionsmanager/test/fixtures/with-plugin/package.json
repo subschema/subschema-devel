@@ -1,0 +1,12 @@
+{
+  "name": "test-project-1",
+  "version": "1",
+  "dependencies": {
+    "whatever": "1"
+  },
+  "tester": {
+    "plugins": [
+      "whatever"
+    ]
+  }
+}

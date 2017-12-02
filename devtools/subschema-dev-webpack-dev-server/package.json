@@ -1,0 +1,20 @@
+{
+  "name": "subschema-dev-webpack-dev-server",
+  "version": "4.0.0-b-1",
+  "description": "webpack dev server for subschema",
+  "dependencies": {
+    "subschema-dev-utils": "^4.0.0-b-1",
+    "webpack-dev-server": "^2.9.5",
+    "subschema-dev-webpack": "^4.0.0-b-1"
+  },
+  "subschema": {
+    "env": {
+      "development": {
+        "webpack": true,
+        "options": {
+          "loader": false
+        }
+      }
+    }
+  }
+}
