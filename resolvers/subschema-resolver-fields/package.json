@@ -2,17 +2,17 @@
   "name": "subschema-resolver-fields",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "subschema-karma",
-    "karma": "subschema-karma",
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "test": "mrbuilder-karma",
+    "karma": "mrbuilder-karma",
+    "prepublish": "mrbuilder-babel",
+    "clean": "mrbuilder-clean"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1"
+    "mrbuilder":"^0.0.2"
   },
   "source": "src",
   "main": "lib"

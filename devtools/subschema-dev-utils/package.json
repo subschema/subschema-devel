@@ -1,8 +1,0 @@
-{
-  "name": "subschema-dev-utils",
-  "version": "4.0.0-b-1",
-  "description": "Dev utils for subschemea dev tools",
-  "source": "src",
-  "main": "src",
-  "dependencies": {}
-}

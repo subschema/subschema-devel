@@ -4,16 +4,16 @@
   "description": "Subschema Injection System.",
   "main": "lib",
   "scripts": {
-    "test": "subschema-babel && subschema-mocha",
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "test": "mrbuilder-babel && mrbuilder-mocha",
+    "prepublish": "mrbuilder-babel",
+    "clean": "mrbuilder-clean"
   },
   "peerDependencies": {
     "react": "*"
   },
   "devDependencies": {
     "react": "^16.1.0",
-    "subschema-dev-support": "^4.0.0-b-1",
+    "mrbuilder": "^0.0.2",
     "subschema-prop-types": "^4.0.0-b-1"
   },
   "source": "src",

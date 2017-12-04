@@ -1,0 +1,27 @@
+{
+  "name": "subschema-plugin-autoloader",
+  "version": "4.0.0-b-1",
+  "bin": {
+    "subschema-autoloader": "bin/subschema-autoloader.js"
+  },
+  "scripts": {
+    "clean": "mrbuilder-clean",
+    "prepublish": "mrbuilder-babel"
+  },
+  "source": "src",
+  "main": "lib",
+  "dependencies": {
+    "mrbuilder-optionsmanager": "^0.0.2"
+  },
+  "devDependencies": {
+    "mrbuilder": "^0.0.2"
+  },
+  "subschema": {
+    "options": {
+      "loader": false
+    }
+  },
+  "mrbuilder": {
+    "plugin": "./subschema-webpack.config.js"
+  }
+}

@@ -3,11 +3,11 @@
   "version": "4.0.0-b-1",
   "description": "A tool for editing and playing with subschema components",
   "scripts": {
-    "karma": "subschema-karma",
-    "test": "subschema-karma",
-    "server": "subschema-webpack-dev-server",
-    "prepublish": "subschema-webpack",
-    "clean": "subschema-clean"
+    "karma": "mrbuilder-karma",
+    "test": "mrbuilder-karma",
+    "server": "mrbuilder-webpack-dev-server",
+    "prepublish": "mrbuilder-webpack",
+    "clean": "mrbuilder-clean"
   },
   "dependencies": {
     "babel-standalone": "^6.24.0",
@@ -21,12 +21,12 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1"
+    "mrbuilder":"^0.0.2"
   },
   "source": "src",
   "main": "lib",
   "subschema": {
-    "webpack": "./subschema-webpack.config.js",
+    "webpack": "./mrbuilder-webpack.config.js",
     "plugins": [
       "subschema-plugin-project"
     ],

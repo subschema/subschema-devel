@@ -9,13 +9,13 @@
     "subschema-rendertemplate": "^4.0.0-b-1"
   },
   "scripts": {
-    "karma": "subschema-karma",
-    "test": "subschema-karma",
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "karma": "mrbuilder-karma",
+    "test": "mrbuilder-karma",
+    "prepublish": "mrbuilder-babel",
+    "clean": "mrbuilder-clean"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1"
+    "mrbuilder":"^0.0.2"
   },
   "source": "src",
   "main": "lib"

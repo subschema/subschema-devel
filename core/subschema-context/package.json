@@ -9,10 +9,11 @@
     "subschema-form": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "subschema-dev-babel": "^4.0.0-b-1"
+    "mrbuilder-plugin-babel": "^0.0.2"
   },
   "scripts": {
-    "prepublish": "subschema-babel"
+    "clean": "mrbuilder-clean",
+    "prepublish": "mrbuilder-babel"
   },
   "source": "src",
   "main": "lib"

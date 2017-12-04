@@ -4,16 +4,16 @@
   "description": "Subschema",
   "main": "lib",
   "scripts": {
-    "compile-default-loader": "subschema-autoloader | subschema-babel --out-file  ./lib/DefaultLoader.js",
-    "compile-lib": "subschema-babel && yarn run compile-default-loader",
-    "compile-server": "subschema-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
-    "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom subschema-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
-    "compile-web-debug": "subschema-webpack --no-externalize-peers --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
-    "compile-web-noreact": "subschema-webpack -p  --output-path dist --output-filename subschema-noreact.js",
-    "karma": "subschema-karma",
-    "test": "subschema-karma",
+    "compile-default-loader": "subschema-autoloader | mrbuilder-babel --out-file  ./lib/DefaultLoader.js",
+    "compile-lib": "mrbuilder-babel && yarn run compile-default-loader",
+    "compile-server": "mrbuilder-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
+    "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom mrbuilder-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
+    "compile-web-debug": "mrbuilder-webpack --no-externalize-peers --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
+    "compile-web-noreact": "mrbuilder-webpack -p  --output-path dist --output-filename subschema-noreact.js",
+    "karma": "mrbuilder-karma",
+    "test": "mrbuilder-karma",
     "prepublish": "yarn run compile-lib && yarn run compile-web && yarn run compile-web-debug && yarn run compile-web-noreact",
-    "clean": "subschema-clean"
+    "clean": "mrbuilder-clean"
   },
   "peerDependencies": {
     "react": "16.x || ^15.5.0",
@@ -23,25 +23,24 @@
     "subschema-preset-web-form": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
     "subschema-context": "^4.0.0-b-1",
-    "subschema-dev-autoloader": "^4.0.0-b-1"
+    "subschema-plugin-autoloader": "^4.0.0-b-1"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "subschema-dev-support": "^4.0.0-b-1",
+    "mrbuilder": "^0.0.2",
     "subschema-test-support": "^4.0.0-b-1"
   },
+  "mrbuilder": {
+    "plugin": "./subschema-webpack.config"
+  },
   "subschema": {
-    "webpack": "./subschema-webpack.config",
     "options": {
       "loader": false
     },
     "plugins": [
       [
-        "subschema-dev-autoloader",
-        {
-          "loader": false
-        }
+        "subschema-plugin-autoloader"
       ]
     ],
     "presets": [

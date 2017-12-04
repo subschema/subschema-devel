@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('subschema-dev-autoloader/bin/subschema-autoloader');
+require('subschema-plugin-autoloader/bin/subschema-autoloader');

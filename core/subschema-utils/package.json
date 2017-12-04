@@ -4,13 +4,13 @@
   "description": "Subschema Utils",
   "main": "lib",
   "scripts": {
-    "test": "subschema-babel && subschema-mocha",
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "test": "mrbuilder-babel && mrbuilder-mocha",
+    "prepublish": "mrbuilder-babel",
+    "clean": "mrbuilder-clean"
   },
   "devDependencies": {
     "lodash": "^4.17.4",
-    "subschema-dev-support": "^4.0.0-b-1"
+    "mrbuilder-plugin-babel":"^0.0.2"
   },
   "peerDependencies": {
     "lodash": "*"

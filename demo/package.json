@@ -10,13 +10,12 @@
     "subschema.wiki": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1",
-    "subschema-dev-webpack": "^4.0.0-b-1"
+    "mrbuilder": "^0.0.2"
   },
   "scripts": {
-    "start": "subschema-webpack-dev-server",
-    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs",
-    "server": "subschema-webpack-dev-server"
+    "start": "mrbuilder-webpack-dev-server",
+    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' mrbuilder-webpack --demo ../docs",
+    "server": "mrbuilder-webpack-dev-server"
   },
   "subschema": {
     "plugins": [

@@ -4,15 +4,14 @@
   "description": "Subschema Wiki",
   "main": "lib",
   "scripts": {
-    "server": "subschema-webpack-dev-server",
-    "clean": "rimraf ./lib ./dist",
-    "prepublish": "subschema-webpack"
+    "server": "mrbuilder-webpack-dev-server",
+    "clean": "mrbuilder-clean",
+    "prepublish": "mrbuilder-webpack"
   },
   "devDependencies": {
     "react": "^16.1.0",
-    "rimraf": "^2.6.2",
-    "subschema-dev-support": "^4.0.0-b-1",
-    "subschema-dev-markdown": "^4.0.0-b-1"
+    "mrbuilder": "^0.0.2",
+    "mrbuilder-plugin-markdown": "^0.0.2"
   },
   "peerDependencies": {
     "babel-standalone": "*"
@@ -21,14 +20,11 @@
   "subschema": {
     "options": {
       "loader": "Doc"
-    },
+    }
+  },
+  "mrbuilder": {
     "plugins": [
-      [
-        "subschema-dev-markdown",
-        {
-          "loader": false
-        }
-      ]
+      "mrbuilder-plugin-markdown"
     ]
   }
 }

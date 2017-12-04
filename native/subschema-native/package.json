@@ -5,7 +5,7 @@
   "main": "lib/index",
   "scripts": {
     "test": "echo 'write some tests'; exit 0",
-    "prepublish": "rimraf lib && subschema-babel"
+    "prepublish": "rimraf lib && mrbuilder-babel"
   },
   "dependencies": {
     "raf": "^3.1.0",

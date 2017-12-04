@@ -1,9 +1,0 @@
-{
-  "name": "with-webpack",
-  "version": 1,
-  "tester": {
-    "plugins": [
-      "webtest"
-    ]
-  }
-}

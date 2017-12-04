@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "lerna clean --yes && lerna run clean",
     "rebuild": "lerna clean --yes && lerna run clean && yarn install && lerna run prepublish && lr-idea",
-    "coverage": "SUBSCHEMA_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
+    "coverage": "MRBUILDER_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
     "test": "lerna run test",
     "bootstrap": "lerna bootstrap  && lr-idea",
     "prepublish": "lerna run prepublish",
@@ -29,8 +29,7 @@
     "plugins/*",
     "presets/*",
     "resolvers/*",
-    "core/*",
-    "devtools/*"
+    "core/*"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

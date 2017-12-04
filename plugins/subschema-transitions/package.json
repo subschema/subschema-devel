@@ -4,9 +4,9 @@
   "description": "Subschema Transitions",
   "main": "lib",
   "scripts": {
-    "test": "subschema-webpack --no-style-loader && subschema-mocha",
-    "prepublish": "subschema-webpack --no-style-loader",
-    "clean": "subschema-clean"
+    "test": "mrbuilder-webpack --no-style-loader && mrbuilder-mocha",
+    "prepublish": "mrbuilder-webpack --no-style-loader",
+    "clean": "mrbuilder-clean"
   },
   "dependencies": {
     "react-transition-group": "^2.2.1",
@@ -14,13 +14,13 @@
     "subschema-utils": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1",
-    "subschema-dev-less": "^4.0.0-b-1"
+    "mrbuilder": "^0.0.2",
+    "mrbuilder-plugin-less": "^0.0.2"
   },
   "source": "src",
-  "subschema": {
+  "mrbuilder": {
     "plugins": [
-      "subschema-dev-less"
+      "mrbuilder-plugin-less"
     ]
   }
 }
