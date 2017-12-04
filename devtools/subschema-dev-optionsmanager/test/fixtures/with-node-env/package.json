@@ -1,0 +1,21 @@
+{
+  "name": "with-env-test",
+  "version": 1,
+  "tester": {
+    "plugins": [
+      "no-such-module"
+    ],
+    "env": {
+      "deveopment": {
+        "plugins": [
+          "no-such-module"
+        ]
+      },
+      "test": {
+        "plugins": [
+          "webtest"
+        ]
+      }
+    }
+  }
+}

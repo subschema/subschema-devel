@@ -1,0 +1,16 @@
+{
+  "name": "with-rc",
+  "version": 1,
+  "dependencies": {
+    "with-rc": "1"
+  },
+  "tester": {
+    "plugins": [
+      [
+        "metest",
+        false
+      ],
+      "enabled"
+    ]
+  }
+}

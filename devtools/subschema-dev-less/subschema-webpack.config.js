@@ -1,6 +1,5 @@
 module.exports = function ({
                                test = /\.less$/,
-                               loader = "less-loader",
                                options = {
                                    strictMath: true,
                                    noIeCompat: true
@@ -23,7 +22,7 @@ module.exports = function ({
                 }
             },
             {
-                loader,
+                loader:'less-loader',
                 options
             },
             autoprefixer && {

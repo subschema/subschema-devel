@@ -9,7 +9,7 @@
     "subschema-dev-browserslist": "^4.0.0-b-1",
     "subschema-dev-karma": "^4.0.0-b-1",
     "subschema-dev-webpack": "^4.0.0-b-1",
-    "subschema-dev-webpack-dev-server": "^4.0.0-b-1",
+    "subschema-dev-webpack-server": "^4.0.0-b-1",
     "subschema-dev-fonts": "^4.0.0-b-1",
     "subschema-dev-filetypes": "^4.0.0-b-1",
     "subschema-dev-uglify": "^4.0.0-b-1",
@@ -50,7 +50,7 @@
           "subschema-dev-filetypes",
           "subschema-dev-babel",
           "subschema-dev-browserslist",
-          "subschema-dev-webpack-dev-server",
+          "subschema-dev-webpack-server",
           "subschema-dev-html",
           "subschema-dev-hot"
         ]

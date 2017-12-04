@@ -103,9 +103,12 @@ export const mergeArgs          = (plugin, options, { argv } = process) => {
  */
 
              export const merge = (plugin, options, process) => {
-    //can't override relative plugins.
-    if (plugin.startsWith('.')) {
-        return options;
+    if (options === false) {
+        return false;
     }
-    return mergeEnv(plugin, mergeArgs(plugin, options, process), process);
+    const ret = mergeArgs(plugin, options, process);
+    if (ret === false) {
+        return false;
+    }
+    return mergeEnv(plugin, ret, process);
 };

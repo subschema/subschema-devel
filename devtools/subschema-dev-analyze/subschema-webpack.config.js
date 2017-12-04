@@ -1,10 +1,12 @@
+const BundleAnalyzerPlugin = require(
+    'webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = ({
                       reportFileName = 'report.html',
                       analyzerMode = 'server',
                   }, webpack) => {
     //only include for analyzer.
-    const BundleAnalyzerPlugin = require(
-        'webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
     const analyze = {
         analyzerMode

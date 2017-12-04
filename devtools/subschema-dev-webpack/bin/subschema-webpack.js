@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const optionsManager        = require('subschema-dev-optionsmanager/instance');
+const optionsManager        = require('subschema-dev-optionsmanager/lib/instance');
 const path                  = require('path');
 const { configOrBool, cwd } = require('subschema-dev-utils');
 const { argv, env }         = process;

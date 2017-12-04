@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-const path = require('path');
-const argv = process.argv;
-const env  = process.env;
-
+const argv                = process.argv;
+const env                 = process.env;
+env.SUBSCHEMA_INTERNAL_PLUGINS = `${env.SUBSCHEMA_INTERNAL_PLUGINS},subschema-dev-webpack-server`;
 env.SUBSCHEMA_DEV_SERVER  = env.SUBSCHEMA_DEV_SERVER || 1;
 env.SUBSCHEMA_USE_HTML    = env.SUBSCHEMA_USE_HTML || 1;
 env.SUBSCHEMA_MAIN_FIELDS = env.SUBSCHEMA_MAIN_FIELDS || 1;
@@ -11,7 +10,8 @@ if (!env.NODE_ENV) {
 }
 
 if (!argv.includes('--config')) {
-    argv.push('--config', path.resolve('subschema-dev-webpack/webpack.config'));
+    argv.push('--config',
+        require.resolve('subschema-dev-webpack/webpack.config'));
 }
 
 let idx;
@@ -22,24 +22,24 @@ if ((idx = argv.indexOf('--no-hot')) !== -1) {
         argv.splice(idx, 1);
     }
 
-    env.SUBSCHEMA_USE_HOT = 0;
+    env.SUBSCHEMA_DEV_WEBPACK_SERVER_USE_HOT = 0;
 } else if (!argv.includes('--hot')) {
     argv.push('--hot');
-    env.SUBSCHEMA_USE_HOT = 1;
+    env.SUBSCHEMA_DEV_WEBPACK_SERVER_USE_HOT = 1;
 }
 
 if ((idx = argv.indexOf('--public')) !== -1) {
-    env.SUBSCHEMA_PUBLIC = argv[idx + 1];
+    env.SUBSCHEMA_DEV_WEBPACK_SERVER_PUBLIC = argv[idx + 1];
 }
 
 if ((idx = argv.indexOf('--use-externals')) !== -1) {
     const externals = argv.splice(idx, 2).pop();
     console.warn(`using externals ${externals}`);
-    env.SUBSCHEMA_USE_EXTERNALS = externals;
+    env.SUBSCHEMA_DEV_WEBPACK_USE_EXTERNALS = externals;
 }
 if ((idx = argv.indexOf('--no-use-externals')) !== -1) {
     argv.splice(idx, 1);
-    env.SUBSCHEMA_USE_EXTERNALS = '';
+    env.SUBSCHEMA_DEV_WEBPACK_USE_EXTERNALS = '';
 }
 if ((idx = argv.indexOf('--entry')) !== -1) {
     const entryArgs = [];
@@ -50,7 +50,7 @@ if ((idx = argv.indexOf('--entry')) !== -1) {
         entryArgs.push(argv[i]);
     }
     argv.splice(idx, entryArgs.length + 1);
-    env.SUBSCHEMA_ENTRY = JSON.stringify(entryArgs).replace(/^"(.+?)"$/, '$1');
+    env.SUBSCHEMA_DEV_WEBPACK_ENTRY = JSON.stringify(entryArgs).replace(/^"(.+?)"$/, '$1');
 }
 
 if (argv.indexOf('-h') !== -1 || argv.indexOf('--help') !== -1) {

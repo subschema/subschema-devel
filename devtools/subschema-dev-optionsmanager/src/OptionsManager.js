@@ -18,7 +18,6 @@ export const DEFAULT_ALL = ['DEBUG',
 export default class OptionsManager {
 
     plugins = new Map();
-    webpack = new Map();
 
     constructor({
                     prefix,
@@ -26,16 +25,19 @@ export default class OptionsManager {
                     confPrefix,
                     rcFile,
                     all = DEFAULT_ALL,
-                    env = {},
-                    argv = [],
-                    cwd,
+                    env = process.env,
+                    argv = process.argv,
+                    cwd = process.cwd,
                     webpackFilePath,
+                    info = console.info || console.warn,
+                    warn = console.warn,
                     _require = require
                 } = {}) {
-        prefix            = prefix.toUpperCase();
-        envPrefix         = envPrefix || prefix.toUpperCase();
-        confPrefix        = confPrefix || prefix.toLowerCase();
-        rcFile            = `.${confPrefix}rc`;
+        prefix     = prefix.toUpperCase();
+        envPrefix  = envPrefix || prefix.toUpperCase();
+        confPrefix = confPrefix || prefix.toLowerCase();
+        rcFile     = `.${confPrefix}rc`;
+
         const webpackFile =
                   webpackFilePath
                   || `${envPrefix.toLowerCase()}-webpack.config.js`;
@@ -54,15 +56,17 @@ export default class OptionsManager {
 
 
         this.warn = (...args) => {
-            console.warn(`WARN [[${prefix.toLowerCase()}]`, ...args);
+            warn(`WARN [${prefix.toLowerCase()}]`, ...args);
 
         };
 
         this.info = (...args) => {
-            if (this.env('DEBUG')) {
-                console.warn(`INFO [${prefix.toLowerCase()}]`, ...args);
+            if (this.env(`${envPrefix}_DEBUG`)) {
+                info(`INFO [${prefix.toLowerCase()}]`, ...args);
             }
         };
+
+        this.info('NODE_ENV is', env.NODE_ENV);
 
         const resolveFromPkgDir = (pkg, file, ...relto) => {
             if (!pkg || this.topPackage.name === pkg) {
@@ -82,31 +86,98 @@ export default class OptionsManager {
             if (typeof pkg === 'string') {
                 pkg = _require(`${pkg}/package.json`);
             }
-            return pkg[confPrefix] || parseJSON(
-                resolveFromPkgDir(pkg.name, rcFile));
+            const pluginConfig = pkg[confPrefix]
+                                 || parseJSON(
+                    resolveFromPkgDir(pkg.name, rcFile))
+                                 || {};
+
+            const envOverride = pluginConfig.env
+                                && pluginConfig.env[env.NODE_ENV] || {};
+            return {
+                presets : select(envOverride.presets, pluginConfig.presets),
+                options : select(envOverride.options, pluginConfig.options),
+                plugins : select(envOverride.plugins, pluginConfig.plugins),
+                webpack : select(envOverride.webpack, pluginConfig.webpack),
+                ignoreRc: select(envOverride.ignoreRc, pluginConfig.ignoreRc),
+            };
         };
 
-        const processEnv = (prefix = '') => {
-            const plugins = split(
-                this.env(`${envPrefix}_${prefix}PLUGINS`, ''));
-            const presets = split(
-                this.env(`${envPrefix}_${prefix}PLUGINS`, ''));
-            this.info('process', plugins, presets, 'from env', prefix);
-            if ((plugins.length || presets.length)) {
-                processOpts.call(this,
-                    this.topPackage.name, { plugins, presets },
-                    this.topPackage);
-            }
-        };
 
         const newOption = (name, plugin, config, parent) => {
-            const opt          = new Option(name, plugin,
-                merge(plugin, config, { argv, env }), parent);
+            if (config === false) {
+                return false;
+            }
+            const opt          = new Option(name, plugin, config, parent);
             opt.optionsManager = this;
             return opt;
         };
 
-        this.scan = (name, ignoreRc, parent) => {
+        const processOpts = (name, {
+            presets,
+            plugins,
+            ignoreRc,
+            webpack
+        } = {}, options, pkg, parent, override) => {
+            if (this.plugins.has(name)) {
+                return;
+            }
+
+            if (options === false) {
+                this.plugins.set(name, false);
+                return;
+            } else {
+                let plugin;
+                if (webpack) {
+                    plugin = require(resolveFromPkgDir(name,
+                        webpack === true ? webpackFile : webpack));
+                }
+                this.plugins.set(name, newOption(name, plugin, options, pkg));
+            }
+
+            if (plugins) {
+                plugins.map(plugin => {
+                    const [pluginName, pluginOpts] = nameConfig(plugin);
+                    if (pluginOpts === false) {
+                        this.plugins.set(pluginName, false);
+                        return;
+                    }
+                    const isLocal = pluginName.startsWith('.');
+                    if (isLocal) {
+                        const localName = join(name, pluginName);
+                        this.plugins.set(localName,
+                            newOption(localName, require(localName), pluginOpts,
+                                pkg));
+                        return;
+                    }
+                    return [pluginName, override || pluginOpts];
+                }).filter(Boolean).forEach(([pluginName, pluginOpts]) => {
+                    scan(ignoreRc, pkg, pluginName, pluginOpts);
+                })
+            }
+
+            if (presets) {
+                //presets all get the same configuration.
+                presets.forEach(preset => {
+                    const [presetName, config] = nameConfig(preset);
+                    scan(ignoreRc, pkg, presetName, void(0), config)
+                });
+            }
+        };
+        const processEnv  = (prefix = '') => {
+            const pluginsName = `${envPrefix}_${prefix}PLUGINS`;
+            const presetsName = `${envPrefix}_${prefix}PRESETS`;
+            const plugins     = split(this.env(pluginsName, ''));
+            const presets     = split(this.env(presetsName, ''));
+            if ((plugins.length || presets.length)) {
+                this.info('process from env', pluginsName, plugins,
+                    presetsName, presets);
+                processOpts(`${envPrefix}_${prefix}ENV`,
+                    { plugins, presets },
+                    void(0),
+                    this.topPackage);
+            }
+        };
+        const scan        = (ignoreRc, parent, name, options, override) => {
             this.info('scanning', name);
 
             const pkg = name === this.topPackage.name ? this.topPackage
@@ -117,124 +188,23 @@ export default class OptionsManager {
                                                                && parent.name}`);
 
             }
-            const conf = resolveConfig(pkg);
 
-            if (conf) {
-                processOpts.call(this, name,
-                    ignoreRc ? { ...conf, ignoreRc } : conf,
-                    parent, pkg);
-            }
-            return this;
+            const pluginConf = resolveConfig(pkg);
+
+            options = merge(name, options || pluginConf.options, { env, argv });
+
+            processOpts(name, pluginConf, options, pkg, parent,
+                override);
         };
+
+
         processEnv();
-        this.scan(this.topPackage.name, false, this.topPackage);
+        scan(false, this.topPackage, this.topPackage.name);
         //ALLOW for fallbacks when tooling wants to signal things.
         processEnv('INTERNAL_');
 
-
-        function processOpts(name, {
-            presets,
-            plugins,
-            ignoreRc,
-            webpack,
-            options,
-            env = {},
-        } = {}, pkg) {
-            const envOveride = env.NODE_ENV && env[env.NODE_ENV];
-            if (envOveride) {
-                return processOpts.call(this, name, {
-                    presets : select(envOveride.presets || presets),
-                    options : select(envOveride.options || options),
-                    plugins : select(envOveride.plugins || plugins),
-                    webpack : select(envOveride.webpack || webpack),
-                    ignoreRc: select(envOveride.ignoreRc || ignoreRc),
-                }, pkg);
-            }
-            if (plugins) {
-                plugins.forEach(plugin => {
-                    //plugin can have configuration.
-                    //first one wins
-                    const [pluginName, pluginOptions = (resolveConfig(
-                        pluginName) || {}).options]  = nameConfig(plugin);
-
-                    if (/-preset-/.test(pluginName)) {
-                        this.warn(
-                            'please make sure that a preset [%s] is not being loaded from "%s" as a plugin',
-                            pluginName, name);
-                    }
-                    const isLocalPlugin     = pluginName.startsWith('.');
-                    const resolvePluginName = isLocalPlugin
-                        ? resolveFromPkgDir(pkg.name, pluginName)
-                        : pluginName;
-
-                    if (this.plugins.has(resolvePluginName)) {
-                        return;
-                    }
-
-                    this.plugins.set(resolvePluginName,
-                        newOption(resolvePluginName, resolvePluginName, pluginOptions, pkg));
-
-                    if (!(ignoreRc || isLocalPlugin)) {
-                        this.scan(pluginName, ignoreRc, pkg);
-                    }
-                })
-            }
-
-            if (presets) {
-                //presets do not have configuration.
-                presets.forEach(presetName => {
-                    if (Array.isArray(presetName)) {
-                        this.warn(
-                            'presets can not be an array and can not be configured, add the plugin you wish to configure individual plugins');
-                        return;
-                    }
-                    if (/-plugin-/.test(presetName)) {
-                        this.warn(
-                            'please make sure that a plugin [%s]  is not being loaded from as a preset from "%s"',
-                            presetName, name);
-                    }
-                    this.scan(presetName, ignoreRc, pkg)
-                });
-            }
-            //last so we can gather all presets.
-            if (webpack) {
-
-                if (this.webpack.has(name)) {
-                    return;
-                }
-                let [webpackPlugin, webpackConf] = nameConfig(webpack);
-                if (webpackPlugin === true) {
-                    webpackPlugin = webpackFile;
-                } else if (webpackPlugin === false) {
-                    this.webpack.set(name, false);
-                    return;
-                }
-                const webpackPluginLoc = resolveFromPkgDir(name, webpackPlugin);
-
-                try {
-                    const webpackModule = _require(webpackPluginLoc);
-                    this.webpack.set(name,
-                        newOption(name, webpackModule, webpackConf, pkg));
-                } catch (e) {
-                    warn(`Could not locate "${join(name,
-                        webpackPlugin)}" in package "${pkg.name}" - ${webpackPluginLoc}`);
-                    throw e;
-                }
-            }
-        };
-
-
     }
 
-    resolve(name, value) {
-        if (value.startsWith('.')) {
-            if (name === this.topPackage.name) {
-                return this.resolveFromPkgDir(name, value);
-            }
-        }
-        return join(name, value);
-
-    }
 
     config(name, def) {
         const parts = name.split('.', 2);
@@ -247,46 +217,36 @@ export default class OptionsManager {
     }
 
     enabled(name) {
-        const option = this.plugins.get(name);
-        if (option == null || option.config === false) {
-            return false;
-        }
-        return true;
+        return !!this.plugins.get(name);
     }
 
     //make nice stringify
     toJSON() {
         return {
-            plugins: this.plugins,
-            webpack: this.webpack
+            name   : this.topPackage.name,
+            plugins: this.plugins
         }
     }
 }
-
 
 class Option {
     constructor(name,
                 plugin,
                 config,
                 parent) {
-        if (!plugin) {
-            throw new Error(
-                `Option must have a plugin ${parent} for [${name}]`);
-        }
+        this.name   = name;
         this.plugin = plugin;
         this.config = config;
         this.parent = parent;
-        this.name   = name;
     }
 
     info(...args) {
-        this.optionsManager && this.optionsManager.info(`- ${this.name}`,
+        (this.optionsManager || console).info(`- ${this.name}`,
             ...args);
     }
 
     warn(...args) {
-        this.optionsManager && this.optionsManager.warn(`- ${this.name}`,
-            ...args);
+        (this.optionsManager || console).warn(`- ${this.name}`, ...args);
     }
 
     toJSON() {

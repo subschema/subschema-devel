@@ -1,5 +1,5 @@
 {
-  "name": "subschema-dev-webpack-dev-server",
+  "name": "subschema-dev-webpack-server",
   "version": "4.0.0-b-1",
   "description": "webpack dev server for subschema",
   "dependencies": {
@@ -7,13 +7,19 @@
     "webpack-dev-server": "^2.9.5",
     "subschema-dev-webpack": "^4.0.0-b-1"
   },
+  "bin": {
+    "subschema-dev-webpack-server": "./bin/subschema-dev-webpack-server.js"
+  },
   "subschema": {
     "env": {
       "development": {
         "webpack": true,
         "options": {
           "loader": false
-        }
+        },
+        "plugins": [
+          "subschema-dev-webpack"
+        ]
       }
     }
   }

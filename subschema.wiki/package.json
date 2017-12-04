@@ -23,7 +23,6 @@
       "loader": "Doc"
     },
     "plugins": [
-      "subschema-dev-support",
       [
         "subschema-dev-markdown",
         {

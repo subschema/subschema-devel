@@ -1,6 +1,6 @@
 require('subschema-dev-browserslist');
 const path           = require('path');
-const optionsManager = require('subschema-dev-optionsmanager/instance').default;
+const optionsManager = require('subschema-dev-optionsmanager/lib/instance').default;
 const webpackUtils   = require('subschema-dev-utils');
 const {
           DefinePlugin,
@@ -185,8 +185,8 @@ if (SUBSCHEMA_ENTRY) {
 
 //This is where the magic happens
 try {
-    optionsManager.webpack.forEach((option, key) => {
-        if (option.config !== false) {
+    optionsManager.plugins.forEach((option, key) => {
+        if (option.plugin) {
             console.warn('loading webpack plugin', key);
             if (typeof option.plugin === 'function') {
                 const tmpWebpack = option.plugin.call(opts, option.config || {},
@@ -197,7 +197,7 @@ try {
                 }
             } else if (option.plugin) {
                 //TODO - better merge.
-                webpack = Object.assign({}, webpack, option.plugin);
+              //  webpack = Object.assign({}, webpack, option.plugin);
             }
         } else {
             console.warn('disabled loading webpack plugin', key);
@@ -228,6 +228,6 @@ if (SUBSCHEMA_DEBUG) {
     console.log('optionsManager');
     console.log(JSON.stringify(optionsManager, null, 2));
     console.log('webpack configuration');
-    console.dir(webpack);
+    console.log(JSON.stringify(webpack, null, 2));
 }
 module.exports = webpack;

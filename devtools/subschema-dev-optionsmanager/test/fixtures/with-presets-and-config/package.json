@@ -1,0 +1,14 @@
+{
+  "name": "with-presets",
+  "version": 1,
+  "tester": {
+    "presets": [
+      [
+        "preset",
+        {
+          "ppe": 2
+        }
+      ]
+    ]
+  }
+}

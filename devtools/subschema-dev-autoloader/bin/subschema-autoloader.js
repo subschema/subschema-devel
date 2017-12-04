@@ -1,4 +1,3 @@
 #!/usr/bin/env node
-const OptionsManager = new (require('subschema-dev-optionsmanager').default);
 const DefaultLoaderFactory = require('subschema-dev-autoloader').default;
-console.log(DefaultLoaderFactory(OptionsManager).code);
+console.log(DefaultLoaderFactory(require('subschema-dev-optionsmanager/lib/instance').default).code);

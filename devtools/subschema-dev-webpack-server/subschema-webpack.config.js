@@ -7,7 +7,9 @@ const DEV_SERVER = {
     port              : 8082,
 };
 
-module.exports = function (devServer, webpack) {
+module.exports = function (opts, webpack) {
+    const devServer = Object.assign({}, opts);
+    delete devServer.loader;
 
     webpack.devServer = Object.assign({}, DEV_SERVER, devServer);
 

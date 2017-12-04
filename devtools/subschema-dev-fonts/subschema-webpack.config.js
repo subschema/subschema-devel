@@ -1,5 +1,5 @@
 module.exports = ({
-                      loader = 'url-loader',
+                      defaultLoader = 'url-loader',
                       limit = 1000,
                       mimetype,
                       test,
@@ -24,18 +24,18 @@ module.exports = ({
                       ]
                   }, webpack) => {
 
-    if (!loader) {
-        loader = 'file-loader';
+    if (!defaultLoader) {
+        defaultLoader = 'url-loader';
     }
     fontTypes.forEach(
         function (opts) {
             this.push({
                 test: opts.test || test,
                 use : {
-                    loader : opts.loader || loader,
+                    loader : opts.loader || defaultLoader,
                     options: {
                         limit   : opts.limit || limit,
-                        mimetype: opts.mimeType || mimetype,
+                        mimetype: opts.mimetype || mimetype,
                     }
                 }
             })
