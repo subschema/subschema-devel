@@ -19,7 +19,7 @@
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
     "subschema-styles-bootstrap": "^4.0.0-b-1",
-    "mrbuilder": "^0.0.4",
+    "mrbuilder": "^0.0.5",
     "subschema-prop-types": "^4.0.0-b-1"
   },
   "peerDependencies": {

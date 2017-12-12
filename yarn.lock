@@ -6,15 +6,9 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@funjs/route-parser/-/route-parser-1.4.0.tgz#6ca1f83d07e712ecea8dbb4a759236120c048806"
 
-"@types/events@*":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.1.0.tgz#93b1be91f63c184450385272c47b6496fd028e02"
-
 "@types/node@*":
-  version "8.0.54"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.54.tgz#3fd9357db4af388b79e03845340259440edffde6"
-  dependencies:
-    "@types/events" "*"
+  version "8.0.58"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.58.tgz#5b3881c0be3a646874803fee3197ea7f1ed6df90"
 
 JSONStream@^1.0.4:
   version "1.3.1"
@@ -294,11 +288,11 @@ autoprefixer@^6.3.1:
     postcss-value-parser "^3.2.3"
 
 autoprefixer@^7.1.6:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-7.2.1.tgz#906b1447a0e6a9e13b371f7909bc4e36da5a5a79"
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-7.2.2.tgz#082293b964be00602efacc59aa4aa7df5158bb6e"
   dependencies:
-    browserslist "^2.9.1"
-    caniuse-lite "^1.0.30000777"
+    browserslist "^2.10.0"
+    caniuse-lite "^1.0.30000780"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^6.0.14"
@@ -1213,19 +1207,12 @@ browserslist@^1.3.6, browserslist@^1.5.2, browserslist@^1.7.6:
     caniuse-db "^1.0.30000639"
     electron-to-chromium "^1.2.7"
 
-browserslist@^2.1.2:
+browserslist@^2.1.2, browserslist@^2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.10.0.tgz#bac5ee1cc69ca9d96403ffb8a3abdc5b6aed6346"
   dependencies:
     caniuse-lite "^1.0.30000780"
     electron-to-chromium "^1.3.28"
-
-browserslist@^2.9.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.9.1.tgz#b72d3982ab01b5cd24da62ff6d45573886aff275"
-  dependencies:
-    caniuse-lite "^1.0.30000770"
-    electron-to-chromium "^1.3.27"
 
 buffer-indexof@^1.0.0:
   version "1.1.1"
@@ -1333,16 +1320,12 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000778"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000778.tgz#167c60e9542a2aa60537c446fb3881d853a3072a"
+  version "1.0.30000782"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000782.tgz#d8815bce1578c350aced1132507301205e0fab53"
 
-caniuse-lite@^1.0.30000770, caniuse-lite@^1.0.30000780:
+caniuse-lite@^1.0.30000780:
   version "1.0.30000782"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000782.tgz#5b82b8c385f25348745c471ca51320afb1b7f254"
-
-caniuse-lite@^1.0.30000777:
-  version "1.0.30000778"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000778.tgz#f1e7cb8b13b1f6744402291d75f0bcd4c3160369"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -1467,7 +1450,7 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
-clipboard@^1.5.5:
+clipboard@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-1.7.1.tgz#360d6d6946e99a7a1fef395e42ba92b5e9b5a16b"
   dependencies:
@@ -1690,8 +1673,8 @@ content-type@~1.0.4:
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
 conventional-changelog-angular@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-1.5.2.tgz#2b38f665fe9c5920af1a2f82f547f4babe6de57c"
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-1.5.3.tgz#ff0dd01d740e35bfdbc3f02dfea13cf0d96f0b82"
   dependencies:
     compare-func "^1.3.1"
     q "^1.4.1"
@@ -1719,11 +1702,11 @@ conventional-changelog-codemirror@^0.2.1:
     q "^1.4.1"
 
 conventional-changelog-core@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-core/-/conventional-changelog-core-1.9.3.tgz#2899fe779389a329f0ec4b2746c36ddefb98da2d"
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-core/-/conventional-changelog-core-1.9.4.tgz#a541e5354f91072f8583b19e34abb9f6e461c367"
   dependencies:
-    conventional-changelog-writer "^2.0.2"
-    conventional-commits-parser "^2.0.1"
+    conventional-changelog-writer "^2.0.3"
+    conventional-commits-parser "^2.1.0"
     dateformat "^1.0.12"
     get-pkg-repo "^1.0.0"
     git-raw-commits "^1.3.0"
@@ -1737,8 +1720,8 @@ conventional-changelog-core@^1.9.3:
     through2 "^2.0.0"
 
 conventional-changelog-ember@^0.2.9:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-ember/-/conventional-changelog-ember-0.2.9.tgz#8ec73cc054e3ab064667fb1feb52fe8ef1b16438"
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-ember/-/conventional-changelog-ember-0.2.10.tgz#dcd6e4cdc2e6c2b58653cf4d2cb1656a60421929"
   dependencies:
     q "^1.4.1"
 
@@ -1773,12 +1756,12 @@ conventional-changelog-jshint@^0.2.1:
     compare-func "^1.3.1"
     q "^1.4.1"
 
-conventional-changelog-writer@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-writer/-/conventional-changelog-writer-2.0.2.tgz#b5857ded1b001daf9a78b9cd40926f45c134949b"
+conventional-changelog-writer@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-writer/-/conventional-changelog-writer-2.0.3.tgz#073b0c39f1cc8fc0fd9b1566e93833f51489c81c"
   dependencies:
     compare-func "^1.3.1"
-    conventional-commits-filter "^1.1.0"
+    conventional-commits-filter "^1.1.1"
     dateformat "^1.0.11"
     handlebars "^4.0.2"
     json-stringify-safe "^5.0.1"
@@ -1803,16 +1786,16 @@ conventional-changelog@^1.1.7:
     conventional-changelog-jscs "^0.1.0"
     conventional-changelog-jshint "^0.2.1"
 
-conventional-commits-filter@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/conventional-commits-filter/-/conventional-commits-filter-1.1.0.tgz#1fc29af30b5edab76f54e229c411b0c663d0f9eb"
+conventional-commits-filter@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/conventional-commits-filter/-/conventional-commits-filter-1.1.1.tgz#72172319c0c88328a015b30686b55527b3a5e54a"
   dependencies:
     is-subset "^0.1.1"
     modify-values "^1.0.0"
 
-conventional-commits-parser@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/conventional-commits-parser/-/conventional-commits-parser-2.0.1.tgz#1f15ce6b844f7ca41495c8190c0833c30b8b1693"
+conventional-commits-parser@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/conventional-commits-parser/-/conventional-commits-parser-2.1.0.tgz#9b4b7c91124bf2a1a9a2cc1c72760d382cbbb229"
   dependencies:
     JSONStream "^1.0.4"
     is-text-path "^1.0.0"
@@ -1823,12 +1806,12 @@ conventional-commits-parser@^2.0.1:
     trim-off-newlines "^1.0.0"
 
 conventional-recommended-bump@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/conventional-recommended-bump/-/conventional-recommended-bump-1.0.3.tgz#472b69b1b8f09c5c4ed40fe28a41e63cc04bd736"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/conventional-recommended-bump/-/conventional-recommended-bump-1.1.0.tgz#964d4fcc70fb5259d41fa9b39d3df6afdb87d253"
   dependencies:
     concat-stream "^1.4.10"
-    conventional-commits-filter "^1.1.0"
-    conventional-commits-parser "^2.0.1"
+    conventional-commits-filter "^1.1.1"
+    conventional-commits-parser "^2.1.0"
     git-raw-commits "^1.3.0"
     git-semver-tags "^1.2.3"
     meow "^3.3.0"
@@ -1861,13 +1844,9 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.2.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
-
-core-js@^2.4.0, core-js@^2.5.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.2.tgz#bc4648656e7dc9dc80d7d3c7bbc172d96e744e63"
+core-js@^2.2.0, core-js@^2.4.0, core-js@^2.5.0:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
 
 core-js@~2.3.0:
   version "2.3.0"
@@ -2187,8 +2166,8 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
 delegate@^3.1.2:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.1.3.tgz#9a8251a777d7025faa55737bc3b071742127a9fd"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -2375,11 +2354,7 @@ ejs@^2.5.6:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.7.tgz#cc872c168880ae3c7189762fd5ffc00896c9518a"
 
-electron-to-chromium@^1.2.7:
-  version "1.3.27"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
-
-electron-to-chromium@^1.3.27, electron-to-chromium@^1.3.28:
+electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.28:
   version "1.3.28"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.28.tgz#8dd4e6458086644e9f9f0a1cf32e2a1f9dffd9ee"
 
@@ -2507,10 +2482,10 @@ enzyme@^3.2.0:
     rst-selector-parser "^2.2.3"
 
 errno@^0.1.1, errno@^0.1.3, errno@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.4.tgz#b896e23a9e5e8ba33871fc996abd3635fc9a1c7d"
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.5.tgz#a563781a6052bc2c9ccd89e8cef0eb9506e0c321"
   dependencies:
-    prr "~0.0.0"
+    prr "~1.0.1"
 
 error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.1"
@@ -3003,8 +2978,8 @@ fs-access@^1.0.0:
     null-check "^1.0.0"
 
 fs-extra@^4.0.1:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.2.tgz#f91704c53d1b461f893452b0c307d9997647ab6b"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -4041,8 +4016,8 @@ karma-coverage-istanbul-reporter@^1.3.0:
     minimatch "^3.0.4"
 
 karma-firefox-launcher@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/karma-firefox-launcher/-/karma-firefox-launcher-1.0.1.tgz#ce58f47c2013a88156d55a5d61337c099cf5bb51"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/karma-firefox-launcher/-/karma-firefox-launcher-1.1.0.tgz#2c47030452f04531eb7d13d4fc7669630bb93339"
 
 karma-mocha@^1.3.0:
   version "1.3.0"
@@ -4603,8 +4578,8 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.0.tgz#e2b6cdeb9ce19f99317a53722f3dbf5df5eaaab2"
 
 moment@^2.6.0:
-  version "2.19.3"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.3.tgz#bdb99d270d6d7fda78cc0fbace855e27fe7da69f"
+  version "2.19.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.4.tgz#17e5e2c6ead8819c8ecfad83a0acccb312e94682"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -4617,21 +4592,21 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
-mrbuilder-optionsmanager@0.0.4, mrbuilder-optionsmanager@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-optionsmanager/-/mrbuilder-optionsmanager-0.0.4.tgz#971b11cd65d25a9b853688d8cead8747903e90ea"
+mrbuilder-optionsmanager@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-optionsmanager/-/mrbuilder-optionsmanager-0.0.5.tgz#6c52e3c5531f8221e13a6ad6cbec55633b649557"
   dependencies:
-    mrbuilder-utils "^0.0.4"
+    mrbuilder-utils "^0.0.5"
 
-mrbuilder-plugin-analyze@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-analyze/-/mrbuilder-plugin-analyze-0.0.4.tgz#a64b800cd2eaffdabb809c102183c7d8a65943f3"
+mrbuilder-plugin-analyze@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-analyze/-/mrbuilder-plugin-analyze-0.0.5.tgz#0cfb3b69de718e4b69b860871ae3cdf714e0a57d"
   dependencies:
     webpack-bundle-analyzer "^2.9.1"
 
-mrbuilder-plugin-babel@0.0.4, mrbuilder-plugin-babel@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-0.0.4.tgz#c1a4ec75f14a57f05639a70cae9d952949e89ff6"
+mrbuilder-plugin-babel@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-0.0.5.tgz#c86534e2dc581b82908fb6d90eacdb7ee7ed238d"
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.0"
@@ -4646,18 +4621,18 @@ mrbuilder-plugin-babel@0.0.4, mrbuilder-plugin-babel@^0.0.4:
     babel-preset-react "^6.24.1"
     babel-preset-stage-2 "^6.24.1"
     babel-runtime "^6.26.0"
-    mrbuilder-plugin-browserslist "^0.0.4"
+    mrbuilder-plugin-browserslist "^0.0.5"
     rimraf "^2.6.2"
 
-mrbuilder-plugin-browserslist@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-0.0.4.tgz#44159d2e36ab1b905ff31b4eb0cdfe27969a5a38"
+mrbuilder-plugin-browserslist@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-0.0.5.tgz#5ac1b4caea9beaa47ad5aab62b9c38f94b0483e4"
   dependencies:
-    mrbuilder-utils "^0.0.4"
+    mrbuilder-utils "^0.0.5"
 
-mrbuilder-plugin-css@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-0.0.4.tgz#ce072babf73d8d3da4402be76476720e54df0c27"
+mrbuilder-plugin-css@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-0.0.5.tgz#72d41b5c87f1a0a0b744435d3aab9394289b2aa1"
   dependencies:
     autoprefixer "^7.1.6"
     css-loader "^0.28.4"
@@ -4665,45 +4640,45 @@ mrbuilder-plugin-css@^0.0.4:
     postcss-loader "^2.0.9"
     style-loader "^0.19.0"
 
-mrbuilder-plugin-enzyme@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-0.0.2.tgz#88aec8bf26f572c7e4ea68e211cdbdf25fad2dbc"
+mrbuilder-plugin-enzyme@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-0.0.5.tgz#7a660c0a83ca8fa4fa10b77e01cbe884cbad9381"
   dependencies:
     enzyme "^3.2.0"
     enzyme-adapter-react-16 "^1.1.0"
 
-mrbuilder-plugin-filetypes@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-filetypes/-/mrbuilder-plugin-filetypes-0.0.2.tgz#d1030f0c959a30ad4d9ce017f3fcd1441a5fff6a"
+mrbuilder-plugin-filetypes@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-filetypes/-/mrbuilder-plugin-filetypes-0.0.5.tgz#c20296d9d179fdec4840d2b3b5291a3313192993"
   dependencies:
     file-loader "^1.1.5"
     url-loader "^0.6.2"
 
-mrbuilder-plugin-fonts@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-fonts/-/mrbuilder-plugin-fonts-0.0.4.tgz#26dc5d94ed34d85001ada6ce828da23e96459c06"
+mrbuilder-plugin-fonts@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-fonts/-/mrbuilder-plugin-fonts-0.0.5.tgz#42e75cfb13f0ab57c400121f44146c5807103c31"
   dependencies:
     file-loader "^1.1.5"
     url-loader "^0.6.2"
 
-mrbuilder-plugin-hot@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-hot/-/mrbuilder-plugin-hot-0.0.2.tgz#93fd92f5503f044ab2d7cb85c0b84030c7c84827"
+mrbuilder-plugin-hot@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-hot/-/mrbuilder-plugin-hot-0.0.5.tgz#20940ba83df841e0ba2b3ba307f9728f7f3556b9"
   dependencies:
     react-hot-loader "^3.1.2"
 
-mrbuilder-plugin-html@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-html/-/mrbuilder-plugin-html-0.0.4.tgz#ff184d57965f157d7c4dc6d1e6bdc5fad936c3e5"
+mrbuilder-plugin-html@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-html/-/mrbuilder-plugin-html-0.0.5.tgz#191a3db7271ef3a307e7f082df5d5597b673a2b4"
   dependencies:
     html-webpack-plugin "^2.30.1"
     html-webpack-template "^6.0.2"
-    mrbuilder-plugin-babel "^0.0.4"
-    mrbuilder-utils "^0.0.4"
+    mrbuilder-plugin-babel "^0.0.5"
+    mrbuilder-utils "^0.0.5"
 
-mrbuilder-plugin-karma@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-karma/-/mrbuilder-plugin-karma-0.0.4.tgz#6119b88ee261b50b2c23896d1919e1b6bcc8a0f3"
+mrbuilder-plugin-karma@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-karma/-/mrbuilder-plugin-karma-0.0.5.tgz#ff7abdc09025f1893aa625f5579231dfe1a74542"
   dependencies:
     karma "^1.7.1"
     karma-chrome-launcher "^2.2.0"
@@ -4714,83 +4689,84 @@ mrbuilder-plugin-karma@^0.0.4:
     karma-sourcemap-loader "^0.3.7"
     karma-spec-reporter "^0.0.31"
     karma-webpack "^2.0.5"
-    mrbuilder-optionsmanager "^0.0.4"
-    mrbuilder-plugin-enzyme "^0.0.2"
-    mrbuilder-plugin-mocha "^0.0.4"
-    mrbuilder-plugin-webpack "^0.0.4"
+    mrbuilder-optionsmanager "^0.0.5"
+    mrbuilder-plugin-enzyme "^0.0.5"
+    mrbuilder-plugin-mocha "^0.0.5"
+    mrbuilder-plugin-webpack "^0.0.5"
 
-mrbuilder-plugin-less@0.0.4, mrbuilder-plugin-less@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-less/-/mrbuilder-plugin-less-0.0.4.tgz#3be4e32cf5dc4ba2c48ed5c96a08bf20dbbc1c08"
+mrbuilder-plugin-less@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-less/-/mrbuilder-plugin-less-0.0.5.tgz#9cdaef4ae116dc8b68ac0693ff257014e01a0323"
   dependencies:
     less "^2.7.3"
     less-loader "^4.0.5"
-    mrbuilder-plugin-css "^0.0.4"
+    mrbuilder-plugin-css "^0.0.5"
 
-mrbuilder-plugin-markdown@0.0.4, mrbuilder-plugin-markdown@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-markdown/-/mrbuilder-plugin-markdown-0.0.4.tgz#7f7ff01198b973a03f4879c37a26b8b25d2e23e3"
+mrbuilder-plugin-markdown@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-markdown/-/mrbuilder-plugin-markdown-0.0.5.tgz#71dc4aa47e189d21e75418e1b62ad1d2f1ca9e4f"
   dependencies:
     markdown-it "^8.4.0"
-    mrbuilder-plugin-babel "^0.0.4"
-    mrbuilder-utils "^0.0.4"
+    mrbuilder-plugin-babel "^0.0.5"
+    mrbuilder-utils "^0.0.5"
     react-syntax-highlighter "^6.0.4"
 
-mrbuilder-plugin-mocha@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-mocha/-/mrbuilder-plugin-mocha-0.0.4.tgz#5998f44f735e75cef34009dcd3aac03af6791358"
+mrbuilder-plugin-mocha@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-mocha/-/mrbuilder-plugin-mocha-0.0.5.tgz#843def259c64af19a0b89b2c9decbdbb610177d2"
   dependencies:
     chai "^4.1.2"
     mocha "^4.0.1"
-    mrbuilder-plugin-babel "^0.0.4"
+    mrbuilder-plugin-babel "^0.0.5"
 
-mrbuilder-plugin-uglify@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-uglify/-/mrbuilder-plugin-uglify-0.0.4.tgz#dbf4c7fef0ec397ef1ae02b2951535f68c530817"
+mrbuilder-plugin-uglify@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-uglify/-/mrbuilder-plugin-uglify-0.0.5.tgz#1e692eb647bff0ea5844878d29c6356afd8053bb"
   dependencies:
     uglifyjs-webpack-plugin "^1.1.1"
 
-mrbuilder-plugin-webpack-dev-server@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack-dev-server/-/mrbuilder-plugin-webpack-dev-server-0.0.4.tgz#0ce2dc306d31994cc56eb171a02a8872c20f875b"
+mrbuilder-plugin-webpack-dev-server@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack-dev-server/-/mrbuilder-plugin-webpack-dev-server-0.0.5.tgz#8428a1c825aa44f83fdfcb8c9f87c38c8b282743"
   dependencies:
-    mrbuilder-plugin-webpack "^0.0.4"
-    mrbuilder-utils "^0.0.4"
+    mrbuilder-plugin-webpack "^0.0.5"
+    mrbuilder-utils "^0.0.5"
     webpack-dev-server "^2.9.5"
 
-mrbuilder-plugin-webpack@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-0.0.4.tgz#fc85073de5c8a4aeeb91286cfc02b37ac145b8f0"
+mrbuilder-plugin-webpack@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-0.0.5.tgz#a84738a2e6a0a304e90af36dacd48a7ad3d0beb6"
   dependencies:
     json-loader "^0.5.7"
-    mrbuilder-plugin-browserslist "^0.0.4"
-    mrbuilder-utils "^0.0.4"
+    mrbuilder-plugin-browserslist "^0.0.5"
+    mrbuilder-utils "^0.0.5"
     prop-types "^15.6.0"
     raw-loader "^0.5.1"
     val-loader "^1.0.2"
     webpack "^3.8.1"
 
-mrbuilder-utils@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder-utils/-/mrbuilder-utils-0.0.4.tgz#203641f446fa030b6f1189a69e478524dc656fa0"
+mrbuilder-utils@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder-utils/-/mrbuilder-utils-0.0.5.tgz#3a71409f2cb47d6fef1991dc28f0cba173a1d937"
 
-mrbuilder@0.0.4, mrbuilder@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/mrbuilder/-/mrbuilder-0.0.4.tgz#7bfad5e35247d64daffdf84d77a8b6e968d851fc"
+mrbuilder@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/mrbuilder/-/mrbuilder-0.0.5.tgz#0f5a7987bd4f7026833fc2fc0407718e62e21c4b"
   dependencies:
-    mrbuilder-plugin-analyze "^0.0.4"
-    mrbuilder-plugin-browserslist "^0.0.4"
-    mrbuilder-plugin-css "^0.0.4"
-    mrbuilder-plugin-enzyme "^0.0.2"
-    mrbuilder-plugin-filetypes "^0.0.2"
-    mrbuilder-plugin-fonts "^0.0.4"
-    mrbuilder-plugin-hot "^0.0.2"
-    mrbuilder-plugin-karma "^0.0.4"
-    mrbuilder-plugin-less "^0.0.4"
-    mrbuilder-plugin-mocha "^0.0.4"
-    mrbuilder-plugin-uglify "^0.0.4"
-    mrbuilder-plugin-webpack "^0.0.4"
-    mrbuilder-plugin-webpack-dev-server "^0.0.4"
+    mrbuilder-plugin-analyze "^0.0.5"
+    mrbuilder-plugin-browserslist "^0.0.5"
+    mrbuilder-plugin-css "^0.0.5"
+    mrbuilder-plugin-enzyme "^0.0.5"
+    mrbuilder-plugin-filetypes "^0.0.5"
+    mrbuilder-plugin-fonts "^0.0.5"
+    mrbuilder-plugin-hot "^0.0.5"
+    mrbuilder-plugin-html "^0.0.5"
+    mrbuilder-plugin-karma "^0.0.5"
+    mrbuilder-plugin-less "^0.0.5"
+    mrbuilder-plugin-mocha "^0.0.5"
+    mrbuilder-plugin-uglify "^0.0.5"
+    mrbuilder-plugin-webpack "^0.0.5"
+    mrbuilder-plugin-webpack-dev-server "^0.0.5"
     react "^16.1.1"
     react-dom "^16.1.1"
 
@@ -5700,11 +5676,11 @@ pretty-error@^2.0.2:
   version "1.0.0"
   resolved "https://github.com/PrismJS/prism-themes.git#afb4116547cd854074ad705b8171768403ca11f3"
 
-prismjs@^1.8.4, prismjs@~1.8.0:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.8.4.tgz#573cc7a14c2c06566e1eca20d813f5ae55db80d2"
+prismjs@^1.8.4, prismjs@~1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.9.0.tgz#fa3e2d9edc3c3887c1f1f3095d41f1f9b4200f0f"
   optionalDependencies:
-    clipboard "^1.5.5"
+    clipboard "^1.7.1"
 
 private@^0.1.6, private@^0.1.7:
   version "0.1.8"
@@ -5751,9 +5727,9 @@ proxy-addr@~2.0.2:
     forwarded "~0.1.2"
     ipaddr.js "1.5.2"
 
-prr@~0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/prr/-/prr-0.0.0.tgz#1a84b85908325501411853d0081ee3fa86e2926a"
+prr@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
 
 pseudomap@^1.0.2:
   version "1.0.2"
@@ -5933,8 +5909,8 @@ react-proxy@^3.0.0-alpha.0:
     lodash "^4.6.1"
 
 react-syntax-highlighter@^6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-6.0.4.tgz#486ba320b31f06322d1532a35f43cc06fea9c101"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-6.1.0.tgz#2994d16b3942bff71ce516090f98fa4aea08d13a"
   dependencies:
     babel-runtime "^6.18.0"
     highlight.js "~9.12.0"
@@ -6079,11 +6055,11 @@ reduce-function-call@^1.0.1:
     balanced-match "^0.4.2"
 
 refractor@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/refractor/-/refractor-2.1.0.tgz#d28fa1e54e06cafecd7d8909600e9af0dc830eff"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/refractor/-/refractor-2.2.0.tgz#9f0ff38ac76f6e5eaacfd689912ed6ab7ab07351"
   dependencies:
     hastscript "^3.1.0"
-    prismjs "~1.8.0"
+    prismjs "~1.9.0"
 
 regenerate@^1.2.1:
   version "1.3.3"
@@ -6998,8 +6974,8 @@ uc.micro@^1.0.1, uc.micro@^1.0.3:
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.3.tgz#7ed50d5e0f9a9fb0a573379259f2a77458d50192"
 
 uglify-es@^3.2.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.2.1.tgz#93de0aad8a1bb629c8a316f686351bc4d6ece687"
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.2.2.tgz#15c62b7775002c81b7987a1c49ecd3f126cace73"
   dependencies:
     commander "~2.12.1"
     source-map "~0.6.1"
@@ -7290,8 +7266,8 @@ webpack-dev-middleware@^1.11.0, webpack-dev-middleware@^1.12.0:
     time-stamp "^2.0.0"
 
 webpack-dev-server@^2.9.5:
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.5.tgz#79336fba0087a66ae491f4869f6545775b18daa8"
+  version "2.9.7"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.7.tgz#100ad6a14775478924d417ca6dcfb9d52a98faed"
   dependencies:
     ansi-html "0.0.7"
     array-includes "^3.0.3"

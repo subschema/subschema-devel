@@ -24,7 +24,7 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "mrbuilder": "^0.0.4",
+    "mrbuilder": "^0.0.5",
     "subschema-test-support": "^4.0.0-b-1"
   },
   "source": "src",

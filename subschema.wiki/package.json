@@ -9,8 +9,8 @@
     "prepublish": "mrbuilder-webpack"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.4",
-    "mrbuilder-plugin-markdown": "^0.0.4",
+    "mrbuilder": "^0.0.5",
+    "mrbuilder-plugin-markdown": "^0.0.5",
     "react": "^16.1.0"
   },
   "peerDependencies": {

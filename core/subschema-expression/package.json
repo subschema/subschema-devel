@@ -10,7 +10,7 @@
     "clean": "mrbuilder-clean"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.4"
+    "mrbuilder": "^0.0.5"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1"

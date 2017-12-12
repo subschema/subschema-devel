@@ -21,12 +21,18 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.4"
+    "mrbuilder": "^0.0.5"
   },
   "source": "src",
   "main": "lib",
+  "mrbuilder": {
+    "plugin": "./mrbuilder-webpack.config.js",
+    "plugins": [
+      "subschema-plugin-project",
+      "subschema-plugin-playground"
+    ]
+  },
   "subschema": {
-    "webpack": "./mrbuilder-webpack.config.js",
     "plugins": [
       "subschema-plugin-project"
     ],

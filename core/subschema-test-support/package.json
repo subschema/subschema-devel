@@ -13,7 +13,7 @@
     "util": "^0.10.3",
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "mrbuilder": "^0.0.4",
+    "mrbuilder": "^0.0.5",
     "subschema-injection": "^4.0.0-b-1",
     "subschema-loader": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1",

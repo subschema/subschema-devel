@@ -3,15 +3,15 @@
   "version": "4.0.0-b-1",
   "dependencies": {
     "subschema": "^4.0.0-b-1",
+    "subschema-plugin-demo": "^4.0.0-b-1",
+    "subschema-plugin-project": "^4.0.0-b-1",
     "subschema-preset-examples": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
     "subschema-preset-web-form": "^4.0.0-b-1",
-    "subschema-plugin-demo": "^4.0.0-b-1",
-    "subschema-plugin-project": "^4.0.0-b-1",
     "subschema.wiki": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.4"
+    "mrbuilder": "^0.0.5"
   },
   "scripts": {
     "start": "mrbuilder-webpack-dev-server",

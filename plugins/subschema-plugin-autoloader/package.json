@@ -4,7 +4,6 @@
   "bin": {
     "subschema-autoloader": "bin/subschema-autoloader.js",
     "subschema-importer": "bin/subschema-importer.js"
-
   },
   "scripts": {
     "clean": "mrbuilder-clean",
@@ -13,10 +12,10 @@
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^0.0.4"
+    "mrbuilder-optionsmanager": "^0.0.5"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.4"
+    "mrbuilder": "^0.0.5"
   },
   "subschema": {
     "options": {

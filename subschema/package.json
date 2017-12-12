@@ -24,7 +24,7 @@
     "subschema-preset-resolvers": "^4.0.0-b-1",
     "subschema-context": "^4.0.0-b-1",
     "subschema-plugin-autoloader": "^4.0.0-b-1",
-    "mrbuilder": "^0.0.4"
+    "mrbuilder": "^0.0.5"
   },
   "devDependencies": {
     "react": "^16.1.0",
@@ -33,6 +33,10 @@
   },
   "mrbuilder": {
     "plugins": [
+      [
+        "mrbuilder-plugin-html",
+        false
+      ],
       "subschema-plugin-autoloader",
       "./subschema-webpack.config"
     ]

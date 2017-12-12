@@ -3,7 +3,7 @@
   "version": "4.0.0-b-1",
   "dependencies": {
     "subschema-plugin-demo": "^4.0.0-b-1",
-    "mrbuilder-plugin-markdown": "^0.0.4"
+    "mrbuilder-plugin-markdown": "^0.0.5"
   },
   "subschema": {
     "plugins": [

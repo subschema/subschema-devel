@@ -9,7 +9,7 @@
     "subschema-utils": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder-plugin-babel": "^0.0.4"
+    "mrbuilder-plugin-babel": "^0.0.5"
   },
   "source": "src",
   "main": "lib"
