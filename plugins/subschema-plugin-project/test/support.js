@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
-import samples from 'subschema-test-samples';
+import Loader from 'subschema-plugin-autoloader';
 import { newSubschemaContext } from 'subschema';
-import { compile, source } from 'subschema-project';
-import { into as _into } from 'subschema-test-support';
+import { compile, source } from 'subschema-plugin-project';
 import { expect } from 'chai';
+import { mount } from 'enzyme';
 
-export const into = _into;
+export const samples = Loader.listExamples().reduce((ret, { name, value }) => {
+    ret[name] = value;
+    return ret;
+}, {});
+
+
+export const into = (node, attachTo) => {
+    if (attachTo === true) {
+        attachTo = document.createElement('div');
+        document.body.appendChild(attachTo);
+        return mount(node, { attachTo });
+    }
+    return mount(node, attachTo);
+};
 
 export function execMock(gen) {
     const exports = {};
@@ -19,7 +32,7 @@ const noop = function () {
 
 };
 
-export function setupFunc(sample, Subschema = newSubschemaContext()) {
+export function setupFunc(sample, Subschema = newSubschemaContext(), module) {
     if (!(sample && sample.setupTxt)) {
         //empty
         return noop;
@@ -28,13 +41,27 @@ export function setupFunc(sample, Subschema = newSubschemaContext()) {
     const gen = compile(
         source({ useData: false, useErrors: false, sample }, null));
 
-    return (new Function(
-        ['require', 'loader', 'schema', 'Subschema', 'React', 'valueManager'],
-        `${gen.code}  
+    const funcBody = `${gen.code}  
         return {schema:schema, loader:loader, valueManager:valueManager}`
-    ))(Subschema.importer, Subschema.loader, sample.schema, Subschema, React,
-        Subschema.valueManager);
 
+    try {
+        const newFunc = new Function(
+            ['require', 'loader', 'schema', 'Subschema', 'React', 'valueManager'],
+            funcBody);
+
+        const ret = newFunc(Subschema.importer, Subschema.loader, sample.schema,
+            Subschema,
+            React,
+            Subschema.valueManager);
+        if (ret.loader !== Subschema.loader) {
+            Subschema.loader.addLoader(ret.loader);
+            ret.loader = Subschema.loader;
+        }
+        return ret;
+    } catch (e) {
+        console.warn('func failed', e);
+        throw e;
+    }
 }
 
 

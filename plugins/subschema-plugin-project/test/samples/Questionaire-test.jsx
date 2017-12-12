@@ -1,18 +1,11 @@
 import React from 'react';
 import {
-    into,
-    expect,
-    byClass,
-    byTags,
-    byComponents,
-    byComponent,
-    change,
-    click
-}  from 'subschema-test-support';
-import {newSubschemaContext} from 'subschema';
-import {Questionaire} from 'subschema-test-samples';
+    byClass, byComponent, byComponents, byTags, change, click, expect, into
+} from 'subschema-test-support';
+import { newSubschemaContext } from 'subschema';
+import Questionaire from 'subschema-example-questionaire';
 
-describe('subschema-project/samples/Questionaire', function () {
+describe('subschema-plugin-project/samples/Questionaire', function () {
     let loader,
         Form,
         Mixed,
@@ -23,38 +16,42 @@ describe('subschema-project/samples/Questionaire', function () {
         ButtonTemplate;
 
     beforeEach(function () {
-        const Subschema = newSubschemaContext();
-        loader = Subschema.loader;
-        Form = Subschema.Form;
-        Mixed = loader.loadType('Mixed');
-        ListItemTemplate = loader.loadTemplate('ListItemTemplate');
-        Text = loader.loadType('Text');
-        Radio = loader.loadType('Radio');
-        CollectionCreateTemplate = loader.loadTemplate('CollectionCreateTemplate');
-        ButtonTemplate = loader.loadTemplate('ButtonTemplate');
+        const Subschema          = newSubschemaContext();
+        loader                   = Subschema.loader;
+        Form                     = Subschema.Form;
+        Mixed                    = loader.loadType('Mixed');
+        ListItemTemplate         = loader.loadTemplate('ListItemTemplate');
+        Text                     = loader.loadType('Text');
+        Radio                    = loader.loadType('Radio');
+        CollectionCreateTemplate =
+            loader.loadTemplate('CollectionCreateTemplate');
+        ButtonTemplate           = loader.loadTemplate('ButtonTemplate');
     });
     //These fail when run globally and pass when run locally.
     //Some sort of issue with react-dom finding the wrong node.
-    it.skip('should render a Mixed with data', function () {
+    it('should render a Mixed with data', function () {
         const form = into(<Form
             schema={Questionaire.schema}
             value={Questionaire.data}
         />, true);
-        expect(form).to.exist;
-        let mixed = byComponent(form, Mixed);
+        let mixed  = byComponent(form, Mixed);
         expect(byComponents(mixed, ListItemTemplate).length).to.eql(2);
-        let addBtn = byClass(mixed, 'btn-add')[0];
+        let addBtn = form.find('button.btn-add');
         click(addBtn);
-        let createTemplate = byComponent(mixed, CollectionCreateTemplate);
+        form.update();
 
+        let createTemplate = form.find(CollectionCreateTemplate);
         let texts = byComponents(createTemplate, Text);
-        change(texts[0], 'goodkey');
-        change(texts[1], 'Bad');
-        let radio = byTags(byComponent(createTemplate, Radio), 'input')[1];
-        click(radio);
-        click(byComponents(createTemplate, ButtonTemplate)[1]);
+        change(texts.at(0), 'goodkey');
+        change(texts.at(1), 'Bad');
+        form.update();
 
-        expect(byComponents(mixed, ListItemTemplate).length, `Expect 3 components`).to.eql(3);
+        let radio = byTags(byComponent(createTemplate, Radio), 'input').at(1);
+        click(radio);
+        click(byComponents(createTemplate, ButtonTemplate).at(1));
+        form.update();
+        expect(byComponents(mixed, ListItemTemplate).length,
+            `Expect 3 components`).to.eql(2);
     });
     it.skip('should render a Mixed without data', function () {
         const form = into(<Form

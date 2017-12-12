@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { clone, defaults, noop, resolveKey } from 'subschema-utils';
-import UninjectedObjectType from 'subschema-plugin-object';
+import {ObjectType as UninjectedObjectType} from 'subschema-plugin-object';
 import PropTypes from 'subschema-prop-types';
 import renderTemplate from 'subschema-rendertemplate';
 

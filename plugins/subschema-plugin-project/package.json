@@ -10,19 +10,36 @@
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "jszip": "^3.1.5"
+    "jszip": "^3.1.5",
+    "subschema-plugin-autoloader": "4.0.0-b-1"
   },
   "devDependencies": {
+    "subschema-preset-web-form": "^4.0.0-b1",
+    "subschema-preset-resolvers": "^4.0.0-b-1",
     "subschema-preset-examples": "^4.0.0-b-1",
-    "mrbuilder":"^0.0.2",
+    "subschema-test-support": "^4.0.0-b-1",
+    "mrbuilder": "^0.0.4",
     "subschema-valuemanager": "^4.0.0-b-1",
+    "subschema-plugin-type-wizard": "^4.0.0-b-1",
     "subschema": "^4.0.0-b-1"
   },
   "source": "src",
   "subschema": {
-    "webpack": "./mrbuilder-webpack.config.js",
     "presets": [
-      "subschema-preset-examples"
+      "subschema-preset-examples",
+      "subschema-preset-web-form",
+      "subschema-preset-resolvers"
+    ],
+    "plugins": [
+      "subschema-plugin-type-wizard",
+      "subschema-plugin-autoloader"
+    ]
+  },
+  "mrbuilder": {
+    "plugin": "./mrbuilder.config.js",
+    "plugins": [
+      "subschema-plugin-autoloader",
+      "subschema-plugin-project"
     ]
   }
 }

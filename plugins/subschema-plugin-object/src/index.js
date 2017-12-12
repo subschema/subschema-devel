@@ -37,7 +37,10 @@ export class ObjectType extends PureComponent {
         value           : {}
     };
 
-    static injectedProps = {
+    static injectedPropTypes = {
+        fallbackTemplate: PropTypes.template,
+    };
+    static injectedProps     = {
         value: "."
     };
 

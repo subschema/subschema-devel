@@ -1,9 +1,9 @@
 import React from "react";
-import { compile, generate, project } from "subschema-project";
+import { compile, generate, project } from "subschema-plugin-project";
 import { expect } from 'chai';
 import { testEachSample } from "./support";
 
-describe('subschema-project/samples', function () {
+describe('subschema-plugin-project/samples', function () {
     this.timeout(50000);
 
     testEachSample((ds, sample) => {

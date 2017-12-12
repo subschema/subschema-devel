@@ -1,6 +1,6 @@
 import { availablePlugins, transform } from 'babel-standalone';
 import form from './form';
-import reactClassDisplayName from 'subschema-dev-babel/react-class-display-name';
+import reactClassDisplayName from 'mrbuilder-plugin-babel/react-class-display-name';
 import transformClassProps from 'babel-plugin-transform-class-properties';
 import babelrc from './babelrc.json';
 

@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "mrbuilder":"^0.0.2"
+    "mrbuilder": "^0.0.4"
   },
   "source": "src"
 }

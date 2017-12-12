@@ -2,29 +2,34 @@
   "name": "subschema.wiki",
   "version": "4.0.0-b-1",
   "description": "Subschema Wiki",
-  "main": "lib",
+  "main": "src",
   "scripts": {
     "server": "mrbuilder-webpack-dev-server",
     "clean": "mrbuilder-clean",
     "prepublish": "mrbuilder-webpack"
   },
   "devDependencies": {
-    "react": "^16.1.0",
-    "mrbuilder": "^0.0.2",
-    "mrbuilder-plugin-markdown": "^0.0.2"
+    "mrbuilder": "^0.0.4",
+    "mrbuilder-plugin-markdown": "^0.0.4",
+    "react": "^16.1.0"
   },
   "peerDependencies": {
     "babel-standalone": "*"
   },
   "source": "src",
-  "subschema": {
-    "options": {
-      "loader": "Doc"
-    }
-  },
   "mrbuilder": {
     "plugins": [
       "mrbuilder-plugin-markdown"
-    ]
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "mrbuilder"
+        ],
+        "plugins": [
+          "mrbuilder-plugin-markdown"
+        ]
+      }
+    }
   }
 }

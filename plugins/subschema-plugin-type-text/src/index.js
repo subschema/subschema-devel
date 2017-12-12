@@ -13,7 +13,8 @@ export class Text extends PureComponent {
         className  : PropTypes.typeClass,
         placeholder: PropTypes.string,
         dataType   : PropTypes.string,
-        fieldAttrs : PropTypes.fieldAttrs
+        fieldAttrs : PropTypes.fieldAttrs,
+        id         : PropTypes.id
     };
 
     static injectedProps = {

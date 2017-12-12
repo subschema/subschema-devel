@@ -4,7 +4,7 @@
   "description": "Subschema",
   "main": "lib",
   "scripts": {
-    "compile-default-loader": "subschema-autoloader | mrbuilder-babel --out-file  ./lib/DefaultLoader.js",
+    "compile-default-loader": "subschema-autoloader | mrbuilder-babel --out-file  ./lib/DefaultLoader.js && subschema-importer | mrbuilder-babel --out-file ./lib/importer.js",
     "compile-lib": "mrbuilder-babel && yarn run compile-default-loader",
     "compile-server": "mrbuilder-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
     "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom mrbuilder-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
@@ -23,16 +23,19 @@
     "subschema-preset-web-form": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
     "subschema-context": "^4.0.0-b-1",
-    "subschema-plugin-autoloader": "^4.0.0-b-1"
+    "subschema-plugin-autoloader": "^4.0.0-b-1",
+    "mrbuilder": "^0.0.4"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "mrbuilder": "^0.0.2",
     "subschema-test-support": "^4.0.0-b-1"
   },
   "mrbuilder": {
-    "plugin": "./subschema-webpack.config"
+    "plugins": [
+      "subschema-plugin-autoloader",
+      "./subschema-webpack.config"
+    ]
   },
   "subschema": {
     "options": {

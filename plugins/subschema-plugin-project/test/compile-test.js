@@ -1,13 +1,13 @@
 import { expect } from 'chai';
-import { compile, source } from 'subschema-project';
+import { compile, source } from 'subschema-plugin-project';
 
-import fixtures from 'subschema-test-samples';
+import {samples} from './support';
 
 describe('compile', function () {
-    Object.keys(fixtures).forEach((key) => {
+    Object.keys(samples).forEach((key) => {
         it(`should compile form sample "${key}" `, () => {
             expect(compile(
-                source({ sample: { sample: fixtures[key] } })).code).to.exist
+                source({ sample: { sample: samples[key] } })).code).to.exist
         });
     });
 });

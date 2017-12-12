@@ -1,11 +1,10 @@
 import React from 'react';
-import { byTypes, expect, into } from 'subschema-test-support';
-import { Loader } from 'subschema-test-samples'
+import Loader from 'subschema-example-loader';
 import { newSubschemaContext } from 'subschema';
-import { setupFunc } from '../support';
+import { into, setupFunc } from '../support';
+import {expect} from 'chai';
 
-
-describe('subschema-project/samples/Loader', function () {
+describe('subschema-plugin-project/samples/Loader', function () {
 
     this.timeout(50000);
     it('should load a custom type', () => {
@@ -13,12 +12,20 @@ describe('subschema-project/samples/Loader', function () {
         const { Form, loader } = Subschema;
 
         const context = setupFunc(Loader, Subschema);
+        const CheckboxSelect = loader.loadType('CheckboxSelect');
+        const SimpleTemplate = loader.loadTemplate('SimpleTemplate');
+        const Contact = loader.loadSchema('Contact');
+        const Address = loader.loadSchema('Address');
+
+        expect(SimpleTemplate).to.exist;
+        expect(CheckboxSelect).to.exist;
+        expect(Contact).to.exist;
+        expect(Address).to.exist;
+
+
         const form    = into(<Form {...context}/>, true);
 
-        const CheckboxSelect = loader.loadType('CheckboxSelect');
-        expect(CheckboxSelect, 'CheckboxSelect should be found').to.exist;
-
-        byTypes(form);
+        expect(form.find(CheckboxSelect)).to.have.length(1);
 
 
     });

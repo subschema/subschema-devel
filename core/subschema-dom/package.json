@@ -10,7 +10,7 @@
     "react-dom": "^16.1.1"
   },
   "devDependencies": {
-    "mrbuilder-plugin-babel": "^0.0.2"
+    "mrbuilder-plugin-babel": "^0.0.4"
   },
   "peerDependencies": {
     "react-dom": "*"

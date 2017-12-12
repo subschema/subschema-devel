@@ -3,13 +3,18 @@ const path = require('path');
 const resolvePkgDir = name => path.resolve(
     require.resolve(path.join(name, 'package.json')), '..');
 
-module.exports = function (options, webpack) {
+module.exports = function ({
+                               test = /\.tmpl$/,
+                               use = path.resolve(__dirname, 'tmpl-loader'),
+                               include,
+                               exclude,
+                           }, webpack) {
+    console.log('loading template loader');
     webpack.module.rules.push({
-        test   : /\.tmpl$/,
-        use    : path.resolve(__dirname, 'tmpl-loader'),
-        include: [
-            path.resolve(__dirname, 'src')
-        ]
+        test,
+        use,
+        include,
+        exclude
     });
 
     webpack.resolve.alias['babel-core'] = resolvePkgDir('babel-standalone');

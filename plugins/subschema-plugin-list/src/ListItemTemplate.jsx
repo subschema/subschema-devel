@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { noop } from 'subschema-utils';
-import UninjectedButtons from 'subschema-plugin-template-buttons';
+import {ButtonsTemplate as UninjectedButtons} from 'subschema-plugin-template-buttons';
 import PropTypes from 'subschema-prop-types';
 
 export default class ListItemTemplate extends Component {
+    static displayName = 'ListItemTemplate';
+
     static propTypes = {
         style  : PropTypes.style,
         Buttons: PropTypes.injectClass,

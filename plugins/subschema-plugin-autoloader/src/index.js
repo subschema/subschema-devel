@@ -57,8 +57,8 @@ function map(m, each) {
     return result;
 }
 
-export default function ({ plugins } = new OptionsManager(
-    { prefix: 'subschema' })) {
+export default function ({ plugins }) {
+
     return {
         code     : `
 import loaderFactory from 'subschema-loader';

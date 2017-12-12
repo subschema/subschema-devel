@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "lodash": "^4.17.4",
-    "mrbuilder-plugin-babel":"^0.0.2"
+    "mrbuilder-plugin-babel": "^0.0.4"
   },
   "peerDependencies": {
     "lodash": "*"

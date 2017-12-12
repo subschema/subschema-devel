@@ -9,7 +9,7 @@
     "subschema-form": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder-plugin-babel": "^0.0.2"
+    "mrbuilder-plugin-babel": "^0.0.4"
   },
   "scripts": {
     "clean": "mrbuilder-clean",

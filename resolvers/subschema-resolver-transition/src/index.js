@@ -1,5 +1,5 @@
 import PropTypes from 'subschema-prop-types';
-import {warning} from 'subschema-utils';
+import { warning } from 'subschema-utils';
 import React from 'react';
 
 const EMPTY = {};
@@ -10,9 +10,11 @@ export const settings = {
     transitionAppearTimeout: 300,
     transitionLeaveTimeout : 300,
     Transition({ transitionEnter, transitionLeave, transitionAppear, transitionHeightClass, ...props }) {
-
-        warning(false,
-            `Please set subschema-core.resolvers.transition.settings.Transition to a transition handler`);
+//TODO - Renable
+        //  warning(false,
+        //      `Please set
+        // subschema-core.resolvers.transition.settings.Transition to a
+        // transition handler`);
         return EmptyTransition(props);
     }
 };

@@ -1,6 +1,11 @@
 {
   "dependencies": {
     "istanbul": "^0.4.5",
+    "mrbuilder": "0.0.4",
+    "mrbuilder-optionsmanager": "0.0.4",
+    "mrbuilder-plugin-babel": "0.0.4",
+    "mrbuilder-plugin-less": "0.0.4",
+    "mrbuilder-plugin-markdown": "0.0.4",
     "nyc": "^11.3.0",
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
@@ -19,6 +24,7 @@
   "devDependencies": {
     "lerna": "^2.5.1",
     "lerna-relinker": "^1.5.0",
+    "mrbuilder-plugin-html": "^0.0.4",
     "rimraf": "^2.6.2"
   },
   "workspaces": [

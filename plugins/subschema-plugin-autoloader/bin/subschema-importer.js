@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-const DefaultLoaderFactory = require('../lib/index').default;
+const Importer = require('../lib/importer').default;
 const optionsManager = new (require('mrbuilder-optionsmanager').default)({prefix:'subschema', _require:require});
-console.log(DefaultLoaderFactory(optionsManager).code);
+console.log(Importer(optionsManager).code);

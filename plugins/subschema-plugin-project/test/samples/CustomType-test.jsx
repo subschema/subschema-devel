@@ -1,22 +1,23 @@
 import React from 'react';
-import {into, expect, byComponent}  from 'subschema-test-support';
-import {newSubschemaContext} from 'subschema';
-import {CustomType} from 'subschema-test-samples';
-import {setupFunc} from '../support';
+import { byComponent, click, expect, into } from 'subschema-test-support';
+import { newSubschemaContext } from 'subschema';
+import CustomType from 'subschema-example-customtype';
+import { setupFunc } from '../support';
 
-describe('subschema-test-samples/CustomType', function () {
+describe('subschema-plugin-project/samples/CustomType', function () {
     it('should render', function () {
-        const schema = CustomType.schema;
+        const schema    = CustomType.schema;
         //loader, schema, Subschema, React
         const Subschema = newSubschemaContext();
-        const {Form, importer} = Subschema;
+        const { Form, loader }  = Subschema;
 
         const context = setupFunc(CustomType, Subschema);
 
         const form = into(<Form  {...context}/>, true);
 
-        const SwitchButton = Subschema.loader.loadType('SwitchButton');
+        const SwitchButton = context.loader.loadType('SwitchButton');
         expect(SwitchButton).to.exist;
-        expect(byComponent(form, SwitchButton)).to.exist;
+        byComponent(form, SwitchButton);
+
     })
 });

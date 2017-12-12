@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { projectTemplates as templates } from "subschema-project";
-import pkg from "../../../subschema/package.json";
+import { projectTemplates as templates } from "subschema-plugin-project";
+import pkg from "subschema/package.json";
 
 describe('tmpl-loader', function () {
     Object.keys(templates).forEach((key) => {

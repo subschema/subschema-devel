@@ -1,19 +1,18 @@
 import React from "react";
 import { expect } from 'chai';
-import samples from "subschema-test-samples";
-import { cleanUp, into } from "subschema-test-support";
 import { newSubschemaContext, ValueManager } from "subschema";
 import { findDOMNode, unmountComponentAtNode } from 'react-dom';
-import { setupFunc } from '../support';
+import { into, samples, setupFunc } from '../support';
+import { cleanUp } from 'subschema-test-support';
 
-describe('subschema-support/samples', function () {
+describe('subschema-plugin-project/samples', function () {
     this.timeout(5000);
 
 
     Object.keys(samples).forEach(function (key) {
         const sample = samples[key];
         let form;
-        describe(key, function () {
+        describe(`sample ${key}`, function () {
             afterEach(cleanUp);
 
             it(`render sample ${key} with data`, function () {

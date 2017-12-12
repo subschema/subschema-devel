@@ -1,8 +1,9 @@
 import React from 'react';
-import { byComponents, into, } from 'subschema-test-support';
 import { newSubschemaContext } from 'subschema';
+import {into} from '../support';
+import {expect} from 'chai';
 
-describe("subschema-test-samples/FieldSetConditional", function () {
+describe("subschema-plugin-project/samples/FieldSetConditional", function () {
     this.timeout(50000);
     it('should render', function (done) {
         const schema                         = {
@@ -58,11 +59,11 @@ describe("subschema-test-samples/FieldSetConditional", function () {
             'FieldSetTemplate');
         const form                           = into(<Form schema={schema}/>,
             true);
-        byComponents(form, FieldSetTemplate, 1);
+        expect(form.find(FieldSetTemplate)).to.have.length(1);
         valueManager.update('phoneOrEmail', 'phone');
 
         setTimeout(() => {
-            byComponents(form, FieldSetTemplate, 2);
+            expect(form.find(FieldSetTemplate)).to.have.length(1);
             done();
         }, 1000);
     });

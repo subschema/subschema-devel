@@ -24,6 +24,9 @@ function RenderTemplate(props) {
     } else if (typeof template === 'function') {
         Template = template;
         template = FREEZE_OBJ;
+    } else if (typeof template === 'string') {
+        warning(true, 'template could not be resolved %s', template);
+        return null;
     } else {
         ({ Template, ...template } = template);
     }

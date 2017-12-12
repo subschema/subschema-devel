@@ -32,13 +32,13 @@ function cleanUp() {
 let __id = 0;
 
 function into(node, debug) {
-    const appendTo     = document.createElement('div');
-    appendTo.className = `__test__inserted__`;
-    appendTo.id        = `__test_${__id++}`;
+    const attachTo     = document.createElement('div');
+    attachTo.className = `__test__inserted__`;
+    attachTo.id        = `__test_${__id++}`;
     if (debug === true) {
-        document.body.appendChild(appendTo);
+        document.body.appendChild(attachTo);
     }
-    return _mount(node, { appendTo });
+    return _mount(node, { attachTo });
 }
 
 function notByType(node, type, description) {
@@ -51,13 +51,15 @@ function expected(nodes, length) {
         return nodes;
     }
     if (nodes.length !== length) {
-        throw new Error(`Found ${node.length} nodes expected ${length}`);
+        expect(nodes).to.have.length(length);
     }
     return nodes;
 }
 
 function byTypes(node, type, length) {
-    return expected(node.find(type), length);
+    const rest = expected(node.find(type), length);
+
+    return rest;
 }
 
 function byType(node, type) {
@@ -73,10 +75,8 @@ function byTags(node, tag, length) {
 }
 
 function onlyOne(node) {
-    if (node.length != 1) {
-        throw new Error(`Found ${node.length} nodes expected 1`)
-    }
-    return node[0];
+    expect(node).to.have.length(1);
+    return node;
 }
 
 function byName(root, prop) {
@@ -133,7 +133,7 @@ function byComponent(node, comp) {
 }
 
 function byComponents(node, comp, length) {
-    return expected(node.filterWhere(comp), length);
+    return expected(node.find(comp), length);
 }
 
 function byClass(node, className) {
@@ -189,12 +189,10 @@ function intoWithContext(child, ctx, debug, contextTypes) {
 }
 
 
-function select(composit, index) {
-    const node     = findNode(composit);
-    const multiple = node.multiple;
+function select(node, index) {
+    const multiple = Array.isArray(index);
 
-    const options = byTags(composit, 'option')
-    expect(options[index], `${index} should exist`).to.exist;
+    const options = byTags(node, 'option');
     if (!multiple) {
         options.forEach((option, idx) => {
             option.selected = (idx === index);
@@ -206,7 +204,7 @@ function select(composit, index) {
     node.simulate('change', {
         target: {
             options,
-            value: multiple ? options.map((o) => o.value) : options[index].value
+            value: multiple ? options.map((o) => o.prop('value')) : options.at(index).prop('value')
         }
     });
     return node;

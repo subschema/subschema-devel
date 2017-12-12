@@ -6,25 +6,10 @@ import Form from 'subschema-form';
 import { propTypeToName } from 'subschema-prop-types';
 import PropTypes from 'prop-types';
 
-const IGNORE_PROPS = [
-    'path',
-    'id',
-    'className',
-    'cssClass'
-];
-const IGNORE_TYPES = Object.keys(PropTypes).reduce((ret, v) => {
-    ret.push(PropTypes[v]);
-    ret.push(PropTypes[v].isRequired);
-    return ret;
-}, []);
 
 const makeResolver = (loader) => {
     return (propType) => {
 
-        if (propType == null || PropTypes[propType] || IGNORE_TYPES.includes(
-                propType)) {
-            return null;
-        }
         let ret = loader.loadResolver(
             propType);
         if (ret) {
@@ -32,17 +17,17 @@ const makeResolver = (loader) => {
         }
         const toName = propTypeToName(propType);
 
-        if (PropTypes[toName] || IGNORE_PROPS.includes(toName)) {
+        if (PropTypes[toName]) {
             return ret;
         }
 
 
-        if (!toName || IGNORE_PROPS.includes(toName)) {
+        if (!toName) {
             return ret;
         }
 
         ret = loader.loadResolver(toName);
-        warning(ret, 'PropType not found %s', toName);
+//        warning(ret, 'PropType not found %s', toName);
         return ret;
 
     }

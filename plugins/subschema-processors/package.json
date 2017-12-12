@@ -12,7 +12,7 @@
     "subschema-utils": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder":"^0.0.2"
+    "mrbuilder": "^0.0.4"
   },
   "source": "src"
 }

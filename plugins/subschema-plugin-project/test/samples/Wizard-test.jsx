@@ -3,7 +3,7 @@ import {
     byComponent, byTag, click, expect, into,
 } from 'subschema-test-support';
 import { newSubschemaContext } from 'subschema';
-import { Wizard } from 'subschema-test-samples';
+import  Wizard  from 'subschema-example-wizard';
 import ValueManager from 'subschema-valuemanager';
 
 describe('subschema-test-samples/Wizard', function () {

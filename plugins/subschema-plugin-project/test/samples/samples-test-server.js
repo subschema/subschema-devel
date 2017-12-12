@@ -9,10 +9,10 @@ require('source-map-support').install();
 const React = require('react');
 const ReactServer = require('react-dom/server');
 const expect = require('expect');
-const samples = require('subschema-test-samples');
+const {samples} = require('../samples');
 const setupFunc = require('../support').setupFunc;
 
-describe('subschema-test-samples/server', function () {
+describe('subschema-plugin-project/server', function () {
     ['First', 'Second'].forEach(function (key) {
         describe(key + ' Run', function () {
             const subschema = require('../dist/subschema-server.js');
