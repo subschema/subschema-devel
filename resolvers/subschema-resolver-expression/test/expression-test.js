@@ -1,12 +1,10 @@
-"use strict";
 import React, {Component} from 'react';
 import {expect} from 'chai';
 import ValueManager from 'subschema-valuemanager';
 import PropTypes from 'subschema-prop-types';
-import resolvers from 'subschema-core/lib/resolvers';
 import {intoWithContext, byComponent} from 'subschema-test-support';
 import injector from 'subschema-injection';
-
+import {expression} from 'subschema-resolver-expression'
 describe('resolvers/expression', function () {
 
     class ExpressionTest extends Component {
@@ -21,7 +19,7 @@ describe('resolvers/expression', function () {
         }
     }
 
-    injector.resolver(PropTypes.expression, resolvers.expression);
+    injector.resolver(PropTypes.expression, expression);
     it('should evaluate expression', function () {
         const Injected = injector.inject(ExpressionTest, {path: PropTypes.path});
         const valueManager = ValueManager({'other': 'stuff', hello: {more: '', test: ''}});
@@ -32,20 +30,26 @@ describe('resolvers/expression', function () {
 
         }, true);
 
-        const et = byComponent(inst, ExpressionTest);
+        let et = inst.find(ExpressionTest);
 
-        expect(et).to.exist;
-        expect(et.props.expr).to.eql('hi stuff');
-        expect(et.props.expr1).to.eql(' .');
+        expect(et.prop('expr')).to.eql('hi stuff');
+        expect(et.prop('expr1')).to.eql(' .');
         valueManager.update('hello.more', 'I am');
-        expect(et.props.expr1).to.eql('I am .');
+        inst.update();
+        et = inst.find(ExpressionTest);
+        expect(et.prop('expr1')).to.eql('I am .');
 
         valueManager.update('hello.test', 'cool');
-        expect(et.props.expr1).to.eql('I am cool.');
-        expect(et.props.expr).to.eql('hi stuff');
+        inst.update();
+        et = inst.find(ExpressionTest);
+        expect(et.prop('expr1')).to.eql('I am cool.');
+        expect(et.prop('expr')).to.eql('hi stuff');
+
         valueManager.update('other', 'huh');
-        expect(et.props.expr).to.eql('hi huh');
-        expect(et.props.expr1).to.eql('I am cool.');
+        inst.update();
+        et = inst.find(ExpressionTest);
+        expect(et.prop('expr')).to.eql('hi huh');
+        expect(et.prop('expr1')).to.eql('I am cool.');
     });
 
 });

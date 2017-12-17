@@ -185,7 +185,7 @@ function context(childContext = defChildContext, childContextTypes = {
 
 function intoWithContext(child, ctx, debug, contextTypes) {
     const Context = context(ctx, contextTypes);
-    return byType(into(<Context>{child}</Context>, debug), child.type);
+    return into(<Context>{child}</Context>, debug);
 }
 
 

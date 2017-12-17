@@ -1,10 +1,10 @@
 import PropTypes from "subschema-prop-types";
-import expression from "subschema-expression";
+import expressionFunc from "subschema-expression";
 import {resolveKey, applyFuncs, FREEZE_OBJ} from "subschema-utils";
 import {warning} from "subschema-utils";
 function handleExpression(value, key, props, {valueManager, loader}) {
     const expressionVals = {};
-    const {listen, format, formatters = []} = expression(value);
+    const {listen, format, formatters = []} = expressionFunc(value);
     let injected = this.state ? {...this.state} : {};
     const {path} = props;
     const fmts = loader && loader.loadFormatter && formatters.reduce(function (obj, key) {
@@ -42,16 +42,17 @@ function handleExpression(value, key, props, {valueManager, loader}) {
     return ret;
 }
 
+export function expression(Clazz, key) {
+
+    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+    Clazz.contextTypes.loader = PropTypes.loader;
+
+    Clazz::this.listener(key, handleExpression);
+
+
+}
 export default {
     resolver: {
-        expression: function(Clazz, key) {
-
-            Clazz.contextTypes.valueManager = PropTypes.valueManager;
-            Clazz.contextTypes.loader = PropTypes.loader;
-
-            Clazz::this.listener(key, handleExpression);
-
-
-        }
+        expression
     }
 };
