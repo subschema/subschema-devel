@@ -38,7 +38,7 @@
         false
       ],
       "subschema-plugin-autoloader",
-      "./subschema-webpack.config"
+      "./mrbuilder-plugin"
     ]
   },
   "subschema": {
@@ -47,6 +47,7 @@
     },
     "plugins": [
       [
+        "subschema-prop-types",
         "subschema-plugin-autoloader"
       ]
     ],

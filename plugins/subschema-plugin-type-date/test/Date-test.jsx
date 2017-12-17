@@ -1,8 +1,6 @@
 import React from "react";
 import { expect, findNode, into } from "subschema-test-support";
-import { types } from "subschema-component-form";
-
-const { Date } = types;
+import Date from 'subschema-plugin-type-date';
 
 describe('types/Date', function () {
     it('should create a input with a value', function () {

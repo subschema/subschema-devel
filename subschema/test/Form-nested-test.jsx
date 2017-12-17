@@ -3,7 +3,7 @@ import { expect, mount } from 'subschema-test-support';
 import { Form } from 'subschema';
 
 
-describe.only('Form#nested validation', function () {
+describe('Form#nested validation', function () {
 
 
     it('should validate a nested modal', () => {

@@ -1,8 +1,6 @@
 import React from 'react';
 import { change, expect, findNode, into } from 'subschema-test-support';
-import { types } from 'subschema-component-form';
-
-const { Text } = types;
+import { Text } from 'subschema-plugin-type-text';
 
 describe('types/Text', function () {
     it('should create a input with a value', function () {

@@ -217,14 +217,13 @@ class StateWrapper extends Component {
 }
 
 function intoWithState(child, state, debug) {
-    var s = into(<StateWrapper>{child}</StateWrapper>, debug);
+    const s = into(<StateWrapper>{child}</StateWrapper>, debug);
     if (state != null) {
-        s.setState(state);
+        s.instance().setState(state);
     }
-    var schild = byType(s, child.type);
     return {
         state: s,
-        child: schild
+        child: s.first()
     }
 }
 

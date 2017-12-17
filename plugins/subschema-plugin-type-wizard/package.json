@@ -4,8 +4,6 @@
   "description": "Subschema Wizard Component",
   "main": "lib",
   "scripts": {
-    "karma": "subschema-karma",
-    "test": "subschema-karma",
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },

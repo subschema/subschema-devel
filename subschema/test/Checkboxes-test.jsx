@@ -1,14 +1,12 @@
+import React from 'react';
+
 import {
-    byComponent, byComponents, byTag, byTags, byType, change, check, click,
-    expect, findNode, Form, into, intoWithState, React, Simulate, TestUtils,
-    ValueManager
+    byTags, expect, Form, into, Simulate, TestUtils, ValueManager, change
 } from 'subschema-test-support';
-import { types } from 'subschema-component-form';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { Checkboxes } from 'subschema-plugin-type-checkboxes';
 
-const { Checkboxes, Checkbox } = types;
-
-describe('types/Checkboxes', function () {
+describe('subschema/Checkboxes', function () {
     this.timeout(50000);
     it('should create checkboxes', function () {
         const {
@@ -17,7 +15,7 @@ describe('types/Checkboxes', function () {
                   valueManager
               } = newSubschemaContext();
 
-        var root         = into(<Form valueManager={valueManager} schema={{
+        const root       = into(<Form valueManager={valueManager} schema={{
             schema: {
                 group1: {
                     options: ['one', 'two', 'three'],
@@ -26,11 +24,11 @@ describe('types/Checkboxes', function () {
 
             }
         }}/>, true);
-        const checkboxes = byTags(root, 'input');
+        const checkboxes = root.find('input[type="checkbox"]');
 
         expect(checkboxes.length).to.eql(3);
-        const cb0 = checkboxes[0];
-        Simulate.change(cb0, {
+        const cb0 = checkboxes.at(0);
+        cb0.simulate('change', {
             target: {
                 checked: true,
                 value  : 'one'
@@ -54,16 +52,16 @@ describe('types/Checkboxes', function () {
                     options: [
                         {
                             group: 'North America', options: [
-                            { val: 'ca', label: 'Canada' },
-                            { val: 'us', label: 'United States' }
-                        ]
+                                { val: 'ca', label: 'Canada' },
+                                { val: 'us', label: 'United States' }
+                            ]
                         },
                         {
                             group: 'Europe', options: [
-                            { val: 'es', label: 'Spain' },
-                            { val: 'fr', label: 'France' },
-                            { val: 'uk', label: 'United Kingdom' }
-                        ]
+                                { val: 'es', label: 'Spain' },
+                                { val: 'fr', label: 'France' },
+                                { val: 'uk', label: 'United Kingdom' }
+                            ]
                         }
                     ],
                     type   : 'Checkboxes'
@@ -73,8 +71,8 @@ describe('types/Checkboxes', function () {
             }
         }}/>, true);
         const checkboxes = byTags(root, 'input');
-        expect(checkboxes.length).to.eql(5);
-        expect(byTags(root, 'legend').length).to.eql(2);
+        expect(checkboxes).to.have.length(5)
+        expect(byTags(root, 'legend')).to.have.length(2);
     });
 
 

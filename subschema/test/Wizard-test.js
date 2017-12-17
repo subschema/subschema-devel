@@ -1,21 +1,14 @@
 import React from 'react';
 import {
-    byComponent, byComponents, byTag, byTags, change, check, click, expect,
-    into,
+    byComponent, byComponents, byTags, change, check, click, expect, into,
 } from 'subschema-test-support';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-import BootstrapStyles from 'subschema-styles-bootstrap';
-import { types } from 'subschema-component-form';
-import { templates } from 'subschema-component-wizard';
+import newContext from 'subschema-test-support/lib/newSubschemaContext';
+import { WizardTemplate } from 'subschema-plugin-type-wizard';
+import { Text } from 'subschema-plugin-type-text';
 
 describe('subschema-component-wizard', function () {
     this.timeout(5000);
-    const newContext = () => {
-        const ctx = newSubschemaContext();
-        ctx.loader.addStyle(BootstrapStyles);
-        ctx.loader.addTemplate(templates);
-        return ctx;
-    };
+
 
     it('should create a new form with a wizard and stuff', function (done) {
         const { Form, loader, valueManager } = newContext();
@@ -45,15 +38,14 @@ describe('subschema-component-wizard', function () {
                 fields: "c2"
             }]
         }}/>, true);
-        let template = byComponent(root, templates.WizardTemplate);
-        expect(template, 'should have the template').to.exist;
-        click(byTag(template, 'button'));
-        check(byTag(template, 'input'), true);
-        click(byTag(template, 'button'));
+        let template = byComponent(root, WizardTemplate);
+        expect(template, 'should have the template').to.have.length(1);
+        click(template.find('button'));
+        check(template.find('input[type="checkbox"]'), true);
+        click(template.find('button'));
         setTimeout(function () {
-            check(byTag(template, 'input'), true);
-            const btns = byTags(template, 'button');
-            click(btns[1]);
+            check(root.find('input[type="checkbox"]'), true);
+            click(root.find('button').at(0));
             done();
         }, 1000);
         //  click(byTags(template, 'button')[1]);
@@ -103,7 +95,7 @@ describe('subschema-component-wizard', function () {
     it('should render multiple wizards', function (done) {
         const { Form, valueManager } = newContext();
 
-        var root    = into(<Form valueManager={valueManager} schema={{
+        const root  = into(<Form valueManager={valueManager} schema={{
 
             schema: {
                 wiz1: {
@@ -143,29 +135,19 @@ describe('subschema-component-wizard', function () {
             }
 
         }}/>, true);
-        const tmpls = byComponents(root, templates.WizardTemplate);
-        expect(tmpls.length).to.eql(2, 'should render both wizards');
+        let tmpls = root.find(WizardTemplate);
+        expect(tmpls).to.have.length(2);
 
-//         click(byTag(tmpls[0], 'button'));
-        change(byComponent(tmpls[0], types.Text), 'hello t1');
-        click(byTag(tmpls[0], 'button'));
+        change(tmpls.at(0).find(Text), 'hello t1');
+        click(tmpls.at(0).find('button'));
         setTimeout(() => {
-            const texts = byComponents(tmpls[0], types.Text)
-            change(texts[0], 'hello t2');
+            const texts = root.find(WizardTemplate).at(0).find(Text);
+            change(texts.at(0), 'hello t2');
 
-            click(byTags(tmpls[0], 'button')[1]);
+            click( root.find(WizardTemplate).at(0).find('button').at(1));
 
             done();
         }, 1200);
-        /*
-         setTimeout(function () {
-         const btns = byTags(template, 'button');
-         click(btns[1]);
-
-         }, 1000);
-         */
-        //  click(byTags(template, 'button')[1]);
-        //  click(byTag(template, 'input'));
 
 
     });

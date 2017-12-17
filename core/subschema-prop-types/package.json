@@ -1,6 +1,7 @@
 {
   "name": "subschema-prop-types",
   "version": "4.0.0-b-1",
+  "source": "src",
   "main": "lib",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
@@ -16,5 +17,7 @@
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1"
   },
-  "source": "src"
+  "mrbuilder": {
+    "plugin": "./mrbuilder-plugin"
+  }
 }

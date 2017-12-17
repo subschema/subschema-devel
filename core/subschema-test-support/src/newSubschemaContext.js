@@ -13,15 +13,15 @@ import _newSubchemaContext from 'subschema-context';
  * @returns {{Form, valueManager, ValueManager, loader, context: {valueManager,
  *     loader, injector}}}
  */
-const newSubschemaContext = ({ defaultLoaders = [DefaultLoader], injectorFactory, valueManager }) => {
-    const ctx = _newSubchemaContext(defaultLoaders, injectorFactory);
+const newSubschemaContext = ({ defaultLoaders = [DefaultLoader], injectorFactory, valueManager } = {}) => {
+    const ctx    = _newSubchemaContext(defaultLoaders, injectorFactory);
     let {
-              valueManager:_valueManager,
+              valueManager   : _valueManager,
               ValueManager = _ValueManager,
               loader       = DefaultLoader,
               injectorFactory: _injectorFactory,
               Form         = __Form,
-          }   = ctx;
+          }      = ctx;
     valueManager = valueManager || _valueManager;
     if (!valueManager) {
         valueManager = ValueManager();

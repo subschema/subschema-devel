@@ -1,13 +1,12 @@
 import React from "react";
-import {into, byTag, expect, select, byTags} from "subschema-test-support";
-import {types} from "subschema-component-form";
+import { byTag, byTags, expect, into, select } from "subschema-test-support";
 import ValueManager from 'subschema-valuemanager';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-const {Select} = types;
+import { Select } from 'subschema-plugin-type-select';
 
 describe('types/Select', function () {
     this.timeout(50000);
-    var values = [];
+    var values   = [];
     var onChange = function (e) {
         values.push(e);
     };
@@ -17,8 +16,10 @@ describe('types/Select', function () {
     });
 
     it('should create a select', function () {
-        var sel = into(<Select options={[{val: 1, label: 'One'}, {val: 2, label: 'Two'}]} path="test"
-                               onChange={onChange}/>);
+        var sel = into(<Select
+            options={[{ val: 1, label: 'One' }, { val: 2, label: 'Two' }]}
+            path="test"
+            onChange={onChange}/>);
         expect(sel).to.exist;
         expect(values.length).to.eql(0);
         var options = byTags(sel, 'option');
@@ -32,7 +33,11 @@ describe('types/Select', function () {
     });
 
     it('should create a multi select', function () {
-        var sel = into(<Select multiple={true} options={[{val: 1, label: 'One'}, {val: 2, label: 'Two'}]}
+        var sel = into(<Select multiple={true}
+                               options={[{ val: 1, label: 'One' }, {
+                                   val  : 2,
+                                   label: 'Two'
+                               }]}
                                path="test" onChange={onChange}/>);
 
         expect(sel).to.exist;
@@ -53,10 +58,17 @@ describe('types/Select', function () {
     });
 
     it('should have the value selected with numbers', function () {
-        const vm = ValueManager({select: 2});
-        const {Form, ...context} = newSubschemaContext({valueManager: vm});
-        const form = into(<Form {...context} schema={{schema: {select: {type: 'Select', options: [1, 2, 3]}}}}
-                                valueManager={vm}/>, true);
+        const vm                   = ValueManager({ select: 2 });
+        const { Form, ...context } = newSubschemaContext({ valueManager: vm });
+        const form                 = into(<Form {...context} schema={{
+            schema: {
+                select: {
+                    type   : 'Select',
+                    options: [1, 2, 3]
+                }
+            }
+        }}
+                                                valueManager={vm}/>, true);
 
         expect(form).to.exist;
         expect(values.length).to.eql(0);
@@ -76,20 +88,28 @@ describe('types/Select', function () {
 
 
     it('should have the value selected with validators', function () {
-        const vm = ValueManager({select: 2});
+        const vm = ValueManager({ select: 2 });
         const {
-            Form,
-            ...context
-        } = newSubschemaContext({valueManager: vm});
+                  Form,
+                  ...context
+              }  = newSubschemaContext({ valueManager: vm });
 
         function noThree(v) {
-            return v == 3 ? {message: 'No threes for you'} : null
+            return v == 3 ? { message: 'No threes for you' } : null
         }
 
         const form = into(<Form
             {...context}
             validate={true}
-            schema={{schema: {select: {type: 'Select', validators: [noThree], options: [1, 2, 3]}}}}
+            schema={{
+                schema: {
+                    select: {
+                        type      : 'Select',
+                        validators: [noThree],
+                        options   : [1, 2, 3]
+                    }
+                }
+            }}
         />, true);
 
         expect(form).to.exist;
