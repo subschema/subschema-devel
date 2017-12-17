@@ -8,6 +8,7 @@ export const settings = {
     //What pattern to pull the className key from.
     pattern  : /^(.*)[cC]lassName$/
 };
+
 function resolveStyle(value, Style = {}, loader, ret = []) {
 
     value = Array.isArray(value) ? value : value.split(/\s+?/);
@@ -52,6 +53,30 @@ function resolveStyle(value, Style = {}, loader, ret = []) {
     }
     return ret.join(' ');
 }
+
+export function className(Clazz, key, propList, OrigClazz) {
+    Clazz.contextTypes.loader = PropTypes.loader;
+    Clazz::this.property(key,
+        function style$resolver(value, key, props, { loader }) {
+            if (value == null) {
+                value =
+                    key.replace(settings.pattern, '$1') || settings.className;
+            } else if (!(typeof value == 'string' || Array.isArray(value))) {
+                return value;
+            }
+            const Style = loadStyle(OrigClazz, loader);
+            if (Style) {
+                value = resolveStyle(value, Style, loader);
+            }
+            if (Array.isArray(value)) {
+                value = value.join(' ');
+            }
+
+            return value;
+
+        });
+}
+
 /**
  * className resolver attempts to resolve the provided className against
  * the current className, or the global, finally returning what was given.
@@ -63,30 +88,10 @@ function resolveStyle(value, Style = {}, loader, ret = []) {
  */
 export default {
     resolver: {
-        className: function(Clazz, key, propList, OrigClazz) {
-            Clazz.contextTypes.loader = PropTypes.loader;
-            Clazz::this.property(key,
-                function style$resolver(value, key, props, { loader }) {
-                    if (value == null) {
-                        value =
-                            key.replace(settings.pattern, '$1') || settings.className;
-                    } else if (!(typeof value == 'string' || Array.isArray(value))) {
-                        return value;
-                    }
-                    const Style = loadStyle(OrigClazz, loader);
-                    if (Style) {
-                        value = resolveStyle(value, Style, loader);
-                    }
-                    if (Array.isArray(value)) {
-                        value = value.join(' ');
-                    }
-
-                    return value;
-
-                });
-        }
+        className
     }
 };
+
 function loadStyle(OrigClazz, loader) {
     let Style = OrigClazz.displayName ? loader.loadStyle(OrigClazz.displayName)
         : loader.loadStyle(OrigClazz.name);

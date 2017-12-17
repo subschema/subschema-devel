@@ -22,6 +22,7 @@
   "dependencies": {
     "subschema-preset-web-form": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
+    "subschema-plugin-type-wizard": "^4.0.0-b-1",
     "subschema-context": "^4.0.0-b-1",
     "subschema-plugin-autoloader": "^4.0.0-b-1"
   },
@@ -48,7 +49,8 @@
     "plugins": [
       [
         "subschema-prop-types",
-        "subschema-plugin-autoloader"
+        "subschema-plugin-autoloader",
+        "subschema-plugin-type-wizard"
       ]
     ],
     "presets": [
