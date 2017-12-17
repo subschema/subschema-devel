@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import { change, into, intoWithState } from 'subschema-test-support';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { change, intoWithState } from 'subschema-test-support';
 import { Restricted } from 'subschema-plugin-type-restricted';
 
 describe('subschema-plugin-type-restricted', function () {
@@ -32,10 +30,9 @@ describe('subschema-plugin-type-restricted', function () {
 
             expect(child).to.exist;
 
-            input =
-                TestUtils.scryRenderedDOMComponentsWithTag(child, 'input')[0];
+            input = child.find('input');
 
-            inputEl = ReactDOM.findDOMNode(input);
+            inputEl = input.getDOMNode();
 
         });
 
