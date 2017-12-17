@@ -4,16 +4,16 @@
   "description": "Subschema",
   "main": "lib",
   "scripts": {
-    "test": "mrbuilder-babel && mrbuilder-mocha",
-    "prepublish": "mrbuilder-babel",
-    "clean": "mrbuilder-clean"
+    "test": "subschema-babel && subschema-mocha",
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src"
 }

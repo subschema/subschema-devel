@@ -182,7 +182,7 @@ The wrapper injected class, useful for components that are recursive.
 Resolves an operator, eventually checking the loader.
 
 ## options (property)
-Normalize select style {label,val} objects.
+Normalize select style label,val objects.
 
 ## processor (property)
 Injects a processor.

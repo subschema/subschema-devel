@@ -1,0 +1,20 @@
+{
+  "name": "subschema-dev-support",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "mrbuilder": "^0.1.1",
+    "mrbuilder-plugin-mocha": "^0.1.1",
+    "mrbuilder-plugin-html": "^0.1.1",
+    "mrbuilder-plugin-less": "^0.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "bin": {
+    "subschema-babel": "bin/subschema-babel.js",
+    "subschema-clean": "bin/subschema-clean.js",
+    "subschema-karma": "bin/subschema-karma.js",
+    "subschema-mocha": "bin/subschema-mocha.js",
+    "subschema-webpack-dev-server": "bin/subschema-webpack-dev-server.js",
+    "subschema-webpack": "bin/subschema-webpack.js"
+  }
+}

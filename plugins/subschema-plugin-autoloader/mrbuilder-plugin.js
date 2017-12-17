@@ -1,7 +1,9 @@
 const OptionsManager = require('mrbuilder-optionsmanager').default;
 
 module.exports = function (options, webpack, optionsManager) {
-    console.log('optionsManager', optionsManager);
+    const debug = this.debug || console.log;
+
+    debug('optionsManager', optionsManager);
     const subschemaManager = new OptionsManager({
         prefix  : 'subschema',
         _require: optionsManager.require || require

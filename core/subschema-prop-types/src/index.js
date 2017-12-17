@@ -445,7 +445,7 @@ const api = {
 };
 
 export default ({
-
+    propTypesToNames,
     className,
     conditional,
     blurValidate,

@@ -3,9 +3,9 @@
   "version": "4.0.0-b-1",
   "main": "lib",
   "scripts": {
-    "test": "mrbuilder-babel && mrbuilder-mocha",
-    "prepublish": "mrbuilder-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | mrbuilder-babel --out-file ./lib/wrapped-prop-types.js",
-    "clean": "mrbuilder-clean"
+    "test": "subschema-babel && subschema-mocha",
+    "prepublish": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1"
@@ -14,7 +14,7 @@
     "prop-types": "*"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src"
 }

@@ -1,7 +1,7 @@
 import React, { Children, Component, createElement } from "react";
 import { isArray, isObject, isString, warning } from "subschema-utils";
 import PropTypes from "subschema-prop-types";
-import DefaultWrapper from "subschema-plugin-contentwrapper";
+import {ContentWrapper as DefaultWrapper} from "subschema-plugin-contentwrapper";
 
 const has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -67,7 +67,7 @@ export class Content extends Component {
     renderChild(value, prefix, componentChildren) {
         //value true is a shortcut to {children:true}.  This means content:true
         // would also return the children.
-        let { Content, injected, contentWrapper, content, children, type = this.props.type, ...props } = value;
+        let { Content, injected, contentWrapper, content, children, type = this.props.type || this.props.dataType, ...props } = value;
 
         if (content === true) {
             return componentChildren;

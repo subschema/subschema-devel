@@ -11,12 +11,12 @@
     "subschema.wiki": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "scripts": {
-    "start": "mrbuilder-webpack-dev-server",
-    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' mrbuilder-webpack --demo ../docs",
-    "server": "mrbuilder-webpack-dev-server"
+    "start": "subschema-webpack-dev-server",
+    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs",
+    "server": "subschema-webpack-dev-server"
   },
   "subschema": {
     "plugins": [

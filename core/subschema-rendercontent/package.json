@@ -2,18 +2,46 @@
   "name": "subschema-rendercontent",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "mrbuilder-karma",
-    "karma": "mrbuilder-karma",
-    "clean": "mrbuilder-clean",
-    "prepublish": "mrbuilder-babel"
+    "test": "subschema-karma",
+    "karma": "subschema-karma",
+    "clean": "subschema-clean",
+    "prepublish": "subschema-babel"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-plugin-autoloader": "^4.0.0-b-1",
+    "subschema-plugin-content": "^4.0.0-b-1",
+    "subschema-plugin-contentwrapper": "^4.0.0-b-1",
+    "subschema-expression": "^4.0.0-b-1",
+    "subschema-resolver-injectclass": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src",
-  "main": "lib"
+  "main": "lib",
+  "subschema": {
+    "env": {
+      "test": {
+        "plugins": [
+          "subschema-plugin-autoloader",
+          "subschema-plugin-content",
+          "subschema-plugin-contentwrapper",
+          "subschema-resolver-expression",
+          "subschema-resolver-injectclass"
+        ]
+      }
+    }
+  },
+  "mrbuilder": {
+    "env": {
+      "test": {
+        "plugins": [
+          "mrbuilder-plugin-karma",
+          "subschema-plugin-autoloader"
+        ]
+      }
+    }
+  }
 }

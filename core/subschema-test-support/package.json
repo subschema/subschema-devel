@@ -4,7 +4,7 @@
   "description": "Subschema Test Support",
   "main": "lib",
   "scripts": {
-    "prepublish": "mrbuilder-babel"
+    "prepublish": "subschema-babel"
   },
   "dependencies": {
     "chai": "^4.1.2",
@@ -13,13 +13,14 @@
     "util": "^0.10.3",
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "mrbuilder": "^0.0.5",
+    "subschema-dev-support":"^4.0.0-b-1",
     "subschema-injection": "^4.0.0-b-1",
     "subschema-loader": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1",
     "subschema-valuemanager": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
-    "subschema-plugin-autoloader": "^4.0.0-b-1"
+    "subschema-plugin-autoloader": "^4.0.0-b-1",
+    "subschema-context": "^4.0.0-b-1"
   },
   "peerDependencies": {
     "react": "*",

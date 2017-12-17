@@ -3,10 +3,8 @@
   "version": "4.0.0-b-1",
   "description": "Subschema Demo",
   "scripts": {
-    "karma": "mrbuilder-karma",
-    "test": "mrbuilder-karma",
-    "prepublish": "mrbuilder-babel",
-    "clean": "mrbuilder-clean"
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "history": "^4.6.1",
@@ -24,8 +22,8 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "mrbuilder": "^0.0.5",
-    "subschema-test-support": "^4.0.0-b-1"
+    "subschema-test-support": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src",
   "main": "lib",

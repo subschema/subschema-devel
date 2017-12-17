@@ -1,24 +1,23 @@
-import PT from '../lib/index';
+import PT, {propTypesToNames} from '../lib/index';
 import { expect } from 'chai';
 import PropTypes from 'prop-types';
 
 describe('subschema-prop-types', function () {
 
     it('should enumerate proptypes to names', function () {
-        const out = PT.propTypesToNames({
+        const out = propTypesToNames({
             myprop : PT.arrayString,
             myevent: PT.event,
             mystr  : PT.string,
             mycss  : PT.cssClass.isRequired,
             myarr  : PT.arrayString.isRequired
         });
-        console.log(JSON.stringify(out));
         expect(out).to.eql({
             "myprop" : "arrayString",
             "myevent": "event",
             "mystr"  : "string",
-            "mycss"  : "*cssClass",
-            "myarr"  : "*arrayString"
+            "mycss"  : "cssClass",
+            "myarr"  : "arrayString"
         });
 
     });

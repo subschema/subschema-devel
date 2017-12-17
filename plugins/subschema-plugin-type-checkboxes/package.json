@@ -2,10 +2,10 @@
   "name": "subschema-plugin-type-checkboxes",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "mrbuilder-karma",
-    "karma": "mrbuilder-karma",
-    "clean": "mrbuilder-clean",
-    "prepublish": "mrbuilder-babel"
+    "test": "subschema-karma",
+    "karma": "subschema-karma",
+    "clean": "subschema-clean",
+    "prepublish": "subschema-babel"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1",
@@ -13,7 +13,7 @@
     "subschema-rendertemplate": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src",
   "main": "lib"

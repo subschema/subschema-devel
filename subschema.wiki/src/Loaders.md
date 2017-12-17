@@ -39,9 +39,9 @@ By default a loader has the following kinds.
 
 
 For each Kind of loader, the following methods exist
-* loaderFactory#add{Kind} - takes a string and an Kind or an object with keys and Kinds
-* loaderFactory#list{Kind}s - Lists the installed kinds.
-* loaderFactory#load{Kind} - loads the specified Kind, first argument is a string.
+* loaderFactory#add```Kind``` - takes a string and an Kind or an object with keys and Kinds
+* loaderFactory#list```Kind```s - Lists the installed kinds.
+* loaderFactory#load```Kind``` - loads the specified Kind, first argument is a string.
 
 Example: Loading a new type.
 

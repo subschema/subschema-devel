@@ -70,5 +70,8 @@
     ]
   },
   "source": "src",
-  "main": "lib"
+  "main": "lib",
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  }
 }

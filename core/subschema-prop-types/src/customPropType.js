@@ -15,6 +15,7 @@ function customPropType(type, name) {
 
     //wrap type because React may return the same function, especially in
     // production mode
+
     const typeSpecName = (...args) => {
         if (args.length > 2) {
             return type(...args);
@@ -29,6 +30,7 @@ function customPropType(type, name) {
         writable    : false
     };
     Object.defineProperty(typeSpecName, 'isRequired',isRequired);
+
     //warning(name, 'Please provide a name for your propType [%s]', type);
     if (name) {
         Object.defineProperty(typeSpecName, 'displayName', {

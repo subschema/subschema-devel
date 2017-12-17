@@ -4,12 +4,12 @@
   "description": "Subschema Validators",
   "main": "lib",
   "scripts": {
-    "test": "mrbuilder-babel && mrbuilder-mocha",
-    "prepublish": "mrbuilder-babel",
-    "clean": "mrbuilder-clean"
+    "test": "subschema-babel && subschema-mocha",
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src",
   "dependencies": {

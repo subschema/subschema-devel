@@ -6,16 +6,16 @@
     "subschema-importer": "bin/subschema-importer.js"
   },
   "scripts": {
-    "clean": "mrbuilder-clean",
-    "prepublish": "mrbuilder-babel"
+    "clean": "subschema-clean",
+    "prepublish": "subschema-babel"
   },
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^0.0.5"
+    "mrbuilder-optionsmanager": "^0.1.1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "subschema": {
     "options": {
@@ -23,6 +23,6 @@
     }
   },
   "mrbuilder": {
-    "plugin": "./subschema-webpack.config.js"
+    "plugin": "./mrbuilder-plugin.js"
   }
 }

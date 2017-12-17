@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {expect} from 'chai';
+import { expect } from 'chai';
 import { renderToStaticMarkup } from 'react-dom/server';
-import Content from 'subschema-core/lib/Content';
 import ValueManager from 'subschema-valuemanager';
 import PropTypes from 'subschema-prop-types';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import newSubschemaContext from 'subschema-test-support/src/newSubschemaContext';
+import { Content } from 'subschema-plugin-content';
+import { mount } from 'enzyme';
 
 const tests = {
     '<span>your value is 2</span>'                                                                                                                                           : {
@@ -21,7 +22,7 @@ const tests = {
     },
     '<span id="stuff">your value is 2</span>'                                                                                                                                : {
         id      : 'stuff',
-        dataType: 'span',
+        type: 'span',
         content : {
             content: 'your value is {test}'
         }
@@ -30,7 +31,7 @@ const tests = {
     '<div id="other" class="test-class">your value is 2</div>'                                                                                                               : {
         id      : 'other',
         //this is overridden in the content
-        dataType: 'span',
+        type: 'span',
         content : {
             content  : 'your value is {test}',
             type     : 'div',
@@ -40,7 +41,7 @@ const tests = {
     '<h2 id="other" class="test-class">your value is 2</h2>'                                                                                                                 : {
         id      : 'other',
         //this is not overridden in the content
-        dataType: 'h2',
+        type: 'h2',
         content : {
             content  : 'your value is {test}',
             className: "test-class"
@@ -64,7 +65,7 @@ const tests = {
         id     : 'array',
         content: ['more', 'than']
     },
-    '<span class="panel panel-default"><span class="clz-left"><h1>Heading stuff </h1></span><span class="clz-right"><img class="super-img" src="about:blank"/></span></span>': {
+    '<span class="panel panel-default"><span class="clz-left"><h1>Heading stuff </h1></span><span class="clz-right"><img class="super-img" src="about:blank"></span></span>': {
         className: 'panel panel-default',
         content  : [
             {
@@ -112,6 +113,12 @@ describe('components/RenderContent', function () {
         }
     }
 
+    const html = (node, content) => {
+        const mountedNode = mount(node);
+        expect(mountedNode.html()).to.eql(content);
+        return mountedNode;
+    };
+
     this.timeout(50000);
     describe('tests', function () {
         Object.keys(tests).forEach(function (key) {
@@ -120,8 +127,7 @@ describe('components/RenderContent', function () {
                 const valueManager = ValueManager({ test: 2 });
                 const IContent     = ctx(Content,
                     newSubschemaContext({ valueManager }));
-                expect(renderToStaticMarkup(<IContent key='t1' {...test}/>))
-                    .to.eql(key);
+                html(<IContent key='t1' {...test}/>, key);
             });
         });
     });
@@ -155,15 +161,14 @@ describe('components/RenderContent', function () {
                     },
                     'more']
             };
-            const result       = renderToStaticMarkup(<IContent key='t1'
-                                                                id='stuff'
-                                                                content={content}>
+            html(<IContent key='t1'
+                           id='stuff'
+                           content={content}>
                     <h1>See I'm Here</h1>
                     <h2>Me too.</h2>
                 </IContent>
-            );
-            expect(result).to.eql(
-                '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><h1>See I&#x27;m Here</h1><h2>Me too.</h2></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
+                ,
+                '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><h1>See I\'m Here</h1><h2>Me too.</h2></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
 
     it('should render an content object with a mixed array of type and className and wrap children is true',
@@ -199,43 +204,13 @@ describe('components/RenderContent', function () {
                     },
                     'more']
             };
-            const result       = renderToStaticMarkup(<IContent key='t1'
-                                                                id='stuff'
-                                                                content={content}>
+            html(<IContent key='t1'
+                           id='stuff'
+                           content={content}>
                     <h1>See I'm Here</h1>
                     <h2>Me too.</h2>
-                </IContent>
-            );
-            //@formatter:off
-            /*
-             <div id="stuff"><span>a value is 2</span>
-             <div class="test-class">your value is 2</div>
-             <fieldset class="a-class">
-             <legend>I am a legend</legend>
-             <span class="has-children">
-             <span class="a-child">
-             <span>stuff</span>
-             <span>
-             <h1>See I&#x27;m Here</h1>
-             </span>
-             <span>more</span>
-             </span>
-             <span class="a-child">
-             <span>stuff</span>
-             <span>
-             <h2>Me too.</h2>
-             </span>
-             <span>more</span>
-             </span>
-             </span>
-             <footer>I am a Footer</footer>
-             </fieldset>
-             <span>more</span>
-             </div>
-             */
-            //@formatter:on
-            expect(result).to.eql(
-                '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><span><h1>See I&#x27;m Here</h1></span><span>more</span></span><span class="a-child"><span>stuff</span><span><h2>Me too.</h2></span><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
+                </IContent>,
+                '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><span><h1>See I\'m Here</h1></span><span>more</span></span><span class="a-child"><span>stuff</span><span><h2>Me too.</h2></span><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
     it('should render an content object with a mixed array of type and className and wrap children',
         function () {
@@ -270,39 +245,13 @@ describe('components/RenderContent', function () {
                     },
                     'more']
             };
-            const result       = renderToStaticMarkup(<IContent key='t1'
-                                                                id='stuff'
-                                                                content={content}>
+            html(<IContent key='t1'
+                           id='stuff'
+                           content={content}>
                     <h1>See I'm Here</h1>
                     <h2>Me too.</h2>
-                </IContent>
-            );
-            // @formatter:off
-            /*
-             <div id="stuff"><span>a value is 2</span>
-             <div class="test-class">your value is 2</div>
-             <fieldset class="a-class">
-             <legend>I am a legend</legend>
-             <span class="has-children">
-             <span class="a-child">
-             <span>stuff</span>
-             <h1>See I&#x27;m Here</h1>
-             <span>more</span>
-             </span>
-             <span class="a-child">
-             <span>stuff</span>
-             <h2>Me too.</h2>
-             <span>more</span>
-             </span>
-             </span>
-             <footer>I am a Footer</footer>
-             </fieldset>
-             <span>more</span>
-             </div>
-             */
-            //   @formatter:on
-            expect(result).to.eql(
-                '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><h1>See I&#x27;m Here</h1><span>more</span></span><span class="a-child"><span>stuff</span><h2>Me too.</h2><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
+                </IContent>,
+                '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><h1>See I\'m Here</h1><span>more</span></span><span class="a-child"><span>stuff</span><h2>Me too.</h2><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
     it('should render an content object with a mixed array of type and className and wrap only one child',
         function () {
@@ -337,30 +286,11 @@ describe('components/RenderContent', function () {
                     },
                     'more']
             };
-            const result       = renderToStaticMarkup(<IContent key='t1'
-                                                                id='stuff'
-                                                                content={content}>
+            html(<IContent key='t1'
+                           id='stuff'
+                           content={content}>
                     <h2>Me too.</h2>
-                </IContent>
-            );
-            // @formatter:off
-            /*
-             <div id="stuff"><span>a value is 2</span>
-             <div class="test-class">your value is 2</div>
-             <fieldset class="a-class">
-             <legend>I am a legend</legend>
-             <span class="has-children">
-             <span class="a-child">
-             <span>stuff</span>
-             <h2>Me too.</h2>
-             <span>more</span></span></span>
-             <footer>I am a Footer</footer>
-             </fieldset>
-             <span>more</span>
-             </div>
-             */
-            //   @formatter:on
-            expect(result).to.eql(
+                </IContent>,
                 '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><fieldset class="a-class"><legend>I am a  legend</legend><span class="has-children"><span class="a-child"><span>stuff</span><h2>Me too.</h2><span>more</span></span></span><footer>I am a Footer</footer></fieldset><span>more</span></div>');
         });
     it('should render a list', function () {
@@ -379,47 +309,32 @@ describe('components/RenderContent', function () {
                 }, true]
             }
         };
-        const result       = renderToStaticMarkup(<IContent key='t1' id='stuff'
-                                                            content={content}>
+        html(<IContent key='t1' id='stuff'
+                       content={content}>
                 <div>Me too.</div>
                 <span>Again</span>
             </IContent>
-        );
-
-        // @formatter:off
-        //   @formatter:on
-        expect(result).to.eql(
+            ,
             '<ul id="stuff"><li class="list-item"><button value="mybutton">remove</button><div>Me too.</div></li><li class="list-item"><button value="mybutton">remove</button><span>Again</span></li></ul>');
     });
     it('should render a simple list', function () {
         const valueManager = ValueManager({ test: 2 });
         const IContent     = ctx(Content,
             newSubschemaContext({ valueManager }));
-        const result       = renderToStaticMarkup(<IContent key='t1' id='stuff'
-                                                            content={{
-                                                                children: {
-                                                                    type    : 'li',
-                                                                    children: true
-                                                                }
-                                                            }} dataType="ul">
-                {['Me too.', 'Again']}
-            </IContent>
-        );
 
-        // @formatter:off
-        //   @formatter:on
-        expect(result)
-            .to.eql('<ul id="stuff"><li>Me too.</li><li>Again</li></ul>');
+        html(<IContent key='t1'
+                       id='stuff'
+                       type="ul"
+                       content={{
+                           Content,
+                           children: {
+                               type    : 'li',
+                               children: true
+                           }
+                       }}>
+                {['Me too.', 'Again']}
+            </IContent>,
+            '<ul id="stuff"><li>Me too.</li><li>Again</li></ul>');
     });
 });
 
-/*
- <span class="panel panel-default">
- <span class="clz-left">
- <h1>Heading stuff </h1>
- <p>Super special content</p>
- <button class="btn btn-primary">Activate
- </button>
- </span>
- <span class="clz-right"></span></span>
- */

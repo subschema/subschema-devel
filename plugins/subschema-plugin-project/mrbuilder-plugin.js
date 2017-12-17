@@ -9,7 +9,9 @@ module.exports = function ({
                                include,
                                exclude,
                            }, webpack) {
-    console.log('loading template loader');
+    const info = this.info || console.log;
+
+    info('loading template loader');
     webpack.module.rules.push({
         test,
         use,

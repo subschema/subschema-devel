@@ -2,10 +2,10 @@
   "name": "subschema-resolver-schema",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "mrbuilder-karma",
-    "karma": "mrbuilder-karma",
-    "prepublish": "mrbuilder-babel",
-    "clean": "mrbuilder-clean"
+    "test": "subschema-karma",
+    "karma": "subschema-karma",
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "subschema-utils": "^4.0.0-b-1",
@@ -14,7 +14,7 @@
     "subschema-resolver-template": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5"
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src",
   "main": "lib"

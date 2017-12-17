@@ -6,19 +6,19 @@ import expression from '../lib';
 describe('expression/function', function () {
     this.timeout(50000);
     it('should parse out functions', function () {
-        var expr = expression('{stuff(name)} {other}');
+        const expr = expression('{stuff(name)} {other}');
         expect(expr.listen[0]).to.eql('name');
         expect(expr.listen[1]).to.eql('other');
         expect(expr.formatters[0]).to.eql('stuff');
     });
     it('should parse out function with multiple args', function () {
-        var expr = expression(`hello { stuff(name, other) } {more}`);
+        const expr = expression(`hello { stuff(name, other) } {more}`);
         expect(expr.listen[0]).to.eql('name');
         expect(expr.listen[1]).to.eql('other');
         expect(expr.listen[2]).to.eql('more');
         expect(expr.formatters[0]).to.eql('stuff');
 
-        var res = expr.format({
+        const res = expr.format({
             more: 1,
             other: true,
             name: 'Joe<b/>'
@@ -31,13 +31,13 @@ describe('expression/function', function () {
     });
 
     it('should parse out function with multiple args literal', function () {
-        var expr = expression(`hello { join(name, 'huh', "what") } {more}`);
+        const expr = expression(`hello { join(name, 'huh', "what") } {more}`);
         expect(expr.listen[0]).to.eql('name');
         expect(expr.listen[1]).to.eql('more');
         expect(expr.listen.length).to.eql(2);
         expect(expr.formatters[0]).to.eql('join');
         expect(expr.formatters.length).to.eql(1);
-        var res = expr.format({
+        const res = expr.format({
             more: 1,
             other: true,
             name: 'Joe<b/>'

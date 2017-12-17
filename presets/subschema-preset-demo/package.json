@@ -2,15 +2,16 @@
   "name": "subschema-preset-demo",
   "version": "4.0.0-b-1",
   "dependencies": {
-    "subschema-plugin-demo": "^4.0.0-b-1",
-    "mrbuilder-plugin-markdown": "^0.0.5"
+    "subschema-plugin-demo": "^4.0.0-b-1"
   },
   "subschema": {
     "plugins": [
-      "subschema-plugin-demo",
-      "mrbuilder-plugin-markdown"
+      "subschema-plugin-demo"
     ]
   },
   "source": "src",
-  "main": "lib"
+  "main": "lib",
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  }
 }

@@ -4,10 +4,10 @@
   "description": "Subschema Autocomplete",
   "main": "lib",
   "scripts": {
-    "karma": "mrbuilder-karma",
-    "test": "mrbuilder-karma",
-    "prepublish": "mrbuilder-babel",
-    "clean": "mrbuilder-clean"
+    "karma": "subschema-karma",
+    "test": "subschema-karma",
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "subschema-prop-types": "^4.0.0-b-1",
@@ -15,8 +15,8 @@
     "subschema-rendertemplate": "^4.0.0-b-1"
   },
   "devDependencies": {
-    "mrbuilder": "^0.0.5",
-    "subschema-test-support": "^4.0.0-b-1"
+    "subschema-test-support": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
   },
   "source": "src"
 }
