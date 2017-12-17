@@ -192,19 +192,19 @@ function intoWithContext(child, ctx, debug, contextTypes) {
 function select(node, index) {
     const multiple = Array.isArray(index);
 
-    const options = byTags(node, 'option');
+    const options = byTags(node, 'option').map(v=>v.getDOMNode());
     if (!multiple) {
         options.forEach((option, idx) => {
             option.selected = (idx === index);
         })
     } else {
-        options[index].selected = !options[index].selected;
+        options[index].selected = !options[index].selected
     }
 
     node.simulate('change', {
         target: {
             options,
-            value: multiple ? options.map((o) => o.prop('value')) : options.at(index).prop('value')
+            value: multiple ? options.map(o=>o.value) : options[index].value
         }
     });
     return node;

@@ -46,16 +46,15 @@ describe('types/Radio', function () {
             options={ [{val: 1, label: 'One'}, {val: 2, label: 'Two'}]}
         />, {value: 2}, true));
 
-        const inputs = byTags(child, 'input');
+        const inputs = child.find('input');
         expect(inputs.length).to.eql(2);
 
-        const dm0 = findNode(inputs[0]), dm1 = findNode(inputs[1]);
-        expect(dm0.checked).to.eql(false);
-        expect(dm1.checked).to.eql(true);
+        const dm0 = inputs.at(0), dm1 = inputs.at(1);
+        expect(dm0.prop('checked')).to.eql(false);
+        expect(dm1.prop('checked')).to.eql(true);
         state.setState({value: 1});
-        expect(dm0.checked).to.eql(true);
-        expect(dm1.checked).to.eql(false);
-
+        expect(dm0.prop('checked')).to.eql(true);
+        expect(dm1.prop('checked')).to.eql(false);
 
     });
 

@@ -2,10 +2,7 @@
   "name": "subschema-example-expression",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "subschema-karma",
-    "karma": "subschema-karma",
-    "build": "subschema-webpack",
-    "prepublish": "subschema-babel",
+    "prepublish": "subschema-webpack",
     "clean": "subschema-clean"
   },
   "dependencies": {

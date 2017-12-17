@@ -1,17 +1,21 @@
-"use strict";
-import {expect} from 'chai';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { expect } from 'chai';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
-import {intoWithContext, byComponent, findNode} from 'subschema-test-support';
+import { byComponent, intoWithContext } from 'subschema-test-support';
 import resolvers from 'subschema-core/lib/resolvers';
-import {injectorFactory} from 'subschema-injection';
+import { injectorFactory } from 'subschema-injection';
 
-const injector = injectorFactory();
 
 describe("resolvers/value", function () {
     this.timeout(50000);
-    injector.resolver(PropTypes.value, resolvers.value);
+    let injector;
+    beforeEach(() => {
+        injector = injectorFactory();
+
+        injector.resolver(PropTypes.value, resolvers.value);
+    });
+
     class ValueTestClass extends Component {
         static propTypes = {
 
@@ -30,10 +34,12 @@ describe("resolvers/value", function () {
 
     it('should resolve value', function () {
 
-        const Injected = injector.inject(ValueTestClass);
-        const valueManager = ValueManager({'test': 'abc', more: 'd'});
-        const inst = intoWithContext(<Injected value="test" other="more" stuff="what" options="a,b,c"
-                                               expr="{more} {test}"/>, {
+        const Injected     = injector.inject(ValueTestClass);
+        const valueManager = ValueManager({ 'test': 'abc', more: 'd' });
+        const inst         = intoWithContext(<Injected value="test" other="more"
+                                                       stuff="what"
+                                                       options="a,b,c"
+                                                       expr="{more} {test}"/>, {
             valueManager
         }, true);
 

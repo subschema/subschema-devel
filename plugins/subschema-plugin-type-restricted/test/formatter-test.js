@@ -1,8 +1,7 @@
-"use strict"
-import {RestrictedMixin} from 'subschema-component-form';
+import {Restricted} from 'subschema-plugin-type-restricted';
 import {expect} from 'chai';
 
-const formatter = RestrictedMixin.makeFormatter;
+const formatter = Restricted.makeFormatter;
 
 describe('types/formatter', function () {
     describe('1 (###) ###-####', function(){

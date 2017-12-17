@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { templates, types } from 'subschema-component-form';
-import {
-    byTag, byType, change, expect, into, intoWithState, Simulate, TestUtils
-} from 'subschema-test-support';
+import { expect } from 'chai';
+import { change, into, intoWithState } from 'subschema-test-support';
 import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { Restricted } from 'subschema-plugin-type-restricted';
 
-const { Restricted } = types;
-
-
-describe('types/Restricted', function () {
+describe('subschema-plugin-type-restricted', function () {
     this.timeout(50000);
 
     it('should create a restricted input', function () {
@@ -18,33 +14,10 @@ describe('types/Restricted', function () {
         }, { state, child } = intoWithState(<Restricted formatter="###-##"
                                                         onChange={onChange}/>,
             {}, true);
-        expect(child).to.exist;
+        expect(child).have.length(1);
 
     });
-    it('should work within a Form', function () {
-        const { Form, valueManager } = newSubschemaContext();
-        const schema                 = {
-            schema: {
-                'test': {
-                    type     : 'Restricted',
-                    formatter: '###-##'
-                }
-            }
-        };
-        const form                   = into(<Form valueManager={valueManager}
-                                                  schema={schema}/>)
-        const restricted             = byType(form, Restricted);
-        const input                  = byTag(restricted, 'input');
-        change(input, '1');
-        expect(valueManager.path('test')).to.eql('1',
-            'should update value manager');
-        change(input, '123');
-        expect(valueManager.path('test')).to.eql('123-',
-            'should update value manager');
-        change(input, '123-4');
-        expect(valueManager.path('test')).to.eql('123-4',
-            'should update value manager');
-    })
+
     describe('mm20YY', function () {
         let onChange, input, inputEl, state, child;
 

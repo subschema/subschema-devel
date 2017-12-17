@@ -5,9 +5,9 @@ import { Text } from 'subschema-plugin-type-text';
 describe('types/Text', function () {
     it('should create a input with a value', function () {
         const text = into(<Text value="abc" onChange={(e) => e}/>);
-        expect(text).to.exist;
-        const node = findNode(text);
-        expect(node.value).to.eql('abc');
+        expect(text).to.have.length(1);
+        const node = text.find('input');
+        expect(node.prop('value')).to.eql('abc');
 
     });
 
@@ -17,10 +17,9 @@ describe('types/Text', function () {
         };
         const text = into(<Text className="stuff" value="abc"
                                 onChange={onChange}/>);
-        expect(text).to.exist;
-        const node = findNode(text);
+        const node = text.getDOMNode();
         expect(node.value).to.eql('abc');
-        change(node, 'def');
+        change(text, 'def');
         expect(args[0]).to.eql('def');
         expect(node.className).to.eql('stuff');
         expect(node.value).to.eql('abc');
