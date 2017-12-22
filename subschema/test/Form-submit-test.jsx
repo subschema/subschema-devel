@@ -14,11 +14,10 @@ describe('Form/submit', function () {
         loader         = context.loader;
         Form           = context.Form;
         ValueManager   = context.ValueManager;
-        EditorTemplate = context.loader.loadTemplate('EditorTemplate');
-        ButtonTemplate = context.loader.loadTemplate('ButtonTemplate')
+        EditorTemplate = loader.loadTemplate('EditorTemplate');
+        ButtonTemplate = loader.loadTemplate('ButtonTemplate')
     });
 
-    afterEach(cleanUp);
 
     it('should submit the form and have handler by name', function (done) {
         const schema       = {

@@ -1,23 +1,25 @@
-import {expect} from 'chai';
-import {normalizeSchema} from 'subschema-core/lib/resolvers/schema';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { expect } from 'chai';
+import { normalizeSchema } from 'subschema-resolver-schema';
+import loaderFactory from 'subschema-loader';
 
 describe('resolvers/schema', function () {
-
+    let loader;
+    beforeEach(() => {
+        loader = loaderFactory();
+    });
 
     it('should normalize with subSchema with loaders', function () {
-        const {context} = newSubschemaContext();
-        context.loader.addSchema({
+        loader.addSchema({
             Address: {
                 schema: {
                     address: 'Text',
-                    city: 'Text',
-                    state: {
-                        type: 'Select',
+                    city   : 'Text',
+                    state  : {
+                        type   : 'Select',
                         options: ['CA', 'FL', 'VA', 'IL']
                     },
                     zipCode: {
-                        type: 'Text',
+                        type    : 'Text',
                         dataType: 'number'
                     }
                 },
@@ -25,21 +27,21 @@ describe('resolvers/schema', function () {
             },
             Contact: {
                 schema: {
-                    name: 'Text',
-                    primary: {
-                        type: 'ToggleObject',
+                    name          : 'Text',
+                    primary       : {
+                        type     : 'ToggleObject',
                         subSchema: 'Address',
-                        template: 'SimpleTemplate'
+                        template : 'SimpleTemplate'
                     },
                     otherAddresses: {
-                        canEdit: true,
+                        canEdit   : true,
                         canReorder: true,
-                        canDelete: true,
-                        canAdd: true,
-                        type: 'List',
-                        labelKey: 'address',
-                        itemType: {
-                            type: 'Object',
+                        canDelete : true,
+                        canAdd    : true,
+                        type      : 'List',
+                        labelKey  : 'address',
+                        itemType  : {
+                            type     : 'Object',
                             subSchema: 'Address'
                         }
                     }
@@ -47,7 +49,8 @@ describe('resolvers/schema', function () {
                 fields: ['name', 'primary', 'otherAddresses']
             }
         });
-        var result = normalizeSchema({subSchema: 'Contact'}, null, {}, context);
+        const result = normalizeSchema({ subSchema: 'Contact' }, null, {},
+            {loader});
         expect(result.fields, 'name', 'primary', 'otherAddresss');
     });
 

@@ -1,5 +1,6 @@
 subschema-resolver-blurvalidate
 ===
+Resolver the handles blur validate
 
 ## Installation
 ```sh

@@ -1,5 +1,6 @@
 import PropTypes from 'subschema-prop-types';
-import {warning} from 'subschema-utils';
+import { warning } from 'subschema-utils';
+
 export const defaultPropTypes = {
     id        : PropTypes.id,
     className : PropTypes.typeClass,
@@ -7,7 +8,7 @@ export const defaultPropTypes = {
     value     : PropTypes.value,
     fieldAttrs: PropTypes.fieldAttrs,
     name      : PropTypes.htmlFor,
-    onBlur     : PropTypes.blurValidate,
+    onBlur    : PropTypes.blurValidate,
     /*
      onChange    : PropTypes.targetEvent,
      onBlur      : PropTypes.blurValidate,
@@ -44,8 +45,10 @@ export function loadType(val, key, props, context) {
     let Type;
     if (typeof type === 'string') {
         Type = context.loader.loadType(type);
-        warning(Type, 'Could not find a type for %s', type);
-
+        if (Type == null) {
+            warning(Type, 'Could not find a type for "%s"', type);
+            return null;
+        }
         if (Type && !Type.displayName) {
             Type.displayName = type;
         }
@@ -67,7 +70,7 @@ export function loadType(val, key, props, context) {
 
 export default {
     resolver: {
-        type: function(Clazz, key, propList, OrigClazz) {
+        type(Clazz, key, propList, OrigClazz) {
 
             Clazz.contextTypes.loader   = PropTypes.loader;
             Clazz.contextTypes.injector = PropTypes.injector;
@@ -76,4 +79,4 @@ export default {
             Clazz::this.property(key, loadType);
         }
     }
-};
+}

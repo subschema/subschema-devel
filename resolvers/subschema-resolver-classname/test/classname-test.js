@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
 import { byComponent, intoWithContext } from 'subschema-test-support';
 import {expect} from 'chai';
 import {className} from 'subschema-resolver-classname'
-describe('resolvers/className', function () {
+import {injectorFactory} from 'subschema-injection';
+import loaderFactory from 'subschema-loader';
+
+describe('subschema-resolver-classname', function () {
     this.timeout(50000);
+    let injector, loader;
+    beforeEach(()=>{
+        loader = loaderFactory();
+        injector = injectorFactory(loader);
+        loader.addType({TestContainer, TestContainerDefault});
+        loader.addResolver(PropTypes.className, className);
+
+    });
 
     class TestContainer extends Component {
         static propTypes = {
@@ -29,9 +39,6 @@ describe('resolvers/className', function () {
         }
     }
     it('should load default className', function () {
-        const {context}            = newSubschemaContext();
-        const { loader, injector } = context;
-        loader.addResolver(PropTypes.className, className);
         loader.addStyle({
             TestContainer: {
                 container: 'abc'
@@ -39,13 +46,10 @@ describe('resolvers/className', function () {
         });
         const Injected = injector.inject(TestContainer);
         const inst     = byComponent(
-            intoWithContext(<Injected />, context, true), TestContainer);
+            intoWithContext(<Injected />, {loader,injector}, true), TestContainer);
         expect(inst.prop('className')).to.eql('abc');
     });
     it('should load default className with stuff', function () {
-        const {context}            = newSubschemaContext();
-        const { loader, injector } = context;
-        loader.addResolver(PropTypes.className, className);
         loader.addStyle({
             Some                : {
                 more: 'ghi'
@@ -59,7 +63,7 @@ describe('resolvers/className', function () {
         });
         const Injected = injector.inject(TestContainerDefault);
         const inst     = byComponent(
-            intoWithContext(<Injected />, context, true),
+            intoWithContext(<Injected />, {loader,injector}, true),
             TestContainerDefault);
         expect(inst.prop('className')).to.eql('the hell ghi here missing');
     })

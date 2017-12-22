@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
-import loaderFactory from 'subschema-loader';
+import {loader} from 'subschema';
 
 class Anchor extends Component {
 
@@ -18,5 +18,4 @@ class Anchor extends Component {
         return <a href={this.props.href}>{this.props.label}</a>
     }
 }
-const loader = loaderFactory();
 loader.addType({Anchor});

@@ -1,5 +1,4 @@
 import PropTypes from 'subschema-prop-types';
-import { warning } from 'subschema-utils';
 import React from 'react';
 
 const EMPTY = {};
@@ -94,7 +93,7 @@ export function handleTransition(value, key, props, { loader }) {
     return rest;
 }
 
-function transition(Clazz, key) {
+export function transition(Clazz, key) {
     Clazz.contextTypes.loader = PropTypes.loader;
     Clazz::this.property(key, handleTransition);
 }
@@ -104,6 +103,6 @@ transition.handleTransition = handleTransition;
 
 export default {
     resolver: {
-        transition: transition
+        transition
     }
 };

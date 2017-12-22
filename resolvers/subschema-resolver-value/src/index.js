@@ -41,14 +41,14 @@ export const settings = {
     init: true
 };
 
+export function value(Clazz, key) {
+    Clazz.contextTypes.valueManager = PropTypes.valueManager;
+    Clazz.contextTypes.loader       = PropTypes.loader;
+    Clazz::this.listener(key, handleListeners);
+}
+
 export default {
     resolver: {
-        value: function(Clazz, key) {
-            Clazz.contextTypes.valueManager = PropTypes.valueManager;
-            Clazz.contextTypes.loader       = PropTypes.loader;
-
-            Clazz::this.listener(key, handleListeners);
-
-        }
+        value
     }
 };

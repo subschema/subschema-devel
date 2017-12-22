@@ -29,7 +29,7 @@ describe('subschema-test-samples/NestedForms', function () {
                     {legend: 'Second Legend', fields: 'second.test'}]
             }}
         />, true);
-        expect(byComponents(form, FieldSetTemplate), 'should find three FieldSetTemplate').to.have.length(3);
+        expect(form.find(FieldSetTemplate), 'should find three FieldSetTemplate').to.have.length(3);
     });
     it('should render simple nested', function () {
         const form = into(<Form

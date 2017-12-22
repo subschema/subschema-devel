@@ -16,7 +16,7 @@ export default class Form extends Component {
     static propTypes = {
         schema      : PropTypes.schema.isRequired,
         loader      : PropTypes.loader,
-        injector    : PropTypes.injectorFactory,
+        injector    : PropTypes.injector,
         valueManager: PropTypes.valueManager,
         template    : PropTypes.string,
         method      : PropTypes.string,
@@ -42,9 +42,7 @@ export default class Form extends Component {
     constructor(props, context, ...rest) {
         super(props, context, ...rest);
         this.loader   = props.loader;
-        this.injector =
-            typeof props.injector === 'function' ? props.injector(this.loader)
-                : props.injector;
+        this.injector = props.injector;
         if (!props.valueManager) {
             this.valueManager =
                 this.constructor.defaultValueManager(props.value, props.errors);

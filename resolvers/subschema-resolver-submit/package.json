@@ -2,8 +2,6 @@
   "name": "subschema-resolver-submit",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "subschema-karma",
-    "karma": "subschema-karma",
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },

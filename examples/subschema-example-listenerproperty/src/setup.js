@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import PropTypes from 'subschema-prop-types';
 import {Select} from 'subschema-plugin-type-select';
-import loaderFactory from 'subschema-loader';
+import {loader} from 'subschema';
 
 class SelectListen extends Component {
     static propTypes = {
@@ -17,5 +17,4 @@ class SelectListen extends Component {
         return <Select {...this.props} value={value}/>
     }
 }
-const loader = loaderFactory();
 loader.addType('SelectListen', SelectListen);

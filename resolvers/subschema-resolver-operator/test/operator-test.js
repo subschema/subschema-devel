@@ -1,6 +1,7 @@
 import {expect} from 'chai';
-import {loadOperator} from 'subschema-core/lib/resolvers/operator';
 import loaderFactory from 'subschema-loader';
+import {loadOperator} from 'subschema-resolver-operator';
+
 describe("resolvers/operator", function () {
     const ops = {
         '>': false,
@@ -18,7 +19,7 @@ describe("resolvers/operator", function () {
     };
 
     Object.keys(ops).forEach((key)=> {
-        it(`should 0 ${key} "0" be ${ops[key]}`, function () {
+        it(`should 0 ${key} ato"0" be ${ops[key]}`, function () {
             expect(loadOperator(key)(0, '0')).to.eql(ops[key], `${key} operator ${ops[key]}`);
         });
     });

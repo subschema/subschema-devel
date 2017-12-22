@@ -9,7 +9,7 @@
     "prepublish": "subschema-webpack --app app"
   },
   "devDependencies": {
-    "mrbuilder-plugin-markdown": "^0.1.1",
+    "mrbuilder-plugin-markdown": "^0.1.6",
     "subschema-dev-support": "^4.0.0-b-1"
   },
   "peerDependencies": {

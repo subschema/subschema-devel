@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {expect} from 'chai';
-import resolvers from 'subschema-core/lib/resolvers';
 import PropTypes from 'subschema-prop-types';
 import {intoWithContext, byComponent, findNode, change} from 'subschema-test-support';
 import injectorFactory from 'subschema-injection/lib/injectorFactory';
 const injector = injectorFactory();
-const {normalizeFieldsets} = resolvers.fieldset;
+import {fieldset} from 'subschema-resolver-fieldset';
+import {normalizeFieldsets} from 'subschema-resolver-fieldset';
 
 describe('resolvers/fieldset', function () {
     this.timeout(50000);
@@ -13,7 +13,7 @@ describe('resolvers/fieldset', function () {
         fieldsets: PropTypes.fieldset
     };
 
-    injector.resolver(PropTypes.fieldset, resolvers.fieldset);
+    injector.resolver(PropTypes.fieldset, fieldset);
 
     it('should normalize fieldsets', function () {
         class TargetTest extends Component {
@@ -36,8 +36,8 @@ describe('resolvers/fieldset', function () {
         }]}/>, {}, true);
 
         const et = byComponent(inst, TargetTest);
-        const node = findNode(et);
-        expect(et.props.fieldsets.fields.length).to.eql(2);
+
+        expect(et.prop('fieldsets').fields).to.have.length(2);
 
     });
     it('should normalize fieldsets deep', function () {
@@ -67,8 +67,7 @@ describe('resolvers/fieldset', function () {
         }]}/>, {}, true);
 
         const et = byComponent(inst, TargetTest);
-        const node = findNode(et);
-        const fs = et.props.fieldsets;
+        const fs = et.prop('fieldsets');
         expect(fs.fields).to.eql('abcdef'.split(''));
         expect(fs.fieldsets[0].fieldsets[0].className).to.eql('stuff');
     });

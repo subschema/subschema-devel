@@ -47,11 +47,13 @@ export class Button extends Component {
     }
 }
 
+export const ButtonTemplate = Button;
+
 export default ({
     type    : {
         Button
     },
     template: {
-        ButtonTemplate: Button
+        ButtonTemplate
     }
 })

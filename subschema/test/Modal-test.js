@@ -1,12 +1,12 @@
 import React from 'react';
-import { templates } from 'subschema-component-modal';
+import { templates } from 'subschema-plugin-modal';
 import {
-    byClass, byComponent, byComponents, change, check, click, expect, into
+    byComponent, change, check, click, expect, into
 } from 'subschema-test-support';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-import ButtonTemplate from 'subschema-component-form/lib/templates/ButtonTemplate';
-import Checkbox from 'subschema-component-form/lib/types/Checkbox';
-import Text from 'subschema-component-form/lib/types/Text';
+import { newSubschemaContext } from 'subschema';
+import { ButtonTemplate } from 'subschema-plugin-template-button';
+import { Checkbox } from 'subschema-plugin-type-checkbox';
+import { Text } from 'subschema-plugin-type-text';
 
 
 describe('subschema-component-modal', function () {
@@ -14,7 +14,7 @@ describe('subschema-component-modal', function () {
 
     it('should render template with buttons', function () {
         //loader, schema, Subschema, React
-        const { context, loader, Form } = newSubschemaContext();
+        const { loader, Form } = newSubschemaContext();
         loader.addTemplate(templates);
         const form = into(<Form schema={{
             schema   : {
@@ -77,11 +77,11 @@ describe('subschema-component-modal', function () {
             ]
         }} loader={loader} valueManager={valueManager}/>, true);
 
-        const checkbox = (checked = true) => check(
-            byComponent(form, Checkbox), checked);
-        const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
-        const submit   = () => click(byComponents(form, ButtonTemplate)[1]);
-        const close    = () => click(byClass(form, 'close'));
+        const checkbox = (checked = true) => check(form.find(Checkbox),
+            checked);
+        const cancel   = () => click(form.find(ButtonTemplate).at(0));
+        const submit   = () => click(form.find(ButtonTemplate).at(1));
+        const close    = () => click(form.find('.close'));
         const text     = (value) => change(byComponent(form, Text), value);
         const value    = (path, expected) => {
             const v = valueManager.path(path);
@@ -180,10 +180,10 @@ describe('subschema-component-modal', function () {
 
             const checkbox = (checked = true) => check(
                 byComponent(form, Checkbox), checked);
-            const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
-            const submit   = () => click(byComponents(form, ButtonTemplate)[1]);
-            const close    = () => click(byClass(form, 'close'));
-            const text     = (value) => change(byComponent(form, Text), value);
+            const cancel   = () => click(form.find(ButtonTemplate).at(0));
+            const submit   = () => click(form.find(ButtonTemplate).at(1));
+            const close    = () => click(form.find('.close'));
+            const text     = (value) => change(form.find(Text), value);
             const value    = (path, expected) => {
                 const v = valueManager.path(path);
                 if (expected != null) {
@@ -194,7 +194,7 @@ describe('subschema-component-modal', function () {
             };
             checkbox();
             submit();
-            expect(valueManager.getErrors().test.length).to.eql(1);
+            expect(valueManager.getErrors().test).to.have.length(1);
 
             cancel();
 
@@ -263,14 +263,29 @@ describe('subschema-component-modal', function () {
             }} loader={loader} valueManager={valueManager}/>, true);
 
 
-            const checkbox = (checked = true) => valueManager.update(
-                'showModal', checked);
-            const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
-            const submit   = () => click(byComponents(form, ButtonTemplate)[1]);
-            const close    = () => click(byClass(form, 'close'));
-            const text     = (value) => change(byComponents(form, Text)[0],
-                value);
-            const value    = (path, expected) => {
+            const checkbox = (checked = true) => {
+                valueManager.update('showModal', checked);
+                form.update();
+            };
+
+            const cancel = () => {
+                click(form.find(ButtonTemplate).at(0));
+                form.update();
+            };
+            const submit = () => {
+                const btn = form.find(ButtonTemplate).at(1);
+                click(btn);
+                form.update();
+            };
+            const close  = () => {
+                click(form.find('.close'));
+                form.update();
+            };
+            const text   = (value) => {
+                change(form.find(Text).at(0), value);
+                form.update();
+            };
+            const value  = (path, expected) => {
                 const v = valueManager.path(path);
                 if (expected != null) {
                     return expect(v).to.eql(expected);
@@ -280,7 +295,7 @@ describe('subschema-component-modal', function () {
             };
             checkbox();
             submit();
-            expect(valueManager.getErrors().test.length).to.eql(1);
+            expect(valueManager.getErrors().test).to.have.length(1);
 
             cancel();
 
@@ -358,14 +373,29 @@ describe('subschema-component-modal', function () {
             }} valueManager={valueManager} loader={loader}/>, true);
 
 
-            const checkbox = (checked = true) => valueManager.update(
-                'showModal', checked);
-            const cancel   = () => click(byComponents(form, ButtonTemplate)[0]);
-            const submit   = () => click(byComponents(form, ButtonTemplate)[1]);
-            const close    = () => click(byClass(form, 'close'));
-            const text     = (value) => change(byComponents(form, Text)[0],
-                value);
-            const value    = (path, expected) => {
+            const checkbox = (checked = true) => {
+                valueManager.update('showModal', checked);
+                form.update();
+            };
+
+            const cancel = () => {
+                click(form.find(ButtonTemplate).at(0));
+                form.update();
+            };
+            const submit = () => {
+                const btn = form.find(ButtonTemplate).at(1);
+                click(btn);
+                form.update();
+            };
+            const close  = () => {
+                click(form.find('.close'));
+                form.update();
+            };
+            const text   = (value) => {
+                change(form.find(Text).at(0), value);
+                form.update();
+            };
+            const value  = (path, expected) => {
                 const v = valueManager.path(path);
                 if (expected != null) {
                     return expect(v).to.eql(expected);
@@ -373,6 +403,7 @@ describe('subschema-component-modal', function () {
                 return expect(v).to.not.exist;
 
             };
+
             checkbox();
             submit();
             // expect(context.valueManager.getErrors()['hello.test'].length).to.eql(1);

@@ -1,14 +1,14 @@
 import React from 'react';
 import { expect, mount } from 'subschema-test-support';
-import { Form } from 'subschema';
+import { newSubschemaContext } from 'subschema';
 
 
-describe('Form#nested validation', function () {
+describe('subchema/Form-nested', function () {
 
 
     it('should validate a nested modal', () => {
-
-        const root = mount(<Form schema={{
+        const { Form } = newSubschemaContext();
+        const root     = mount(<Form schema={{
             schema   : {
                 open: {
                     type: 'Checkbox',

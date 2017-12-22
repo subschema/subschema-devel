@@ -1,7 +1,7 @@
 import React from "react";
 import {expect} from 'chai';
 import {renderToString} from "react-dom/server";
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import {newSubschemaContext} from 'subschema';
 
 describe('subschema-core/Form#validate', function () {
     it('should validate a form on init isomorphically', function () {

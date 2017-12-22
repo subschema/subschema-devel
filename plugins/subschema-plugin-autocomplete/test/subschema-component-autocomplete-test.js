@@ -1,20 +1,22 @@
 import React from 'react';
 import {
-    byTag, byTypes, change, click, expect, into, intoWithState
+    change, click, expect, into, intoWithState
 } from 'subschema-test-support';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { newSubschemaContext } from 'subschema';
 import 'subschema-styles-bootstrap';
 import autocomplete, {
     Autocomplete, AutocompleteItemTemplate, styles
-} from '../src';
+} from 'subschema-plugin-autocomplete';
+import { Text } from 'subschema-plugin-type-text';
 import { OptionsProcessor } from 'subschema-processors';
-import { types as formTypes } from 'subschema-component-form';
+
 function noop() {
 
 }
+
 describe('subschema-plugin-autocomplete', function () {
     this.timeout(50000);
-    var options = [
+    const options = [
         { label: 'ABC', val: 'abc' },
         { label: 'DBC', val: 'dbc' },
         { label: 'JDK', val: 'jdk' }
@@ -34,13 +36,13 @@ describe('subschema-plugin-autocomplete', function () {
                 }
             }
         }} loader={loader} valueManager={valueManager}/>, true);
-        const input        = byTag(root, 'input');
-        change(input, 'A');
+        const input        = root.find('input');
+        change(input, 'A', root);
 
-        const found = byTypes(root, AutocompleteItemTemplate);
-        expect(found.length).to.eql(1);
+        const found = root.find(AutocompleteItemTemplate);
+        expect(found).to.have.length(1);
 
-        click(found[0]);
+        click(found, root);
 
         expect(valueManager.path('auto')).to.eql(0)
 
@@ -49,39 +51,36 @@ describe('subschema-plugin-autocomplete', function () {
 
     it('should render an autocomplete and select suggested', function () {
 
-        var { child, state } = intoWithState(<Autocomplete
-            inputType={formTypes.Text}
+        const { child, state } = intoWithState(<Autocomplete
+            inputType={Text}
             itemTemplate={AutocompleteItemTemplate}
             options={options} processor={OptionsProcessor}
             onInputChange={noop} onChange={noop} onSelect={noop}/>, {});
-        expect(child,'should render autocomplete').to.exist;
-        var input = byTag(child, 'input');
-        expect(input,'should show input').to.exist;
-        change(input, 'b');
-        var suggest = byTypes(child, AutocompleteItemTemplate);
-        expect(suggest.length).to.eql(2, 'should suggest two');
 
-        change(input, 'db');
-        suggest = byTypes(child, AutocompleteItemTemplate);
-        click(suggest[0]);
-        var input = byTag(child, 'input');
-        expect(input.value).to.eql('DBC');
+        const input = state.find('input');
+        expect(input, 'should show input').to.have.length(1);
+        change(input, 'b', state);
+        expect(state.find(AutocompleteItemTemplate)).to.have.length(2,
+            'should suggest two');
+
+        change(input, 'db', state);
+
+        click(state.find(AutocompleteItemTemplate).at(0), state);
+        expect(state.find('input').prop('value')).to.eql('DBC');
     });
 
     it('should render an autocomplete  with a value and autoSelectSingle set to true',
         function () {
-            var { child, state } = intoWithState(<Autocomplete
+            const { child, state } = intoWithState(<Autocomplete
                 itemTemplate={AutocompleteItemTemplate}
-                inputType={formTypes.Text}
+                inputType={Text}
                 value="abc"
                 autoSelectSingle={true}
                 options={options} processor={OptionsProcessor}
                 onInputChange={noop} onChange={noop} onSelect={noop}/>, {});
-            expect(child,'should render autocomplete').to.exist;
-            var input = byTag(child, 'input');
-            expect(input, 'should show input').to.exist;
-            expect(input.value).to.eql('abc');
-            change(input, 'j')
-            expect(input.value).to.eql('JDK');
+            const input            = state.find('input');
+            expect(input.prop('value')).to.eql('abc');
+            change(input, 'j', state);
+            expect(state.find('input').prop('value')).to.eql('JDK');
         });
 });

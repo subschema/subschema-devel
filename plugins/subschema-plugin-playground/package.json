@@ -15,8 +15,6 @@
     "browser-filesaver": "^1.1.1",
     "react-ace": "^5.0.1",
     "subschema-plugin-project": "^4.0.0-b-1",
-    "subschema-preset-resolvers": "^4.0.0-b-1",
-    "subschema-preset-web-form": "^4.0.0-b-1",
     "subschema-valuemanager": "^4.0.0-b-1",
     "validate-npm-package-name": "^3.0.0"
   },
@@ -35,10 +33,6 @@
   "subschema": {
     "plugins": [
       "subschema-plugin-project"
-    ],
-    "presets": [
-      "subschema-preset-web-form",
-      "subschema-preset-resolvers"
     ]
   }
 }

@@ -3,6 +3,7 @@
   "version": "4.0.0-b-1",
   "description": "Subschema Project Generator",
   "main": "lib",
+  "source": "src",
   "scripts": {
     "karma": "subschema-karma",
     "test": "subschema-karma",
@@ -19,27 +20,31 @@
     "subschema-preset-examples": "^4.0.0-b-1",
     "subschema-test-support": "^4.0.0-b-1",
     "subschema-valuemanager": "^4.0.0-b-1",
-    "subschema-plugin-type-wizard": "^4.0.0-b-1",
+    "subschema-preset-wizard": "^4.0.0-b-1",
+    "subschema-preset-list": "^4.0.0-b-1",
+    "subschema-plugin-autoloader": "^4.0.0-b-1",
+    "subschema-prop-types": "^4.0.0-b-1",
     "subschema": "^4.0.0-b-1",
     "subschema-dev-support": "^4.0.0-b-1"
   },
-  "source": "src",
   "subschema": {
-    "presets": [
-      "subschema-preset-examples",
-      "subschema-preset-web-form",
-      "subschema-preset-resolvers"
-    ],
     "plugins": [
-      "subschema-plugin-type-wizard",
-      "subschema-plugin-autoloader"
+      [
+        "subschema",
+        {
+          "loader": false
+        }
+      ]
+    ],
+    "presets": [
+      "subschema-preset-examples"
     ]
   },
   "mrbuilder": {
-    "plugin": "./mrbuilder-plugin.js",
     "plugins": [
-      "subschema-plugin-autoloader",
-      "subschema-plugin-project"
+      "subschema",
+      "./mrbuilder-plugin.js"
+
     ]
   }
 }

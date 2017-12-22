@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'subschema-prop-types';
-import { byTag, into, Simulate } from "subschema-test-support";
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-import formContext from 'subschema-component-form';
+import { byTag, into, submit } from "subschema-test-support";
+import {newSubschemaContext} from 'subschema';
 import { expect } from 'chai';
 
 class TestForm extends Component {
@@ -19,11 +18,11 @@ class TestForm extends Component {
     }
 }
 
-describe("resolvers/submit", function () {
+describe("subschema-resolver-submit", function () {
     it('should submit ', function (done) {
-        const { Form, context }        = newSubschemaContext();
-        const { loader, valueManager } = context;
-        loader.addLoader(formContext);
+        const { Form,  loader, valueManager }        = newSubschemaContext();
+
+
         valueManager.addSubmitListener(null, (e, err, value, path) => {
             e && e.preventDefault();
             expect(Object.keys(value).length).to.eql(0);
@@ -63,7 +62,7 @@ describe("resolvers/submit", function () {
                                   schema={schema}
                                   valueManager={valueManager}/>, true);
         const f      = byTag(form, "form");
-        Simulate.submit(f);
+        submit(f);
         //  f.submit();
 
     });

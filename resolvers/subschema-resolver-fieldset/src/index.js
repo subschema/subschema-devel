@@ -42,12 +42,12 @@ export function normalizeFieldsets(fieldsets, fields) {
 function normal(value) {
     return normalizeFieldsets(value, []);
 }
-function fieldsets(Clazz, key) {
+export function fieldset(Clazz, key) {
     Clazz::this.property(key, normal);
 }
-fieldsets.normalizeFieldsets = normalizeFieldsets;
+fieldset.normalizeFieldsets = normalizeFieldsets;
 export default {
     resolver: {
-        fieldset: fieldsets
+        fieldset
     }
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import {
     byComponent, byComponents, byTags, change, check, click, expect, into,
 } from 'subschema-test-support';
-import newContext from 'subschema-test-support/lib/newSubschemaContext';
+import {newSubschemaContext as newContext} from 'subschema';
 import { WizardTemplate } from 'subschema-plugin-type-wizard';
 import { Text } from 'subschema-plugin-type-text';
 

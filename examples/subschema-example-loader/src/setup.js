@@ -1,7 +1,7 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import { Select } from 'subschema-plugin-type-select';
 import { Checkbox } from 'subschema-plugin-type-checkbox';
-import loaderFactory from 'subschema-loader';
+import { loader } from 'subschema';
 
 //Provide a template named SimpleTemplate
 
@@ -19,7 +19,6 @@ class SimpleTemplate extends Component {
     }
 }
 
-const loader = loaderFactory();
 loader.addTemplate('SimpleTemplate', SimpleTemplate);
 
 //Provide a type named CheckboxSelect

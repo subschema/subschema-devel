@@ -1,19 +1,19 @@
 import React from 'react';
 import 'subschema-styles-bootstrap/lib/style.css';
 import {
-    byClass, byComponent, byComponents, byName, change, cleanUp, click, expect,
-    filterProp, findNode, into, Simulate, TestUtils
+    byClass, byComponents, byName, change, cleanUp, click, expect, filterProp,
+    findNode, into, Simulate, submit, TestUtils
 } from 'subschema-test-support';
 
-import form from 'subschema-component-form';
-import list from 'subschema-component-list';
-import css from 'subschema-styles-bootstrap';
+import { ButtonTemplate } from 'subschema-plugin-template-button';
+import { EditorTemplate } from 'subschema-plugin-template-editor';
+import {
+    CollectionCreateTemplate, ListItemTemplate
+} from 'subschema-plugin-list';
+import { Text } from 'subschema-plugin-type-text';
 
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { newSubschemaContext } from 'subschema';
 
-
-const { ListItemTemplate, CollectionCreateTemplate, } = list.templates;
-const { ButtonTemplate, EditorTemplate }              = form.templates;
 
 function controlBtn(task, action) {
     return filterProp(byComponents(task, ButtonTemplate), 'action', action)[0];
@@ -21,56 +21,53 @@ function controlBtn(task, action) {
 
 function newContext() {
     const ctx = newSubschemaContext();
-    ctx.loader.addLoader(form);
-    ctx.loader.addLoader(list);
-    ctx.loader.addLoader(css);
     return ctx;
 }
 
 const debug = false;
-describe('subschema-component-list-test', function () {
+describe.only('subschema-plugin-list/List', function () {
 
     this.timeout(50000);
 
     afterEach(cleanUp);
 
     function add(root, c) {
-        const allBtns = TestUtils.scryRenderedComponentsWithType(root,
-            ButtonTemplate);
-        const addBtn  = allBtns[0];
-
-        click(addBtn);
-        const create = byComponent(root, CollectionCreateTemplate);
-        const input  = findNode(byComponent(create, form.types.Text));
-        change(input, `Hello, world ${c}`);
-        const buttons = TestUtils.scryRenderedComponentsWithType(create,
-            ButtonTemplate);
-        expect(buttons[0]).toExist('buttons[0] does not exist');
-        const btn = filterProp(buttons, 'action', 'submit')[1];
-        click(btn);
-        const value = root.getValue();
+        const allBtns = root.find(ButtonTemplate);
+        const addBtn  = allBtns.at(0);
+        click(addBtn, root);
+        const create = root.find(CollectionCreateTemplate);
+        const input  = create.find(Text);
+        change(input, `Hello, world ${c}`, root);
+        const buttons = root.find(CollectionCreateTemplate)
+                            .find(ButtonTemplate);
+        expect(buttons).to.have.length(2);
+        const btn = buttons.find('[action="submit"]').at(0);
+        click(btn, root);
+        const value = root.instance().getValue();
         expect(value.tasks, 'tasks should exist').to.exist;
         expect(value.tasks[c], `tasks[${c}] should equal`)
             .to.eql(`Hello, world ${c}`);
-        const tasks = byComponents(root, ListItemTemplate);
-        return tasks[c];
+        const tasks = root.find(ListItemTemplate);
+        return tasks.at(c);
     }
 
     function edit(root, c) {
-        const tasks = byComponents(root, ListItemTemplate);
-        const item  = byClass(tasks[c], 'clickable')[0];
-        click(findNode(item));
-        const createTemplate = byComponent(root, CollectionCreateTemplate);
-        const input          = byName(createTemplate, `@edit@tasks.value`);
-        change(input, `Hello, world ${c}`);
-        const btns = filterProp(
-            TestUtils.scryRenderedComponentsWithType(createTemplate,
-                ButtonTemplate), 'action', 'submit');
-        const btn  = btns[0];
-        Simulate.submit(findNode(btn));
-        const value = root.getValue();
-        expect(input.value).to.eql('Hello, world ' + c);
-        return tasks[c];
+        const tasks = root.find(ListItemTemplate);
+        const item  = tasks.find('.clickable').at(0);
+        click(item, root);
+        const createTemplate = root.find(CollectionCreateTemplate);
+
+        const input = byName(createTemplate, `@edit@tasks.value`).at(0);
+
+        change(input, `Hello, world ${c}`, root);
+        const btns = root.find(CollectionCreateTemplate)
+                         .find('[action="submit"]');
+        const btn  = btns.at(0);
+        submit(btn, {}, root);
+        expect(root.find('[name="@edit@tasks.value"]').at(0).prop('value')).to
+                                                                           .eql('Hello, world '
+                                                                                + c);
+        return root.find(ListItemTemplate).at(c);
     }
 
 
@@ -101,17 +98,16 @@ describe('subschema-component-list-test', function () {
             debug);
         const tasks  = byComponents(root,
             ListItemTemplate);
-        const addBtn = byClass(root, 'btn-add')[0];
+        const addBtn = root.find('.btn-add').at(0);
 
-        expect(addBtn, 'add button does not exist').to.not.exist;
-        expect(tasks[0]).to.exist;
-        expect(tasks[1]).to.exist;
-        expect(tasks[2]).to.exist;
-        const span = byClass(tasks[0], 'clickable')[0];
-        click(span);
+        expect(addBtn, 'add button does not exist').to.have.length(0);
+        expect(tasks).to.have.length(3);
 
-        const edit  = byComponent(root, CollectionCreateTemplate);
-        const input = byName(edit, '@edit@tasks.value');
+        const span = root.find(ListItemTemplate).find('.clickable').at(0);
+        click(span, root);
+
+        const input = root.find(CollectionCreateTemplate)
+                          .find('[name="@edit@tasks.value"]').at(0);
         expect(findNode(input).value).to.eql('one', 'value should be one');
 
     });
@@ -171,14 +167,13 @@ describe('subschema-component-list-test', function () {
                                  valueManager={valueManager}/>,
             debug);
         const tasks = byComponents(root, ListItemTemplate);
-        expect(root).to.exist;
-        expect(tasks.length).to.eql(0);
+        expect(tasks).to.have.length(0);
 
 
         const a0 = add(root, 0);
-        expect(byClass(a0, 'btn-up')[0]).to.not.exist;
-        expect(byClass(a0, 'btn-delete')[0]).to.exist;
-        expect(byClass(a0, 'btn-down')[0]).to.not.exist;
+        byClass(a0, 'btn-up');
+        byClass(a0, 'btn-delete');
+        byClass(a0, 'btn-down');
 
         /*
          var a1 = add(root, 1);
@@ -251,8 +246,7 @@ describe('subschema-component-list-test', function () {
         const root   = into(<Form key='form4' schema={schema} value={data}
                                   errors={errors}/>,
             debug);
-        const found  = TestUtils.scryRenderedComponentsWithType(root,
-            EditorTemplate);
-        expect(found[0].props.error).to.eql('Can not be 2');
+        const found  = root.find(EditorTemplate);
+        expect(found.at(0).prop('error')).to.eql('Can not be 2');
     });
 });

@@ -42,8 +42,11 @@ export default {
                         }
                     }
                     const Type = loadType(value.type || settings.type, null, null, context);
-                    warning(Type, 'No Type found for %s at path "%s"', value.type, props.path);
-
+                    if (Type == null) {
+                        warning(Type, 'No Type found for "%s" at path "%s"',
+                            value.type || settings.type, props.path);
+                        return null;
+                    }
                     const template = Object.assign({}, toTemplate(settings.template), toTemplate(Type.template), toTemplate(value.template));
 
                     const ret = {

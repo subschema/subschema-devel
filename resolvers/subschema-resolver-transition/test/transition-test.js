@@ -1,11 +1,9 @@
 import React from 'react';
 import { expect } from 'chai';
-import resolvers from 'subschema-core/lib/resolvers';
 import { newSubschemaContext } from 'subschema-core';
 import transitions from 'subschema-transitions';
 import loaderFactory from 'subschema-loader';
-
-const { transition } = resolvers;
+import {transition} from 'subschema-resolver-transition';
 
 describe("resolvers/transition", function () {
     let loader;

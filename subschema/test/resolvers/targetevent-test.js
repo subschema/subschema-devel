@@ -1,20 +1,16 @@
-import {expect} from 'chai';
+import { expect } from 'chai';
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
-import {
-    byComponent, change, findNode, intoWithContext
-} from 'subschema-test-support';
-import injectorFactory from 'subschema-injection/lib/injectorFactory';
-import resolvers from 'subschema-core/lib/resolvers';
+import {newSubschemaContext} from 'subschema';
+import { byComponent, change, intoWithContext } from 'subschema-test-support';
 
-const injector = injectorFactory();
-injector.resolver(PropTypes.targetEvent, resolvers.targetEvent);
-injector.resolver(PropTypes.value, resolvers.value);
-injector.resolver(PropTypes.dataType, resolvers.dataType);
-
-describe('resolvers/targetEvent', function () {
+describe('subschema/targetEvent', function () {
     this.timeout(10000);
+    let injector;
+    beforeEach(() => {
+        injector = newSubschemaContext().injector;
+    });
     const propTypes = {
         onChange: PropTypes.targetEvent,
         value   : PropTypes.value,
@@ -34,9 +30,10 @@ describe('resolvers/targetEvent', function () {
             return <input {...props}/>
         }
     }
+
     class Target2Test extends Component {
         static defaultProps = {
-            onChange(){
+            onChange() {
 
             }
         };
@@ -57,12 +54,10 @@ describe('resolvers/targetEvent', function () {
         const valueManager = ValueManager({ 'other': 'stuff', more: 'd' });
         const inst         = intoWithContext(<Injected path="hello"/>, {
             valueManager
-
         }, true);
 
-        const et   = byComponent(inst, TargetTest);
-        const node = findNode(et);
-        expect(et.props.type).to.eql('text');
+        const et = inst.find(TargetTest);
+        expect(et.prop('type')).to.eql('text');
         change(et, 'world');
         expect(valueManager.path('hello')).to.eql('world');
     });
@@ -76,7 +71,8 @@ describe('resolvers/targetEvent', function () {
         }, true);
 
         const et = byComponent(inst, Target2Test);
-        expect(et.props.onChange).to.not.eql(Target2Test.defaultProps.onChange);
+        expect(et.prop('onChange')).to.not
+                                   .eql(Target2Test.defaultProps.onChange);
 
     });
     it('should allow for default functions not to be ignored',
@@ -93,7 +89,7 @@ describe('resolvers/targetEvent', function () {
             }, true);
 
             const et = byComponent(inst, Target2Test);
-            expect(et.props.onChange).to.eql(f);
+            expect(et.prop('onChange')).to.eql(f);
 
         });
 });

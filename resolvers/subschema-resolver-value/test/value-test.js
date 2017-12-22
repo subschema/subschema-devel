@@ -3,9 +3,8 @@ import { expect } from 'chai';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
 import { byComponent, intoWithContext } from 'subschema-test-support';
-import resolvers from 'subschema-core/lib/resolvers';
 import { injectorFactory } from 'subschema-injection';
-
+import * as resolvers from 'subschema-resolver-value';
 
 describe("resolvers/value", function () {
     this.timeout(50000);
@@ -43,11 +42,10 @@ describe("resolvers/value", function () {
             valueManager
         }, true);
 
-        expect(inst).to.exist;
         const vtc = byComponent(inst, ValueTestClass);
-        expect(vtc).to.exist;
-        expect(vtc.props.value).to.eql('abc');
-        valueManager.update('test', 'huh')
-        expect(vtc.props.value).to.eql('huh');
+        expect(vtc.prop('value')).to.eql('abc');
+        valueManager.update('test', 'huh');
+        inst.update();
+        expect(inst.find(ValueTestClass).prop('value')).to.eql('huh');
     });
 });

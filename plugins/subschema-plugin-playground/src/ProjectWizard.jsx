@@ -4,14 +4,15 @@ import { kebabCase } from 'subschema-utils';
 import { saveAs } from 'browser-filesaver';
 import { Form, loader } from 'subschema';
 
+loader && loader.loaderType('Example');
+
 //A simple Schema for this configuration
 export const schema = {
     schema     : {
         samples    : {
-            type       : 'Select',
-//figure this out.
-//
-            options    : loader.listExamples().map(v => v.name),
+            type: 'Select',
+
+            options    : loader && loader.listExamples().map(({name:label}) => ({label,val:label})),
             placeholder: 'Custom Project'
         },
         jsName     : {
@@ -80,28 +81,26 @@ export default class App extends Component {
         saveAs: saveAs
     };
 
-    componentDidMount() {
-
+    constructor(props, ...rest) {
+        super(props, ...rest);
 
         const valueManager = this.valueManager =
-            this.props.valueManager || ValueManager({
+            props.valueManager || ValueManager({
                                         samples: 'Basic'
                                     });
 
-
+        const loader = props.loader;
         valueManager.addListener('samples', function (value) {
-            var sample = samples[value];
-            if (!sample) {
-                sample = {
-                    schema     : {},
-                    setupTxt   : '',
-                    props      : null,
-                    data       : {},
-                    errors     : {},
-                    description: ''
-                }
-            }
-            var { ...copy } = sample;
+            const sample = loader.loadExample(value) || {
+                schema     : {},
+                setupTxt   : '',
+                props      : null,
+                data       : {},
+                errors     : {},
+                description: ''
+            };
+
+            const { ...copy } = sample;
 
             this.update('sample', null);
             this.update('jsName', value);

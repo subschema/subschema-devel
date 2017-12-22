@@ -4,21 +4,20 @@ import {
 } from 'subschema-test-support';
 import { Checkbox } from 'subschema-plugin-type-checkbox';
 import { EditorTemplate } from 'subschema-plugin-template-editor';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import { newSubschemaContext } from 'subschema';
 
 
 describe('subschema/Checkbox', function () {
     it('should create a form', function () {
         const { Form, valueManager } = newSubschemaContext();
-        const root                   = into(<Form valueManager={valueManager}
-                                                  schema={{
-                                                      schema: {
-                                                          c1: 'Checkbox',
-                                                          c2: {
-                                                              type: 'Checkbox'
-                                                          }
-                                                      }
-                                                  }}/>);
+        const root     = into(<Form schema={{
+            schema: {
+                c1: 'Checkbox',
+                c2: {
+                    type: 'Checkbox'
+                }
+            }
+        }}/>);
 
         const ret = root.instance().getValue();
         expect(ret.c1, 'c1 should not exist').to.not.exist;

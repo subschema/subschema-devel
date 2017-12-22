@@ -6,7 +6,7 @@ import loader from 'subschema-loader';
 import injector from 'subschema-injection';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import { configure, mount as _mount } from 'enzyme';
+import { ReactWrapper, configure, mount as _mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -43,7 +43,8 @@ function into(node, debug) {
 
 function notByType(node, type, description) {
     const ret = byTypes(node, type);
-    expect(ret.at(0), description).to.not.exist;
+    expect(ret.at(0), description).to.have.length(0);
+    return ret;
 }
 
 function expected(nodes, length) {
@@ -80,7 +81,7 @@ function onlyOne(node) {
 }
 
 function byName(root, prop) {
-    return root.find({ prop })
+    return root.find(`[name="${prop}"]`)
 }
 
 
@@ -103,30 +104,44 @@ function byId(node, id) {
     return onlyOne(node.find(`#${id}`));
 }
 
-function click(node) {
+function click(node, form) {
     node.simulate('click');
+    form && form.update();
     return node;
 }
 
-function change(node, value) {
+
+function change(node, value, form) {
     node.simulate('change', { target: { value } });
+    form && form.update();
     return node;
 }
 
-function check(node, checked, value) {
+function check(node, checked, value, form) {
     node.simulate('change', { target: { checked, value } });
+    form && form.update();
     return node;
 }
 
-function blur(node) {
+function blur(node, form) {
     node.simulate('blur');
+    form && form.update();
     return node;
 }
 
-function focus(node) {
+function focus(node, form) {
     node.simulate('focus')
+    form && form.update()
     return node;
 }
+
+function submit(node, value, form){
+
+    node.simulate('submit', value)
+    form && form.update();
+    return node;
+}
+
 
 function byComponent(node, comp) {
     return onlyOne(node.find(comp));
@@ -140,15 +155,8 @@ function byClass(node, className) {
     return node.find(`.${className}`);
 }
 
-function asNode(node) {
-    if (Array.isArray(node)) {
-        return onlyOne(node);
-    }
-    return node;
-}
-
 function findNode(n) {
-    return ReactDOM.findDOMNode(asNode(n));
+    return n.getDOMNode();
 }
 
 function defChildContext() {
@@ -159,40 +167,30 @@ function defChildContext() {
     };
 }
 
-function context(childContext = defChildContext, childContextTypes = {
-    valueManager: PropTypes.valueManager,
-    loader      : PropTypes.loader,
-    injector    : PropTypes.injector
-}) {
 
-    const getChildContext = typeof childContext === 'function' ? childContext
-        : function () {
-            return childContext;
-        };
+function intoWithContext(child, context, attachTo, contextTypes) {
 
-    class Context extends Component {
-        static childContextTypes = childContextTypes;
-
-        getChildContext = getChildContext;
-
-        render() {
-            return this.props.children;
-        }
+    if (attachTo == true) {
+        attachTo = document.createElement('div');
+        document.body.appendChild(attachTo);
+    } else if (attachTo == null || attachTo == false) {
+        attachTo = document.createElement('div');
+    }
+    if (context && !contextTypes) {
+        contextTypes = Object.keys(context).reduce(function (ret, key) {
+            ret[key] = PropTypes[key] || PropTypes.any;
+            return ret;
+        }, {});
     }
 
-    return Context;
-}
-
-function intoWithContext(child, ctx, debug, contextTypes) {
-    const Context = context(ctx, contextTypes);
-    return into(<Context>{child}</Context>, debug);
+    return _mount(child, { context, attachTo, contextTypes, childContextTypes:contextTypes });
 }
 
 
 function select(node, index) {
     const multiple = Array.isArray(index);
 
-    const options = byTags(node, 'option').map(v=>v.getDOMNode());
+    const options = byTags(node, 'option').map(v => v.getDOMNode());
     if (!multiple) {
         options.forEach((option, idx) => {
             option.selected = (idx === index);
@@ -204,7 +202,7 @@ function select(node, index) {
     node.simulate('change', {
         target: {
             options,
-            value: multiple ? options.map(o=>o.value) : options[index].value
+            value: multiple ? options.map(o => o.value) : options[index].value
         }
     });
     return node;
@@ -243,7 +241,6 @@ export {
     ReactDOM,
     intoWithState,
     into,
-    context,
     intoWithContext,
     prettyLog,
     findNode,
@@ -266,5 +263,6 @@ export {
     check,
     blur,
     focus,
-    expected
+    expected,
+    submit
 }

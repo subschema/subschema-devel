@@ -2,8 +2,6 @@
   "name": "subschema-plugin-conditional",
   "version": "4.0.0-b-1",
   "scripts": {
-    "test": "subschema-karma",
-    "karma": "subschema-karma",
     "clean": "subschema-clean",
     "prepublish": "subschema-babel"
   },

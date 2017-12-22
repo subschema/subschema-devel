@@ -8,6 +8,7 @@ export function newSubschemaContext(defaultLoaders = [DefaultLoader],
                                     defaultValueManagerFactory) {
     const ctx    = _newSubschemaContext(defaultLoaders,
         defaultInjectionFactory, defaultValueManagerFactory);
+
     ctx.importer = _importer({
         react                     : require('react'),
         'subschema'               : ctx,

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
-import { noop, path as _path, unique, warning } from 'subschema-utils';
+import { noop, path as _path, toArray, unique, warning } from 'subschema-utils';
 import UninjectedField from 'subschema-field';
 import UninjectedFieldSet from 'subschema-fieldset';
 import renderTemplate from 'subschema-rendertemplate';
@@ -76,11 +76,11 @@ export class ObjectType extends PureComponent {
 
     makeFields(fields, schema, Field) {
         const fieldMap     = {};
-        const mappedfields = fields.map((field) => {
+        const mappedfields = toArray(fields).map((field) => {
             warning(typeof field === 'string',
                 'Field is not a string, probably not nesting schema:{} correctly %s',
                 field);
-            var [f, rest] = field.split('.', 2);
+            const [f, rest] = field.split('.', 2);
             if (rest) {
                 (fieldMap[f] || (fieldMap[f] = [])).push(rest);
             }

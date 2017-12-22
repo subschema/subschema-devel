@@ -55,7 +55,8 @@ export default function newSubschemaContext(defaultLoaders         = [],
     //Form needs these to kick off the whole thing.  Its defaults can be
     // overriden with properties.
     rest.loader = formDefaultProps.loader = defaultLoader;
-    rest.injector = formDefaultProps.injector = defaultInjectorFactory;
+    rest.injector = formDefaultProps.injector = defaultInjectorFactory(defaultLoader);
+
     rest.valueManager = formDefaultProps.valueManager = defaultValueManager();
     rest.ValueManager = defaultValueManager;
     return rest;

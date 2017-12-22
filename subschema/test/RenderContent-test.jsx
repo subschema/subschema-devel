@@ -3,51 +3,51 @@ import { expect } from 'chai';
 import { renderToStaticMarkup } from 'react-dom/server';
 import ValueManager from 'subschema-valuemanager';
 import PropTypes from 'subschema-prop-types';
-import newSubschemaContext from 'subschema-test-support/src/newSubschemaContext';
+import { newSubschemaContext } from 'subschema';
 import { Content } from 'subschema-plugin-content';
 import { mount } from 'enzyme';
 
 const tests = {
-    '<span>your value is 2</span>'                                                                                                                                           : {
+    '<span>your value is 2</span>'                                                                                                                                          : {
         key    : 't1',
         path   : 'test',
         content: 'your value is {test}'
     },
-    '<span class="test-class" id="stuff">your value is 2</span>'                                                                                                             : {
+    '<span class="test-class" id="stuff">your value is 2</span>'                                                                                                            : {
         key      : 't1',
         id       : 'stuff',
         className: "test-class",
         content  : 'your value is {test}',
         path     : "test"
     },
-    '<span id="stuff">your value is 2</span>'                                                                                                                                : {
-        id      : 'stuff',
-        type: 'span',
-        content : {
+    '<span id="stuff">your value is 2</span>'                                                                                                                               : {
+        id     : 'stuff',
+        type   : 'span',
+        content: {
             content: 'your value is {test}'
         }
 
     },
-    '<div id="other" class="test-class">your value is 2</div>'                                                                                                               : {
-        id      : 'other',
+    '<div id="other" class="test-class">your value is 2</div>'                                                                                                              : {
+        id     : 'other',
         //this is overridden in the content
-        type: 'span',
-        content : {
+        type   : 'span',
+        content: {
             content  : 'your value is {test}',
             type     : 'div',
             className: "test-class"
         }
     },
-    '<h2 id="other" class="test-class">your value is 2</h2>'                                                                                                                 : {
-        id      : 'other',
+    '<h2 id="other" class="test-class">your value is 2</h2>'                                                                                                                : {
+        id     : 'other',
         //this is not overridden in the content
-        type: 'h2',
-        content : {
+        type   : 'h2',
+        content: {
             content  : 'your value is {test}',
             className: "test-class"
         }
     },
-    '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><span>more</span></div>'                                                          : {
+    '<div id="stuff"><span>a value is 2</span><div class="test-class">your value is 2</div><span>more</span></div>'                                                         : {
         id     : 'stuff',
         content: {
             type   : 'div',
@@ -61,7 +61,7 @@ const tests = {
                 'more']
         }
     },
-    '<span id="array"><span>more</span><span>than</span></span>'                                                                                                             : {
+    '<span id="array"><span>more</span><span>than</span></span>'                                                                                                            : {
         id     : 'array',
         content: ['more', 'than']
     },
@@ -94,9 +94,16 @@ const tests = {
 
 describe('components/RenderContent', function () {
 
-    function ctx(Type, nc = newSubschemaContext()) {
-        const { context } = nc;
-        const IType       = context.injector.inject(Type);
+    function ctx(Type,
+                 { Form, ValueManager, valueManager, loader, injector }) {
+        const nsc     = newSubschemaContext();
+        const context = {
+            valueManager: valueManager || nsc.valueManager,
+            loader      : loader || nsc.loader,
+            injector    : injector || nsc.injector
+        };
+
+        const IType = context.injector.inject(Type);
         context.loader.addType("Content", Content);
         return class extends Component {
             static displayName       = 'Context';
@@ -125,17 +132,16 @@ describe('components/RenderContent', function () {
             const test = tests[key];
             it(`should render ${JSON.stringify(test)}`, function () {
                 const valueManager = ValueManager({ test: 2 });
-                const IContent     = ctx(Content,
-                    newSubschemaContext({ valueManager }));
+                const IContent     = ctx(Content, { valueManager });
                 html(<IContent key='t1' {...test}/>, key);
             });
         });
     });
-    it('should render an content object with a mixed array of type and className and children',
+    it(
+        'should render an content object with a mixed array of type and className and children',
         function () {
             const valueManager = ValueManager({ test: 2 });
-            const IContent     = ctx(Content,
-                newSubschemaContext({ valueManager }));
+            const IContent     = ctx(Content, { valueManager });
             const content      = {
                 type   : 'div',
                 content: [
@@ -174,8 +180,7 @@ describe('components/RenderContent', function () {
     it('should render an content object with a mixed array of type and className and wrap children is true',
         function () {
             const valueManager = ValueManager({ test: 2 });
-            const IContent     = ctx(Content,
-                newSubschemaContext({ valueManager }));
+            const IContent     = ctx(Content, { valueManager });
             const content      = {
                 type   : 'div',
                 content: [
@@ -215,8 +220,7 @@ describe('components/RenderContent', function () {
     it('should render an content object with a mixed array of type and className and wrap children',
         function () {
             const valueManager = ValueManager({ test: 2 });
-            const IContent     = ctx(Content,
-                newSubschemaContext({ valueManager }));
+            const IContent     = ctx(Content, { valueManager });
             const content      = {
                 type   : 'div',
                 content: [
@@ -256,8 +260,7 @@ describe('components/RenderContent', function () {
     it('should render an content object with a mixed array of type and className and wrap only one child',
         function () {
             const valueManager = ValueManager({ test: 2 });
-            const IContent     = ctx(Content,
-                newSubschemaContext({ valueManager }));
+            const IContent     = ctx(Content, { valueManager });
             const content      = {
                 type   : 'div',
                 content: [
@@ -295,8 +298,7 @@ describe('components/RenderContent', function () {
         });
     it('should render a list', function () {
         const valueManager = ValueManager({ test: 2 });
-        const IContent     = ctx(Content,
-            newSubschemaContext({ valueManager }));
+        const IContent     = ctx(Content, { valueManager });
         const content      = {
             type    : 'ul',
             children: {
@@ -319,8 +321,7 @@ describe('components/RenderContent', function () {
     });
     it('should render a simple list', function () {
         const valueManager = ValueManager({ test: 2 });
-        const IContent     = ctx(Content,
-            newSubschemaContext({ valueManager }));
+        const IContent     = ctx(Content, { valueManager });
 
         html(<IContent key='t1'
                        id='stuff'

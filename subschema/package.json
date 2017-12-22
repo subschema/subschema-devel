@@ -8,7 +8,7 @@
     "compile-lib": "subschema-babel && yarn run compile-default-loader",
     "compile-server": "subschema-webpack --output-path dist  --output-filename=subschema.server.js --target node",
     "compile-web": "NODE_ENV=production subschema-webpack --use-externals=false --devtool sourcemap -p  --output-path dist  --output-filename subschema.js",
-    "compile-web-debug": "subschema-webpack --use-externals=false --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
+    "compile-web-debug": "subschema-webpack --use-externals=false --output-library-target=umd --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
     "compile-web-noreact": "subschema-webpack -p  --output-path dist --output-filename subschema-noreact.js",
     "karma": "subschema-karma",
     "test": "subschema-karma",
@@ -22,7 +22,8 @@
   "dependencies": {
     "subschema-preset-web-form": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
-    "subschema-plugin-type-wizard": "^4.0.0-b-1",
+    "subschema-preset-wizard": "^4.0.0-b-1",
+    "subschema-preset-list": "^4.0.0-b-1",
     "subschema-context": "^4.0.0-b-1",
     "subschema-plugin-autoloader": "^4.0.0-b-1"
   },
@@ -34,6 +35,12 @@
   },
   "mrbuilder": {
     "plugins": [
+      [
+        "mrbuilder-plugin-webpack",
+        {
+          "libaryTarget": "umd"
+        }
+      ],
       [
         "mrbuilder-plugin-html",
         false
@@ -49,11 +56,12 @@
     "plugins": [
       [
         "subschema-prop-types",
-        "subschema-plugin-autoloader",
-        "subschema-plugin-type-wizard"
+        "subschema-plugin-autoloader"
       ]
     ],
     "presets": [
+      "subschema-preset-list",
+      "subschema-preset-wizard",
       "subschema-preset-web-form",
       "subschema-preset-resolvers"
     ]

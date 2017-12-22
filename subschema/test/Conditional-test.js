@@ -2,35 +2,40 @@ import React from 'react';
 import {
     byType, byTypes, expect, into, intoWithContext, notByType, select
 } from 'subschema-test-support';
-import ValueManager from 'subschema-valuemanager';
 import PropTypes from 'subschema-prop-types';
-import _Conditional from 'subschema-core/lib/Conditional';
-import { types } from 'subschema-component-form';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
-
-const { Select } = types;
+import { Conditional as _Conditional } from 'subschema-plugin-conditional';
+import { newSubschemaContext } from 'subschema';
+import { Select } from 'subschema-plugin-type-select';
 
 class Hello extends React.Component {
     render() {
         return <div>Hello</div>;
     }
 }
+
 describe('components/Conditional', function () {
-    this.timeout(5000);
     let Conditional;
     let loader;
     let injector;
     let Form;
     let context;
     let valueManager;
+    let ValueManager;
+
     beforeEach(function () {
-        const c = newSubschemaContext();
-        context = c.context;
-        loader = context.loader;
-        injector = context.injector;
+        const {
+                  ValueManager: ValueManager_,
+                  Form        : Form_,
+                  ...context_
+              }      = newSubschemaContext();
+        context      = context_;
+        loader       = context.loader;
+        injector     = context.injector;
         valueManager = context.valueManager;
-        Form = c.Form;
-        Conditional = injector.inject(_Conditional);
+        Form         = Form_;
+        ValueManager = ValueManager_;
+        Conditional  =
+            injector.inject(_Conditional);
         loader.addTemplate({
             Hello
         });
@@ -62,16 +67,17 @@ describe('components/Conditional', function () {
 
     };
     it('should render conditional with regex', function () {
-        const vm   = valueManager;
         const cond = intoWithContext(<Conditional template='Hello'
                                                   animate={false} path='hot'
-                                                  operator={/stuff/}/>, context,
-            false, PropTypes.contextTypes);
-        expect(cond).to.exist;
+                                                  operator={/stuff/}/>,
+            { valueManager, loader, injector },
+            false);
         notByType(cond, Hello);
-        vm.update('hot', 'stuff');
+        valueManager.update('hot', 'stuff');
+        cond.update();
         byType(cond, Hello);
-        vm.update('hot', 'cold');
+        valueManager.update('hot', 'cold');
+        cond.update();
         notByType(cond, Hello);
 
     });
@@ -80,30 +86,29 @@ describe('components/Conditional', function () {
         const cond = intoWithContext(<Conditional template='Hello'
                                                   animate={false} path='hot'
                                                   operator={'!/stuff/i'}/>,
-            context, false, PropTypes.contextTypes);
-        expect(cond).to.exist;
+            { valueManager, loader, injector }, false, PropTypes.contextTypes);
         byType(cond, Hello);
         vm.update('hot', 'stuff');
+        cond.update();
         notByType(cond, Hello);
         vm.update('hot', 'ColDd');
+        cond.update();
         byType(cond, Hello);
 
     });
 
     it('should render conditional with str regex', function () {
-        var vm   = ValueManager();
-        var cond = intoWithContext(<Conditional template={Hello} animate={false}
-                                                path='hot' operator='/stuff/i'
-        />, {
-            valueManager: vm,
-            injector,
-            loader
-        }, false, PropTypes.contextTypes);
-        expect(cond).to.exist;
+        const cond = intoWithContext(<Conditional template={Hello}
+                                                  animate={false}
+                                                  path='hot'
+                                                  operator='/stuff/i'
+        />, context, false);
         notByType(cond, Hello);
-        vm.update('hot', 'stuff');
+        valueManager.update('hot', 'stuff');
+        cond.update();
         byType(cond, Hello);
-        vm.update('hot', 'ColDd');
+        valueManager.update('hot', 'ColDd');
+        cond.update();
         notByType(cond, Hello);
 
     });
@@ -111,31 +116,35 @@ describe('components/Conditional', function () {
     it('should render conditional with null', function () {
         const cond = intoWithContext(<Conditional template={'Hello'}
                                                   animate={false} path='hot'
-        />, context, true, PropTypes.contextTypes);
-        expect(cond).to.exist;
+        />, context, false);
         notByType(cond, Hello);
         valueManager.update('hot', 'stuff');
+        cond.update();
+
         byType(cond, Hello);
         valueManager.update('hot', null);
+        cond.update();
+
         notByType(cond, Hello);
 
     });
     it('should render children or not', function () {
-        const vm   = valueManager;
         const cond = intoWithContext(<Conditional animate={false} path='hot'
-        ><Hello/></Conditional>, context, false, PropTypes.contextTypes);
+        ><Hello/></Conditional>, context, false);
 
-        expect(cond).to.exist;
         notByType(cond, Hello);
-        vm.update('hot', 'stuff');
+        valueManager.update('hot', 'stuff');
+        cond.update();
         byType(cond, Hello);
-        vm.update('hot', null);
+
+        valueManager.update('hot', null);
+        cond.update();
         notByType(cond, Hello);
 
     });
 
     describe('ModelAndMake', function () {
-        var schema = {
+        const schema = {
             "schema"   : {
                 "make" : {
                     "title"      : "Make",
@@ -184,11 +193,11 @@ describe('components/Conditional', function () {
             }]
         };
         it('should render make and model', function () {
-            var form    = into(<Form schema={schema}/>, true);
-            var selects = byTypes(form, Select);
+            const form    = into(<Form schema={schema}/>, true);
+            const selects = byTypes(form, Select);
 
-            expect(selects.length).to.eql(2, 'Should have 2 selects');
-            select(selects[0], 2);
+            expect(selects).to.have.length(2, 'Should have 2 selects');
+            select(selects.at(0), 2);
             /*
              var selects = byTypes(form, Select);
              select(selects[1], 1);

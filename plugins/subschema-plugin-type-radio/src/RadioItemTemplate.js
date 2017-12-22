@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Content as UninjectedContent} from 'subschema-plugin-content';
 import PropTypes from "subschema-prop-types";
 
-export class RadioItemTemplate extends Component {
+export default class RadioItemTemplate extends Component {
     static propTypes = {
         label       : PropTypes.any,
         labelHTML   : PropTypes.any,
@@ -49,9 +49,3 @@ export class RadioItemTemplate extends Component {
         </Content>);
     }
 }
-
-export default ({
-    template: {
-        RadioItemTemplate
-    }
-});

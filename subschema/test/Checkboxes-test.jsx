@@ -3,7 +3,7 @@ import React from 'react';
 import {
     byTags, expect, Form, into, Simulate, TestUtils, ValueManager, change
 } from 'subschema-test-support';
-import newSubschemaContext from 'subschema-test-support/lib/newSubschemaContext';
+import {newSubschemaContext} from 'subschema';
 import { Checkboxes } from 'subschema-plugin-type-checkboxes';
 
 describe('subschema/Checkboxes', function () {
@@ -11,7 +11,6 @@ describe('subschema/Checkboxes', function () {
     it('should create checkboxes', function () {
         const {
                   Form,
-                  context,
                   valueManager
               } = newSubschemaContext();
 
@@ -41,7 +40,6 @@ describe('subschema/Checkboxes', function () {
     it('should create checkboxes in groups', function () {
         const {
                   valueManager,
-                  context,
                   Form
               } = newSubschemaContext();
 
