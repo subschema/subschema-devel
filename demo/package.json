@@ -20,6 +20,8 @@
   },
   "subschema": {
     "plugins": [
+      "subschema-plugin-project",
+      "subschema-plugin-playground",
       "subschema-plugin-demo",
       [
         "subschema.wiki",
@@ -30,21 +32,17 @@
     ],
     "presets": [
       "subschema",
-      "subschema-preset-examples",
-      "subschema-preset-resolvers",
-      "subschema-preset-web-form"
-    ]
-  },
-  "mrbuilder": {
-    "presets": [
-      "mrbuilder"
-    ],
-    "plugins": [
-      "mrbuilder-plugin-markdown",
-      "mrbuilder-plugin-less",
-      "subschema-plugin-project"
+      "subschema-preset-examples"
     ]
   },
   "source": "src",
-  "main": "lib"
+  "main": "lib",
+  "mrbuilder":{
+    "plugins":[
+      "mrbuilder-plugin-markdown",
+      "mrbuilder-plugin-html",
+      "subschema",
+      "subschema-plugin-project"
+    ]
+  }
 }

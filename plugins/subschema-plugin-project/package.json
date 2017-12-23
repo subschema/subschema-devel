@@ -41,10 +41,9 @@
     ]
   },
   "mrbuilder": {
+    "plugin": "./mrbuilder-plugin.js",
     "plugins": [
-      "subschema",
-      "./mrbuilder-plugin.js"
-
+      "subschema"
     ]
   }
 }
