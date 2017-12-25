@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import route from '@funjs/route-parser/dist/index.umd';
+import { Route } from 'react-router-dom'
 
 function matcher(obj) {
     const arr = Object.keys(obj).map(function makeMatch(key) {
@@ -41,15 +42,6 @@ export default class Routes extends Component {
         notFound: "NotFound"
     };
 
-    componentWillMount() {
-        this.matches = Routes.matcher(this.props.routes);
-    }
-
-    componentWillRecieveProp(props) {
-        if (props.routes != this.props.routes) {
-            this.matches = Routes.matcher(props);
-        }
-    }
 
     resolve = (component) => {
         if (typeof component == 'string') {
@@ -60,23 +52,33 @@ export default class Routes extends Component {
         }
         return component;
     };
+
     componentDidCatch(error, info) {
         // Display fallback UI
         this.setState({ hasError: true });
         // You can also log the error to an error reporting service
         console.log(error, info);
     }
-    render() {
-        const { pathname } = this.props;
-        let to             = this.matches(pathname, this.resolve);
-        if (to) {
-            const [props, Component] = to;
-            if (Component) {
-                return <Component {...props}/>
-            }
+
+    renderComponent = (props) => {
+        const { match: { path, params }, location: { pathname } } = props;
+        console.log('props', props);
+        const component = this.props.routes[path];
+        if (component) {
+            const Component = this.resolve(component);
+            return <Component key={pathname} {...params}/>
         }
-        const Component = this.resolve(this.props.notFound);
-        return <Component location={this.props.pathname}/>
+        return null;
+    };
+
+    renderRoute(path) {
+        return <Route key={path} path={path} render={this.renderComponent}/>
+    };
+
+    render() {
+        const { pathname, routes } = this.props;
+
+        return Object.keys(routes).map(this.renderRoute, this);
 
     }
 }

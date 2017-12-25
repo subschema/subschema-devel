@@ -11,6 +11,8 @@
   "dependencies": {
     "@funjs/route-parser": "^1.3.0",
     "history": "^4.6.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "subschema-form": "^4.0.0-b-1",
     "subschema-utils": "^4.0.0-b-1"
   },
@@ -18,9 +20,9 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-styles-bootstrap": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1",
     "subschema-prop-types": "^4.0.0-b-1",
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-styles-bootstrap": "^4.0.0-b-1"
   },
   "peerDependencies": {
     "react": "*",

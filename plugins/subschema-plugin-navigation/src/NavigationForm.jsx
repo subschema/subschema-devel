@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'subschema-form';
 import HistoryTypes from './PropTypes';
 import qs from 'querystring';
+import { Router } from 'react-router-dom'
 
 
 function parse(search = '') {
@@ -38,10 +39,10 @@ export default class NavigationForm extends Form {
         this._pathname && this._pathname();
         this._query    =
             valueManager.addListener('@query', this.syncQuery,
-                this, false);
+                this, false).remove;
         this._pathname =
             valueManager.addListener('@pathname', this.syncPathname,
-                this, false);
+                this, false).remove;
     }
 
     syncQuery(val) {
@@ -86,6 +87,7 @@ export default class NavigationForm extends Form {
         if (this._insync) {
             return
         }
+        console.log('history', pathname);
         this._inhistory = true;
         const cur       = this.valueManager.path('@query');
         const kcur      = cur && Object.keys(cur) || [];
@@ -105,13 +107,15 @@ export default class NavigationForm extends Form {
         for (const key of kcur) {
             this.valueManager.update(`@query.${key}`);
         }
-        this.valueManager.update('@pathname', pathname.replace(/^#/, ''));
+        this.valueManager.update('@pathname', pathname.replace(/^#\/?/, ''));
         this._inhistory = false;
     };
 
 
     render() {
         const { history, ...rest } = this.props;
-        return <Form {...rest}/>
+        return (<Router history={history}>
+            <Form {...rest}/>
+        </Router>);
     }
 }

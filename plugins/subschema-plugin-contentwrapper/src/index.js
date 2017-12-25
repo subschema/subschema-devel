@@ -33,11 +33,13 @@ export class ContentWrapper extends Component {
     };
 
     render() {
-        const { type, content, dataType, children, context, path, fieldAttrs, ...props } = this.props;
+        const { type, content, dataType, children, context, path, fieldAttrs, title, ...props } = this.props;
 
         const allProps = {
             ...strip(fieldAttrs),
+            title: title === false ? void(0) : title,
             ...props,
+
         };
         if (typeof type == 'string') {
             return React.createElement(type, {

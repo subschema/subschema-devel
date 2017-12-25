@@ -37,8 +37,8 @@
   },
   "source": "src",
   "main": "lib",
-  "mrbuilder":{
-    "plugins":[
+  "mrbuilder": {
+    "plugins": [
       "mrbuilder-plugin-markdown",
       "mrbuilder-plugin-html",
       "subschema",

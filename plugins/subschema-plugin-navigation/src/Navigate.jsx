@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
+import { NavLink } from 'react-router-dom'
 
-class NavigateItem extends Component {
+class NavigateItem extends PureComponent {
 
     static propTypes = {
         id      : PropTypes.id,
@@ -14,27 +15,17 @@ class NavigateItem extends Component {
 
     static defaultProps = {
         pathname: "",
-        active  : false,
     };
 
     render() {
-        const {
-                  href,
-                  label,
-                  prefix,
-                  pathname,
-                  onClick
-              }         = this.props;
-        const className = `list-group-item ${( href === pathname ? 'active'
-            : '')}`;
-        return <a href={prefix + href}
-                  onClick={onClick}
-                  className={className}>{label}</a>
+        return <NavLink to={this.props.href}
+                        activeClassName='active'
+                        className={'list-group-item'}>{this.props.label}</NavLink>
     }
 
 }
 
-export default class Navigate extends Component {
+export default class Navigate extends PureComponent {
 
     static propTypes = {
         path    : PropTypes.path,

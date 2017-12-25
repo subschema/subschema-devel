@@ -1,29 +1,32 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "subschema-prop-types";
-import {SubschemaPlayground as UninjectedSubschemaPlayground} from "subschema-plugin-playground";
-import {loader} from "./PropTypes";
+import { SubschemaPlayground as UninjectedSubschemaPlayground } from "subschema-plugin-playground";
+import { loader } from "./PropTypes";
+
 export default class Example extends Component {
 
     static contextTypes = PropTypes.contextTypes;
 
     static propTypes = {
-        example: loader,
+        example            : loader,
         SubschemaPlayground: PropTypes.injectClass,
-        useData: PropTypes.value,
-        useErrors: PropTypes.value,
-        onSubmit: PropTypes.valueEvent,
+        useData            : PropTypes.value,
+        useErrors          : PropTypes.value,
+        onSubmit           : PropTypes.valueEvent,
+        pathname           : PropTypes.string,
     };
 
     static defaultProps = {
         SubschemaPlayground: UninjectedSubschemaPlayground,
-        onSubmit: "submit",
-        useData: "@query.useData",
-        useErrors: "@query.useErrors",
+        onSubmit           : "submit",
+        useData            : "@query.useData",
+        useErrors          : "@query.useErrors",
     };
 
 
     render() {
-        const {example: {name, description}} = this.props;
+        const { example: { name, description } = {} } = this.props;
+
         return <div>
             <h3>{name}</h3>
             <p>{description}</p>
@@ -43,11 +46,14 @@ export default class Example extends Component {
     };
 
     renderEdit() {
-        const {SubschemaPlayground, UpdateValue} = this.props;
-        const {name, schema, setupTxt, props, description, data, imports, errors} = this.props.example
-        || {};
+        const { SubschemaPlayground, UpdateValue, example } = this.props;
+        const {
+                  name = example, schema, setupTxt,
+                  props, description, data, imports, errors
+              }                                             = this.props.example
+                                                              || {};
         return <div className='sample-example-playground'>
-            <SubschemaPlayground key={'form-' + name}
+            <SubschemaPlayground key={'form-' + example}
                                  theme='monokai'
                                  expandTxt="Show Example Code"
                                  collapseTxt="Hide Example Code"

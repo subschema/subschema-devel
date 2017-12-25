@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import qs from 'querystring';
-function parse(value) {
-    return (value === 'true');
-}
+import { NavLink } from 'react-router-dom'
+
 export default class ToggleLink extends Component {
 
     static propTypes = {
@@ -24,23 +22,12 @@ export default class ToggleLink extends Component {
 
     render() {
         const {
-                  className, activeClass, value, anchorClass,
-                  pathname, name, query = {}, label
+                  className, activeClass, value, anchorClass, label
               } = this.props;
-
-        const { ...copy } = query == '' ? {} : query;
-        const active      = (name in copy);
-        if (active) {
-            delete copy[name];
-        } else {
-            copy[name] = void(0);
-        }
-        const search = qs.stringify(copy).replace(/=(&)|(=$)|=true/g, '$1');
-
-        return <li className={`${className} ${active ? activeClass
-            : '' }`}>
-            <a href={`#${pathname}${search ? `?${search}` : ''}`}
-               className={anchorClass}>{label}</a>
+        return <li className={className}>
+            <NavLink to={value}
+                     activeClassName={this.props.activeClass}
+                     className={anchorClass}>{label}</NavLink>
         </li>
     }
 }
