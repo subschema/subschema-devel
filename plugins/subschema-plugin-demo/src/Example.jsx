@@ -10,8 +10,6 @@ export default class Example extends Component {
     static propTypes = {
         example            : loader,
         SubschemaPlayground: PropTypes.injectClass,
-        useData            : PropTypes.value,
-        useErrors          : PropTypes.value,
         onSubmit           : PropTypes.valueEvent,
         pathname           : PropTypes.string,
     };
@@ -19,17 +17,38 @@ export default class Example extends Component {
     static defaultProps = {
         SubschemaPlayground: UninjectedSubschemaPlayground,
         onSubmit           : "submit",
-        useData            : "@query.useData",
-        useErrors          : "@query.useErrors",
     };
 
+    state = {
+        useData  : false,
+        useErrors: false
+    };
+
+    handleDataBtn = () => {
+        this.setState({ useData: !this.state.useData });
+    };
+
+    handleErrorsBtn = () => {
+        this.setState({ useErrors: !this.state.useErrors });
+    };
 
     render() {
         const { example: { name, description } = {} } = this.props;
 
         return <div>
-            <h3>{name}</h3>
+            <h3>{name}
+                <div className='pull-right btn-group btn-group-xs'>
+                    <button onClick={this.handleDataBtn}
+                            className='btn btn-default'>Data
+                    </button>
+                    <button onClick={this.handleErrorsBtn}
+                            className='btn btn-default'>Error
+                    </button>
+
+                </div>
+            </h3>
             <p>{description}</p>
+
             {this.renderEdit()}
 
         </div>
@@ -58,8 +77,8 @@ export default class Example extends Component {
                                  expandTxt="Show Example Code"
                                  collapseTxt="Hide Example Code"
                                  filename={`Example ${name}`}
-                                 useData={!!this.props.useData}
-                                 useErrors={!!this.props.useErrors}
+                                 useData={this.state.useData}
+                                 useErrors={this.state.useErrors}
                                  collapsableCode={true}
                                  setupTxt={setupTxt}
                                  value={data}

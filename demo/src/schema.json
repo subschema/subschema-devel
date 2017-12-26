@@ -1,19 +1,5 @@
 {
   "schema": {
-    "useData": {
-      "type": "ToggleLink",
-      "label": "Data",
-      "name": "useData",
-      "className": "no-class",
-      "template": false
-    },
-    "useErrors": {
-      "type": "ToggleLink",
-      "label": "Errors",
-      "className": "no-class",
-      "name": "useErrors",
-      "template": false
-    },
     "edit": {
       "type": "ToggleLink",
       "label": "Edit",
@@ -59,8 +45,6 @@
           "template": "NavTemplate",
           "content": "Subschema v{subschemaVersion}",
           "fields": [
-            "useData",
-            "useErrors",
             "edit"
           ]
         },
