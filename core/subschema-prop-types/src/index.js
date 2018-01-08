@@ -229,6 +229,8 @@ const contentType = customPropType(_contentType, 'contentType');
 
 const content = customPropType(_contentType, 'content');
 
+const renderedContent =  customPropType(_contentType, 'renderedContent');
+
 const template = customPropType(oneOfType([string, bool, shape({
     template : oneOfType([string, bool, func]),
     content  : content,
@@ -401,6 +403,7 @@ const api = {
     loader,
     valueManager,
     content,
+    renderedContent,
     template,
     button,
     buttons,
@@ -475,6 +478,7 @@ export default ({
     loader,
     valueManager,
     content,
+    renderedContent,
     template,
     button,
     buttons,

@@ -1144,6 +1144,10 @@ bootstrap@^3.3.7:
   version "3.3.7"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
+bowser@^1.7.3:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.9.1.tgz#f86ef2132e8cb10b3eb6ea5af018758c587020db"
+
 brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
@@ -1417,6 +1421,10 @@ chalk@^2.0.0, chalk@^2.1.0, chalk@^2.3.0:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
+
+change-emitter@^0.1.2:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
 
 chardet@^0.4.0:
   version "0.4.2"
@@ -1994,6 +2002,12 @@ crypto-browserify@^3.11.0:
 css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
+
+css-in-js-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-2.0.0.tgz#5af1dd70f4b06b331f48d22a3d86e0786c0b9435"
+  dependencies:
+    hyphenate-style-name "^1.0.2"
 
 css-loader@^0.28.4:
   version "0.28.7"
@@ -2891,7 +2905,7 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.16:
+fbjs@^0.8.1, fbjs@^0.8.16:
   version "0.8.16"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -3461,7 +3475,7 @@ hoek@4.x.x:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
 
-hoist-non-react-statics@^2.3.0:
+hoist-non-react-statics@^2.3.0, hoist-non-react-statics@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
@@ -3600,6 +3614,10 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
+hyphenate-style-name@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
+
 iconv-lite@0.4.19, iconv-lite@^0.4.17, iconv-lite@~0.4.13:
   version "0.4.19"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
@@ -3673,6 +3691,13 @@ inherits@2.0.1:
 ini@^1.3.2, ini@~1.3.0:
   version "1.3.5"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
+
+inline-style-prefixer@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-3.0.8.tgz#8551b8e5b4d573244e66a34b04f7d32076a2b534"
+  dependencies:
+    bowser "^1.7.3"
+    css-in-js-utils "^2.0.0"
 
 inquirer@^3.0.6, inquirer@^3.2.2:
   version "3.3.0"
@@ -4240,6 +4265,10 @@ karma@^1.7.1:
     tmp "0.0.31"
     useragent "^2.1.12"
 
+keycode@^2.1.8:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
+
 killable@^1.0.0:
   version "1.0.0"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/killable/-/killable-1.0.0.tgz#da8b84bd47de5395878f95d64d02f2449fe05e6b"
@@ -4442,6 +4471,10 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
+lodash.merge@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -4458,6 +4491,10 @@ lodash.templatesettings@^4.0.0:
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -4547,6 +4584,22 @@ markdown-it@^8.4.0:
     linkify-it "^2.0.0"
     mdurl "^1.0.1"
     uc.micro "^1.0.3"
+
+material-ui@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.20.0.tgz#85411bb59c916c9c7703f29dcffc44e3a67d5111"
+  dependencies:
+    babel-runtime "^6.23.0"
+    inline-style-prefixer "^3.0.8"
+    keycode "^2.1.8"
+    lodash.merge "^4.6.0"
+    lodash.throttle "^4.1.1"
+    prop-types "^15.5.7"
+    react-event-listener "^0.5.1"
+    react-transition-group "^1.2.1"
+    recompose "^0.26.0"
+    simple-assign "^0.1.0"
+    warning "^3.0.0"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
@@ -4767,15 +4820,21 @@ mrbuilder-optionsmanager@^0.3.8:
   dependencies:
     mrbuilder-utils "^0.3.8"
 
-mrbuilder-plugin-analyze@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-analyze/-/mrbuilder-plugin-analyze-0.3.8.tgz#4a66f7f6d7ea07f256b9aefeb93c396d5a92c0fc"
+mrbuilder-optionsmanager@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-optionsmanager/-/mrbuilder-optionsmanager-0.4.0.tgz#5cf49250623dad07fb4d19755a8f638b70f31e21"
+  dependencies:
+    mrbuilder-utils "^0.4.0"
+
+mrbuilder-plugin-analyze@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-analyze/-/mrbuilder-plugin-analyze-0.4.0.tgz#241ca3c141ce06e001e9fc880108ac2c3cd09f4b"
   dependencies:
     webpack-bundle-analyzer "^2.9.1"
 
-mrbuilder-plugin-babel@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-0.1.6.tgz#303f103f8ca34201f06ce8c25450a7c8efd63baf"
+mrbuilder-plugin-babel@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-0.4.0.tgz#c1fc24f2108361002c84e21eca708810acc6e671"
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.0"
@@ -4790,45 +4849,19 @@ mrbuilder-plugin-babel@^0.1.6:
     babel-preset-react "^6.24.1"
     babel-preset-stage-2 "^6.24.1"
     babel-runtime "^6.26.0"
-    mrbuilder-plugin-browserslist "^0.1.6"
+    mrbuilder-optionsmanager "^0.4.0"
+    mrbuilder-plugin-browserslist "^0.4.0"
     rimraf "^2.6.2"
 
-mrbuilder-plugin-babel@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-0.3.8.tgz#656d7dde77f8338a0ef7c263d140273c27b1aefe"
+mrbuilder-plugin-browserslist@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-0.4.0.tgz#e257003866f02328f3f1a3c7a5e2793f9a52535a"
   dependencies:
-    babel-cli "^6.26.0"
-    babel-core "^6.26.0"
-    babel-loader "^7.1.2"
-    babel-plugin-istanbul "^4.1.1"
-    babel-plugin-transform-async-to-generator "^6.24.1"
-    babel-plugin-transform-class-properties "^6.24.1"
-    babel-plugin-transform-export-extensions "^6.22.0"
-    babel-plugin-transform-function-bind "^6.22.0"
-    babel-plugin-transform-runtime "^6.23.0"
-    babel-preset-env "^1.6.1"
-    babel-preset-react "^6.24.1"
-    babel-preset-stage-2 "^6.24.1"
-    babel-runtime "^6.26.0"
-    mrbuilder-optionsmanager "^0.3.8"
-    mrbuilder-plugin-browserslist "^0.3.8"
-    rimraf "^2.6.2"
+    mrbuilder-utils "^0.4.0"
 
-mrbuilder-plugin-browserslist@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-0.1.6.tgz#2c716515edb059c2bb82641636b064b2499c32f4"
-  dependencies:
-    mrbuilder-utils "^0.1.6"
-
-mrbuilder-plugin-browserslist@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-0.3.8.tgz#e6634186a9e938f92400501830e7e901f8d71270"
-  dependencies:
-    mrbuilder-utils "^0.3.8"
-
-mrbuilder-plugin-css@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-0.3.8.tgz#e24a23772bd78a259816c85ba00cfd1a2c6bd185"
+mrbuilder-plugin-css@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-0.4.0.tgz#f7d2798859d3eb4ea3c2e7c1b6f3a4296d0b005d"
   dependencies:
     autoprefixer "^7.1.6"
     css-loader "^0.28.4"
@@ -4836,45 +4869,45 @@ mrbuilder-plugin-css@^0.3.8:
     postcss-loader "^2.0.9"
     style-loader "^0.19.0"
 
-mrbuilder-plugin-enzyme@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-0.3.8.tgz#e5713496bfad989fbc1d8eddf218b51d8dd32d27"
+mrbuilder-plugin-enzyme@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-0.4.0.tgz#ae92b791003f880ac8216dcbfb75c19299e55e63"
   dependencies:
     enzyme "^3.2.0"
     enzyme-adapter-react-16 "^1.1.0"
 
-mrbuilder-plugin-filetypes@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-filetypes/-/mrbuilder-plugin-filetypes-0.3.8.tgz#7255d25729340df2b7e8313b88d897a25f33a07b"
+mrbuilder-plugin-filetypes@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-filetypes/-/mrbuilder-plugin-filetypes-0.4.0.tgz#c7ccafdacd8ce4f4a1a26243d5c121f2e671e10c"
   dependencies:
     file-loader "^1.1.5"
     url-loader "^0.6.2"
 
-mrbuilder-plugin-fonts@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-fonts/-/mrbuilder-plugin-fonts-0.3.8.tgz#851271d5ba5a82989d0f8da619a6d010ab11a5bb"
+mrbuilder-plugin-fonts@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-fonts/-/mrbuilder-plugin-fonts-0.4.0.tgz#a04717dc1a30b278c132086d4a3c0f0a2403c08f"
   dependencies:
     file-loader "^1.1.5"
     url-loader "^0.6.2"
 
-mrbuilder-plugin-hot@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-hot/-/mrbuilder-plugin-hot-0.3.8.tgz#a27ce065fdd617ed49d92c3b4eb8ceb17fcf299b"
+mrbuilder-plugin-hot@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-hot/-/mrbuilder-plugin-hot-0.4.0.tgz#c554abab60b8a7d5ffdd95b00d634d9f1cc70c3f"
   dependencies:
     react-hot-loader "^3.1.2"
 
-mrbuilder-plugin-html@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-html/-/mrbuilder-plugin-html-0.3.8.tgz#372b0438b046db62e1e42d32be71d426a3cb3de8"
+mrbuilder-plugin-html@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-html/-/mrbuilder-plugin-html-0.4.0.tgz#4fe09ac69b2e0616ae25cada95adc2b078882635"
   dependencies:
     html-webpack-plugin "^2.30.1"
     html-webpack-template "^6.0.2"
-    mrbuilder-plugin-babel "^0.3.8"
-    mrbuilder-utils "^0.3.8"
+    mrbuilder-plugin-babel "^0.4.0"
+    mrbuilder-utils "^0.4.0"
 
-mrbuilder-plugin-karma@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-karma/-/mrbuilder-plugin-karma-0.3.8.tgz#ed88fad8e5fd8b770ba6a443219a603e3b9a45ee"
+mrbuilder-plugin-karma@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-karma/-/mrbuilder-plugin-karma-0.4.0.tgz#3904e1fdb31a06999742e779c36fa8be1171a702"
   dependencies:
     karma "^1.7.1"
     karma-chrome-launcher "^2.2.0"
@@ -4885,94 +4918,94 @@ mrbuilder-plugin-karma@^0.3.8:
     karma-sourcemap-loader "^0.3.7"
     karma-spec-reporter "^0.0.31"
     karma-webpack "^2.0.5"
-    mrbuilder-optionsmanager "^0.3.8"
-    mrbuilder-plugin-enzyme "^0.3.8"
-    mrbuilder-plugin-mocha "^0.3.8"
-    mrbuilder-plugin-webpack "^0.3.8"
+    mrbuilder-optionsmanager "^0.4.0"
+    mrbuilder-plugin-enzyme "^0.4.0"
+    mrbuilder-plugin-mocha "^0.4.0"
+    mrbuilder-plugin-webpack "^0.4.0"
 
-mrbuilder-plugin-less@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-less/-/mrbuilder-plugin-less-0.3.8.tgz#09f761b2abf7995742d6c82a061af4b542fd74ae"
+mrbuilder-plugin-less@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-less/-/mrbuilder-plugin-less-0.4.0.tgz#fc61dfe66c4477194e0df611d52f798e882fd415"
   dependencies:
     less "^2.7.3"
     less-loader "^4.0.5"
-    mrbuilder-plugin-css "^0.3.8"
+    mrbuilder-plugin-css "^0.4.0"
 
-mrbuilder-plugin-markdown@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-markdown/-/mrbuilder-plugin-markdown-0.1.6.tgz#5e59d82d25a01acb41bf1a016a0992dda1d13839"
+mrbuilder-plugin-markdown@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-markdown/-/mrbuilder-plugin-markdown-0.4.0.tgz#260d5b7b1bc0b073d96e7466968f31096f2f4c3d"
   dependencies:
     markdown-it "^8.4.0"
-    mrbuilder-plugin-babel "^0.1.6"
-    mrbuilder-utils "^0.1.6"
+    mrbuilder-plugin-babel "^0.4.0"
+    mrbuilder-utils "^0.4.0"
     react-syntax-highlighter "^6.0.4"
 
-mrbuilder-plugin-mocha@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-mocha/-/mrbuilder-plugin-mocha-0.3.8.tgz#4f822e96f7b7f1c976131fa449c9475bf4b11805"
+mrbuilder-plugin-mocha@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-mocha/-/mrbuilder-plugin-mocha-0.4.0.tgz#ffe457378745d60777156b05552c14cb98713a5e"
   dependencies:
     chai "^4.1.2"
     jsdom "^11.5.1"
     mocha "^4.0.1"
-    mrbuilder-optionsmanager "^0.3.8"
-    mrbuilder-plugin-babel "^0.3.8"
+    mrbuilder-optionsmanager "^0.4.0"
+    mrbuilder-plugin-babel "^0.4.0"
 
-mrbuilder-plugin-uglify@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-uglify/-/mrbuilder-plugin-uglify-0.3.8.tgz#7bb5430bc726563869c463e93b771c733ba439c6"
+mrbuilder-plugin-uglify@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-uglify/-/mrbuilder-plugin-uglify-0.4.0.tgz#959f8c23388966825c9a6b3161678dc52973a52a"
   dependencies:
     uglifyjs-webpack-plugin "^1.1.1"
 
-mrbuilder-plugin-webpack-dev-server@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack-dev-server/-/mrbuilder-plugin-webpack-dev-server-0.3.8.tgz#18116a2658b43902317c6f6cf7a496a45973779f"
+mrbuilder-plugin-webpack-dev-server@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack-dev-server/-/mrbuilder-plugin-webpack-dev-server-0.4.0.tgz#2bf984ac46d2af59b1676a74b928b68d6646a975"
   dependencies:
     loglevel "^1.6.0"
-    mrbuilder-optionsmanager "^0.3.8"
-    mrbuilder-plugin-webpack "^0.3.8"
-    mrbuilder-utils "^0.3.8"
+    mrbuilder-optionsmanager "^0.4.0"
+    mrbuilder-plugin-webpack "^0.4.0"
+    mrbuilder-utils "^0.4.0"
     webpack-dev-server "^2.9.7"
 
-mrbuilder-plugin-webpack@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-0.3.8.tgz#f2c868eea42a969c5cea8287e0550ceb7ffa8a45"
+mrbuilder-plugin-webpack@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-0.4.0.tgz#671f858860d8c9bc17d051036c784f901123f879"
   dependencies:
     json-loader "^0.5.7"
-    mrbuilder-optionsmanager "^0.3.8"
-    mrbuilder-plugin-browserslist "^0.3.8"
-    mrbuilder-utils "^0.3.8"
+    mrbuilder-optionsmanager "^0.4.0"
+    mrbuilder-plugin-browserslist "^0.4.0"
+    mrbuilder-utils "^0.4.0"
     prop-types "^15.6.0"
     raw-loader "^0.5.1"
     val-loader "^1.0.2"
     webpack "^3.8.1"
 
-mrbuilder-utils@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/mrbuilder-utils/-/mrbuilder-utils-0.1.6.tgz#792a88b45947895b34df04bffed096d3d913e59e"
-
 mrbuilder-utils@^0.3.8:
   version "0.3.8"
   resolved "https://registry.yarnpkg.com/mrbuilder-utils/-/mrbuilder-utils-0.3.8.tgz#90940a3882d14ded432401765482ae2bab77328e"
 
-mrbuilder@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mrbuilder/-/mrbuilder-0.3.8.tgz#af475a1ccc1323579f3d6ae7ec61969b1e226494"
+mrbuilder-utils@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder-utils/-/mrbuilder-utils-0.4.0.tgz#fa606f9e1e5a9a3b1c2c0172c99adf71a9671117"
+
+mrbuilder@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mrbuilder/-/mrbuilder-0.4.0.tgz#7c05f881badce4fb22f70a66970fbf706ac0b3e8"
   dependencies:
-    mrbuilder-plugin-analyze "^0.3.8"
-    mrbuilder-plugin-babel "^0.3.8"
-    mrbuilder-plugin-browserslist "^0.3.8"
-    mrbuilder-plugin-css "^0.3.8"
-    mrbuilder-plugin-enzyme "^0.3.8"
-    mrbuilder-plugin-filetypes "^0.3.8"
-    mrbuilder-plugin-fonts "^0.3.8"
-    mrbuilder-plugin-hot "^0.3.8"
-    mrbuilder-plugin-html "^0.3.8"
-    mrbuilder-plugin-karma "^0.3.8"
-    mrbuilder-plugin-less "^0.3.8"
-    mrbuilder-plugin-mocha "^0.3.8"
-    mrbuilder-plugin-uglify "^0.3.8"
-    mrbuilder-plugin-webpack "^0.3.8"
-    mrbuilder-plugin-webpack-dev-server "^0.3.8"
+    mrbuilder-plugin-analyze "^0.4.0"
+    mrbuilder-plugin-babel "^0.4.0"
+    mrbuilder-plugin-browserslist "^0.4.0"
+    mrbuilder-plugin-css "^0.4.0"
+    mrbuilder-plugin-enzyme "^0.4.0"
+    mrbuilder-plugin-filetypes "^0.4.0"
+    mrbuilder-plugin-fonts "^0.4.0"
+    mrbuilder-plugin-hot "^0.4.0"
+    mrbuilder-plugin-html "^0.4.0"
+    mrbuilder-plugin-karma "^0.4.0"
+    mrbuilder-plugin-less "^0.4.0"
+    mrbuilder-plugin-mocha "^0.4.0"
+    mrbuilder-plugin-uglify "^0.4.0"
+    mrbuilder-plugin-webpack "^0.4.0"
+    mrbuilder-plugin-webpack-dev-server "^0.4.0"
     react "^16.1.1"
     react-dom "^16.1.1"
 
@@ -5928,7 +5961,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -6116,6 +6149,15 @@ react-dom@^16.1.0, react-dom@^16.1.1, react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-event-listener@^0.5.1:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.5.2.tgz#8fe116f8930a4c7fe363c631f56963d7e4ed3d66"
+  dependencies:
+    babel-runtime "^6.26.0"
+    fbjs "^0.8.16"
+    prop-types "^15.6.0"
+    warning "^3.0.0"
+
 react-hot-loader@^3.1.2:
   version "3.1.3"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/react-hot-loader/-/react-hot-loader-3.1.3.tgz#6f92877326958c7cb0134b512474517869126082"
@@ -6173,6 +6215,16 @@ react-test-renderer@^16.0.0-0:
     fbjs "^0.8.16"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-transition-group@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
+  dependencies:
+    chain-function "^1.0.0"
+    dom-helpers "^3.2.0"
+    loose-envify "^1.3.1"
+    prop-types "^15.5.6"
+    warning "^3.0.0"
 
 react-transition-group@^2.2.1:
   version "2.2.1"
@@ -6270,6 +6322,15 @@ readdirp@^2.0.0:
     minimatch "^3.0.2"
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
+
+recompose@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.26.0.tgz#9babff039cb72ba5bd17366d55d7232fbdfb2d30"
+  dependencies:
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^2.3.1"
+    symbol-observable "^1.0.4"
 
 redbox-react@^1.3.6:
   version "1.5.0"
@@ -6696,6 +6757,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.1, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
+simple-assign@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/simple-assign/-/simple-assign-0.1.0.tgz#17fd3066a5f3d7738f50321bb0f14ca281cc4baa"
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://artifacts.netflix.com/api/npm/npm-netflix/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -7083,6 +7148,10 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+symbol-observable@^1.0.4:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.1.0.tgz#5c68fd8d54115d9dfb72a84720549222e8db9b32"
 
 symbol-tree@^3.2.1:
   version "3.2.2"

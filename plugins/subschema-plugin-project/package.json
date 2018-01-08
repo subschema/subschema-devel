@@ -43,6 +43,7 @@
   "mrbuilder": {
     "plugin": "./mrbuilder-plugin.js",
     "plugins": [
+      "./mrbuilder-plugin", 
       "subschema"
     ]
   }
