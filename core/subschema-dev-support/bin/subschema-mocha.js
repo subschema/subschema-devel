@@ -1,1 +1,2 @@
-#!/usr/bin/env node -r mrbuilder/bin/mrbuilder-mocha
+#!/usr/bin/env node
+require('mrbuilder/bin/mrbuilder-mocha')

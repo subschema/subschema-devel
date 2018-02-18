@@ -1,1 +1,2 @@
-#!/usr/bin/env node -r mrbuilder/bin/mrbuilder-webpack
+#!/usr/bin/env node
+require('mrbuilder/bin/mrbuilder-webpack')
