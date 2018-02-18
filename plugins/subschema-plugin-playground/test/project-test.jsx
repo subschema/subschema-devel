@@ -17,7 +17,7 @@ schema.template = {
     transitionBackward: false
 };
 
-describe('subschema-plugin-playground/project', function () {
+describe.only('subschema-plugin-playground/project', function () {
     this.timeout(50000);
 
     let b;
@@ -47,7 +47,7 @@ describe('subschema-plugin-playground/project', function () {
     });
     let app;
 
-    _ctx.loader.listExamples().forEach(function ({ name: value }) {
+    _ctx.loader.listExamples().slice(0,1).forEach(function ({ name: value }) {
         // ['Autocomplete'].forEach(value=>{
         it(`should change the option ${value}`, async function () {
             app = into(<ProjectWizard loader={_ctx.loader}/>, true);

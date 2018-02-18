@@ -7,12 +7,12 @@
   "scripts": {
     "karma": "subschema-karma",
     "test": "subschema-karma",
+    "start": "subschema-webpack-dev-server",
     "prepublish": "subschema-webpack --devtool sourcemap",
     "clean": "rimraf ./lib ./dist"
   },
   "dependencies": {
-    "jszip": "^3.1.5",
-    "subschema-plugin-autoloader": "4.0.0-b-1"
+    "jszip": "^3.1.5"
   },
   "devDependencies": {
     "subschema-preset-web-form": "^4.0.0-b-1",
@@ -43,8 +43,7 @@
   "mrbuilder": {
     "plugin": "./mrbuilder-plugin.js",
     "plugins": [
-      "./mrbuilder-plugin", 
-      "subschema"
+      "subschema-plugin-project"
     ]
   }
 }

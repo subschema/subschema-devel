@@ -1,7 +1,6 @@
 "use strict";
 
 const template = require('lodash/template');
-
 const options = {
     interpolate: /@([\s\S]+?)@/g,
     escape     : /@-([\s\S]+?)@/g,

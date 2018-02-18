@@ -1,5 +1,4 @@
-import { camelCase } from 'subschema-utils';
-import OptionsManager from 'mrbuilder-optionsmanager';
+const { camelCase } = require('subschema-utils');
 
 function writeImport(config, cmd) {
     if (config && config.loader === false) {
@@ -57,7 +56,7 @@ function map(m, each) {
     return result;
 }
 
-export default function ({ plugins }) {
+module.exports = function ({ plugins }) {
 
     return {
         code     : `

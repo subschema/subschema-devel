@@ -26,7 +26,12 @@
           "useNameHash": false
         }
       ],
-      "mrbuilder-plugin-less"
+      [
+        "mrbuilder-plugin-less",
+        {
+          "modules": false
+        }
+      ]
     ]
   }
 }

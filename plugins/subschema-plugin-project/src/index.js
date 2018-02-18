@@ -18,3 +18,4 @@ export const normalize = _normalize;
 
 export const templates = {page, project};
 
+export default ({});

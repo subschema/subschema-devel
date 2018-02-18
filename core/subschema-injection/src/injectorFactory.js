@@ -18,9 +18,9 @@ export class BaseInjectComponent extends Component {
 
     render() {
         const { _copyPropTypeKeys, Clazz } = this.constructor;
-        const props                        = onlyKeys(_copyPropTypeKeys,
-            this.state, this.props);
-        return <Clazz {...props} {...this.state}>{this.props.children}</Clazz>
+
+        const props = onlyKeys(_copyPropTypeKeys, this.state, this.props);
+        return <Clazz {...props} {...this.state} children={this.state.children || this.props.children}/>
     }
 }
 
@@ -48,7 +48,7 @@ export default function injector(resolvers = new Map()) {
         return resolved;
     };
 
-    if (!(resolvers instanceof Map )) {
+    if (!(resolvers instanceof Map)) {
         if (isIterable(resolvers)) {
             resolvers = new Map(resolvers);
         } else if (resolvers && typeof resolvers.loadResolver == 'function') {

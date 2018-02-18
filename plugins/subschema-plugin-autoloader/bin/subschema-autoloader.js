@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const DefaultLoaderFactory = require('../lib/index').default;
+const DefaultLoaderFactory = require('subschema-plugin-autoloader')
 const noop                 = () => {
 };
 const optionsManager       = new (require('mrbuilder-optionsmanager').default)({

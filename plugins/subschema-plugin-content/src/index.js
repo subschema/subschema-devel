@@ -75,7 +75,7 @@ export class Content extends Component {
 
 
         if (isString(content)) {
-            var ContentWrapper = this.props.contentWrapper;
+            let ContentWrapper = this.props.contentWrapper;
             return <ContentWrapper path={this.props.path} fieldAttrs={props}
                                    key={'content-' + prefix} type={type}
                                    content={content}/>

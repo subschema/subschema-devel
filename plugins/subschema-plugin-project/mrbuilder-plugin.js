@@ -5,7 +5,6 @@ const resolvePkgDir = name => path.resolve(
 
 module.exports = function ({
                                test = /\.tmpl$/,
-                               use = path.resolve(__dirname, 'tmpl-loader'),
                                include,
                                exclude,
                            }, webpack) {
@@ -14,15 +13,40 @@ module.exports = function ({
     info('loading template loader');
     webpack.module.rules.push({
         test,
-        use,
+        use: [
+            path.resolve(__dirname, 'tmpl-loader'),
+        ],
         include,
         exclude
     });
 
-    webpack.resolve.alias['babel-core'] = resolvePkgDir('babel-standalone');
+    const oNoParse = webpack.module.noParse;
+    if (!oNoParse) {
+        webpack.module.noParse = /babel\.min/;
+    } else {
+        webpack.module.noParse = function (v) {
+            if (oNoParse) {
+
+                if (oNoParse instanceof RegExp) {
+                    if (oNoParse.test(v)) {
+                        return true;
+                    }
+                } else if (oNoParse(v)) {
+                    return true;
+                }
+            }
+
+            return /babel\.min/.test(v)
+
+        };
+    }
+    webpack.resolve.alias.debug=`${__dirname}/src/debug`;
+    webpack.resolve.alias['babel-core'] =
+        require.resolve('babel-standalone/babel.min');
 
     webpack.resolve.alias['subschema-raw'] =
         `!raw-loader!!${require.resolve(
             'subschema/dist/subschema-debug.js')}`;
+
     return webpack;
 };

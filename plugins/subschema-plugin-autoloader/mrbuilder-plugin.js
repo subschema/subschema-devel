@@ -1,4 +1,5 @@
 const OptionsManager = require('mrbuilder-optionsmanager').default;
+const babelConfig    = require('mrbuilder-plugin-babel/babel-config');
 
 module.exports = function (options, webpack, optionsManager) {
     const debug = this.debug || console.log;
@@ -12,21 +13,26 @@ module.exports = function (options, webpack, optionsManager) {
     webpack.resolve.alias['subschema-plugin-autoloader/importer'] =
         `${__dirname}/src/importer`;
 
+    const babel = {
+        loader : 'babel-loader',
+        options: babelConfig
+    };
+
     webpack.module.rules.push({
-        test: /subschema-plugin-autoloader\/importer/,
-        use : [{
+        test: /subschema-plugin-autoloader.*/,
+        use : [babel,{
             loader : 'val-loader',
             options: subschemaManager
         }]
     });
-    webpack.module.rules.push({
+   /* webpack.module.rules.push({
         test: /subschema-plugin-autoloader/,
-        use : {
+        use : [babel, {
             loader : 'val-loader',
             options: subschemaManager
-        }
+        }]
     });
-
+*/
 
     return webpack;
 };

@@ -18,9 +18,11 @@ export function loadContent(content, key, props, { injector }) {
 }
 
 export function loadRenderedContent(content, key, props, { injector }){
+
     if (content === false || content == null) {
         return null;
     }
+
     const Content = injector.inject(settings.Content);
     const {type, ...rcontent} = content;
     return <Content type={type} content={rcontent}/>

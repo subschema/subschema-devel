@@ -5,7 +5,7 @@
   "scripts": {
     "karma": "subschema-karma",
     "test": "subschema-karma",
-    "server": "subschema-webpack-dev-server",
+    "start": "subschema-webpack-dev-server --entry index=public/index.js",
     "prepublish": "subschema-webpack",
     "clean": "subschema-clean"
   },
@@ -24,11 +24,27 @@
   "source": "src",
   "main": "lib",
   "mrbuilder": {
-    "plugin": "./mrbuilder-plugin.js",
+    "plugin":"./mrbuilder-plugin.js",
     "plugins": [
-      "subschema-plugin-project",
-      "subschema-plugin-playground"
-    ]
+      "subschema-plugin-playground",
+      "mrbuilder-plugin-babel",
+      "subschema-plugin-autoloader",
+      "subschema-plugin-project"
+    ],
+    "env": {
+      "development": {
+        "plugins": [
+          "mrbuilder-plugin-webpack-dev-server",
+          [
+            "mrbuilder-plugin-html",
+            {
+              "exported": "ProjectWizard"
+            }
+          ],
+          "mrbuilder-plugin-hot"
+        ]
+      }
+    }
   },
   "subschema": {
     "plugins": [

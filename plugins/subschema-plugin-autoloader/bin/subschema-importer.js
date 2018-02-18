@@ -3,7 +3,7 @@
 const noop = () => {
 };
 
-const Importer       = require('../lib/importer').default;
+const Importer       = require('subschema-plugin-autoloader/src/importer');
 const optionsManager = new (require('mrbuilder-optionsmanager').default)(
     {
         prefix  : 'subschema',

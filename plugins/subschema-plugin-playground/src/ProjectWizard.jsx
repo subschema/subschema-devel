@@ -78,7 +78,8 @@ export const schema = {
 
 export default class App extends Component {
     static defaultProps = {
-        saveAs: saveAs
+        saveAs: saveAs,
+        loader
     };
 
     constructor(props, ...rest) {

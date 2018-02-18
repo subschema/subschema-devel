@@ -1,6 +1,3 @@
-import { camelCase } from 'subschema-utils';
-
-
 function map(m, each) {
     const result = [];
     m.forEach((value, key) => {
@@ -10,14 +7,14 @@ function map(m, each) {
 }
 
 const writeMap = (config, cmd) => {
-    if (cmd === "subschema-plugin-autoloader"){
+    if (cmd === "subschema-plugin-autoloader") {
         return;
     }
     cmd = JSON.stringify(cmd);
     return `exporter[${cmd}] = require(${cmd})`;
 };
-
-export default function ({ plugins }) {
+module.exports = function({ plugins })
+{
 
     return {
         code     : `
@@ -44,4 +41,5 @@ module.exports = function (extended){
         cacheable: true
     }
 
-};
+}
+;
