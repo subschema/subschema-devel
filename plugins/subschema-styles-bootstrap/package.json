@@ -1,0 +1,37 @@
+{
+  "name": "subschema-styles-bootstrap",
+  "version": "4.0.0-b-1",
+  "main": "lib",
+  "description": "Bootstrap CSS support for subschema",
+  "scripts": {
+    "prepublish": "subschema-webpack",
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "subschema-transitions": "^4.0.0-b-1",
+    "subschema-utils": "^4.0.0-b-1"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "mrbuilder": {
+    "plugins": [
+      "mrbuilder-plugin-filetypes",
+      "mrbuilder-plugin-fonts",
+      [
+        "mrbuilder-plugin-css",
+        {
+          "useNameHash": false
+        }
+      ],
+      [
+        "mrbuilder-plugin-less",
+        {
+          "modules": false
+        }
+      ]
+    ]
+  }
+}

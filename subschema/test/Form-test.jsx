@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
-    byClass, byTag, byTags, byType, cleanUp, click, expect, into, mount, node,
-    Simulate, TestUtils
+    byClass, byTag, byTags, byType, cleanUp, click, expect, into, mount, node
 } from "subschema-test-support";
 
 import { newSubschemaContext } from "subschema";
@@ -84,10 +83,7 @@ describe('components/Form', function () {
             }
         }}/>);
 
-        expect(root).to.exist;
-        const edit = TestUtils.scryRenderedComponentsWithType(root,
-            EditorTemplate)[0]
-        expect(edit).to.exist;
+        expect(root.find(EditorTemplate)).to.have.length(1);
     });
     it('should create a form with a schema and value', function () {
 
@@ -96,13 +92,11 @@ describe('components/Form', function () {
                 name: 'Text'
             }
         }}/>);
+        const editor = root.find(EditorTemplate);
+        expect(editor).to.have.length(1);
 
-        expect(root).to.exist;
-        const edit = TestUtils.scryRenderedComponentsWithType(root,
-            EditorTemplate)[0]
-
-        expect(edit).to.exist;
-        expect(root.getValue().name).to.eql('Joe');
+        expect(editor.find('input').prop('value')).to.eql('Joe');
+        expect(root.instance().valueManager.path('name')).to.eql('Joe');
     });
 
     it('should create a form with a schema and value and error', function () {
@@ -117,9 +111,11 @@ describe('components/Form', function () {
         };
         const root  = into(<Form value={value} schema={schema}
                                  errors={errors}/>);
-        const edit  = TestUtils.scryRenderedComponentsWithType(root,
-            EditorTemplate)[0]
-        expect(edit.props.error).to.eql('Is lousy');
+
+        const edit = root.find(EditorTemplate);
+        expect(edit).to.have.length(1);
+
+        expect(edit.prop('error')).to.eql('Is lousy');
     });
 
     it('should create a form with a schema and value and triggered error',
@@ -134,15 +130,14 @@ describe('components/Form', function () {
             }, errors                                     = {};
 
             const root  = into(<Form valueManager={valueManager} schema={schema}
-                                     errors={errors}/>);
-            const edit  = TestUtils.scryRenderedComponentsWithType(root,
-                EditorTemplate)[0]
+                                     errors={errors}/>, true);
+            const edit  = root.find(EditorTemplate);
             const input = byTag(edit, 'input');
-            //   Simulate.blur(input);
-            expect(edit.props.error,
-                'No value no trigger no error').to.not.exist;
+            input.simulate('blur');
+            expect(edit.prop('error'), 'No value no trigger no error').to.not.exist;
             valueManager.validate();
-            expect(edit.props.error)
+            root.update();
+            expect(root.find(EditorTemplate).prop('error'))
                 .to.eql('Required', 'No value no trigger no error');
         });
 
@@ -235,7 +230,7 @@ describe('components/Form', function () {
 
             const root = into(<Form value={value} schema={schema}
                                     errors={{}}/>);
-            root.setErrors(errors);
+            root.instance().setErrors(errors);
             /*   expect(root.refs.name.state.errors[0].message).to.eql(msg1);
              var res = root.validate();
              expect(res.name[0].message).to.eql(msg1);
@@ -340,10 +335,10 @@ describe('components/Form', function () {
         expect(root).to.exist;
         let submit = byTag(root, 'button');
         click(submit);
-        const err = byClass(root, 'error-block')[0];
-        expect(err.innerHTML).to.eql('Required');
+        const err = byClass(root, 'error-block');
+        expect(err.at(0).text()).to.eql('Required');
         valueManager.update('c1', true);
-        expect(byClass(root, 'help-block')[0].innerHTML).to.eql('');
+        expect(byClass(root, 'help-block').at(0).text()).to.eql('');
 
     });
 
@@ -361,12 +356,13 @@ describe('components/Form', function () {
 
         const sform = into(<StateForm/>);
         const test  = byTag(sform, 'input');
-        expect(test.name).to.eql('test');
+        expect(test.prop('name')).to.eql('test');
 
-        sform.setState({ form: 1 });
+        sform.instance().setState({ form: 1 });
 
+        sform.update();
         const other = byTag(sform, 'input');
-        expect(other.name).to.eql('other');
+        expect(other.prop('name')).to.eql('other');
     })
 
 

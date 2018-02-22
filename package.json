@@ -1,4 +1,5 @@
 {
+  "name": "subschema-devel",
   "dependencies": {
     "istanbul": "^0.4.5",
     "nyc": "^11.3.0",
@@ -9,7 +10,7 @@
   "scripts": {
     "clean": "lerna clean --yes && lerna run clean",
     "rebuild": "lerna clean --yes && lerna run clean && yarn install && lerna run prepublish && lr-idea",
-    "coverage": "SUBSCHEMA_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
+    "coverage": "MRBUILDER_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
     "test": "lerna run test",
     "bootstrap": "lerna bootstrap  && lr-idea",
     "prepublish": "lerna run prepublish",
@@ -22,31 +23,15 @@
     "rimraf": "^2.6.2"
   },
   "workspaces": [
-    "subschema-core",
-    "subschema-injection",
-    "subschema-expression",
-    "subschema-loader",
-    "subschema-prop-types",
-    "subschema-processors",
-    "subschema-transitions",
-    "subschema-utils",
-    "subschema-valuemanager",
-    "subschema-validators",
-    "subschema-test-support",
-    "subschema-dev-support",
-    "subschema-component-form",
-    "subschema-component-list",
-    "subschema-styles-bootstrap",
-    "subschema-component-modal",
-    "subschema-component-autocomplete",
-    "subschema-component-wizard",
+    "core/*",
+    "contrib/*",
+    "resolvers/*",
+    "plugins/*",
+    "presets/*",
     "subschema",
-    "subschema-test-samples",
-    "subschema-component-navigation",
-    "subschema-project",
-    "subschema-component-playground",
-    "subschema-component-demo",
-    "subschema.wiki"
+    "subschema.wiki",
+    "demo",
+    "examples/*"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

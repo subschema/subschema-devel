@@ -1,0 +1,48 @@
+{
+  "name": "subschema-demo",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema": "^4.0.0-b-1",
+    "subschema-plugin-demo": "^4.0.0-b-1",
+    "subschema-plugin-project": "^4.0.0-b-1",
+    "subschema-preset-examples": "^4.0.0-b-1",
+    "subschema-preset-resolvers": "^4.0.0-b-1",
+    "subschema-preset-web-form": "^4.0.0-b-1",
+    "subschema.wiki": "^4.0.0-b-1"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "scripts": {
+    "start": "subschema-webpack-dev-server",
+    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs",
+    "server": "subschema-webpack-dev-server"
+  },
+  "subschema": {
+    "plugins": [
+      "subschema-plugin-project",
+      "subschema-plugin-playground",
+      "subschema-plugin-demo",
+      [
+        "subschema.wiki",
+        {
+          "loader": "Doc"
+        }
+      ]
+    ],
+    "presets": [
+      "subschema",
+      "subschema-preset-examples"
+    ]
+  },
+  "source": "src",
+  "main": "lib",
+  "mrbuilder": {
+    "plugins": [
+      "mrbuilder-plugin-markdown",
+      "mrbuilder-plugin-html",
+      "subschema",
+      "subschema-plugin-project"
+    ]
+  }
+}

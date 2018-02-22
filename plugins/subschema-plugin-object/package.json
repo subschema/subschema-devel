@@ -1,0 +1,20 @@
+{
+  "name": "subschema-plugin-object",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema-utils": "^4.0.0-b-1",
+    "subschema-prop-types": "^4.0.0-b-1",
+    "subschema-field": "^4.0.0-b-1",
+    "subschema-fieldset": "^4.0.0-b-1",
+    "subschema-rendertemplate": "^4.0.0-b-1"
+  },
+  "scripts": {
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "main": "lib"
+}

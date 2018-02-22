@@ -1,0 +1,18 @@
+{
+  "name": "subschema-validators",
+  "version": "4.0.0-b-1",
+  "description": "Subschema Validators",
+  "main": "lib",
+  "scripts": {
+    "test": "subschema-babel && subschema-mocha",
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "dependencies": {
+    "subschema-utils": "^4.0.0-b-1"
+  }
+}

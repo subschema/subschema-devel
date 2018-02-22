@@ -1,62 +1,69 @@
 {
   "name": "subschema",
-  "version": "3.0.0-b8",
+  "version": "4.0.0-b-1",
   "description": "Subschema",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
-    "compile-default-loader": "rimraf -f lib/DefaultLoader.js*; ./bin/subschema-make-loader.js | subschema-babel --out-file ./lib/DefaultLoader.js",
+    "compile-default-loader": "subschema-autoloader | subschema-babel --out-file  ./lib/DefaultLoader.js && subschema-importer | subschema-babel --out-file ./lib/importer.js",
     "compile-lib": "subschema-babel && yarn run compile-default-loader",
-    "compile-server": "subschema-webpack --output-path lib --no-style-loader --target node --output-filename index.js --use-externals react,react-dom,fbjs",
-    "compile-web": "NODE_ENV=production SUBSCHEMA_USE_ALIASES=react,react-dom subschema-webpack --devtool sourcemap -p  --output-path dist --no-externalize-peers --output-filename subschema.js",
-    "compile-web-debug": "subschema-webpack --no-externalize-peers --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
+    "compile-server": "subschema-webpack --output-path dist  --output-filename=subschema.server.js --target node",
+    "compile-web": "NODE_ENV=production subschema-webpack --use-externals=false --devtool sourcemap -p  --output-path dist  --output-filename subschema.js",
+    "compile-web-debug": "subschema-webpack --use-externals=false --output-library-target=umd --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
     "compile-web-noreact": "subschema-webpack -p  --output-path dist --output-filename subschema-noreact.js",
     "karma": "subschema-karma",
     "test": "subschema-karma",
     "prepublish": "yarn run compile-lib && yarn run compile-web && yarn run compile-web-debug && yarn run compile-web-noreact",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "subschema-clean"
   },
   "peerDependencies": {
     "react": "16.x || ^15.5.0",
     "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
-    "subschema-component-autocomplete": "^3.0.0-b8",
-    "subschema-component-form": "^3.0.0-b8",
-    "subschema-component-list": "^3.0.0-b8",
-    "subschema-component-modal": "^3.0.0-b8",
-    "subschema-component-wizard": "^3.0.0-b8",
-    "subschema-core": "^3.0.0-b8",
-    "subschema-expression": "^3.0.0-b8",
-    "subschema-injection": "^3.0.0-b8",
-    "subschema-loader": "^3.0.0-b8",
-    "subschema-processors": "^3.0.0-b8",
-    "subschema-prop-types": "^3.0.0-b8",
-    "subschema-styles-bootstrap": "^3.0.0-b8",
-    "subschema-transitions": "^3.0.0-b8",
-    "subschema-utils": "^3.0.0-b8",
-    "subschema-validators": "^3.0.0-b8",
-    "subschema-valuemanager": "^3.0.0-b8"
+    "subschema-preset-web-form": "^4.0.0-b-1",
+    "subschema-preset-resolvers": "^4.0.0-b-1",
+    "subschema-preset-wizard": "^4.0.0-b-1",
+    "subschema-preset-list": "^4.0.0-b-1",
+    "subschema-context": "^4.0.0-b-1",
+    "subschema-plugin-autoloader": "^4.0.0-b-1"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "rimraf": "^2.6.2",
-    "subschema-dev-support": "^3.0.0-b8",
-    "subschema-test-support": "^3.0.0-b8"
+    "subschema-test-support": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "mrbuilder": {
+    "plugins": [
+      [
+        "mrbuilder-plugin-webpack",
+        {
+          "libaryTarget": "umd"
+        }
+      ],
+      [
+        "mrbuilder-plugin-html",
+        false
+      ],
+      "subschema-plugin-autoloader",
+      "./mrbuilder-plugin"
+    ]
   },
   "subschema": {
-    "exclude": [
-      "subschema-dev-support",
-      "subschema.wiki",
-      "subschema-test-support",
-      "subschema-expression",
-      "subschema-valuemanager",
-      "subschema-utils",
-      "subschema-injection",
-      "subschema-loader",
-      "subschema-native",
-      "subschema-test-samples",
-      "subschema-component-demo"
+    "options": {
+      "loader": false
+    },
+    "plugins": [
+      [
+        "subschema-prop-types",
+        "subschema-plugin-autoloader"
+      ]
+    ],
+    "presets": [
+      "subschema-preset-list",
+      "subschema-preset-wizard",
+      "subschema-preset-web-form",
+      "subschema-preset-resolvers"
     ]
   },
   "source": "src"

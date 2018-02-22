@@ -1,0 +1,17 @@
+{
+  "name": "subschema-preset-demo",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema-plugin-demo": "^4.0.0-b-1"
+  },
+  "subschema": {
+    "plugins": [
+      "subschema-plugin-demo"
+    ]
+  },
+  "source": "src",
+  "main": "lib",
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  }
+}

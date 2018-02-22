@@ -1,0 +1,37 @@
+{
+  "name": "subschema-plugin-demo",
+  "version": "4.0.0-b-1",
+  "description": "Subschema Demo",
+  "scripts": {
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "history": "^4.6.1",
+    "hpack.js": "^2.1.6",
+    "subschema-plugin-project": "^4.0.0-b-1",
+    "subschema-plugin-navigation": "^4.0.0-b-1",
+    "subschema-plugin-playground": "^4.0.0-b-1"
+  },
+  "peerDepenencies": {
+    "react": "*",
+    "react-dom": "*",
+    "prop-types": "*"
+  },
+  "devDependencies": {
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "rimraf": "^2.6.2",
+    "subschema-test-support": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "main": "lib",
+  "subschema": {
+    "plugins": [
+      "subschema-plugin-project",
+      "subschema-plugin-navigation",
+      "subschema-plugin-playground"
+    ]
+  }
+}

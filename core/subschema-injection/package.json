@@ -1,0 +1,23 @@
+{
+  "name": "subschema-injection",
+  "version": "4.0.0-b-1",
+  "description": "Subschema Injection System.",
+  "main": "lib",
+  "scripts": {
+    "test": "subschema-babel && subschema-mocha",
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "react": "^16.1.0",
+    "subschema-prop-types": "^4.0.0-b-1",
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "dependencies": {
+    "subschema-utils": "^4.0.0-b-1"
+  }
+}

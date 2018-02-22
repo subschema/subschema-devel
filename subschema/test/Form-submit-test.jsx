@@ -14,11 +14,10 @@ describe('Form/submit', function () {
         loader         = context.loader;
         Form           = context.Form;
         ValueManager   = context.ValueManager;
-        EditorTemplate = context.loader.loadTemplate('EditorTemplate');
-        ButtonTemplate = context.loader.loadTemplate('ButtonTemplate')
+        EditorTemplate = loader.loadTemplate('EditorTemplate');
+        ButtonTemplate = loader.loadTemplate('ButtonTemplate')
     });
 
-    afterEach(cleanUp);
 
     it('should submit the form and have handler by name', function (done) {
         const schema       = {
@@ -52,11 +51,11 @@ describe('Form/submit', function () {
 
         const content = into(<Form schema={schema}
                                    valueManager={valueManager}/>, true);
-        const forms   = byTags(content, 'form');
+        const forms   = content.find('form');
         expect(forms.length).to.eql(2, 'found 2 forms');
-        expect(forms[0].name).to.eql('form1');
-        expect(forms[1].name).to.eql('form2');
-        Simulate.submit(forms[1]);
+        expect(forms.at(0).prop('name')).to.eql('form1');
+        expect(forms.at(1).prop('name')).to.eql('form2');
+        forms.at(1).simulate('submit');
 
     });
 
@@ -115,9 +114,10 @@ describe('Form/submit', function () {
         const content = into(<Form schema={schema}
                                    valueManager={valueManager}/>, true);
         const forms   = byTags(content, 'form');
-        expect(forms.length).to.eql(2, 'found 2 forms');
-        Simulate.submit(forms[1]);
-        Simulate.submit(forms[0]);
+        expect(forms).to.have.length(2, 'found 2 forms');
+        forms.at(1).simulate('submit');
+        forms.at(0).simulate('submit');
+
 
     });
 

@@ -1,0 +1,23 @@
+{
+  "name": "subschema-prop-types",
+  "version": "4.0.0-b-1",
+  "source": "src",
+  "main": "lib",
+  "scripts": {
+    "test": "subschema-babel && subschema-mocha",
+    "prepublish": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js",
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "subschema-utils": "^4.0.0-b-1"
+  },
+  "peerDependencies": {
+    "prop-types": "*"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "mrbuilder": {
+    "plugin": "./mrbuilder-plugin"
+  }
+}

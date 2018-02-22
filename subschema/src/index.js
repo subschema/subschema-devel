@@ -1,29 +1,44 @@
 import React from 'react';
-import Subschema, { newSubschemaContext as _newSubschemaContext } from './init';
+import DefaultLoader from './autoloader';
+import _importer from './importer';
+import _newSubschemaContext from 'subschema-context';
 
-export const newSubschemaContext       = _newSubschemaContext;
-export const injector                  = Subschema.injector;
-export const valueManager              = Subschema.valueManager;
-export const loader                    = Subschema.loader;
-export const Form                      = Subschema.Form;
-export const injectorFactory           = Subschema.injectorFactory;
-export const RenderTemplate            = Subschema.RenderTemplate;
-export const RenderContent             = Subschema.RenderContent;
-export const loaderFactory             = Subschema.loaderFactory;
-export const Conditional               = Subschema.Conditional;
-export const Field                     = Subschema.Field;
-export const FieldSet                  = Subschema.FieldSet;
-export const Dom                       = Subschema.Dom;
-export const PropTypes                 = Subschema.PropTypes;
-export const ValueManager              = Subschema.ValueManager;
-export const css                       = Subschema.css;
-export const tutils                    = Subschema.tutils;
-export const validators                = Subschema.validators;
-export const warning                   = Subschema.warning;
-export const transitions               = Subschema.transitions;
-export const processors                = Subschema.processors;
-export const styles                    = Subschema.styles;
-export const resolvers                 = Subschema.resolvers;
-export const SUBSCHEMA_VERSION         = process.env.SUBSCHEMA_VERSION;
+export function newSubschemaContext(defaultLoaders = [DefaultLoader],
+                                    defaultInjectionFactory,
+                                    defaultValueManagerFactory) {
+    const ctx    = _newSubschemaContext(defaultLoaders,
+        defaultInjectionFactory, defaultValueManagerFactory);
 
-export default Subschema;
+    ctx.importer = _importer({
+        react                     : require('react'),
+        'subschema'               : ctx,
+        'react-dom'               : require('react-dom'),
+        'subschema-context'       : require('subschema-context'),
+        'subschema-css'           : require('subschema-css'),
+        'subschema-dom'           : require('subschema-dom'),
+        'subschema-expression'    : require('subschema-expression'),
+        'subschema-field'         : require('subschema-field'),
+        'subschema-fieldset'      : require('subschema-fieldset'),
+        'subschema-form'          : require('subschema-form'),
+        'subschema-injection'     : require('subschema-injection'),
+        'subschema-loader'        : require('subschema-loader'),
+        'subschema-prop-types'    : require('subschema-prop-types'),
+        'subschema-rendercontent' : require('subschema-rendercontent'),
+        'subschema-rendertemplate': require('subschema-rendertemplate'),
+        'subschema-utils'         : require('subschema-utils'),
+        'subschema-valuemanager'  : require('subschema-valuemanager')
+    });
+
+    return ctx;
+}
+
+const def = newSubschemaContext();
+
+export const Form         = def.Form;
+export const ValueManager = def.ValueManager;
+export const valueManager = def.valueManager;
+export const importer     = def.importer;
+export const loader       = def.loader;
+
+export default def;
+

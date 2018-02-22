@@ -1,0 +1,12 @@
+{
+  "name": "subschema-preset-list",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema-plugin-list": "^4.0.0-b-1"
+  },
+  "subschema": {
+    "plugins": [
+      "subschema-plugin-list"
+    ]
+  }
+}

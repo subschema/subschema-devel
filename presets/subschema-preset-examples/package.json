@@ -1,0 +1,191 @@
+{
+  "name": "subschema-preset-examples",
+  "version": "4.0.0-b-1",
+  "dependencies": {
+    "subschema-example-autocomplete": "^4.0.0-b-1",
+    "subschema-example-basic": "^4.0.0-b-1",
+    "subschema-example-carmake": "^4.0.0-b-1",
+    "subschema-example-checkboxes": "^4.0.0-b-1",
+    "subschema-example-conditional": "^4.0.0-b-1",
+    "subschema-example-content": "^4.0.0-b-1",
+    "subschema-example-customtype": "^4.0.0-b-1",
+    "subschema-example-expression": "^4.0.0-b-1",
+    "subschema-example-hidden": "^4.0.0-b-1",
+    "subschema-example-kitchensink": "^4.0.0-b-1",
+    "subschema-example-listenerproperty": "^4.0.0-b-1",
+    "subschema-example-loader": "^4.0.0-b-1",
+    "subschema-example-login": "^4.0.0-b-1",
+    "subschema-example-modal": "^4.0.0-b-1",
+    "subschema-example-nestedforms": "^4.0.0-b-1",
+    "subschema-example-questionaire": "^4.0.0-b-1",
+    "subschema-example-radio": "^4.0.0-b-1",
+    "subschema-example-restricted": "^4.0.0-b-1",
+    "subschema-example-select": "^4.0.0-b-1",
+    "subschema-example-todos": "^4.0.0-b-1",
+    "subschema-example-transitions": "^4.0.0-b-1",
+    "subschema-example-wizard": "^4.0.0-b-1"
+  },
+  "subschema": {
+    "plugins": [
+      [
+        "subschema-example-autocomplete",
+        {
+          "loader": "example",
+          "name": "Autocomplete"
+        }
+      ],
+      [
+        "subschema-example-basic",
+        {
+          "loader": "example",
+          "name": "Basic"
+        }
+      ],
+      [
+        "subschema-example-carmake",
+        {
+          "loader": "example",
+          "name": "Car Make"
+        }
+      ],
+      [
+        "subschema-example-checkboxes",
+        {
+          "loader": "example",
+          "name": "Checkboxes"
+        }
+      ],
+      [
+        "subschema-example-conditional",
+        {
+          "loader": "example",
+          "name": "Conditional"
+        }
+      ],
+      [
+        "subschema-example-content",
+        {
+          "loader": "example",
+          "name": "Content"
+        }
+      ],
+      [
+        "subschema-example-customtype",
+        {
+          "loader": "example",
+          "name": "Custom Type"
+        }
+      ],
+      [
+        "subschema-example-expression",
+        {
+          "loader": "example",
+          "name": "Expression"
+        }
+      ],
+      [
+        "subschema-example-hidden",
+        {
+          "loader": "example",
+          "name": "Hidden"
+        }
+      ],
+      [
+        "subschema-example-kitchensink",
+        {
+          "loader": "example",
+          "name": "Kitchen Sink"
+        }
+      ],
+      [
+        "subschema-example-listenerproperty",
+        {
+          "loader": "example",
+          "name": "Listener Property"
+        }
+      ],
+      [
+        "subschema-example-loader",
+        {
+          "loader": "example",
+          "name": "Loaders"
+        }
+      ],
+      [
+        "subschema-example-login",
+        {
+          "loader": "example",
+          "name": "Login Form"
+        }
+      ],
+      [
+        "subschema-example-modal",
+        {
+          "loader": "example",
+          "name": "Modal"
+        }
+      ],
+      [
+        "subschema-example-nestedforms",
+        {
+          "loader": "example",
+          "name": "Nested Forms"
+        }
+      ],
+      [
+        "subschema-example-questionaire",
+        {
+          "loader": "example",
+          "name": "Questionaire"
+        }
+      ],
+      [
+        "subschema-example-radio",
+        {
+          "loader": "example",
+          "name": "Radio"
+        }
+      ],
+      [
+        "subschema-example-restricted",
+        {
+          "loader": "example",
+          "name": "Restricted Input"
+        }
+      ],
+      [
+        "subschema-example-select",
+        {
+          "loader": "example",
+          "name": "Select"
+        }
+      ],
+      [
+        "subschema-example-todos",
+        {
+          "loader": "example",
+          "name": "Todos"
+        }
+      ],
+      [
+        "subschema-example-transitions",
+        {
+          "loader": "example",
+          "name": "Transitions"
+        }
+      ],
+      [
+        "subschema-example-wizard",
+        {
+          "loader": "example",
+          "name": "Wizard"
+        }
+      ]
+    ]
+  },
+  "source": "src",
+  "main": "lib",
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  }
+}

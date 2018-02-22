@@ -1,0 +1,30 @@
+{
+  "name": "subschema-transitions",
+  "version": "4.0.0-b-1",
+  "description": "Subschema Transitions",
+  "main": "lib",
+  "scripts": {
+    "prepublish": "subschema-webpack",
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "react-transition-group": "^2.2.1",
+    "subschema-prop-types": "^4.0.0-b-1",
+    "subschema-utils": "^4.0.0-b-1"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "mrbuilder": {
+    "plugins": [
+      [
+        "mrbuilder-plugin-css",
+        {
+          "useNameHash": false
+        }
+      ],
+      "mrbuilder-plugin-less"
+    ]
+  }
+}

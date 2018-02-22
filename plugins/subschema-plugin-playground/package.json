@@ -1,0 +1,54 @@
+{
+  "name": "subschema-plugin-playground",
+  "version": "4.0.0-b-1",
+  "description": "A tool for editing and playing with subschema components",
+  "scripts": {
+    "karma": "subschema-karma",
+    "test": "subschema-karma",
+    "start": "subschema-webpack-dev-server --entry index=public/index.js",
+    "prepublish": "subschema-webpack",
+    "clean": "subschema-clean"
+  },
+  "dependencies": {
+    "babel-standalone": "^6.24.0",
+    "brace": "^0.10.0",
+    "browser-filesaver": "^1.1.1",
+    "react-ace": "^5.0.1",
+    "subschema-plugin-project": "^4.0.0-b-1",
+    "subschema-valuemanager": "^4.0.0-b-1",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "subschema-dev-support": "^4.0.0-b-1"
+  },
+  "source": "src",
+  "main": "lib",
+  "mrbuilder": {
+    "plugin":"./mrbuilder-plugin.js",
+    "plugins": [
+      "subschema-plugin-playground",
+      "mrbuilder-plugin-babel",
+      "subschema-plugin-autoloader",
+      "subschema-plugin-project"
+    ],
+    "env": {
+      "development": {
+        "plugins": [
+          "mrbuilder-plugin-webpack-dev-server",
+          [
+            "mrbuilder-plugin-html",
+            {
+              "exported": "ProjectWizard"
+            }
+          ],
+          "mrbuilder-plugin-hot"
+        ]
+      }
+    }
+  },
+  "subschema": {
+    "plugins": [
+      "subschema-plugin-project"
+    ]
+  }
+}

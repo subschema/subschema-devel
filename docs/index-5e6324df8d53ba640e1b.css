@@ -1,0 +1,63 @@
+.transitions__rollUpLeave___1A9h7 {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.transitions__rollUpLeave___1A9h7.transitions__rollUpLeaveActive___1x7pI {
+  transform: translate(0, -100%);
+  opacity: 0;
+  transition: opacity 800ms ease-in-out, transform 800ms ease-in-out;
+}
+.transitions__rollUpEnter___2H2sS,
+.transitions__rollUpAppear___IopZQ {
+  transform: translate(0, -100%);
+  opacity: 0;
+}
+.transitions__rollUpEnter___2H2sS.transitions__rollUpEnterActive___TjgYo,
+.transitions__rollUpAppear___IopZQ.transitions__rollUpEnterActive___TjgYo,
+.transitions__rollUpEnter___2H2sS.transitions__rollUpAppearActive___1gwg3,
+.transitions__rollUpAppear___IopZQ.transitions__rollUpAppearActive___1gwg3 {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: opacity 800ms ease-in-out, transform 800ms ease-in-out;
+}
+.transitions__rollUpHeight___fF9aj {
+  transition: height 800ms ease-in-out;
+}
+.transitions__slideRightLeave___1pZED {
+  transition: transform 500ms ease-in-out;
+  transform: translate(0, 0);
+}
+.transitions__slideRightLeaveActive___12Gn0 {
+  transform: translate(100%, 0);
+}
+.transitions__slideRightEnter___SI0rb,
+.transitions__slideRightAppear___3FfaE {
+  transition: transform 500ms ease-in-out;
+  transform: translate(-100%, 0);
+}
+.transitions__slideRightEnterActive___2E3Uu,
+.transitions__slideRightAppearActive___2CRcu {
+  transform: translate(0, 0);
+}
+.transitions__slideRightHeight___4jMIw {
+  transition: height 500ms ease-in-out;
+}
+.transitions__slideLeftLeave___2zISK {
+  transition: transform 500ms ease-in-out;
+  transform: translate(0, 0);
+}
+.transitions__slideLeftLeaveActive___1Leq- {
+  transform: translate(-100%, 0);
+}
+.transitions__slideLeftEnter___3hHAw,
+.transitions__slideLeftAppear___3TmSb {
+  transition: transform 500ms ease-in-out;
+  transform: translate(100%, 0);
+}
+.transitions__slideLeftEnterActive___3HX_N,
+.transitions__slideLeftAppearActive___1l8et {
+  transform: translate(0, 0);
+}
+.transitions__slideLeftHeight___2yIpy {
+  transition: height 500ms ease-in-out;
+}
