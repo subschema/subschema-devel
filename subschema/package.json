@@ -1,6 +1,6 @@
 {
   "name": "subschema",
-  "version": "4.0.0-b-1",
+  "version": "4.0.0-b-1.0",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -20,21 +20,21 @@
     "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
-    "subschema-preset-web-form": "^4.0.0-b-1",
-    "subschema-preset-resolvers": "^4.0.0-b-1",
-    "subschema-preset-wizard": "^4.0.0-b-1",
-    "subschema-preset-list": "^4.0.0-b-1",
-    "subschema-context": "^4.0.0-b-1",
-    "subschema-plugin-autoloader": "^4.0.0-b-1"
+    "subschema-context": "^4.0.0-b-1.0",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.0",
+    "subschema-preset-list": "^4.0.0-b-1.0",
+    "subschema-preset-resolvers": "^4.0.0-b-1.0",
+    "subschema-preset-web-form": "^4.0.0-b-1.0",
+    "subschema-preset-wizard": "^4.0.0-b-1.0"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "subschema-test-support": "^4.0.0-b-1",
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-dev-support": "^4.0.0-b-1.0",
+    "subschema-test-support": "^4.0.0-b-1.0"
   },
   "mrbuilder": {
-    "plugin":"./mrbuilder-plugin",
+    "plugin": "./mrbuilder-plugin",
     "plugins": [
       [
         "mrbuilder-plugin-webpack",

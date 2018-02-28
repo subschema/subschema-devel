@@ -1,6 +1,6 @@
 {
   "name": "subschema-processors",
-  "version": "4.0.0-b-1",
+  "version": "4.0.0-b-1.0",
   "description": "Subschema Processors System.",
   "main": "lib",
   "scripts": {
@@ -9,10 +9,10 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1"
+    "subschema-utils": "^4.0.0-b-1.0"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-dev-support": "^4.0.0-b-1.0"
   },
   "source": "src"
 }

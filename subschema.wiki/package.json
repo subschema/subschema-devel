@@ -1,6 +1,6 @@
 {
   "name": "subschema.wiki",
-  "version": "4.0.0-b-1",
+  "version": "4.0.0-b-1.0",
   "description": "Subschema Wiki",
   "main": "src",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "mrbuilder-plugin-markdown": "^0.9.5",
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-dev-support": "^4.0.0-b-1.0"
   },
   "peerDependencies": {
     "babel-standalone": "*"

@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-type-date",
-  "version": "4.0.0-b-1",
+  "version": "4.0.0-b-1.0",
   "scripts": {
     "test": "subschema-karma",
     "karma": "subschema-karma",
@@ -8,11 +8,11 @@
     "prepublish": "subschema-babel"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.0-b-1",
-    "subschema-utils": "^4.0.0-b-1"
+    "subschema-prop-types": "^4.0.0-b-1.0",
+    "subschema-utils": "^4.0.0-b-1.0"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-dev-support": "^4.0.0-b-1.0"
   },
   "source": "src",
   "main": "lib"

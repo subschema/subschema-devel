@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-autoloader",
-  "version": "4.0.0-b-1",
+  "version": "4.0.0-b-1.0",
   "bin": {
     "subschema-autoloader": "bin/subschema-autoloader.js",
     "subschema-importer": "bin/subschema-importer.js"
@@ -15,8 +15,8 @@
     "mrbuilder-optionsmanager": "^0.9.6"
   },
   "devDependencies": {
-    "subschema-utils":"^4.0.0-b-1",
-    "subschema-dev-support": "^4.0.0-b-1"
+    "subschema-dev-support": "^4.0.0-b-1.0",
+    "subschema-utils": "^4.0.0-b-1.0"
   },
   "subschema": {
     "options": {
