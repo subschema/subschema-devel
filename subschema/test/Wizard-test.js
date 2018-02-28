@@ -5,6 +5,8 @@ import {
 import {newSubschemaContext as newContext} from 'subschema';
 import { WizardTemplate } from 'subschema-plugin-type-wizard';
 import { Text } from 'subschema-plugin-type-text';
+import {settings, EmptyTransition} from 'subschema-resolver-transition';
+settings.Transition = EmptyTransition;
 
 describe('subschema-component-wizard', function () {
     this.timeout(5000);

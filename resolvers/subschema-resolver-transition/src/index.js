@@ -1,28 +1,49 @@
 import PropTypes from 'subschema-prop-types';
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { FREEZE_OBJ, toArray, warning } from 'subschema-utils';
 
-const EMPTY = {};
 
-class SubschemaTransitionGroup extends PureComponent {
-    render(){
-        const {className, name, ...rest} = this.props;
+export class SubschemaTransitionGroup extends PureComponent {
+    render() {
+        const { className, name, ...rest } = this.props;
         return <TransitionGroup className={className}>
             <CSSTransition key={name} {...rest}/>
         </TransitionGroup>
     }
 }
+
+export class SubschemaTransition extends PureComponent {
+
+    state = {
+        in: this.props.classNames.appear != null
+    };
+
+    handleEnd = () => {
+        this.setState({ in: false });
+    };
+
+    componentWillReceiveProps({ name }) {
+        if (name !== this.props.name) {
+            this.setState({ in: true });
+        }
+    }
+
+    render() {
+        const { name, ...props } = this.props;
+        return <CSSTransition onEnd={this.handleEnd}
+                              in={this.state.in} {...props}/>
+    }
+
+}
+
 export const settings = {
-    on                     : ['enter', 'leave'],
-    transitionEnterTimeout : 300,
-    transitionAppearTimeout: 300,
-    transitionLeaveTimeout : 300,
-    Transition             : SubschemaTransitionGroup
+    on        : ['enter', 'exit'],
+    timeout   : 300,
+    Transition: SubschemaTransitionGroup
 };
 
-const EmptyTransition = ({ children }) => {
-    return Array.isArray(children) ? children[0] : children;
-};
+export const EmptyTransition = ({ children }) => children;
 
 const NO_TRANSITION = {
     Transition: EmptyTransition
@@ -42,58 +63,82 @@ export function handleTransition(value, key, props, { loader }) {
     const { transition, ...config } = { ...settings, ...value };
 
     const {
-              transitionAppearTimeout,
-              transitionLeaveTimeout,
-              transitionEnterTimeout,
               on,
               transitionHeightClass,
-              transitionName,
+              classNames = FREEZE_OBJ,
               ...rest
           } = typeof transition === 'string'
         ? { ...config, ...loader.loadTransition(transition) } : transition;
 
-    const { enter, enterActive, appear, appearActive, leave, leaveActive } = transitionName
-                                                                             || EMPTY;
+    const {
+              enter,
+              enterActive,
+              exit,
+              exitActive,
+              appear,
+              appearActive
+          } = classNames;
 
-    const _on = Array.isArray(on) ? on : [on];
+    const _on = toArray(on);
+
     //either the original value has the timeout or we have an on
-    if (enter && (transitionEnterTimeout || _on.includes('enter'))) {
-        rest.timeout    = { enter: transitionEnterTimeout };
+    if (_on.includes('enter')) {
+        warning(enter,
+            '"enter" configured, but not defined for transition "%s"',
+            transition);
         rest.classNames = {
-            ...rest.transitionName,
-            ...rest.classNames,
             enter,
             enterActive
-        };
+        }
     }
 
-    if (appear && (transitionAppearTimeout || _on.includes('appear'))) {
-        rest.timeout    = { ...rest.timeout, appear: transitionAppearTimeout };
+    if (_on.includes('appear')) {
+        warning(appear,
+            '"appear" configured, but not defined for transition "%s"',
+            transition);
         rest.classNames = {
-            ...rest.transitionName,
             ...rest.classNames,
             appear,
             appearActive,
         };
-
     }
 
-    if (leave && (transitionLeaveTimeout || _on.includes('leave'))) {
-        rest.timeout    = { ...rest.timeout, exit: transitionLeaveTimeout };
+    if (_on.includes('leave') || _on.includes('exit')) {
+        warning(exit, '"exit" configured, but not defined for transition "%s"',
+            transition);
         rest.classNames = {
-            ...rest.transitionName,
             ...rest.classNames,
-            exit      : leave,
-            exitActive: leaveActive,
+            exit,
+            exitActive
         };
-
     }
+
     if (transitionHeightClass) {
-        rest.className = transitionHeightClass;
+        rest.className =
+            rest.className ? `${rest.className} ${transitionHeightClass}`
+                : transitionHeightClass;
+    }
+
+    if (typeof rest.Transition === 'string') {
+        switch (rest.Transition) {
+            case 'group':
+                rest.Transition = SubschemaTransitionGroup;
+                break;
+            case 'single':
+                rest.Transition = SubschemaTransition;
+                break;
+        }
+    } else if (!rest.Transition) {
+        rest.Transition = settings.Transition;
+    }
+
+    if (!rest.timeout) {
+        rest.timeout = settings.timeout;
     }
     if (!rest.classNames) {
         return null;
     }
+
     return rest;
 }
 

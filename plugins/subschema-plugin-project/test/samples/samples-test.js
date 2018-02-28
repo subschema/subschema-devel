@@ -1,7 +1,6 @@
 import React from "react";
 import { expect } from 'chai';
 import { newSubschemaContext, ValueManager } from "subschema";
-import { findDOMNode, unmountComponentAtNode } from 'react-dom';
 import { into, samples, setupFunc } from '../support';
 import { cleanUp } from 'subschema-test-support';
 

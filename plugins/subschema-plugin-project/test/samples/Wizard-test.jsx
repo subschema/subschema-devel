@@ -5,6 +5,8 @@ import {
 import { newSubschemaContext } from 'subschema';
 import  Wizard  from 'subschema-example-wizard';
 import ValueManager from 'subschema-valuemanager';
+import {settings, EmptyTransition} from 'subschema-resolver-transition';
+settings.Transition = EmptyTransition;
 
 describe('subschema-test-samples/Wizard', function () {
     this.timeout(5000);

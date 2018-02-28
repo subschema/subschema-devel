@@ -30,9 +30,8 @@ export default class ToggleButton extends PureComponent {
                 classes.push(this.props.activeClass)
             }
         }
-        const className = classes.join(' ');
         return <button onClick={this.handleClick}
-                       className={className}>{this.props.label}</button>
+                       className={classes.join(' ')}>{this.props.label}</button>
     }
 
 }
