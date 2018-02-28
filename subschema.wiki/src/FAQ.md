@@ -155,7 +155,7 @@ Well, Subschema works both with and without client side javascript so,
 ```
 
 ## Labels
-"Ahh" you say "but, I wanna have my own labels..."
+`"Ahh"` you say `"but, I wanna have my own labels..."`
 
 Easy just change the schema.
 ```jsx
@@ -186,7 +186,7 @@ const schema = {
 ```
 
 ## Validation
-"Not bad, but I need to validate before post"...
+`"Not bad, but I need to validate before post"...`
 
 You know what so do I, and pretty much everyone.  Subschema comes
 with a range of built in validators, regex, required, match, number,email.
@@ -262,8 +262,8 @@ schema = {
 
 
 ## External Components
-"That's all neat, but seriously I have all these awesome react components
-that I want to use." -says you.
+`"That's all neat, but seriously I have all these awesome react components
+that I want to use."` -says you.
 
 Ah, yes, and this is important, perhaps most important.
 
@@ -310,8 +310,8 @@ class App extends Component {
 
 For a complete project see [this](http://subschema.github.io/subschema-external-component-example/).
 
-"Yeah, sure, you MaskedInput must support Subschema" --
-Nope, but it follows the subschema "Type" convention, which conviently
+`"Yeah, sure, you MaskedInput must support Subschema"` --
+Nope, but it follows the subschema `Type` convention, which conveniently
 enough is the React convention.  So it works. 
 
 ## Custom Components
@@ -386,7 +386,7 @@ Text, or Checkbox.
 ```
 
 ## Nested Objects
-"Uh-Huh, but what about nested structures"
+`"Uh-Huh, but what about nested structures"`
 
 I know not all objects are key value pairs, no worries, Subscshema has a
 type Object, that can handle nested structures, [List](http://subschema.github.io/subschema/#/Todos) for arrays, 
@@ -451,7 +451,7 @@ const schema = {
 ```
 
 ## Custom Templates
-"Yeah, and what if I don't like how your labels are dom'd out?"
+`"Yeah, and what if I don't like how your labels are dom'd out?"`
 
 I get it sometimes you want more or different layout. All fields can
 have a template defined.

@@ -3,11 +3,13 @@
   "version": "4.0.0-b-1",
   "dependencies": {
     "subschema": "^4.0.0-b-1",
+    "subschema-plugin-autoloader": "^4.0.0-b-1",
     "subschema-plugin-demo": "^4.0.0-b-1",
     "subschema-plugin-project": "^4.0.0-b-1",
     "subschema-preset-examples": "^4.0.0-b-1",
     "subschema-preset-resolvers": "^4.0.0-b-1",
     "subschema-preset-web-form": "^4.0.0-b-1",
+    "subschema-styles-bootstrap4": "^4.0.0-b-1",
     "subschema.wiki": "^4.0.0-b-1"
   },
   "devDependencies": {
@@ -20,6 +22,11 @@
   },
   "subschema": {
     "plugins": [
+      [
+        "subschema-styles-bootstrap",
+        false
+      ],
+      "subschema-styles-bootstrap4",
       "subschema-plugin-project",
       "subschema-plugin-playground",
       "subschema-plugin-demo",
@@ -40,8 +47,23 @@
   "mrbuilder": {
     "plugins": [
       "mrbuilder-plugin-markdown",
-      "mrbuilder-plugin-html",
+      [
+        "mrbuilder-plugin-html",
+        {
+          "exported": true
+        }
+      ],
+      [
+        "mrbuilder-plugin-webpack",
+        {
+          "entry": {
+            "index": "./src/index"
+          }
+        }
+      ],
       "subschema",
+      "subschema-styles-bootstrap4",
+      "subschema-plugin-autoloader",
       "subschema-plugin-project"
     ]
   }

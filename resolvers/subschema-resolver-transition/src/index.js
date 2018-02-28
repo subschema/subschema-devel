@@ -1,21 +1,23 @@
 import PropTypes from 'subschema-prop-types';
-import React from 'react';
+import React, {PureComponent} from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const EMPTY = {};
 
+class SubschemaTransitionGroup extends PureComponent {
+    render(){
+        const {className, name, ...rest} = this.props;
+        return <TransitionGroup className={className}>
+            <CSSTransition key={name} {...rest}/>
+        </TransitionGroup>
+    }
+}
 export const settings = {
     on                     : ['enter', 'leave'],
     transitionEnterTimeout : 300,
     transitionAppearTimeout: 300,
     transitionLeaveTimeout : 300,
-    Transition({ transitionEnter, transitionLeave, transitionAppear, transitionHeightClass, ...props }) {
-//TODO - Renable
-        //  warning(false,
-        //      `Please set
-        // subschema-core.resolvers.transition.settings.Transition to a
-        // transition handler`);
-        return EmptyTransition(props);
-    }
+    Transition             : SubschemaTransitionGroup
 };
 
 const EmptyTransition = ({ children }) => {
@@ -86,7 +88,9 @@ export function handleTransition(value, key, props, { loader }) {
         };
 
     }
-    rest.className = transitionHeightClass;
+    if (transitionHeightClass) {
+        rest.className = transitionHeightClass;
+    }
     if (!rest.classNames) {
         return null;
     }

@@ -1,4 +1,1 @@
-import _importer from 'subschema-plugin-autoloader/importer';
-
-
-export default _importer;
+export default from 'subschema-plugin-autoloader/importer';

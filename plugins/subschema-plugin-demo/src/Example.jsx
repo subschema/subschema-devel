@@ -3,6 +3,16 @@ import PropTypes from "subschema-prop-types";
 import { SubschemaPlayground as UninjectedSubschemaPlayground } from "subschema-plugin-playground";
 import { loader } from "./PropTypes";
 
+const isEmpty = (v) => {
+    if (!v) {
+        return true;
+    }
+    if (v.length === 0) {
+        return true;
+    }
+    return Object.keys(v).length === 0;
+};
+
 export default class Example extends Component {
 
     static contextTypes = PropTypes.contextTypes;
@@ -11,12 +21,14 @@ export default class Example extends Component {
         example            : loader,
         SubschemaPlayground: PropTypes.injectClass,
         onSubmit           : PropTypes.valueEvent,
-        pathname           : PropTypes.string,
+        name               : PropTypes.value,
     };
+
 
     static defaultProps = {
         SubschemaPlayground: UninjectedSubschemaPlayground,
         onSubmit           : "submit",
+        name               : "@pathname"
     };
 
     state = {
@@ -33,17 +45,24 @@ export default class Example extends Component {
     };
 
     render() {
-        const { example: { name, description } = {} } = this.props;
-
+        //So examples matches /:  which matches everything, so its possible
+        //to get here when you don't mean to.  So example will be empty.
+        if (!this.props.example) {
+            return null;
+        }
+        const { example: { title, description, data, errors } = {} } = this.props;
+        const { useData, useErrors }                                 = this.state;
         return <div>
-            <h3>{name}
+            <h3>{title || this.props.name.replace(/^\//, '')}
                 <div className='pull-right btn-group btn-group-xs'>
-                    <button onClick={this.handleDataBtn}
-                            className='btn btn-default'>Data
-                    </button>
-                    <button onClick={this.handleErrorsBtn}
-                            className='btn btn-default'>Error
-                    </button>
+                    { isEmpty(data) ? null : <button key='data' onClick={this.handleDataBtn}
+                            className={`btn btn-outline-secondary ${useData
+                                ? 'active' : ''}`}>Data
+                    </button>}
+                    {isEmpty(errors) ? null : <button key='error' onClick={this.handleErrorsBtn}
+                            className={`btn btn-outline-danger ${useErrors
+                                ? 'active' : ''}`}>Error
+                    </button>}
 
                 </div>
             </h3>

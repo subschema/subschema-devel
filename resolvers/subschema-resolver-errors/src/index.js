@@ -4,6 +4,10 @@ import {resolveKey} from 'subschema-utils';
 function handleErrorsListeners(value, key, props, {valueManager}) {
     return valueManager.addErrorListener(resolveKey(props.path, value), (err, old, path) => {
         const errors = this.state[key] || {};
+        if (path === void(0)){
+            console.warn('error void path');
+            return;
+        }
         if (err) {
             errors[path] = err;
         } else {

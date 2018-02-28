@@ -1,15 +1,41 @@
-const ACTIONS = ['Enter', 'Leave', 'Appear'];
-export default function merge(lessCtx, styleCtx) {
-    return Object.keys(styleCtx).reduce(function (obj, nkey) {
-        ACTIONS.reduce(function (obj, k) {
-            const lkey = k.toLowerCase();
-            const nobj = obj.transitionName || (obj.transitionName = {});
-            if (lessCtx[`${nkey}${k}`]) {
-                nobj[lkey] = lessCtx[`${nkey}${k}`];
-                nobj[`${lkey}Active`] = lessCtx[`${nkey}${k}Active`];
+const toMillis = (v) => {
+    if (v == null || typeof v === 'number') {
+        return v;
+    }
+    return parseFloat(
+        ('' + v).replace(/^(\d*(?:\.\d+?)?)(m?s)$/i, function (a, t, m) {
+            switch (m) {
+                case 'S':
+                case 's':
+                    return t * 1000;
+                default:
+                    return t;
             }
-            return obj;
-        }, obj[nkey] || (obj[nkey] = styleCtx[nkey])).transitionHeightClass = lessCtx[`${nkey}Height`];
-        return obj;
+        }));
+};
+
+export default function merge(lessCtx) {
+    return Object.keys(lessCtx).reduce(function (ret, key) {
+        const [all, transitionName] = /^(.+?)(Enter|Leave|Appear|Exit)$/.exec(
+            key) || [];
+
+        if (transitionName && !(key in ret)) {
+
+            ret[transitionName] = {
+                classNames: {
+                    appear      : lessCtx[`${transitionName}Appear`],
+                    appearActive: lessCtx[`${transitionName}AppearActive`],
+                    enter       : lessCtx[`${transitionName}Enter`],
+                    enterActive : lessCtx[`${transitionName}EnterActive`],
+                    exit        : lessCtx[`${transitionName}Exit`]
+                                  || lessCtx[`${transitionName}Leave`],
+                    exitActive  : lessCtx[`${transitionName}ExitActive`]
+                                  || lessCtx[`${transitionName}LeaveActive`],
+                },
+                className : lessCtx[transitionName],
+                timeout   : toMillis(lessCtx[`${transitionName}Timeout`])
+            };
+        }
+        return ret;
     }, {});
 }

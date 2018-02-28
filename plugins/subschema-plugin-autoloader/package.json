@@ -7,12 +7,12 @@
   },
   "scripts": {
     "clean": "subschema-clean",
-    "prepublish": "subschema-babel"
+    "prepublish": "./bin/subschema-autoloader.js > lib/index.js && ./bin/subschema-importer.js > lib/importer.js"
   },
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^0.9.5"
+    "mrbuilder-optionsmanager": "^0.9.6"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1"

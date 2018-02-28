@@ -1,0 +1,86 @@
+.namespace {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  justify-content: stretch;
+}
+
+.todo, .doing, .done {
+  display: flex;
+  flex: 1;
+  align-self: center;
+  text-align: center;
+  line-height: 4.5rem;
+  padding: 0 0.7rem;
+  cursor: pointer;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  &:before {
+    content: "\2022";
+    color: white;
+    height: 1.2em;
+    width: 1.2em;
+    font-size: 1.5em;
+    line-height: 1;
+    margin-bottom: -.75em;
+    border-radius: 100vh;
+  }
+}
+
+.todo {
+  color: silver;
+  border-bottom: 4px solid silver;
+}
+
+.doing {
+  color: black;
+  border-bottom: 4px solid #33C3F0;
+}
+
+.done {
+  color: black;
+  border-bottom: 4px solid #33C3F0;
+}
+
+.todo span, .doing span, .done span {
+  padding: 0 1.5rem;
+}
+
+
+.todo em, .doing em, .done em {
+  display: none;
+  font-weight: 700;
+  padding-left: 1rem;
+}
+
+
+
+.doing:hover:before, .done:hover:before {
+  color: #0FA0CE;
+
+}
+.todo:hover:before {
+  color: #203c31;
+}
+.todo:before {
+  content: "\2022";
+  color: white;
+  background-color: silver;
+  border-color: white;
+}
+
+.doing:before {
+  content: "\2022";
+  color: white;
+  background-color: #33C3F0;
+}
+
+.done:before {
+  content: "\2713";
+  color: white;
+  background-color: #33C3F0;
+}

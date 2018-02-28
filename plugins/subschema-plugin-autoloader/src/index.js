@@ -15,7 +15,6 @@ function uc(value) {
     return value;
 }
 
-const stringify = (...args) => JSON.stringify(...args);
 
 function writeLoader(config, cmd) {
     if (config) {
@@ -27,7 +26,7 @@ function writeLoader(config, cmd) {
             let l  = `loader.add${uc(config.loader)}`;
             let v1 = camelCase(cmd);
             if (config.name) {
-                return `${l}(${stringify(config.name)},${v1})`;
+                return `${l}('${config.name}',${v1})`;
             } else {
                 return `${l}(${v1})`;
             }
@@ -36,6 +35,20 @@ function writeLoader(config, cmd) {
     return `loader.addLoader(${camelCase(cmd)})`
 }
 
+const has  = Function.call.bind(Object.prototype.hasOwnProperty);
+const keys = (obj) => {
+    const ret = []
+    if (!obj) {
+        return ret;
+    }
+    for (let k in obj) {
+        if (has(obj, k)) {
+            ret.push(k);
+        }
+    }
+    return ret;
+};
+
 function writeLoadType(plugins) {
     const map = {};
     plugins.forEach((value, key) => {
@@ -43,8 +56,8 @@ function writeLoadType(plugins) {
             map[value.config.loader] = true;
         }
     });
-    return Object.keys(map).map(function (key) {
-        return `loader.loaderType(${stringify(uc(key))})`
+    return keys(map).map(function (key) {
+        return `loader.loaderType('${uc(key)}')`
     }).join(';\n');
 }
 
@@ -56,10 +69,11 @@ function map(m, each) {
     return result;
 }
 
-module.exports = function ({ plugins }) {
+module.exports =
+    function ({ plugins }) {
 
-    return {
-        code     : `
+        return {
+            code     : `
 import loaderFactory from 'subschema-loader';
 
 //Automagically imported
@@ -75,8 +89,7 @@ ${map(plugins, writeLoader).join(';\n')}
 //Your Welcome.
 export default loader;
     `,
-        plugins  : Array.from(plugins.keys()),
-        cacheable: true
-    }
+            cacheable: true
+        }
 
-};
+    };

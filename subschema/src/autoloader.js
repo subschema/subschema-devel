@@ -1,2 +1,1 @@
-import DefaultLoader from 'subschema-plugin-autoloader';
-export default DefaultLoader;
+export default from 'subschema-plugin-autoloader';

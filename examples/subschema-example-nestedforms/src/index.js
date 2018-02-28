@@ -1,5 +1,5 @@
 module.exports = {
-    description: 'Nested froms allow for deeply structured object<br/>. If you need more flexibility consider Mixed or List',
+    description: 'Nested froms allow for deeply structured object. If you need more flexibility consider Mixed or List',
     schema: {
         "schema": {
             "title": {

@@ -1,12 +1,12 @@
 import React from 'react';
 import DefaultLoader from './autoloader';
 import _importer from './importer';
-import _newSubschemaContext from 'subschema-context';
+import subschemaContext from 'subschema-context';
 
 export function newSubschemaContext(defaultLoaders = [DefaultLoader],
                                     defaultInjectionFactory,
                                     defaultValueManagerFactory) {
-    const ctx    = _newSubschemaContext(defaultLoaders,
+    const ctx    = subschemaContext(defaultLoaders,
         defaultInjectionFactory, defaultValueManagerFactory);
 
     ctx.importer = _importer({

@@ -59,11 +59,7 @@ export default class IndexPage extends Component {
                         <a href="https://subschema.github.io/subschema-g-suggest">demo</a>{seperator}<a
                         href="https://github.com/subschema/subschema-g-suggest">repo</a>
                     </dd>
-                    <dt>Project Generator</dt>
-                    <dd>
-                        <a href="https://subschema.github.io/subschema-project/">demo</a>{seperator}<a
-                        href="https://github.com/subschema/subschema-g-suggest">repo</a>
-                    </dd>
+
 
                 </dl>
 
