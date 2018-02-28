@@ -2,10 +2,10 @@
   "name": "subschema-dev-support",
   "version": "4.0.0-b-1",
   "dependencies": {
-    "mrbuilder": "^0.9.5",
-    "mrbuilder-plugin-mocha": "^0.9.5",
-    "mrbuilder-plugin-html": "^0.9.5",
-    "mrbuilder-plugin-less": "^0.9.5",
+    "mrbuilder": "^0.9.6",
+    "mrbuilder-plugin-mocha":"^0.9.6",
+    "mrbuilder-plugin-html": "^0.9.6",
+    "mrbuilder-plugin-less": "^0.9.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

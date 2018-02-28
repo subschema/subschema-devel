@@ -1,33 +1,67 @@
-@rollUp-timeout: 800ms;
-@slide-right-timeout: 500ms;
-@slide-left-timeout: 500ms;
+@value rollUp-timeout: 500ms;
+@value slideRight-timeout: 3s;
+@value slideLeft-timeout: 3s;
+@value fade-timeout: 500ms;
+
+:root {
+  --roll-up-timeout: rollUp-timeout;
+  --slide-right-timeout: slideRight-timeout;
+  --slide-left-timeout: slideLeft-timeout;
+  --fade-timeout: fade-timeout;
+}
+
+.fadeEnter, .fadeAppear {
+  opacity: .01;
+  transition: opacity var(--fade-timeout) ease-in-out;
+  &.fadeEnterActive, &.fadeAppearActive {
+    opacity: .99;
+  }
+}
+
+.fadeLeave {
+  opacity: .99;
+  transition: opacity var(--fade-timeout) ease-in-out;
+  &.fadeLeaveActive {
+    opacity: .01;
+  }
+}
+
+.rollUp {
+  overflow: hidden;
+}
 
 .rollUpLeave {
   transform: translate(0, 0);
   opacity: 1;
+  overflow: hidden;
+
   &.rollUpLeaveActive {
-    transform: translate(0,-100%);
+    transform: translate(0, -100%);
     opacity: 0;
-    transition: opacity @rollUp-timeout ease-in-out, transform @rollUp-timeout ease-in-out;
+    transition: opacity var(--roll-up-timeout) ease-in-out, transform var(--roll-up-timeout) ease-in-out;
   }
 }
 
 .rollUpEnter, .rollUpAppear {
-  transform: translate( 0, -100%);
+  transform: translate(0, -100%);
   opacity: 0;
+  overflow: hidden;
   &.rollUpEnterActive, &.rollUpAppearActive {
     transform: translate(0, 0);
     opacity: 1;
-    transition: opacity @rollUp-timeout ease-in-out, transform @rollUp-timeout ease-in-out;
+    transition: opacity var(--roll-up-timeout) ease-in-out, transform var(--roll-up-timeout) ease-in-out;
   }
 }
 
 .rollUpHeight {
-  transition: height @rollUp-timeout ease-in-out;
+  transition: height var(--roll-up-timeout) ease-in-out;
+}
+.slideLeft, .slideRight {
+  overflow: hidden;
 }
 
 .slideRightLeave {
-  transition: transform @slide-right-timeout ease-in-out;
+  transition: transform var(--slide-right-timeout) ease-in-out;
   transform: translate(0, 0);
 }
 
@@ -36,7 +70,7 @@
 }
 
 .slideRightEnter, .slideRightAppear {
-  transition: transform @slide-right-timeout ease-in-out;
+  transition: transform var(--slide-right-timeout) ease-in-out;
   transform: translate(-100%, 0);
 }
 
@@ -45,13 +79,13 @@
 }
 
 .slideRightHeight {
-  transition: height @slide-right-timeout ease-in-out;
+  transition: height var(--slide-right-timeout) ease-in-out;
 }
 
 //Backwards
 
 .slideLeftLeave {
-  transition: transform @slide-left-timeout ease-in-out;
+  transition: transform var(--slide-left-timeout) ease-in-out;
   transform: translate(0, 0);
 }
 
@@ -60,7 +94,7 @@
 }
 
 .slideLeftEnter, .slideLeftAppear {
-  transition: transform @slide-left-timeout ease-in-out;
+  transition: transform var(--slide-left-timeout) ease-in-out;
   transform: translate(100%, 0);
 }
 
@@ -69,6 +103,6 @@
 }
 
 .slideLeftHeight {
-  transition: height @slide-left-timeout ease-in-out;
+  transition: height var(--slide-left-timeout) ease-in-out;
 }
 

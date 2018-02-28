@@ -1,17 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "subschema-prop-types";
 import SchemaEditor from "./SchemaEditor";
 
 const stringify = (obj) => {
-    if (obj == null) return '';
+    if (obj == null) {
+        return '';
+    }
     return JSON.stringify(obj, null, 2);
 }
 export default class DisplayValueAndErrors extends Component {
-    static propTypes = {
-        value: PropTypes.value,
+    static propTypes            = {
+        value : PropTypes.value,
         errors: PropTypes.errors
     };
-
 
     render() {
         return <div className="form-group">

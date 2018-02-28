@@ -13,6 +13,7 @@ import EditorTemplate from './EditorTemplate-style';
 import FormTemplate from './FormTemplate-style';
 import RadioItemTemplate from './RadioItemTemplate-style';
 import ModalTemplate from './ModalTemplate-style';
+import NavTemplate from './NavTemplate-style';
 
 export const transitions = _transitions;
 
@@ -38,6 +39,7 @@ export const styles = ({
         },
         ListItemTemplate),
     ModalTemplate,
+    NavTemplate,
     RadioItemTemplate,
     WizardProgressTemplate,
     WizardTemplate

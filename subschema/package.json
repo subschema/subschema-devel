@@ -34,6 +34,7 @@
     "subschema-dev-support": "^4.0.0-b-1"
   },
   "mrbuilder": {
+    "plugin":"./mrbuilder-plugin",
     "plugins": [
       [
         "mrbuilder-plugin-webpack",
@@ -46,7 +47,7 @@
         false
       ],
       "subschema-plugin-autoloader",
-      "./mrbuilder-plugin"
+      "subschema"
     ]
   },
   "subschema": {

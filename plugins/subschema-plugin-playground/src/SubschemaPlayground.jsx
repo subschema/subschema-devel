@@ -58,8 +58,7 @@ export default class SubschemaPlayground extends Component {
         filename             : 'example',
         onSubmit             : 'submit',
         buttons              : {
-            buttonsClass: 'btn-group btn-group-xs',
-            buttonClass : 'btn btn-default',
+            buttonsClass: 'btn-group btn-group-sm',
             buttons     : {
                 'schema': {
                     label  : 'Schema',

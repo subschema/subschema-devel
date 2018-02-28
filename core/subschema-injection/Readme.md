@@ -1,7 +1,1 @@
-subschema-injection
-===
-
-## Installation
-```sh
- $ yarn install subschema-injection
-```
+This package provides the injection support for subschema.

@@ -29,7 +29,7 @@ module.exports = {
                     operator: "==",
                     value: "phone",
                     transition: {
-                        transition: "rollUp",
+                        transition: "fade",
                         on: ["appear", "enter", "leave"]
                     }
                 }
@@ -42,7 +42,7 @@ module.exports = {
                     listen: "phoneOrEmail",
                     operator: "==",
                     value: "email",
-                    transition: "rollUp"
+                    transition: "fade"
                 }
             }]
     }

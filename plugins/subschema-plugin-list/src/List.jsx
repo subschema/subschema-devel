@@ -1,8 +1,9 @@
 import React from 'react';
-import { isString, concat } from 'subschema-utils';
+import { concat, isString } from 'subschema-utils';
 import CollectionMixin from './CollectionMixin';
 import PropTypes from 'subschema-prop-types';
 
+const clone = (v) => JSON.parse(JSON.stringify(v));
 export default class ListInput extends CollectionMixin {
     static inputClassName = CollectionMixin.inputClassName;
     static propTypes      = {
@@ -17,6 +18,7 @@ export default class ListInput extends CollectionMixin {
     createDefValue() {
         return [];
     }
+
     handleMoveUp = (pos, val) => {
         this.reorder(pos, val, -1);
     };
@@ -31,6 +33,7 @@ export default class ListInput extends CollectionMixin {
         }
         return null;
     }
+
     count() {
         if (!this.props.value) {
             return 0;
