@@ -13,26 +13,28 @@ export class SubschemaTransitionGroup extends PureComponent {
     }
 }
 
+//TODO consider replacing this with a bool.
 export class SubschemaTransition extends PureComponent {
 
     state = {
-        in: this.props.classNames.appear != null
+        in: this.props.name === 'match'
     };
 
     handleEnd = () => {
-        this.setState({ in: false });
+        this.setState({ in: this.props.name === 'match' });
     };
 
     componentWillReceiveProps({ name }) {
         if (name !== this.props.name) {
-            this.setState({ in: true });
+            this.setState({ in: name == 'match' });
         }
     }
 
     render() {
         const { name, ...props } = this.props;
-        return <CSSTransition onEnd={this.handleEnd}
-                              in={this.state.in} {...props}/>
+        return <CSSTransition
+            onExited={this.handleEnd}
+            in={this.state.in} {...props}/>
     }
 
 }
@@ -127,6 +129,8 @@ export function handleTransition(value, key, props, { loader }) {
             case 'single':
                 rest.Transition = SubschemaTransition;
                 break;
+            default:
+                warning(false, 'Unknown tansition type "%s"', rest.Transition);
         }
     } else if (!rest.Transition) {
         rest.Transition = settings.Transition;
