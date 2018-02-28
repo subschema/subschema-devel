@@ -1,3 +1,4 @@
+
 function map(m, each) {
     const result = [];
     m.forEach((value, key) => {
@@ -7,23 +8,17 @@ function map(m, each) {
 }
 
 const writeMap = (config, cmd) => {
-    if (cmd === "subschema-plugin-autoloader") {
-        return;
-    }
-    cmd = JSON.stringify(cmd);
-    return `exporter[${cmd}] = require(${cmd})`;
+    return `exporter['${cmd}'] = require('${cmd}')`;
 };
-module.exports = function({ plugins })
-{
+module.exports = function ({ plugins }) {
 
-    return {
-        code     : `
+    const code = `
 
 const exporter = {
 };
 //Automagically added to exporter
 ${map(plugins, writeMap).join(';\n')} 
-
+${writeMap(null, 'subschema-plugin-autoloader')}
 //Your Welcome.
 module.exports = function (extended){
     extended = extended || {};
@@ -36,8 +31,9 @@ module.exports = function (extended){
         }
     }
 };
-    `,
-        plugins  : Array.from(plugins.keys()),
+    `;
+    return {
+        code,
         cacheable: true
     }
 

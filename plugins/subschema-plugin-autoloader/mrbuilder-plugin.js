@@ -1,39 +1,46 @@
-const OptionsManager = require('mrbuilder-optionsmanager').default;
+const OptionsManager = require('mrbuilder-optionsmanager');
 const babelConfig    = require('mrbuilder-plugin-babel/babel-config');
+module.exports       = function (options, webpack, optionsManager) {
 
-module.exports = function (options, webpack, optionsManager) {
-    const debug = this.debug || console.log;
-
-    debug('optionsManager', optionsManager);
     const subschemaManager = new OptionsManager({
-        prefix  : 'subschema',
-        _require: optionsManager.require || require
+        _require: optionsManager.require,
+        prefix  : 'subschema'
     });
 
+
     webpack.resolve.alias['subschema-plugin-autoloader/importer'] =
-        `${__dirname}/src/importer`;
+        require.resolve('./src/importer');
+
+    webpack.resolve.alias['subschema-plugin-autoloader'] =
+        require.resolve('./src/index');
 
     const babel = {
         loader : 'babel-loader',
         options: babelConfig
     };
 
-    webpack.module.rules.push({
-        test: /subschema-plugin-autoloader.*/,
-        use : [babel,{
+    webpack.module.rules.unshift({
+        test: /subschema-plugin-autoloader\/importer/,
+        use : [{
             loader : 'val-loader',
             options: subschemaManager
         }]
     });
-   /* webpack.module.rules.push({
+    webpack.module.rules.unshift({
         test: /subschema-plugin-autoloader/,
-        use : [babel, {
+        use : [{
             loader : 'val-loader',
             options: subschemaManager
         }]
     });
-*/
-
+    /* webpack.module.rules.push({
+         test: /subschema-plugin-autoloader/,
+         use : [babel, {
+             loader : 'val-loader',
+             options: subschemaManager
+         }]
+     });
+ */
     return webpack;
 };
 

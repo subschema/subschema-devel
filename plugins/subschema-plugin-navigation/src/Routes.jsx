@@ -1,42 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
-import route from '@funjs/route-parser/dist/index.umd';
 import { Route } from 'react-router-dom'
 
-function matcher(obj) {
-    const arr = Object.keys(obj).map(function makeMatch(key) {
-        return { match: route(key).match, component: obj[key] };
-    });
-
-    return function (path, resolve) {
-        for (const cur of arr) {
-            const props = cur.match(path);
-            if (props) {
-                if (!cur.Component) {
-                    cur.Component = resolve(cur.component)
-                }
-                return [props, cur.Component];
-            }
-        }
-        return null;
-    }
-}
 
 export default class Routes extends Component {
     static template = false;
 
-    static matcher = matcher;
 
     static contextTypes = {
         loader  : PropTypes.loader,
         injector: PropTypes.injector
     };
 
-    static propTypes    = {
+    static propTypes = {
         notFound: PropTypes.type,
-        routes  : PropTypes.object,
-        pathname: PropTypes.value
+        routes  : PropTypes.oneOfType([
+            PropTypes.objectOf(PropTypes.string),
+            PropTypes.objectOf(
+                PropTypes.shape({
+                    component: PropTypes.oneOfType(
+                        [PropTypes.string, PropTypes.instanceOf(
+                            Component)]),
+                    exact    : PropTypes.bool,
+                    strict   : PropTypes.bool,
+                    sensitive: PropTypes.bool,
+                }))
+        ]),
+        pathname: PropTypes.value,
+        exact   : PropTypes.bool,
     };
+
     static defaultProps = {
         pathname: "@pathname",
         notFound: "NotFound"
@@ -62,8 +55,10 @@ export default class Routes extends Component {
 
     renderComponent = (props) => {
         const { match: { path, params }, location: { pathname } } = props;
-        console.log('props', props);
-        const component = this.props.routes[path];
+        const value                                               = this.props.routes[path];
+        const component                                           = typeof value
+                                                                    === 'string'
+            ? value : value && value.component;
         if (component) {
             const Component = this.resolve(component);
             return <Component key={pathname} {...params}/>
@@ -72,13 +67,22 @@ export default class Routes extends Component {
     };
 
     renderRoute(path) {
-        return <Route key={path} path={path} render={this.renderComponent}/>
+        const props = typeof this.props.routes[path] === 'string' ? {
+            path
+        } : {
+            path,
+            ...this.props.routes[path],
+            component: null,
+        };
+
+
+        return <Route key={props.path}
+                      {...{ exact: this.props.exact }}
+                      {...props}
+                      render={this.renderComponent}/>
     };
 
     render() {
-        const { pathname, routes } = this.props;
-
-        return Object.keys(routes).map(this.renderRoute, this);
-
+        return Object.keys(this.props.routes).map(this.renderRoute, this);
     }
 }

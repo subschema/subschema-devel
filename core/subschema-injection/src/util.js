@@ -9,8 +9,8 @@ function applyNice(f1, f2) {
         return f2;
     }
     return function applyNice$return(...args) {
-        this::f1(...args);
-        this::f2(...args);
+        f1.call(this, ...args);
+        f2.call(this, ...args);
     };
 }
 
@@ -37,6 +37,7 @@ function keyIn(key, ...args) {
     }
     return;
 }
+
 function onlyKeys(keys, ...args) {
     const ret = {};
     for (let i = 0, l = keys.length; i < l; i++) {
@@ -74,8 +75,13 @@ function uniqueKeys(...args) {
 }
 
 function extend(name, fn) {
-    const fn2            = this.prototype[name];
-    this.prototype[name] = applyNice(fn, fn2);
+    return extendScope(this, name, fn);
+}
+
+function extendScope(scope, name, fn) {
+    const fn2             = scope.prototype[name];
+    scope.prototype[name] = applyNice(fn, fn2);
+
 }
 
 function listener(key, fn) {
@@ -86,49 +92,50 @@ function listener(key, fn) {
             this._listeners[key]();
         }
         let ret = this._listeners[key] =
-            this::fn(props[key], key, props, context);
+            fn.call(this, props[key], key, props, context);
         if (ret != null && typeof ret !== 'function') {
             console.warn("function did not return a valid listener %s %s %s",
                 key, this.displayName, fn);
         }
     }
 
-//    this::extend('componentDidMount', didMount);
-
-    this::extend('componentWillMount', function listener$willMount() {
-        this::listener$listen(this.props, this.context);
+    extendScope(this, 'componentWillMount', function listener$willMount() {
+        listener$listen.call(this, this.props, this.context);
     });
 
-    this::extend('componentWillReceiveProps', listener$listen);
+    extendScope(this, 'componentWillReceiveProps', listener$listen);
 
-    this::unmount(function () {
+    unmount.call(this, function () {
         this.mounted = false;
         this._listeners && this._listeners[key] && this._listeners[key]();
     });
 
 }
+
 function prop(key, fn) {
     //this is class scope.
-    this::extend('componentWillMount', function util$prop$willMount() {
+    extendScope(this, 'componentWillMount', function util$prop$willMount() {
         //this is instance scope.
         this.setState({
-            [key]: this::fn(this.props[key], key, this.props, this.context)
+            [key]: fn.call(this, this.props[key], key, this.props, this.context)
         });
     });
 
-    this::extend('componentWillReceiveProps',
+    extendScope(this, 'componentWillReceiveProps',
         function util$prop$receiveProps(props, context) {
             if (props[key] !== this.props[key]) {
                 this.setState(
-                    { [key]: this::fn(props[key], key, props, context) });
+                    { [key]: fn.call(this, props[key], key, props, context) });
             }
         });
 
     return this;
 }
+
 function extendStatic(name, value) {
     this[name] = value;
 }
+
 function removeListeners(listeners) {
     if (listeners) {
         listeners.forEach(execArg);
@@ -136,17 +143,19 @@ function removeListeners(listeners) {
     }
     return listeners;
 }
+
 function clearListeners() {
     if (this.listeners) {
         return removeListeners(this.listeners);
     }
 }
+
 function unmount(fn) {
     this.prototype.componentWillUnmount =
         applyNice(fn, this.prototype.componentWillUnmount);
 }
 
-export  {
+export {
     applyNice,
     listener,
     extend,

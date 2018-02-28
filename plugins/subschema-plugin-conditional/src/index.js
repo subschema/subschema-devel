@@ -115,10 +115,9 @@ export class Conditional extends Component {
         if (!this.props.transition) {
             return this.renderContent(matches);
         }
-        const { Transition, className, ...tprops } = this.props.transition;
+        const { Transition, className,  classNames, timeout} = this.props.transition;
 
-        return (<Transition key={matches ? 'in' : 'out'}
-                            in={matches} {...tprops}>
+        return (<Transition name={matches ? 'match' : 'no-match'} className={className} classNames={classNames} timeout={timeout}>
             {this.renderContent(matches)}
         </Transition>);
     }

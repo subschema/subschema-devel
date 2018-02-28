@@ -1,48 +1,59 @@
 module.exports = {
-    data: {
+    data       : {
         'phoneOrEmail': 'phone'
     },
     description: 'Shows how you can use Transitions on fieldsets',
-    schema: {
-        schema: {
+    schema     : {
+        schema   : {
             phoneOrEmail: {
-                type: 'Radio',
-                title: false,
-                options: [{label: "Phone", val: "phone"}, {label: "Email", val: "email"}],
+                type   : 'Radio',
+                title  : false,
+                options: [{ label: "Phone", val: "phone" }, {
+                    label: "Email",
+                    val  : "email"
+                }],
             },
-            "phone": {
+            "phone"     : {
                 "type": "Text"
             },
             "canWePhone": "Checkbox",
             "canWeEmail": "Checkbox",
-            "email": {
+            "email"     : {
                 "type": "Text"
             }
         },
-        fieldsets: [{legend: "Would you prefer us contact you via?", fields: "phoneOrEmail"},
+        fieldsets: [{
+            legend: "Would you prefer us contact you via?",
+            fields: "phoneOrEmail"
+        },
             {
-                legend: "Phone",
-                buttons: ["Call Me"],
-                fields: ["phone", "canWePhone"],
+                legend     : "Phone",
+                buttons    : ["Call Me"],
+                fields     : ["phone", "canWePhone"],
                 conditional: {
-                    listen: "phoneOrEmail",
-                    operator: "==",
-                    value: "phone",
+                    listen    : "phoneOrEmail",
+                    operator  : "==",
+                    value     : "phone",
                     transition: {
-                        transition: "rollUp",
-                        on: ["appear", "enter", "leave"]
+                        Transition: "single",
+                        transition: "fade",
+                        on        : ["appear", "enter", "leave"]
                     }
                 }
             },
             {
-                legend: "Email",
-                buttons: ["Email Me"],
-                fields: ["email", "canWeEmail"],
+                legend     : "Email",
+                buttons    : ["Email Me"],
+                fields     : ["email", "canWeEmail"],
                 conditional: {
-                    listen: "phoneOrEmail",
-                    operator: "==",
-                    value: "email",
-                    transition: "rollUp"
+                    listen    : "phoneOrEmail",
+                    operator  : "==",
+                    value     : "email",
+                    transition: {
+                        Transition: "single",
+                        transition: "fade",
+                        on        : ["appear", "enter", "leave"]
+                    }
                 }
             }]
     }

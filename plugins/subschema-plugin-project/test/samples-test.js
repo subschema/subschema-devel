@@ -3,7 +3,7 @@ import { compile, generate, project } from "subschema-plugin-project";
 import { expect } from 'chai';
 import { testEachSample } from "./support";
 
-describe('subschema-plugin-project/samples', function () {
+describe('subschema-plugin-project', function () {
     this.timeout(50000);
 
     testEachSample((ds, sample) => {

@@ -1,11 +1,11 @@
 {
   "schema": {
     "edit": {
-      "type": "ToggleLink",
+      "type": "ToggleButton",
       "label": "Edit",
       "name": "edit",
-      "value": true,
-      "className": "no-class",
+      "className": "btn-outline-success btn",
+      "activeClass": "active",
       "template": false
     },
     "schema": {
@@ -26,10 +26,11 @@
     },
     "main": {
       "type": "Routes",
+      "exact": true,
       "routes": {
         "/docs/:Doc": "Doc",
         "/:example": "Example",
-        "": "Index"
+        "/": "Index"
       }
     },
     "submit": {
@@ -39,7 +40,6 @@
   },
   "fieldsets": [
     {
-      "className": "container-fluid",
       "fieldsets": [
         {
           "template": "NavTemplate",
@@ -53,7 +53,7 @@
           "content": "Edit the app",
           "legend": "Edit Schema",
           "fields": "schema",
-          "conditional": "@query.edit"
+          "conditional": "edit"
         },
         {
           "template": "ModalTemplate",
@@ -68,7 +68,7 @@
           "conditional": "submit"
         },
         {
-          "className": "row",
+          "className": "container-fluid",
           "fieldsets": [
             {
               "className": "col-md-2 col-sm-3 col-xs-12",

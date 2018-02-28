@@ -1,4 +1,19 @@
-# Subschema 2.1.0->2.2.0
+# Subschema 2.2.x to 4.0.0
+## API Changes
+ - DefaultLoader has been replaces subschema-plugin-autoloader.
+ - components have been moved into individual packaging.
+ - Plugins are now included and not discovered meaning if a plugin is listed
+   and not available it will fail.  This is a good thing
+ - Build system is now [mrbuilder](https://mr-builder.github.io)
+ - Added more docs.
+ - Buttons template now has a secondary class, that is added if not primary.
+ - resolvers are now packaged individually, though they are all included with
+   subschema-preset-resolvers
+ - Bootstrap 4 is now the default css though you can still use bootstrap 3.
+
+
+
+# Subschema 2.1.0 to 2.2.0
 ## Demo Changes
  * Switched to using Ace instead of CodeMirror  for code stuff.
  * Added wiki docs to the demo.
@@ -10,11 +25,11 @@
  * Fixed the defaultProps function logic.
  
 
-# Subschema 2.1.0->2.0.x
+# Subschema 2.1.0 to 2.0.x
 ## Api Changes
-* ModalTemplate now uses smarter storing and recieving.
+* ModalTemplate now uses smarter storing and receiving.
 
-# Subschema 1.3.0 ->2.0.0-rc1
+# Subschema 1.3.0  to 2.0.0-rc1
 ## Api Changes
 * Changed the layout of the samples configuration, imports get imported and props are passed to the Form in the demo
 * Removed injected from subschema-injection, now just uses state to maintain the values.  Faster,easier,better. If
@@ -23,16 +38,16 @@
 * Removed duplicate DownloadButton.js from demo.
 * webpack.config.js has beeen removed use the new subschema-webpack.config.js and the subschema-webpack tool.
 
-# Subschema 1.2.x ->1.3.0
+# Subschema 1.2.x  to 1.3.0
 ## API Changes
 * Removed SubstituteMixin functionality now exists in subschema-expression.
 
-# Subschema 1.1.x -> 1.2.1
+# Subschema 1.1.x  to  1.2.1
 ## API Changes
 * Decorators have been removed, just use the loader instead. Its shorter
 easier to understand.
 
-# Subschema 1.0.0 -> 1.1.0 
+# Subschema 1.0.0  to  1.1.0 
 ## API Changes
 * Properties configured with PropTypes.template now returns an object containing Template:InjectedTemplate. 
   It makes all templates configurable, however, if your component uses a template, than it will be changed.   You can use RenderTemplate to make
@@ -45,7 +60,7 @@ easier to understand.
 * Loader now lets you create your own loader types.  loader.loaderType('Stuff') will make loader.addStuff, loader.listStuffs, 
   available.
 
-#Subschema 0.6.x -> 1.0.0 Upgrade
+#Subschema 0.6.x  to  1.0.0 Upgrade
 
 ## API Changes
  * Templates/FieldSets are now injectable.
@@ -68,7 +83,7 @@ easier to understand.
    
 
 
-#Subschema 0.5.6 -> 0.6.0 Upgrade
+#Subschema 0.5.6  to  0.6.0 Upgrade
 ## Dependencies
   * +react-dom
 ## API Changes
@@ -83,7 +98,7 @@ subschema.styles.FormTemplate.formClass = 'form-horizontal';
   * Demo now has the value preview built in the Playground component, to fix some nasty state issues using component-playground.
   * Fixes to ValueManager not creating intermediate objects.
 
-# Subschema 0.2x ->0.5 Upgrade
+# Subschema 0.2x  to 0.5 Upgrade
 ## Dependencies
 ## Webpack
 ## API Changes
@@ -115,7 +130,7 @@ subschema.styles.FormTemplate.formClass = 'form-horizontal';
 
 
 
-# Subschema 0.1x -> 0.2 Upgrade Guide
+# Subschema 0.1x  to  0.2 Upgrade Guide
 
 ## Dependencies
  * now requires react-0.14, react-dom and fbjs
