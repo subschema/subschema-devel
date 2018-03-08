@@ -1,17 +1,17 @@
 {
   "name": "subschema-resolver-transition",
-  "version": "4.0.0-b-1.0",
+  "version": "4.0.0-b-1.1",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
     "react-transition-group": "^2.2.1",
-    "subschema-prop-types": "^4.0.0-b-1.0",
-    "subschema-utils": "^4.0.0-b-1.0"
+    "subschema-prop-types": "^4.0.0-b-1.1",
+    "subschema-utils": "^4.0.0-b-1.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.0"
+    "subschema-dev-support": "^4.0.0-b-1.1"
   },
   "source": "src",
   "main": "lib"

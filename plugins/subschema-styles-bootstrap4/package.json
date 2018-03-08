@@ -1,6 +1,6 @@
 {
   "name": "subschema-styles-bootstrap4",
-  "version": "4.0.0-b-1.0",
+  "version": "4.0.0-b-1.1",
   "main": "lib",
   "description": "Bootstrap4 CSS support for subschema",
   "scripts": {
@@ -10,11 +10,11 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "mrbuilder-plugin-sass": "^0.9.11",
-    "subschema-transitions": "^4.0.0-b-1.0",
-    "subschema-utils": "^4.0.0-b-1.0"
+    "subschema-transitions": "^4.0.0-b-1.1",
+    "subschema-utils": "^4.0.0-b-1.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.0"
+    "subschema-dev-support": "^4.0.0-b-1.1"
   },
   "source": "src",
   "mrbuilder": {

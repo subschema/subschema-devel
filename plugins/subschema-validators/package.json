@@ -1,6 +1,6 @@
 {
   "name": "subschema-validators",
-  "version": "4.0.0-b-1.0",
+  "version": "4.0.0-b-1.1",
   "description": "Subschema Validators",
   "main": "lib",
   "scripts": {
@@ -9,10 +9,10 @@
     "clean": "subschema-clean"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.0"
+    "subschema-dev-support": "^4.0.0-b-1.1"
   },
   "source": "src",
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1.0"
+    "subschema-utils": "^4.0.0-b-1.1"
   }
 }
