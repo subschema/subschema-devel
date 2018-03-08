@@ -18,5 +18,5 @@ const handleLoader = (value, key, props, {loader}) => {
 export default function loader(Clazz, key) {
     Clazz.contextTypes.loader = PropTypes.loader;
 
-    Clazz::this.property(key, handleLoader);
+    this.property.call(this, key, handleLoader);
 }

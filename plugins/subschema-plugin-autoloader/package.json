@@ -12,7 +12,7 @@
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^0.9.6"
+    "mrbuilder-optionsmanager": "^0.9.11"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1.0",

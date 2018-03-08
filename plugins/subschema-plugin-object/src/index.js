@@ -60,6 +60,7 @@ export class ObjectType extends PureComponent {
         f = typeof f === 'string' ? f : f.name || f;
 
         return <Field key={`field-${idx}`} path={_path(this.props.path, f)}
+                      onButtonClick={this.props.onButtonClick}
                       conditional={field.conditional}
                       transition={field.transition} field={field}
                       fields={fields}/>
