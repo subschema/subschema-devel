@@ -18,7 +18,7 @@ export function loadDomNode(val, key, props, { loader, injector }) {
 export default {
     resolver: {
         domNode: function (Clazz, key, propList, OrigClazz) {
-            this.property.call(key, loadDomNode);
+            this.property.call(Clazz, key, loadDomNode);
         }
     }
 };

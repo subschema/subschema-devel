@@ -11,7 +11,7 @@ import { Text } from 'subschema-plugin-type-text';
 describe('subschema-component-modal', function () {
     this.timeout(50000);
 
-    it.only('should render template with buttons that click', function () {
+    it('should render template with buttons that click', function () {
         //loader, schema, Subschema, React
         const { loader, Form } = newSubschemaContext();
         loader.addTemplate(templates);
