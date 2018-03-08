@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-project",
-  "version": "4.0.0-b-1.1",
+  "version": "4.0.0-b-1.2",
   "description": "Subschema Project Generator",
   "main": "lib",
   "source": "src",
@@ -15,17 +15,17 @@
     "jszip": "^3.1.5"
   },
   "devDependencies": {
-    "subschema": "^4.0.0-b-1.1",
-    "subschema-dev-support": "^4.0.0-b-1.1",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.1",
-    "subschema-preset-examples": "^4.0.0-b-1.1",
-    "subschema-preset-list": "^4.0.0-b-1.1",
-    "subschema-preset-resolvers": "^4.0.0-b-1.1",
-    "subschema-preset-web-form": "^4.0.0-b-1.1",
-    "subschema-preset-wizard": "^4.0.0-b-1.1",
-    "subschema-prop-types": "^4.0.0-b-1.1",
-    "subschema-test-support": "^4.0.0-b-1.1",
-    "subschema-valuemanager": "^4.0.0-b-1.1"
+    "subschema": "^4.0.0-b-1.2",
+    "subschema-dev-support": "^4.0.0-b-1.2",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.2",
+    "subschema-preset-examples": "^4.0.0-b-1.2",
+    "subschema-preset-list": "^4.0.0-b-1.2",
+    "subschema-preset-resolvers": "^4.0.0-b-1.2",
+    "subschema-preset-web-form": "^4.0.0-b-1.2",
+    "subschema-preset-wizard": "^4.0.0-b-1.2",
+    "subschema-prop-types": "^4.0.0-b-1.2",
+    "subschema-test-support": "^4.0.0-b-1.2",
+    "subschema-valuemanager": "^4.0.0-b-1.2"
   },
   "subschema": {
     "plugins": [
