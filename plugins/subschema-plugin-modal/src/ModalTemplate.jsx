@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import RenderContent from 'subschema-rendercontent';
-import {warning} from 'subschema-utils';
-
+import { warning } from 'subschema-utils';
+import { createPortal } from 'react-dom';
 
 export default class ModalTemplate extends Component {
     static propTypes = {
@@ -18,10 +18,14 @@ export default class ModalTemplate extends Component {
         dismiss         : PropTypes.valueEvent,
         buttonsTemplate : PropTypes.template,
         legend          : PropTypes.content,
-        error           : PropTypes.error
+        error           : PropTypes.error,
+        target          : PropTypes.domNode,
     };
 
     static defaultProps = {
+        onButtonClick() {
+        },
+        domNode         : 'body',
         buttonsTemplate : 'ButtonsTemplate',
         unstashOnUnmount: true,
         buttons         : {
@@ -40,7 +44,7 @@ export default class ModalTemplate extends Component {
                 }
             ]
         },
-        dismiss(){
+        dismiss() {
             warning(false, 'no dismiss path given to modal');
         }
     };
@@ -51,10 +55,11 @@ export default class ModalTemplate extends Component {
     };
     handleButtonClick = (e, action, btn) => {
         e && e.preventDefault();
-        if (!this.props.buttons) {
+        const { buttons } = this.props;
+        if (!buttons) {
             return;
         }
-        const { onButtonClick } = this.props.buttons;
+        const { onButtonClick = buttons.onButtonClick } = this.props;
         switch (action) {
             case 'cancel':
             case 'close':
@@ -92,30 +97,35 @@ export default class ModalTemplate extends Component {
                       onButtonClick={this.handleButtonClick}/></div>
     }
 
+    target() {
+        if (this.props.target) {
+            if (typeof this.props.target === 'string') {
+                return document.querySelector(this.props.target);
+            }
+            return this.props.target;
+        }
+        return document.body;
+    }
+
     render() {
         const { title, legend, buttons, path, value, bodyClass, headerClass, closeClass, contentClass, backdropClass, dialogClass, namespaceClass, overlayClass, children, ...rest } = this.props;
 
-        return (<div className={`${namespaceClass} ${overlayClass}`}
-                     style={{ display: 'block' }}>
-            <div className={backdropClass}></div>
-            <div className={dialogClass} role="document"
-                 style={{ zIndex: 2000 }}>
-                <div className={contentClass}>
-                    <div className={headerClass}>
-                        <button onClick={this.handleBtnClose}
-                                className={closeClass}
-                                name={this.props.path + '@dismiss'}
-                                value={value}
-                                aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                        <RenderContent type='h4' content={title || legend}/>
-                    </div>
-                    <div className={bodyClass}>
-                        {children}
-                    </div>
-                    {this.renderFooter(buttons)}
+        return createPortal(<dialog className={dialogClass}>
+            <div className={contentClass}>
+                <div className={headerClass}>
+                    <button onClick={this.handleBtnClose}
+                            className={closeClass}
+                            name={this.props.path + '@dismiss'}
+                            value={value}
+                            aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                    <RenderContent type='h4' content={title || legend}/>
                 </div>
+                <div className={bodyClass}>
+                    {children}
+                </div>
+                {this.renderFooter(buttons)}
             </div>
-        </div>);
+        </dialog>, this.target());
     }
 }

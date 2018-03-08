@@ -7,10 +7,32 @@ import { newSubschemaContext } from 'subschema';
 import { ButtonTemplate } from 'subschema-plugin-template-button';
 import { Checkbox } from 'subschema-plugin-type-checkbox';
 import { Text } from 'subschema-plugin-type-text';
-
+import '../dist/style.css'
 
 describe('subschema-component-modal', function () {
     this.timeout(50000);
+
+    it.only('should render template with buttons that click', function () {
+        //loader, schema, Subschema, React
+        const { loader, Form } = newSubschemaContext();
+        loader.addTemplate(templates);
+        const form = into(<Form schema={{
+            schema   : {
+                test: 'Text'
+            },
+            fieldsets: [
+                {
+                    template: 'ModalTemplate',
+                    legend  : 'hello',
+                    fields  : ['test'],
+                    buttons : ['close', 'cancel', 'submit']
+                }
+            ]
+        }}/>, true);
+        expect(form).to.exist;
+
+
+    });
 
     it('should render template with buttons', function () {
         //loader, schema, Subschema, React
@@ -31,7 +53,6 @@ describe('subschema-component-modal', function () {
         }}/>, true);
         expect(form).to.exist;
     });
-
     it('should render template with and submit validate', function () {
         //loader, schema, Subschema, React`
         const { loader, valueManager, Form, ValueManager } = newSubschemaContext();

@@ -19,7 +19,9 @@ const RawPropTypes = {
     oneOfType,
     shape,
     string
-}
+};
+
+
 
 //we'll re-export these for convenience in the babel6 world.
 
@@ -168,6 +170,7 @@ const transition       = customPropType(oneOfType([string, shape({
     on        : _transitionTypes
 })]), 'transition');
 
+const domNode = customPropType(any, 'domNode');
 /**
  * Signify this property can take an expression.  This
  * allows properties to be tied to the valueManager.  So
@@ -471,6 +474,7 @@ export default ({
     blurEvent,
     validEvent,
     dataType,
+    domNode,
     domType,
     type,
     typeDescription,
