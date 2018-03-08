@@ -7,7 +7,6 @@ import { newSubschemaContext } from 'subschema';
 import { ButtonTemplate } from 'subschema-plugin-template-button';
 import { Checkbox } from 'subschema-plugin-type-checkbox';
 import { Text } from 'subschema-plugin-type-text';
-import '../dist/style.css'
 
 describe('subschema-component-modal', function () {
     this.timeout(50000);
