@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-autoloader",
-  "version": "4.0.0-b-1.3",
+  "version": "4.0.0-b-1.4",
   "bin": {
     "subschema-autoloader": "bin/subschema-autoloader.js",
     "subschema-importer": "bin/subschema-importer.js"
@@ -16,8 +16,8 @@
     "val-loader": "^1.1.0"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.3",
-    "subschema-utils": "^4.0.0-b-1.3"
+    "subschema-dev-support": "^4.0.0-b-1.4",
+    "subschema-utils": "^4.0.0-b-1.4"
   },
   "subschema": {
     "options": {

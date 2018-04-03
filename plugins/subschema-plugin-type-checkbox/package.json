@@ -1,16 +1,16 @@
 {
   "name": "subschema-plugin-type-checkbox",
-  "version": "4.0.0-b-1.3",
+  "version": "4.0.0-b-1.4",
   "scripts": {
     "clean": "subschema-clean",
     "prepublish": "subschema-babel"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.0-b-1.3",
-    "subschema-utils": "^4.0.0-b-1.3"
+    "subschema-prop-types": "^4.0.0-b-1.4",
+    "subschema-utils": "^4.0.0-b-1.4"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.3"
+    "subschema-dev-support": "^4.0.0-b-1.4"
   },
   "source": "src",
   "main": "lib"

@@ -1,6 +1,6 @@
 {
   "name": "subschema-resolver-schema",
-  "version": "4.0.0-b-1.3",
+  "version": "4.0.0-b-1.4",
   "scripts": {
     "test": "subschema-karma",
     "karma": "subschema-karma",
@@ -8,13 +8,13 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.0-b-1.3",
-    "subschema-resolver-fieldset": "^4.0.0-b-1.3",
-    "subschema-resolver-template": "^4.0.0-b-1.3",
-    "subschema-utils": "^4.0.0-b-1.3"
+    "subschema-prop-types": "^4.0.0-b-1.4",
+    "subschema-resolver-fieldset": "^4.0.0-b-1.4",
+    "subschema-resolver-template": "^4.0.0-b-1.4",
+    "subschema-utils": "^4.0.0-b-1.4"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.3"
+    "subschema-dev-support": "^4.0.0-b-1.4"
   },
   "source": "src",
   "main": "lib"

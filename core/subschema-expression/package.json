@@ -1,6 +1,6 @@
 {
   "name": "subschema-expression",
-  "version": "4.0.0-b-1.3",
+  "version": "4.0.0-b-1.4",
   "description": "Expressions for subschema",
   "main": "lib",
   "scripts": {
@@ -10,10 +10,10 @@
     "clean": "subschema-clean"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.3"
+    "subschema-dev-support": "^4.0.0-b-1.4"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1.3"
+    "subschema-utils": "^4.0.0-b-1.4"
   },
   "source": "src"
 }
