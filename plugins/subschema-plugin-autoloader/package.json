@@ -12,7 +12,8 @@
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^0.9.11"
+    "mrbuilder-optionsmanager": "^1.2.0",
+    "val-loader":"^1.1.0"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1.2",

@@ -41,8 +41,8 @@
     "subschema-preset-wizard": "^4.0.0-b-1.2"
   },
   "devDependencies": {
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "subschema-dev-support": "^4.0.0-b-1.2",
     "subschema-test-support": "^4.0.0-b-1.2"
   },

@@ -4,12 +4,13 @@
   "description": "Subschema Wiki",
   "main": "src",
   "scripts": {
-    "server": "subschema-webpack-dev-server",
+    "start": "subschema-webpack-dev-server",
     "clean": "subschema-clean",
     "prepublish": "subschema-webpack --app app"
   },
   "devDependencies": {
-    "mrbuilder-plugin-markdown": "^0.9.5",
+    "mrbuilder-plugin-markdown": "^1.2.0",
+    "mrbuilder-preset-lib": "^1.2.0",
     "subschema-dev-support": "^4.0.0-b-1.2"
   },
   "peerDependencies": {
