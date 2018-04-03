@@ -1,16 +1,16 @@
 {
   "name": "subschema-resolver-options",
-  "version": "4.0.0-b-1.2",
+  "version": "4.0.0-b-1.3",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.0-b-1.2",
-    "subschema-utils": "^4.0.0-b-1.2"
+    "subschema-prop-types": "^4.0.0-b-1.3",
+    "subschema-utils": "^4.0.0-b-1.3"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.2"
+    "subschema-dev-support": "^4.0.0-b-1.3"
   },
   "source": "src",
   "main": "lib"
