@@ -1,6 +1,6 @@
 {
   "name": "subschema-dev-support",
-  "version": "4.0.0-b-1.4",
+  "version": "4.0.0-b-1.5",
   "dependencies": {
     "mrbuilder": "^1.2.0",
     "mrbuilder-plugin-html": "^1.2.0",
@@ -19,5 +19,6 @@
     "subschema-mocha": "bin/subschema-mocha.js",
     "subschema-webpack-dev-server": "bin/subschema-webpack-dev-server.js",
     "subschema-webpack": "bin/subschema-webpack.js"
-  }
+  },
+  "main": "src"
 }

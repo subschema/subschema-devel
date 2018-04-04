@@ -1,6 +1,6 @@
 {
   "name": "subschema-prop-types",
-  "version": "4.0.0-b-1.4",
+  "version": "4.0.0-b-1.5",
   "source": "src",
   "main": "lib",
   "scripts": {
@@ -9,13 +9,13 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1.4"
+    "subschema-utils": "^4.0.0-b-1.5"
   },
   "peerDependencies": {
     "prop-types": "*"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.4"
+    "subschema-dev-support": "^4.0.0-b-1.5"
   },
   "mrbuilder": {
     "plugin": "./mrbuilder-plugin"

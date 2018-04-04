@@ -1,6 +1,6 @@
 {
   "name": "subschema",
-  "version": "4.0.0-b-1.4",
+  "version": "4.0.0-b-1.5",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -20,35 +20,43 @@
     "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
-    "subschema-context": "^4.0.0-b-1.4",
-    "subschema-css": "^4.0.0-b-1.4",
-    "subschema-dom": "^4.0.0-b-1.4",
-    "subschema-expression": "^4.0.0-b-1.4",
-    "subschema-field": "^4.0.0-b-1.4",
-    "subschema-fieldset": "^4.0.0-b-1.4",
-    "subschema-form": "^4.0.0-b-1.4",
-    "subschema-injection": "^4.0.0-b-1.4",
-    "subschema-loader": "^4.0.0-b-1.4",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.4",
-    "subschema-preset-list": "^4.0.0-b-1.4",
-    "subschema-preset-resolvers": "^4.0.0-b-1.4",
-    "subschema-preset-web-form": "^4.0.0-b-1.4",
-    "subschema-preset-wizard": "^4.0.0-b-1.4",
-    "subschema-prop-types": "^4.0.0-b-1.4",
-    "subschema-rendercontent": "^4.0.0-b-1.4",
-    "subschema-rendertemplate": "^4.0.0-b-1.4",
-    "subschema-utils": "^4.0.0-b-1.4",
-    "subschema-valuemanager": "^4.0.0-b-1.4"
+    "subschema-context": "^4.0.0-b-1.5",
+    "subschema-css": "^4.0.0-b-1.5",
+    "subschema-dom": "^4.0.0-b-1.5",
+    "subschema-expression": "^4.0.0-b-1.5",
+    "subschema-field": "^4.0.0-b-1.5",
+    "subschema-fieldset": "^4.0.0-b-1.5",
+    "subschema-form": "^4.0.0-b-1.5",
+    "subschema-injection": "^4.0.0-b-1.5",
+    "subschema-loader": "^4.0.0-b-1.5",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.5",
+    "subschema-preset-list": "^4.0.0-b-1.5",
+    "subschema-preset-resolvers": "^4.0.0-b-1.5",
+    "subschema-preset-web-form": "^4.0.0-b-1.5",
+    "subschema-preset-wizard": "^4.0.0-b-1.5",
+    "subschema-prop-types": "^4.0.0-b-1.5",
+    "subschema-rendercontent": "^4.0.0-b-1.5",
+    "subschema-rendertemplate": "^4.0.0-b-1.5",
+    "subschema-utils": "^4.0.0-b-1.5",
+    "subschema-valuemanager": "^4.0.0-b-1.5"
   },
   "devDependencies": {
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
-    "subschema-dev-support": "^4.0.0-b-1.4",
-    "subschema-test-support": "^4.0.0-b-1.4"
+    "subschema-dev-support": "^4.0.0-b-1.5",
+    "subschema-test-support": "^4.0.0-b-1.5"
   },
   "mrbuilder": {
     "plugin": "./mrbuilder-plugin",
     "plugins": [
+      "mrbuilder-plugin-fonts",
+      "mrbuilder-plugin-filetypes",
+      [
+        "mrbuilder-plugin-css",
+        {
+          "modules": true
+        }
+      ],
       [
         "mrbuilder-plugin-webpack",
         {
@@ -59,8 +67,7 @@
         "mrbuilder-plugin-html",
         false
       ],
-      "subschema-plugin-autoloader",
-      "subschema"
+      "subschema-plugin-autoloader"
     ]
   },
   "subschema": {

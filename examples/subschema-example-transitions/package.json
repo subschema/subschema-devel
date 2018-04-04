@@ -1,15 +1,15 @@
 {
   "name": "subschema-example-transitions",
-  "version": "4.0.0-b-1.4",
+  "version": "4.0.0-b-1.5",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1.4"
+    "subschema-utils": "^4.0.0-b-1.5"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.4"
+    "subschema-dev-support": "^4.0.0-b-1.5"
   },
   "source": "src",
   "main": "lib"
