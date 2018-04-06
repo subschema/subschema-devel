@@ -12,7 +12,7 @@
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^1.2.0",
+    "mrbuilder-optionsmanager": "^2.0.0",
     "val-loader": "^1.1.0"
   },
   "devDependencies": {

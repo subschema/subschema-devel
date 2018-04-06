@@ -5890,9 +5890,9 @@ mrbuilder-plugin-mocha@^1.2.0:
     mrbuilder-plugin-babel "^1.2.0"
     raf "^3.4.0"
 
-mrbuilder-plugin-sass@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-sass/-/mrbuilder-plugin-sass-1.2.0.tgz#3ef987035a867b945ba2ecfec1571ae194d72dc5"
+mrbuilder-plugin-sass@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-sass/-/mrbuilder-plugin-sass-1.2.1.tgz#420667edf6bf9df2aa76084571f90f198734cf28"
   dependencies:
     loader-utils "^1.1.0"
     mrbuilder-plugin-css "^1.2.0"

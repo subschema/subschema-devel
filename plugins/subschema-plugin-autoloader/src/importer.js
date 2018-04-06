@@ -2,7 +2,9 @@
 function map(m, each) {
     const result = [];
     m.forEach((value, key) => {
-        result.push(each(value.config, key));
+        if (value) {
+            result.push(each(value.config, key));
+        }
     });
     return result;
 }

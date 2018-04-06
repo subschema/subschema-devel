@@ -6,7 +6,6 @@
     "subschema-plugin-conditional": "^4.0.0-b-1.5",
     "subschema-plugin-content": "^4.0.0-b-1.5",
     "subschema-plugin-contentwrapper": "^4.0.0-b-1.5",
-    "subschema-plugin-list": "^4.0.0-b-1.5",
     "subschema-plugin-modal": "^4.0.0-b-1.5",
     "subschema-plugin-object": "^4.0.0-b-1.5",
     "subschema-plugin-template-button": "^4.0.0-b-1.5",
@@ -30,10 +29,14 @@
     "subschema-plugin-type-textarea": "^4.0.0-b-1.5",
     "subschema-processors": "^4.0.0-b-1.5",
     "subschema-styles-bootstrap": "^4.0.0-b-1.5",
+    "subschema-preset-resolvers":"^4.0.0-b-1.5",
     "subschema-transitions": "^4.0.0-b-1.5",
     "subschema-validators": "^4.0.0-b-1.5"
   },
   "subschema": {
+    "presets": [
+      "subschema-preset-resolvers"
+    ],
     "plugins": [
       "subschema-plugin-autocomplete",
       "subschema-plugin-conditional",
