@@ -54,7 +54,11 @@
             "devtool": "sourcemap",
             "filename": "subschema.js",
             "outputPath": "./dist",
-            "useExternals": false
+            "useExternals": false,
+            "alias":{
+              "react":"~react",
+              "react-dom":"~react-dom"
+            }
           }
         ]
       ]
