@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
-    "mrbuilder-plugin-sass": "^1.2.1",
+    "mrbuilder-plugin-sass": "^2.0.0",
     "subschema-transitions": "^4.0.0-b-1.5",
     "subschema-utils": "^4.0.0-b-1.5"
   },
