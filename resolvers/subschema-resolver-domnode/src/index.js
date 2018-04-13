@@ -3,8 +3,8 @@ import React from 'react';
 
 //Expose for configurability
 export const settings = {
-    type: 'span',
-    document
+    type    : 'span',
+    document: typeof window === 'undefined' ? null : window.document
 };
 
 export function loadDomNode(val, key, props, { loader, injector }) {

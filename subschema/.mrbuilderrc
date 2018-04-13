@@ -1,0 +1,105 @@
+{
+  "plugin": "./src/plugin.js",
+  "plugins": [
+    "mrbuilder-plugin-fonts",
+    [
+      "mrbuilder-plugin-chunk",
+      false
+    ],
+    "mrbuilder-plugin-filetypes",
+    [
+      "mrbuilder-plugin-css",
+      {
+        "modules": true,
+        "useNameHash": false
+      }
+    ],
+    [
+      "mrbuilder-plugin-webpack",
+      {
+        "libraryTarget": "umd"
+      }
+    ],
+    "mrbuilder-plugin-less",
+    "subschema-plugin-autoloader"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "mrbuilder-plugin-css",
+          {
+            "useNameHash": "[id].[hash].style.css"
+          }
+        ]
+      ]
+    },
+    "subschema-web": {
+      "plugins": [
+        [
+          "mrbuilder-plugin-version",
+          {
+            "variable": "SUBSCHEMA_VERSION"
+          }
+        ],
+        [
+          "mrbuilder-plugin-react",
+          false
+        ],
+        [
+          "mrbuilder-plugin-webpack",
+          {
+            "libraryTarget": "var",
+            "library": "subschema",
+            "devtool": "sourcemap",
+            "filename": "subschema.js",
+            "outputPath": "./dist",
+            "useExternals": false
+          }
+        ]
+      ]
+    },
+    "subschema-server": {
+      "plugins": [
+        [
+          "mrbuilder-plugin-version",
+          {
+            "variable": "SUBSCHEMA_VERSION"
+          }
+        ],
+        [
+          "mrbuilder-plugin-webpack",
+          {
+            "libaryTarget": "commonjs",
+            "library": "subschema",
+            "devtool": "sourcemap",
+            "filename": "subschema.server.js",
+            "outputPath": "./dist",
+            "target": "node"
+          }
+        ]
+      ]
+    },
+    "subschema-noreact": {
+      "plugins": [
+        "mrbuilder-plugin-react",
+        [
+          "mrbuilder-plugin-version",
+          {
+            "variable": "SUBSCHEMA_VERSION"
+          }
+        ],
+        [
+          "mrbuilder-plugin-webpack",
+          {
+            "libaryTarget": "commonjs",
+            "library": "subschema",
+            "devtool": "sourcemap",
+            "filename": "subschema-noreact.js",
+            "outputPath": "./dist"
+          }
+        ]
+      ]
+    }
+  }
+}
