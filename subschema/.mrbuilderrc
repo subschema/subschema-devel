@@ -59,6 +59,31 @@
         ]
       ]
     },
+    "subschema-web-debug": {
+      "plugins": [
+        [
+          "mrbuilder-plugin-version",
+          {
+            "variable": "SUBSCHEMA_VERSION"
+          }
+        ],
+        [
+          "mrbuilder-plugin-react",
+          false
+        ],
+        [
+          "mrbuilder-plugin-webpack",
+          {
+            "libraryTarget": "var",
+            "library": "subschema",
+            "devtool": "inline-source-map",
+            "filename": "subschema-debug.js",
+            "outputPath": "./dist",
+            "useExternals": false
+          }
+        ]
+      ]
+    },
     "subschema-server": {
       "plugins": [
         [
