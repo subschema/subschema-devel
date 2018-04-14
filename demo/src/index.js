@@ -1,11 +1,11 @@
-import React from "react";
-import { loader, ValueManager } from "subschema";
-import Index from "./IndexPage.jsx";
-import schema from "./schema.json";
-import createHistory from "history/createHashHistory";
-import { DynamicSchema } from "subschema-plugin-demo";
+import React from 'react';
+import { loader, ValueManager } from 'subschema';
+import Index from './IndexPage.jsx';
+import schema from './schema.json';
+import createHistory from 'history/createHashHistory';
+import { DynamicSchema } from 'subschema-plugin-demo';
 import { NavigationForm } from 'subschema-plugin-navigation';
-import "subschema-transitions/lib/style.css";
+import 'subschema-transitions/lib/style.css';
 //import "./sample.lessp";
 const history = createHistory({
     basename: '',
@@ -41,7 +41,7 @@ const handleSubmit = (e, error, value) => {
 
 export default function App() {
     return (<NavigationForm valueManager={valueManager} history={history}
-                            schema={"schema"}
+                            schema={'schema'}
                             ObjectType={DynamicSchema}
                             loader={loader}
                             onSubmit={handleSubmit}

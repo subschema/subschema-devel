@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/_mixins.scss';
+@import '~bootstrap/scss/_transitions.scss';
+@import '~bootstrap/scss/_modal.scss';
+.dialog {
+  @extend .modal-dialog;
+  position: fixed;
+  top: 0;
+}
+.content {
+  @extend .modal-content;
+}
+.header {
+  @extend .modal-header;
+}
+.close {
+  @extend .close;
+}
+.footer {
+  @extend .modal-footer;
+}
+.body {
+  @extend .modal-body;
+}

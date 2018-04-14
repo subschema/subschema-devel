@@ -47,17 +47,23 @@
           false
         ],
         [
+          "mrbuilder-plugin-css",
+          {
+            "useStyleLoader": true
+          }
+        ],
+        [
           "mrbuilder-plugin-webpack",
           {
             "libraryTarget": "var",
             "library": "subschema",
-            "devtool": "sourcemap",
+            "devtool": "source-map",
             "filename": "subschema.js",
             "outputPath": "./dist",
             "useExternals": false,
-            "alias":{
-              "react":"~react",
-              "react-dom":"~react-dom"
+            "alias": {
+              "react": "~react",
+              "react-dom": "~react-dom"
             }
           }
         ]
@@ -74,6 +80,12 @@
         [
           "mrbuilder-plugin-react",
           false
+        ],
+        [
+          "mrbuilder-plugin-css",
+          {
+            "useStyleLoader": true
+          }
         ],
         [
           "mrbuilder-plugin-webpack",
