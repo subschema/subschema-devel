@@ -2,7 +2,7 @@ import React from 'react';
 import 'subschema-styles-bootstrap/lib/style.css';
 import {
     byClass, byComponents, byName, change, cleanUp, click, expect, filterProp,
-    findNode, into, Simulate, submit, TestUtils
+    findNode, into, submit
 } from 'subschema-test-support';
 
 import { ButtonTemplate } from 'subschema-plugin-template-button';
@@ -24,7 +24,7 @@ function newContext() {
     return ctx;
 }
 
-const debug = false;
+const debug = true;
 describe.only('subschema-plugin-list/List', function () {
 
     this.timeout(50000);
@@ -71,7 +71,7 @@ describe.only('subschema-plugin-list/List', function () {
     }
 
 
-    it('should render a list with data without canAdd', function () {
+    it.only('should render a list with data without canAdd', function () {
         const { Form, valueManager } = newContext();
         const schema                 = {
             schema: {

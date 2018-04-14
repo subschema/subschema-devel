@@ -1,18 +1,18 @@
 {
   "name": "subschema",
-  "version": "4.0.0-b-1.0",
+  "version": "4.0.0-b-1.5",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
     "compile-default-loader": "subschema-autoloader | subschema-babel --out-file  ./lib/DefaultLoader.js && subschema-importer | subschema-babel --out-file ./lib/importer.js",
     "compile-lib": "subschema-babel && yarn run compile-default-loader",
-    "compile-server": "subschema-webpack --output-path dist  --output-filename=subschema.server.js --target node",
-    "compile-web": "NODE_ENV=production subschema-webpack --use-externals=false --devtool sourcemap -p  --output-path dist  --output-filename subschema.js",
-    "compile-web-debug": "subschema-webpack --use-externals=false --output-library-target=umd --devtool inline-source-map --output-path dist --output-filename subschema-debug.js",
-    "compile-web-noreact": "subschema-webpack -p  --output-path dist --output-filename subschema-noreact.js",
+    "compile-server": "MRBUILDER_ENV=subschema-server subschema-webpack",
+    "compile-web": "MRBUILDER_ENV=subschema-web NODE_ENV=production subschema-webpack",
+    "compile-web-debug": "MRBUILDER_ENV=subschema-web-debug NODE_ENV=production subschema-webpack",
+    "compile-web-noreact": "MRBUILDER_ENV=subschema-noreact NODE_ENV=production subschema-webpack",
     "karma": "subschema-karma",
-    "test": "subschema-karma",
-    "prepublish": "yarn run compile-lib && yarn run compile-web && yarn run compile-web-debug && yarn run compile-web-noreact",
+    "test": "subschema-karma && node -r ./dist/subschema.server.js -e 'process.exit(0)'",
+    "prepublish": "yarn run compile-lib && yarn run compile-web && yarn run compile-web-debug && yarn run compile-web-noreact && yarn run compile-server",
     "clean": "subschema-clean"
   },
   "peerDependencies": {
@@ -20,35 +20,30 @@
     "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
-    "subschema-context": "^4.0.0-b-1.0",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.0",
-    "subschema-preset-list": "^4.0.0-b-1.0",
-    "subschema-preset-resolvers": "^4.0.0-b-1.0",
-    "subschema-preset-web-form": "^4.0.0-b-1.0",
-    "subschema-preset-wizard": "^4.0.0-b-1.0"
+    "subschema-context": "^4.0.0-b-1.5",
+    "subschema-css": "^4.0.0-b-1.5",
+    "subschema-dom": "^4.0.0-b-1.5",
+    "subschema-expression": "^4.0.0-b-1.5",
+    "subschema-field": "^4.0.0-b-1.5",
+    "subschema-fieldset": "^4.0.0-b-1.5",
+    "subschema-form": "^4.0.0-b-1.5",
+    "subschema-injection": "^4.0.0-b-1.5",
+    "subschema-loader": "^4.0.0-b-1.5",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.5",
+    "subschema-preset-list": "^4.0.0-b-1.5",
+    "subschema-preset-resolvers": "^4.0.0-b-1.5",
+    "subschema-preset-web-form": "^4.0.0-b-1.5",
+    "subschema-preset-wizard": "^4.0.0-b-1.5",
+    "subschema-prop-types": "^4.0.0-b-1.5",
+    "subschema-rendercontent": "^4.0.0-b-1.5",
+    "subschema-rendertemplate": "^4.0.0-b-1.5",
+    "subschema-utils": "^4.0.0-b-1.5",
+    "subschema-valuemanager": "^4.0.0-b-1.5"
   },
   "devDependencies": {
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0",
-    "subschema-dev-support": "^4.0.0-b-1.0",
-    "subschema-test-support": "^4.0.0-b-1.0"
-  },
-  "mrbuilder": {
-    "plugin": "./mrbuilder-plugin",
-    "plugins": [
-      [
-        "mrbuilder-plugin-webpack",
-        {
-          "libaryTarget": "umd"
-        }
-      ],
-      [
-        "mrbuilder-plugin-html",
-        false
-      ],
-      "subschema-plugin-autoloader",
-      "subschema"
-    ]
+    "mrbuilder-plugin-version": "^2.0.0",
+    "subschema-dev-support": "^4.0.0-b-1.5",
+    "subschema-test-support": "^4.0.0-b-1.5"
   },
   "subschema": {
     "options": {

@@ -1,8 +1,8 @@
 {
   "name": "subschema-preset-wizard",
-  "version": "4.0.0-b-1.0",
+  "version": "4.0.0-b-1.5",
   "dependencies": {
-    "subschema-plugin-type-wizard": "^4.0.0-b-1.0"
+    "subschema-plugin-type-wizard": "^4.0.0-b-1.5"
   },
   "subschema": {
     "plugins": [

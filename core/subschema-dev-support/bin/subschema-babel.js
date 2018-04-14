@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-require('mrbuilder/bin/mrbuilder-babel')
+process.env.MRBUILDER_INTERNAL_PRESETS='subschema-dev-support';
+require('mrbuilder/bin/mrbuilder-babel');

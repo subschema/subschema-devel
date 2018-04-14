@@ -1,11 +1,13 @@
-import React from "react";
-import { loader, ValueManager } from "subschema";
-import Index from "./IndexPage.jsx";
-import schema from "./schema.json";
-import createHistory from "history/createHashHistory";
-import { DynamicSchema } from "subschema-plugin-demo";
+import React from 'react';
+import { loader, ValueManager } from 'subschema';
+import Index from './IndexPage.jsx';
+import schema from './schema.json';
+import createHistory from 'history/createHashHistory';
+import { DynamicSchema } from 'subschema-plugin-demo';
 import { NavigationForm } from 'subschema-plugin-navigation';
-import "subschema-transitions/lib/style.css";
+import 'subschema-transitions/lib/style.css';
+import './demo.css';
+
 //import "./sample.lessp";
 const history = createHistory({
     basename: '',
@@ -29,7 +31,8 @@ const samples = loader.listExamples().map(typeToOption);
 const valueManager = ValueManager({
     samples,
     docs,
-    subschemaVersion: process.env.SUBSCHEMA_VERSION,
+    /* eslint-disable no-undef */
+    subschemaVersion: SUBSCHEMA_VERSION,
     schema
 });
 
@@ -41,7 +44,7 @@ const handleSubmit = (e, error, value) => {
 
 export default function App() {
     return (<NavigationForm valueManager={valueManager} history={history}
-                            schema={"schema"}
+                            schema={'schema'}
                             ObjectType={DynamicSchema}
                             loader={loader}
                             onSubmit={handleSubmit}

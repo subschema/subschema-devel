@@ -1,0 +1,11 @@
+.subschema-demo-sidebar {
+    max-height: calc(100vh - 3.5em);
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    margin-left: -15px;
+    padding-left: 15px;
+}
+.navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+}

@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "mrbuilder-preset-lib"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "subschema",
+        "mrbuilder-plugin-mocha",
+        "mrbuilder-plugin-enzyme",
+        "mrbuilder-plugin-webpack",
+        "mrbuilder-plugin-karma"
+      ]
+    }
+  }
+}

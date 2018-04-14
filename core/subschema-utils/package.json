@@ -1,6 +1,6 @@
 {
   "name": "subschema-utils",
-  "version": "4.0.0-b-1.0",
+  "version": "4.0.0-b-1.5",
   "description": "Subschema Utils",
   "main": "lib",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "lodash": "^4.17.4",
-    "subschema-dev-support": "^4.0.0-b-1.0"
+    "subschema-dev-support": "^4.0.0-b-1.5"
   },
   "peerDependencies": {
     "lodash": "*"
