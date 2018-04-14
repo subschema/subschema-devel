@@ -1,7 +1,7 @@
 {
   "name": "subschema-plugin-navigation",
   "main": "lib",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.6",
   "description": "Navigation components",
   "scripts": {
     "server": "subschema-webpack-dev-server",
@@ -13,16 +13,16 @@
     "history": "^4.6.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "subschema-form": "^4.0.0-b-1.5",
-    "subschema-utils": "^4.0.0-b-1.5"
+    "subschema-form": "^4.0.0-b-1.6",
+    "subschema-utils": "^4.0.0-b-1.6"
   },
   "devDependencies": {
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^4.0.0-b-1.5",
-    "subschema-prop-types": "^4.0.0-b-1.5",
-    "subschema-styles-bootstrap": "^4.0.0-b-1.5"
+    "subschema-dev-support": "^4.0.0-b-1.6",
+    "subschema-prop-types": "^4.0.0-b-1.6",
+    "subschema-styles-bootstrap": "^4.0.0-b-1.6"
   },
   "peerDependencies": {
     "react": "*",

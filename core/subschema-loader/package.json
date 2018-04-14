@@ -1,6 +1,6 @@
 {
   "name": "subschema-loader",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.6",
   "description": "Subschema Loader",
   "main": "lib",
   "scripts": {
@@ -9,10 +9,10 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1.5"
+    "subschema-utils": "^4.0.0-b-1.6"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.5"
+    "subschema-dev-support": "^4.0.0-b-1.6"
   },
   "source": "src"
 }
