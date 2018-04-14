@@ -61,6 +61,9 @@
           }
         }
       ],
+      ["mrbuilder-plugin-version", {
+        "module":"~subschema/package.json"
+      }],
       "subschema",
       "subschema-styles-bootstrap4",
       "subschema-plugin-autoloader",

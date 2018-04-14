@@ -71,7 +71,7 @@
           "className": "container-fluid d-flex flex-row",
           "fieldsets": [
             {
-              "className": "col-md-2 col-sm-3 col-xs-12",
+              "className": "col-md-2 col-sm-3 col-xs-12 subschema-demo-sidebar",
               "fieldsets": [
                 {
                   "legend": "Examples",

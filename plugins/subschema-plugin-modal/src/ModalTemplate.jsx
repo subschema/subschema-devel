@@ -34,7 +34,7 @@ export default class ModalTemplate extends Component {
                 {
                     label    : "Cancel",
                     action   : 'cancel',
-                    className: 'btn'
+                    className: 'btn btn-secondary'
                 },
                 {
                     label    : "Save",

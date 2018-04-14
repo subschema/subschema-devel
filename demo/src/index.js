@@ -6,6 +6,8 @@ import createHistory from 'history/createHashHistory';
 import { DynamicSchema } from 'subschema-plugin-demo';
 import { NavigationForm } from 'subschema-plugin-navigation';
 import 'subschema-transitions/lib/style.css';
+import './demo.css';
+
 //import "./sample.lessp";
 const history = createHistory({
     basename: '',
@@ -29,7 +31,8 @@ const samples = loader.listExamples().map(typeToOption);
 const valueManager = ValueManager({
     samples,
     docs,
-    subschemaVersion: process.env.SUBSCHEMA_VERSION,
+    /* eslint-disable no-undef */
+    subschemaVersion: SUBSCHEMA_VERSION,
     schema
 });
 

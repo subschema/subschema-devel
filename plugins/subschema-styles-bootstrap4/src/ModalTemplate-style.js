@@ -5,7 +5,7 @@ export default {
     backdrop: "modal-backdrop fade in",
     dialog: `modal-dialog ${MT.modalDialog}`,
     content: "modal-content",
-    close: 'close',
+    close: `close ${MT.btnClose}`,
     body: 'modal-body clearfix',
     header: 'modal-header',
     footer: "modal-footer",

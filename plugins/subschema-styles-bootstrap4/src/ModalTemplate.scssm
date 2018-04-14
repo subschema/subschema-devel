@@ -3,23 +3,54 @@
 @import '~bootstrap/scss/_mixins.scss';
 @import '~bootstrap/scss/_transitions.scss';
 @import '~bootstrap/scss/_modal.scss';
+@import '~bootstrap/scss/_buttons.scss';
+
 .dialog {
   @extend .modal-dialog;
   position: fixed;
   top: 0;
+  border: none;
+  &:before {
+    content: ' ';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+  }
 }
+
 .content {
   @extend .modal-content;
 }
+
 .header {
   @extend .modal-header;
+  flex-direction: row-reverse;
+  .close {
+    @extend .close;
+
+  }
 }
+
 .close {
   @extend .close;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
+
 .footer {
   @extend .modal-footer;
 }
+
 .body {
   @extend .modal-body;
+}
+
+.btnClose {
+  @extend .btn;
+  @extend .close;
 }
