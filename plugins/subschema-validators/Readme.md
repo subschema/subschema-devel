@@ -1,7 +1,2 @@
-subschema-validators
-===
+Provides validators for subschema.
 
-## Installation
-```sh
- $ yarn install subschema-validators
-```

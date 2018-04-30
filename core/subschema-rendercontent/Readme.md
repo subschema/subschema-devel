@@ -1,7 +1,1 @@
-subschema-plugin-rendercontent
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-rendercontent
-```
+Utility for rendering content.

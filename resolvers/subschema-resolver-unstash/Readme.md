@@ -1,7 +1,1 @@
-subschema-resolver-unstash
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-unstash
-```
+Unstash values from the valueManager.

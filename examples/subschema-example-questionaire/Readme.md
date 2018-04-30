@@ -1,7 +1,1 @@
-subschema-example-questionaire
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-questionaire
-```
+An example of the list with dynamic keys.

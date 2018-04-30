@@ -15,16 +15,5 @@
   "devDependencies": {
     "subschema-dev-support": "^4.0.0-b-1.6"
   },
-  "source": "src",
-  "mrbuilder": {
-    "plugins": [
-      [
-        "mrbuilder-plugin-css",
-        {
-          "useNameHash": false
-        }
-      ],
-      "mrbuilder-plugin-less"
-    ]
-  }
+  "source": "src"
 }

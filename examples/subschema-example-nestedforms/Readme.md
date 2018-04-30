@@ -1,7 +1,1 @@
-subschema-example-nestedforms
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-nestedforms
-```
+Shows how to render nested forms.

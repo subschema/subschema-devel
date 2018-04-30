@@ -26,9 +26,9 @@
     "plugins/*",
     "presets/*",
     "subschema",
-    "subschema.wiki",
+    "examples/*",
     "demo",
-    "examples/*"
+    "docs"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

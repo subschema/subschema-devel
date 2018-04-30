@@ -1,7 +1,1 @@
-subschema-resolver-stash
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-stash
-```
+Provides a function to stash from the valueManager.

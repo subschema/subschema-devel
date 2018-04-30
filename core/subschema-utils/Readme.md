@@ -1,7 +1,1 @@
-subschema-utils
-===
-
-## Installation
-```sh
- $ yarn install subschema-utils
-```
+General utils for subschema.

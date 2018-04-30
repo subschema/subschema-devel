@@ -1,7 +1,1 @@
-subschema-resolver-id
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-id
-```
+Resolve an elements id from path.

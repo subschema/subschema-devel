@@ -1,7 +1,3 @@
-subschema-plugin-autocomplete
-===
+Autocomplete is an autocompleter, it has an optional processor which will resolve against the loaders installed processors.
 
-## Installation
-```sh
- $ yarn install subschema-plugin-autocomplete
-```
+See the [example](https://subschema.github.io/subschema/#/Autocomplete)

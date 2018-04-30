@@ -1,7 +1,1 @@
-subschema-resolver-processor
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-processor
-```
+Injects a processor.

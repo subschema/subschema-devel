@@ -1,5 +1,6 @@
 {
   "name": "subschema-example-autocomplete",
+  "description": "Provides an autocomplete component for subschema",
   "version": "4.0.0-b-1.6",
   "scripts": {
     "prepublish": "subschema-babel",

@@ -1,7 +1,1 @@
-subschema-plugin-playground
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-playground
-```
+The component for subschema playgrounds.

@@ -16,7 +16,7 @@ Widget.css
 
 With the help of webpack if you include Widget.css it will expose ".container" as "container" in the resulting object.
 
-```es6
+```js static
  import WidgetStyle from './Widget.css';
  //WidgetStyle.container will have a generated css class name.
 
@@ -24,7 +24,7 @@ With the help of webpack if you include Widget.css it will expose ".container" a
 
 To inject styles into Components use the PropTypes.style resolver and add the stylesheet to the loader.
 
-```es6
+```js static
 //index.js
 import WidgetStyle from './widget/Widget.css';
 import Widget from './widget/Widget.jsx';
@@ -38,7 +38,7 @@ export default ({ types, styles });
 ```
 Now we need to access the style object from our component.
 
-```es6
+```js static
 //Widget.jsx
 import {PropTypes} from 'Subschema';
 import React, {Component} from 'react';

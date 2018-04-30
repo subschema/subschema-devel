@@ -1,7 +1,4 @@
-subschema-plugin-type-hidden
-===
+Hidden
+Render a hidden input field
 
-## Installation
-```sh
- $ yarn install subschema-plugin-type-hidden
-```
+See the [example](http://subschema.github.io/subschema/#/Hidden)

@@ -1,7 +1,1 @@
-subschema-resolver-transition
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-transition
-```
+Returns a resolved transition.

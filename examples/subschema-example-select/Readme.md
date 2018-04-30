@@ -1,7 +1,1 @@
-subschema-example-select
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-select
-```
+Shows how to use the select control.

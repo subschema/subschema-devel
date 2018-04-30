@@ -1,7 +1,1 @@
-subschema-resolver-typeclass
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-typeclass
-```
+Injects a className based on type.

@@ -1,7 +1,3 @@
-subschema-plugin-object
-===
+Renders an object key.   Wrapps said object in a fieldset by default.
 
-## Installation
-```sh
- $ yarn install subschema-plugin-object
-```
+See the [example](http://subschema.github.io/subschema/#/NestedForms)

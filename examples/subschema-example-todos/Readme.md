@@ -1,7 +1,1 @@
-subschema-example-todos
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-todos
-```
+A simple todo list to show how to use the List component.

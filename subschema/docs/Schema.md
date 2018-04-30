@@ -1,5 +1,4 @@
-The Schema in Subschema.
-===
+
 The schema for subschema was originally based on the schema used by [backbone forms](https://github.com/powmedia/backbone-forms),  while still being mostly compatible it has diverged. 
 
 Schemas have 2 sections, the first section "schema", defines fields. The second defines fieldsets.
@@ -8,7 +7,8 @@ Schemas have 2 sections, the first section "schema", defines fields. The second 
 Subschema magic happens through propType injection.  The rules are pretty simple.
 
 Example Component:
-```jsx
+
+```js static
 import React, {Component} from 'react';
 import ReactPropTypes from 'prop-types';
 import PropTypes from 'subschema-prop-types';
@@ -55,7 +55,7 @@ These rules hold true for all components injected by Subschema.
 
 ## Field
 A field in subschema defines a type and optionally a template, validator for the field.
-```jsx
+```js static
 schema:{
 [path]:{ //<-- the path is what the data will be named.
     //required
@@ -87,7 +87,7 @@ schema:{
 A fieldset is a set of fields, the can be nested indefinitely.   They are meant to describe how you want subschema to layout
 your fields.
 
-```js
+```js static
  fieldsets:[{
     fields:Paths, //<-- fields are a comma delimited string or array of string set of fields matching the paths 
                  //described in the schema section
@@ -115,7 +115,7 @@ a string type field.
 
 Basic Example Schema:
 
-```js
+```js static
 {
   schema:{
     //If a string is given as the value to a schema key, than it is treated as {type:<string>} or in this case
@@ -127,7 +127,7 @@ Basic Example Schema:
 
 ```
 Example with fieldsets.
-```js
+```js static
 
 {
   schema:{

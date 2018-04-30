@@ -1,7 +1,1 @@
-subschema-example-radio
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-radio
-```
+Shows how to use the radio control.

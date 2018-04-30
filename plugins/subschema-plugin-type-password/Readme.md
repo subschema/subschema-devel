@@ -1,7 +1,3 @@
-subschema-plugin-type-password
-===
+Password type.
 
-## Installation
-```sh
- $ yarn install subschema-plugin-type-password
-```
+See the [example](http://subschema.github.io/subschema/#/Login)

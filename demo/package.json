@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "subschema-webpack-dev-server",
-    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs",
+    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs/dist/demo",
     "server": "subschema-webpack-dev-server"
   },
   "subschema": {
@@ -45,6 +45,9 @@
   "source": "src",
   "main": "lib",
   "mrbuilder": {
+    "presets": [
+      "subschema-styles-bootstrap4"
+    ],
     "plugins": [
       "mrbuilder-plugin-markdown",
       [
@@ -68,7 +71,6 @@
         }
       ],
       "subschema",
-      "subschema-styles-bootstrap4",
       "subschema-plugin-autoloader",
       "subschema-plugin-project"
     ]

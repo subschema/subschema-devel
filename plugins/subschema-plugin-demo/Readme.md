@@ -1,7 +1,1 @@
-subschema-plugin-demo
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-demo
-```
+Components for use in the demo.

@@ -1,7 +1,1 @@
-subschema-plugin-template-checkboxesgroup
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-template-checkboxesgroup
-```
+A template for rendering checkboxes with [subschema-plugin-type-checkboxes](#subschema-plugin-type-checkboxes)

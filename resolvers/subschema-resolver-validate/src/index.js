@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "subschema-prop-types";
 import { noop, toArray, warning } from "subschema-utils";
 
 function initValidators(nval) {
-    if (typeof nval === 'function') {
+    if (nval instanceof RegExp) {
+        const re = this.loadValidator('regexp');
+        return re({ regexp: nval });
+    } else if (typeof nval === 'function') {
         return nval;
     }
     if (typeof nval === 'string') {
@@ -67,7 +70,7 @@ export function loadValidators(value, key, props, context) {
 
 export default {
     resolver: {
-        validate: function(Clazz, key) {
+        validate: function (Clazz, key) {
             Clazz.contextTypes.loader       = PropTypes.loader;
             Clazz.contextTypes.valueManager = PropTypes.valueManager;
 

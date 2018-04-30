@@ -1,0 +1,55 @@
+{
+  "name": "subschema-docs",
+  "version": "4.0.0-b-1.6",
+  "dependencies": {
+    "lerna": "^2.11.0",
+    "mrbuilder": "^3.0.0"
+  },
+  "devDependencies": {
+    "mrbuilder-plugin-doc-prop-types": "^3.0.0",
+    "mrbuilder-plugin-emeth": "^3.0.0",
+    "mrbuilder-plugin-react-styleguidist": "^3.0.0",
+    "mrbuilder-plugin-stylus": "^3.0.0"
+  },
+  "scripts": {
+    "start:styleguide": "mrbuilder",
+    "styleguide": "mrbuilder",
+    "start": "$npm_execpath run start:styleguide"
+  },
+  "mrbuilder": {
+    "plugins": [
+      [
+        "mrbuilder-plugin-react-styleguidist",
+        false
+      ],
+      "./src/index",
+      [
+        "mrbuilder-plugin-html",
+        false
+      ],
+      [
+        "mrbuilder-plugin-webpack",
+        {
+          "app": "examples/stylist",
+          "public": "",
+          "devtool":"cheap-module-source-map"
+        }
+      ]
+    ],
+    "presets": [
+      "subschema",
+      "subschema-styles-bootstrap4",
+      "subschema-plugin-autoloader",
+      "subschema-plugin-project"
+    ]
+  },
+  "subschema":{
+    "presets":[
+      "subschema-preset-web-form",
+      "subschema-preset-wizard",
+      "subschema-preset-list",
+      "subschema-preset-demo",
+      "subschema-preset-examples"
+    ]
+  }
+}

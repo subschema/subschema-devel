@@ -2,7 +2,35 @@
   "presets": [
     "mrbuilder-preset-lib"
   ],
+  "plugins": [
+    [
+      "mrbuilder-plugin-css",
+      {
+        "useStyleLoader": false,
+        "useNameHash": "style.css"
+      }
+    ],
+    [
+      "mrbuilder-plugin-webpack",
+      {
+        "libraryTarget": "umd",
+        "mode": "none"
+      }
+    ]
+  ],
   "env": {
+    "production": {
+      "plugins": [
+        [
+          "mrbuilder-plugin-chunk",
+          false
+        ],
+        [
+          "mrbuilder-plugin-uglify",
+          false
+        ]
+      ]
+    },
     "test": {
       "plugins": [
         "subschema",

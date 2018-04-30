@@ -1,7 +1,1 @@
-subschema-example-listenerproperty
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-listenerproperty
-```
+Shows how to use a listener propType.

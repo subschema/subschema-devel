@@ -1,7 +1,1 @@
-subschema-prop-types
-===
-
-## Installation
-```sh
- $ yarn install subschema-prop-types
-```
+PropTypes that enable subschema's dependency injection.

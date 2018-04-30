@@ -1,7 +1,1 @@
-subschema-example-wizard
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-wizard
-```
+Shows how to use the wizard.

@@ -1,7 +1,1 @@
-subschema-example-loader
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-loader
-```
+Shows how to add types to a loader.

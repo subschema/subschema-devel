@@ -1,11 +1,10 @@
-Loaders
-===
 Loaders are how subschema resolves types, templates, operators, processors and other configurable classes.   The are instantiated from the loaderFactory.  Loaders are nestable with a last in first out design.   That is the last object registered the first one that will be returned.
 
 By default subschema has a preconfigured loader that has DefaultLoader already registered.  And unless a different one is passed into *Form* than it will be the one that is used.
 
 Example:
-```es6
+```js static
+
  import {loaderFactory, loader} from 'subschema';
 
  const newLoader = loaderFactory();
@@ -20,7 +19,8 @@ Example:
 To create a new loader, you can call loaderFactory.  loaderFactory takes an array of loaders as the first argument and returns a loader object.
 
 The default Subschema loader is equivalent to:
-```es6
+```js static
+
  import {loaderFactory, DefaultLoader} from 'subschema';
 
  const loader = loaderFactory([DefaultLoader]);
@@ -45,7 +45,8 @@ For each Kind of loader, the following methods exist
 
 Example: Loading a new type.
 
-```jsx
+```js static
+
   import MyType from 'my-type';
   import YourType from 'your-type';
   import Something from 'something';
@@ -64,7 +65,8 @@ Example: Loading a new type.
 ## Creating a new Kind
 Sometimes you may need a new Kind of thing, for injection.  To do this call
 
-```jsx
+```js static
+
  import { loader} from 'subschema';
  loader.loaderType('Duper');
  //now listDupers, loadDuper, addDuper are available on loader.
@@ -80,7 +82,8 @@ Say you had a component that required a style, a processor, a template and a typ
 You could export the following index.js.  So your component does not have
 to have any dependencies on subschema.
 
-```es6
+```js static
+
  import SpecialStyle from './special-style'; 
  import SpecialTemplate from './special-template';
  import SpecialType from './special-type';
@@ -99,7 +102,8 @@ to have any dependencies on subschema.
 
 And then the consumer would just set it up
 
-```es6
+```js static
+
    import {Form, loader} from 'subschema';
    import special from 'special';
 
@@ -111,8 +115,8 @@ And then the consumer would just set it up
 Loaders don't do the injection magic.  Resolvers do that, loaders are basically a fancy map, that allows for extra configurability.
 For instance of you wanted to use a different default template, you could just register a new one in the loader.
 
+```js static
 
-```es6
 
   import {loader} from 'subschema';
   import CustomEditorTemplate from 'custom-editor-template';

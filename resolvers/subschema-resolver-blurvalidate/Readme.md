@@ -1,8 +1,1 @@
-subschema-resolver-blurvalidate
-===
-Resolver the handles blur validate
-
-## Installation
-```sh
- $ yarn install subschema-resolver-blurvalidate
-```
+Validates on blur, if the component has changed value.

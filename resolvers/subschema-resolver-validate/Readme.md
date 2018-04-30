@@ -1,7 +1,1 @@
-subschema-resolver-validate
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-validate
-```
+Injects a function that will validate the Component.

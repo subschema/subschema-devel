@@ -1,7 +1,1 @@
-subschema-example-modal
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-modal
-```
+Shows how to use the modal template.

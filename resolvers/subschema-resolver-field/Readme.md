@@ -1,7 +1,1 @@
-subschema-resolver-field
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-field
-```
+Normalization for field injection, typically only used in subschema internals.

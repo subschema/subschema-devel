@@ -1,7 +1,3 @@
-subschema-plugin-type-number
-===
+A number type.  Probably better off using dataType=number.
 
-## Installation
-```sh
- $ yarn install subschema-plugin-type-number
-```
+See the [example](http://subschema.github.io/subschema/#/Basic)

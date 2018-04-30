@@ -14,12 +14,7 @@
         "useNameHash": false
       }
     ],
-    [
-      "mrbuilder-plugin-webpack",
-      {
-        "libraryTarget": "umd"
-      }
-    ],
+
     "mrbuilder-plugin-less",
     "subschema-plugin-autoloader"
   ],
@@ -36,6 +31,7 @@
     },
     "subschema-web": {
       "plugins": [
+
         [
           "mrbuilder-plugin-version",
           {
