@@ -18,8 +18,8 @@ cache:
   directories:
     - node_modules
 install:
-  - yarn
+  - yarn install
 script:
-  - yarn test
+  - yarn ci
 env:
   - MRBUILDER_PLUGIN_KARMA_BROWSERS='["ChromeHeadless"]'

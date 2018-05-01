@@ -17,6 +17,14 @@
     "production": {
       "plugins": [
         [
+          "mrbuilder-plugin-clean",
+          {
+            "paths": [
+              "./lib"
+            ]
+          }
+        ],
+        [
           "mrbuilder-plugin-chunk",
           false
         ],

@@ -6670,6 +6670,14 @@ mrbuilder-plugin-chunk@^3.0.1:
   dependencies:
     mrbuilder-utils "^3.0.1"
 
+mrbuilder-plugin-clean@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-clean/-/mrbuilder-plugin-clean-3.0.1.tgz#48adeb07ca0be6070531f606e20f9561fe24100a"
+  dependencies:
+    clean-webpack-plugin "^0.1.19"
+    mrbuilder-utils "^3.0.1"
+    rimraf "^2.6.2"
+
 mrbuilder-plugin-css@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-3.0.1.tgz#3b0c6f0bd7cd66ee8ba38f486af7f6d21ae75341"

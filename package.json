@@ -5,11 +5,12 @@
     "nyc": "^11.3.0"
   },
   "scripts": {
-    "clean": "lerna clean --yes && lerna run clean",
+    "clean": "lerna clean --yes && rimraf node_modules",
     "rebuild": "lerna clean --yes && lerna run clean && yarn install && lerna run prepublish && lr-idea",
     "coverage": "MRBUILDER_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
-    "test": "lerna run prepublish && lerna run test",
+    "test": "lerna run test",
     "prepublish": "lerna run prepublish",
+    "ci":"yarn install && yarn run test",
     "demo": "cd subschema-component-demo && yarn run demo"
   },
   "private": true,

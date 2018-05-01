@@ -9,6 +9,7 @@
     "subschema-utils": "^4.0.0-b-1.6"
   },
   "devDependencies": {
+    "mrbuilder-plugin-clean": "^3.0.1",
     "subschema-dev-support": "^4.0.0-b-1.6"
   },
   "source": "src",
