@@ -14,7 +14,8 @@
   "scripts": {
     "start:styleguide": "mrbuilder",
     "styleguide": "mrbuilder",
-    "start": "$npm_execpath run start:styleguide"
+    "start": "$npm_execpath run start:styleguide",
+    "clean": "subschema-clean"
   },
   "mrbuilder": {
     "plugins": [
@@ -32,7 +33,7 @@
         {
           "app": "examples/stylist",
           "public": "",
-          "devtool":"cheap-module-source-map"
+          "devtool": "cheap-module-source-map"
         }
       ]
     ],
@@ -43,8 +44,8 @@
       "subschema-plugin-project"
     ]
   },
-  "subschema":{
-    "presets":[
+  "subschema": {
+    "presets": [
       "subschema-preset-web-form",
       "subschema-preset-wizard",
       "subschema-preset-list",

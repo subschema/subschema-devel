@@ -8,5 +8,8 @@
     "plugins": [
       "subschema-plugin-type-wizard"
     ]
+  },
+  "scripts": {
+    "clean": "subschema-clean"
   }
 }

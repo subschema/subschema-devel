@@ -13,12 +13,14 @@
     "subschema.wiki": "^4.0.0-b-1.6"
   },
   "devDependencies": {
+    "mrbuilder-plugin-markdown": "^3.0.1",
     "subschema-dev-support": "^4.0.0-b-1.6"
   },
   "scripts": {
     "start": "subschema-webpack-dev-server",
     "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs/dist/demo",
-    "server": "subschema-webpack-dev-server"
+    "server": "subschema-webpack-dev-server",
+    "clean": "subschema-clean"
   },
   "subschema": {
     "plugins": [

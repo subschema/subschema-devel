@@ -4,7 +4,8 @@
   "description": "Subschema Test Support",
   "main": "lib",
   "scripts": {
-    "prepublish": "subschema-babel"
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "chai": "^4.1.2",

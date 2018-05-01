@@ -9,7 +9,7 @@
     "test": "subschema-karma",
     "start": "subschema-webpack-dev-server",
     "prepublish": "subschema-webpack --devtool sourcemap",
-    "clean": "rimraf ./lib ./dist"
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "jszip": "^3.1.5"

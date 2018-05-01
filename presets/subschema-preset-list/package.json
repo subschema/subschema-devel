@@ -8,5 +8,8 @@
     "plugins": [
       "subschema-plugin-list"
     ]
+  },
+  "scripts": {
+    "clean": "subschema-clean"
   }
 }

@@ -18,8 +18,11 @@
     "subschema-clean": "bin/subschema-clean.js",
     "subschema-karma": "bin/subschema-karma.js",
     "subschema-mocha": "bin/subschema-mocha.js",
-    "subschema-webpack-dev-server": "bin/subschema-webpack-dev-server.js",
-    "subschema-webpack": "bin/subschema-webpack.js"
+    "subschema-webpack": "bin/subschema-webpack.js",
+    "subschema-webpack-dev-server": "bin/subschema-webpack-dev-server.js"
   },
-  "main": "src"
+  "main": "src",
+  "scripts": {
+    "clean": "subschema-clean"
+  }
 }
