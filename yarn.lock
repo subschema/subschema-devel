@@ -6630,16 +6630,16 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
-mrbuilder-optionsmanager@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-optionsmanager/-/mrbuilder-optionsmanager-3.0.0.tgz#8a65c7692df54b8b09931e1d98d2be1941c33cd6"
+mrbuilder-optionsmanager@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-optionsmanager/-/mrbuilder-optionsmanager-3.0.1.tgz#f7f8d318c14b1c2806d31287d3ea861d0037a996"
   dependencies:
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-utils "^3.0.1"
     which "^1.3.0"
 
-mrbuilder-plugin-babel@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-3.0.0.tgz#8c48ebaab17eeb20d7e15b7dacb40574638b2ae1"
+mrbuilder-plugin-babel@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-babel/-/mrbuilder-plugin-babel-3.0.1.tgz#4fe838b12e2078dd23f5f4fa63c2e3ca8e696f04"
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.0"
@@ -6654,99 +6654,99 @@ mrbuilder-plugin-babel@^3.0.0:
     babel-preset-react "^6.24.1"
     babel-preset-stage-2 "^6.24.1"
     babel-runtime "^6.26.0"
-    mrbuilder-optionsmanager "^3.0.0"
-    mrbuilder-plugin-browserslist "^3.0.0"
+    mrbuilder-optionsmanager "^3.0.1"
+    mrbuilder-plugin-browserslist "^3.0.1"
     rimraf "^2.6.2"
 
-mrbuilder-plugin-browserslist@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-3.0.0.tgz#ce14fa3cab458fbf26b6bc630c6edfe3e4785f6c"
+mrbuilder-plugin-browserslist@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-browserslist/-/mrbuilder-plugin-browserslist-3.0.1.tgz#7ad3cca5398c3415709d99ace319759d996f6d1c"
   dependencies:
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-utils "^3.0.1"
 
-mrbuilder-plugin-chunk@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-chunk/-/mrbuilder-plugin-chunk-3.0.0.tgz#fe39b68cd190da7a5c8ef1aae52715268fd71720"
+mrbuilder-plugin-chunk@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-chunk/-/mrbuilder-plugin-chunk-3.0.1.tgz#5f2c6d12b97044b0ebaf7657b0464d9a4c2c7ae3"
   dependencies:
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-utils "^3.0.1"
 
-mrbuilder-plugin-css@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-3.0.0.tgz#eec6142a6ef0e1b698de84bc8a577075c99ee527"
+mrbuilder-plugin-css@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-css/-/mrbuilder-plugin-css-3.0.1.tgz#3b0c6f0bd7cd66ee8ba38f486af7f6d21ae75341"
   dependencies:
     autoprefixer "^8.2.0"
     css-loader "^0.28.11"
     find-package "^1.0.0"
     mini-css-extract-plugin "^0.4.0"
-    mrbuilder-plugin-browserslist "^3.0.0"
+    mrbuilder-plugin-browserslist "^3.0.1"
     postcss-loader "^2.1.3"
     style-loader "^0.20.3"
 
-mrbuilder-plugin-doc-prop-types@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-doc-prop-types/-/mrbuilder-plugin-doc-prop-types-3.0.0.tgz#ec95aa903fd879bfc97b7cea9aa9fb051cef03b9"
+mrbuilder-plugin-doc-prop-types@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-doc-prop-types/-/mrbuilder-plugin-doc-prop-types-3.0.1.tgz#34160cac8e3174440c13e60bef013ea3b9aca382"
   dependencies:
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-utils "^3.0.1"
 
-mrbuilder-plugin-emeth@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-emeth/-/mrbuilder-plugin-emeth-3.0.0.tgz#492a57bdfc39e8153e22f9d39fc7ca9003ffa763"
+mrbuilder-plugin-emeth@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-emeth/-/mrbuilder-plugin-emeth-3.0.1.tgz#34f8a2d8e5d9821f85a9a3702ca49b393d676ca1"
   dependencies:
     emeth "^1.0.2"
 
-mrbuilder-plugin-env@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-env/-/mrbuilder-plugin-env-3.0.0.tgz#1428f3d558fd042573b0fcf583b9ec0e3193259d"
+mrbuilder-plugin-env@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-env/-/mrbuilder-plugin-env-3.0.1.tgz#3f0fc78b8eb6c6c02c863e7a5f01db4be055de77"
 
-mrbuilder-plugin-enzyme@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-3.0.0.tgz#01420fdadcf0e74f4d1e466fb09efcaebd36c119"
+mrbuilder-plugin-enzyme@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-3.0.1.tgz#16fd25882843072cc0546dc12458f25d08043245"
   dependencies:
     enzyme "^3.2.0"
     enzyme-adapter-react-16 "^1.1.0"
-    mrbuilder-plugin-lodash "^3.0.0"
+    mrbuilder-plugin-lodash "^3.0.1"
 
-mrbuilder-plugin-eslint@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-eslint/-/mrbuilder-plugin-eslint-3.0.0.tgz#f8f1070a1d5ff9806fac881cbab3977b5a52b4d0"
+mrbuilder-plugin-eslint@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-eslint/-/mrbuilder-plugin-eslint-3.0.1.tgz#6c8d83848409ff0797d03b753c91f1e64db4af3d"
   dependencies:
     babel-eslint "^8.2.2"
     eslint "^4.19.1"
     eslint-loader "^2.0.0"
     eslint-plugin-react "^7.5.1"
 
-mrbuilder-plugin-filetypes@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-filetypes/-/mrbuilder-plugin-filetypes-3.0.0.tgz#10550ea1e1e39f6dfd48cc99485875a25f8d0061"
+mrbuilder-plugin-filetypes@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-filetypes/-/mrbuilder-plugin-filetypes-3.0.1.tgz#f44d544171fe889cb9b92ceb209002a040fa0ca0"
   dependencies:
     file-loader "^1.1.11"
     url-loader "^1.0.1"
 
-mrbuilder-plugin-fonts@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-fonts/-/mrbuilder-plugin-fonts-3.0.0.tgz#669b7a44621b3598c09155032765ab4e85e959e9"
+mrbuilder-plugin-fonts@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-fonts/-/mrbuilder-plugin-fonts-3.0.1.tgz#28558c6b38462808de5a2b407840bdd777702ebc"
   dependencies:
     file-loader "^1.1.11"
     url-loader "^1.0.1"
 
-mrbuilder-plugin-hot@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-hot/-/mrbuilder-plugin-hot-3.0.0.tgz#02fa1f66ade411813d8f503b1116362017620ce9"
+mrbuilder-plugin-hot@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-hot/-/mrbuilder-plugin-hot-3.0.1.tgz#1049f3ddad112b64165f7cc67e9076bdaf0f2e99"
   dependencies:
     react-hot-loader "^3.1.2"
 
-mrbuilder-plugin-html@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-html/-/mrbuilder-plugin-html-3.0.0.tgz#cdf63c503018ba8d19f10c648f1bea894d22c653"
+mrbuilder-plugin-html@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-html/-/mrbuilder-plugin-html-3.0.1.tgz#1685c3db2bcd5efccd569621d4b8d1b48dc2dfb5"
   dependencies:
     html-webpack-plugin "^3.2.0"
     html-webpack-template "^3.0.2"
-    mrbuilder-plugin-babel "^3.0.0"
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-plugin-babel "^3.0.1"
+    mrbuilder-utils "^3.0.1"
 
-mrbuilder-plugin-karma@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-karma/-/mrbuilder-plugin-karma-3.0.0.tgz#fe097b89b88d24e4221657faeaa6b307ffe998fd"
+mrbuilder-plugin-karma@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-karma/-/mrbuilder-plugin-karma-3.0.1.tgz#c91662214cc9ac03e1b4442b6f0102d7c147d187"
   dependencies:
     karma "^1.7.1"
     karma-chrome-launcher "^2.2.0"
@@ -6757,46 +6757,46 @@ mrbuilder-plugin-karma@^3.0.0:
     karma-sourcemap-loader "^0.3.7"
     karma-spec-reporter "^0.0.31"
     karma-webpack "^2.0.13"
-    mrbuilder-optionsmanager "^3.0.0"
-    mrbuilder-plugin-enzyme "^3.0.0"
-    mrbuilder-plugin-mocha "^3.0.0"
-    mrbuilder-plugin-webpack "^3.0.0"
+    mrbuilder-optionsmanager "^3.0.1"
+    mrbuilder-plugin-enzyme "^3.0.1"
+    mrbuilder-plugin-mocha "^3.0.1"
+    mrbuilder-plugin-webpack "^3.0.1"
 
-mrbuilder-plugin-less@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-less/-/mrbuilder-plugin-less-3.0.0.tgz#e2841a2c306d5500c3a5ecbf2824b277fa0c7c30"
+mrbuilder-plugin-less@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-less/-/mrbuilder-plugin-less-3.0.1.tgz#d98cadb914451ec102eb40c9a27a58094c53ef43"
   dependencies:
     less "^2.7.3"
     less-loader "^4.1.0"
-    mrbuilder-plugin-css "^3.0.0"
+    mrbuilder-plugin-css "^3.0.1"
 
-mrbuilder-plugin-lodash@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-lodash/-/mrbuilder-plugin-lodash-3.0.0.tgz#d91025d095f2e38cf78fe9b63e9c973610edc5e2"
+mrbuilder-plugin-lodash@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-lodash/-/mrbuilder-plugin-lodash-3.0.1.tgz#4c2b14e828c1da02a27492730408641518ef53c4"
   dependencies:
     lodash-es "^4.17.4"
 
-mrbuilder-plugin-mocha@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-mocha/-/mrbuilder-plugin-mocha-3.0.0.tgz#e5082735c8cdb1a3981d64d6c862dd9bc42df8d5"
+mrbuilder-plugin-mocha@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-mocha/-/mrbuilder-plugin-mocha-3.0.1.tgz#676452cd7bd52a7676f3c517ae4fbaf47c08f5a7"
   dependencies:
     chai "^4.1.2"
     jsdom "^11.5.1"
     mocha "^4.0.1"
-    mrbuilder-optionsmanager "^3.0.0"
-    mrbuilder-plugin-babel "^3.0.0"
+    mrbuilder-optionsmanager "^3.0.1"
+    mrbuilder-plugin-babel "^3.0.1"
     raf "^3.4.0"
 
-mrbuilder-plugin-react-styleguidist@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-react-styleguidist/-/mrbuilder-plugin-react-styleguidist-3.0.0.tgz#1d1e55809a85e3638093d93a8a88e3c393981c44"
+mrbuilder-plugin-react-styleguidist@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-react-styleguidist/-/mrbuilder-plugin-react-styleguidist-3.0.1.tgz#2871de9b2b73fd4634bb17fc8e890f48d3071db1"
   dependencies:
-    mrbuilder-plugin-doc-prop-types "^3.0.0"
+    mrbuilder-plugin-doc-prop-types "^3.0.1"
     react-styleguidist "^7.0.7"
 
-mrbuilder-plugin-react@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-react/-/mrbuilder-plugin-react-3.0.0.tgz#d6e6f54426b9702fa640570ef776f7cf2cd6525b"
+mrbuilder-plugin-react@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-react/-/mrbuilder-plugin-react-3.0.1.tgz#dc8ac1d9e6a796ef3c7d1e258a83ca9b20a8c280"
   dependencies:
     create-react-class "^15.6.3"
     json5 "^1.0.1"
@@ -6805,29 +6805,29 @@ mrbuilder-plugin-react@^3.0.0:
     react "^16.3.1"
     react-dom "^16.3.1"
 
-mrbuilder-plugin-sass@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-sass/-/mrbuilder-plugin-sass-3.0.0.tgz#4bfbab0f2ce25846a97c523bdf50d3e2ae1206b8"
+mrbuilder-plugin-sass@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-sass/-/mrbuilder-plugin-sass-3.0.1.tgz#033e47fee5758d611c833d12b1ab8f1792151a67"
   dependencies:
     loader-utils "^1.1.0"
-    mrbuilder-plugin-css "^3.0.0"
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-plugin-css "^3.0.1"
+    mrbuilder-utils "^3.0.1"
     node-sass "^4.8.3"
     sass-loader "^6.0.7"
 
-mrbuilder-plugin-stylus@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-stylus/-/mrbuilder-plugin-stylus-3.0.0.tgz#8d6874898d4f646c2e4c255e0fdf40e3a07448f1"
+mrbuilder-plugin-stylus@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-stylus/-/mrbuilder-plugin-stylus-3.0.1.tgz#0c766a10c500dcad6585c4387d0fe5adbd54e99b"
   dependencies:
     loader-utils "^1.1.0"
-    mrbuilder-plugin-css "^3.0.0"
+    mrbuilder-plugin-css "^3.0.1"
     nib "^1.1.2"
     stylus "^0.54.5"
     stylus-loader "^3.0.2"
 
-mrbuilder-plugin-uglify@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-uglify/-/mrbuilder-plugin-uglify-3.0.0.tgz#6adaa3c0ee4c45b26f4ae3083a1430efb8b3dd8e"
+mrbuilder-plugin-uglify@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-uglify/-/mrbuilder-plugin-uglify-3.0.1.tgz#bc42dd482f1bf299a0023661ca9d8ee0fc717626"
   dependencies:
     uglifyjs-webpack-plugin "^1.2.4"
 
@@ -6837,75 +6837,81 @@ mrbuilder-plugin-version@^3.0.0:
   dependencies:
     mrbuilder-utils "^3.0.0"
 
-mrbuilder-plugin-webpack-dev-server@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack-dev-server/-/mrbuilder-plugin-webpack-dev-server-3.0.0.tgz#6337f69593a0e560fc191291febd1467d98c4a6b"
+mrbuilder-plugin-version@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-version/-/mrbuilder-plugin-version-3.0.1.tgz#309b63eb9e23ddb8b75c235006c45200bfbf6c0c"
+  dependencies:
+    mrbuilder-utils "^3.0.1"
+
+mrbuilder-plugin-webpack-dev-server@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack-dev-server/-/mrbuilder-plugin-webpack-dev-server-3.0.1.tgz#ab1d13aaa6f6aea4a65a547cf3e5a812fc83e8b6"
   dependencies:
     loglevel "^1.6.0"
-    mrbuilder-optionsmanager "^3.0.0"
-    mrbuilder-plugin-webpack "^3.0.0"
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-optionsmanager "^3.0.1"
+    mrbuilder-plugin-webpack "^3.0.1"
+    mrbuilder-utils "^3.0.1"
     webpack-dev-server "^3.1.1"
 
-mrbuilder-plugin-webpack@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-3.0.0.tgz#4d7f8827f8f44412a3d384f44e02c3883a4b7539"
+mrbuilder-plugin-webpack@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-3.0.1.tgz#3248ac1585712d590d7e7f664fc58510ea5e8d73"
   dependencies:
     json-loader "^0.5.7"
-    mrbuilder-optionsmanager "^3.0.0"
-    mrbuilder-plugin-browserslist "^3.0.0"
-    mrbuilder-utils "^3.0.0"
+    mrbuilder-optionsmanager "^3.0.1"
+    mrbuilder-plugin-browserslist "^3.0.1"
+    mrbuilder-utils "^3.0.1"
     raw-loader "^0.5.1"
     val-loader "^1.1.0"
     webpack "^4.5.0"
     webpack-cli "^2.0.14"
 
-mrbuilder-preset-app@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-preset-app/-/mrbuilder-preset-app-3.0.0.tgz#da851c50e76fa67afcd475b1435b360c6aa70de7"
+mrbuilder-preset-app@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-preset-app/-/mrbuilder-preset-app-3.0.1.tgz#faa03574f8cb8acd7f7e035d651c24185ec52647"
   dependencies:
-    mrbuilder-plugin-babel "^3.0.0"
-    mrbuilder-plugin-browserslist "^3.0.0"
-    mrbuilder-plugin-chunk "^3.0.0"
-    mrbuilder-plugin-css "^3.0.0"
-    mrbuilder-plugin-env "^3.0.0"
-    mrbuilder-plugin-filetypes "^3.0.0"
-    mrbuilder-plugin-fonts "^3.0.0"
-    mrbuilder-plugin-hot "^3.0.0"
-    mrbuilder-plugin-html "^3.0.0"
-    mrbuilder-plugin-less "^3.0.0"
-    mrbuilder-plugin-uglify "^3.0.0"
-    mrbuilder-plugin-webpack "^3.0.0"
-    mrbuilder-plugin-webpack-dev-server "^3.0.0"
+    mrbuilder-plugin-babel "^3.0.1"
+    mrbuilder-plugin-browserslist "^3.0.1"
+    mrbuilder-plugin-chunk "^3.0.1"
+    mrbuilder-plugin-css "^3.0.1"
+    mrbuilder-plugin-env "^3.0.1"
+    mrbuilder-plugin-filetypes "^3.0.1"
+    mrbuilder-plugin-fonts "^3.0.1"
+    mrbuilder-plugin-hot "^3.0.1"
+    mrbuilder-plugin-html "^3.0.1"
+    mrbuilder-plugin-less "^3.0.1"
+    mrbuilder-plugin-uglify "^3.0.1"
+    mrbuilder-plugin-webpack "^3.0.1"
+    mrbuilder-plugin-webpack-dev-server "^3.0.1"
 
-mrbuilder-preset-lib@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-preset-lib/-/mrbuilder-preset-lib-3.0.0.tgz#688fee4bdce4965f1b74aed62fd0c83d1f3787e3"
+mrbuilder-preset-lib@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-preset-lib/-/mrbuilder-preset-lib-3.0.1.tgz#3b0b29ab556be8a98921da7bc1275f6845492971"
   dependencies:
-    mrbuilder-plugin-babel "^3.0.0"
-    mrbuilder-plugin-browserslist "^3.0.0"
-    mrbuilder-plugin-css "^3.0.0"
-    mrbuilder-plugin-env "^3.0.0"
-    mrbuilder-plugin-enzyme "^3.0.0"
-    mrbuilder-plugin-eslint "^3.0.0"
-    mrbuilder-plugin-filetypes "^3.0.0"
-    mrbuilder-plugin-fonts "^3.0.0"
-    mrbuilder-plugin-hot "^3.0.0"
-    mrbuilder-plugin-html "^3.0.0"
-    mrbuilder-plugin-react "^3.0.0"
-    mrbuilder-plugin-webpack "^3.0.0"
-    mrbuilder-plugin-webpack-dev-server "^3.0.0"
+    mrbuilder-plugin-babel "^3.0.1"
+    mrbuilder-plugin-browserslist "^3.0.1"
+    mrbuilder-plugin-css "^3.0.1"
+    mrbuilder-plugin-env "^3.0.1"
+    mrbuilder-plugin-enzyme "^3.0.1"
+    mrbuilder-plugin-eslint "^3.0.1"
+    mrbuilder-plugin-filetypes "^3.0.1"
+    mrbuilder-plugin-fonts "^3.0.1"
+    mrbuilder-plugin-hot "^3.0.1"
+    mrbuilder-plugin-html "^3.0.1"
+    mrbuilder-plugin-react "^3.0.1"
+    mrbuilder-plugin-webpack "^3.0.1"
+    mrbuilder-plugin-webpack-dev-server "^3.0.1"
 
-mrbuilder-preset-test@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder-preset-test/-/mrbuilder-preset-test-3.0.0.tgz#62cdf2b0e6ed6c212434f391107029e0d1560115"
+mrbuilder-preset-test@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-preset-test/-/mrbuilder-preset-test-3.0.1.tgz#1747a81b684fe5e68e848a503876192eaaaa587e"
   dependencies:
-    mrbuilder-plugin-css "^3.0.0"
-    mrbuilder-plugin-enzyme "^3.0.0"
-    mrbuilder-plugin-karma "^3.0.0"
-    mrbuilder-plugin-mocha "^3.0.0"
-    mrbuilder-plugin-react "^3.0.0"
-    mrbuilder-plugin-webpack "^3.0.0"
+    mrbuilder-plugin-css "^3.0.1"
+    mrbuilder-plugin-enzyme "^3.0.1"
+    mrbuilder-plugin-karma "^3.0.1"
+    mrbuilder-plugin-mocha "^3.0.1"
+    mrbuilder-plugin-react "^3.0.1"
+    mrbuilder-plugin-webpack "^3.0.1"
 
 mrbuilder-utils@^3.0.0:
   version "3.0.0"
@@ -6913,12 +6919,18 @@ mrbuilder-utils@^3.0.0:
   dependencies:
     json5 "^1.0.1"
 
-mrbuilder@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mrbuilder/-/mrbuilder-3.0.0.tgz#33621b52ac3a215ae7f77b02c6d0c66bbb506aac"
+mrbuilder-utils@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder-utils/-/mrbuilder-utils-3.0.1.tgz#333ca5a67e335183a733c017708c21ec90b5bbfd"
+  dependencies:
+    json5 "^1.0.1"
+
+mrbuilder@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mrbuilder/-/mrbuilder-3.0.1.tgz#c84115577d64cd21f62f36c908ac9e8139cc9680"
   dependencies:
     in-publish "^2.0.0"
-    mrbuilder-optionsmanager "^3.0.0"
+    mrbuilder-optionsmanager "^3.0.1"
     react "^16.2.0"
     react-dom "^16.2.0"
 

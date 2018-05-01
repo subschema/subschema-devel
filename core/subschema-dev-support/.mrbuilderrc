@@ -1,25 +1,15 @@
 {
   "presets": [
-    "mrbuilder-preset-lib"
-  ],
-  "plugins": [
-    [
-      "mrbuilder-plugin-css",
-      {
-        "useStyleLoader": false,
-        "useNameHash": "style.css"
-      }
-    ],
-    [
-      "mrbuilder-plugin-webpack",
-      {
-        "libraryTarget": "umd",
-        "mode": "none"
-      }
-    ]
+    "mrbuilder-preset-lib",
+    "subschema"
   ],
   "env": {
     "mocha": {
+      "presets": [
+        "mrbuilder-preset-test"
+      ]
+    },
+    "karma": {
       "presets": [
         "mrbuilder-preset-test"
       ]
@@ -39,9 +29,6 @@
     "test": {
       "presets": [
         "mrbuilder-preset-test"
-      ],
-      "plugins": [
-        "subschema"
       ]
     }
   }
