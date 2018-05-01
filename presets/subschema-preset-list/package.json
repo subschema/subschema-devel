@@ -1,8 +1,8 @@
 {
   "name": "subschema-preset-list",
-  "version": "4.0.0-b-1.6",
+  "version": "4.0.0-b-1.7",
   "dependencies": {
-    "subschema-plugin-list": "^4.0.0-b-1.6"
+    "subschema-plugin-list": "^4.0.0-b-1.7"
   },
   "subschema": {
     "plugins": [

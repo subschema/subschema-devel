@@ -1,15 +1,15 @@
 {
   "name": "subschema-example-basic",
-  "version": "4.0.0-b-1.6",
+  "version": "4.0.0-b-1.7",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.0-b-1.6"
+    "subschema-utils": "^4.0.0-b-1.7"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.6"
+    "subschema-dev-support": "^4.0.0-b-1.7"
   },
   "source": "src",
   "main": "lib"

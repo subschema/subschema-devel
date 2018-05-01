@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-list",
-  "version": "4.0.0-b-1.6",
+  "version": "4.0.0-b-1.7",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -11,14 +11,14 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-plugin-content": "^4.0.0-b-1.6",
-    "subschema-plugin-object": "^4.0.0-b-1.6",
-    "subschema-plugin-template-buttons": "^4.0.0-b-1.6",
-    "subschema-rendertemplate": "^4.0.0-b-1.6",
-    "subschema-utils": "^4.0.0-b-1.6"
+    "subschema-plugin-content": "^4.0.0-b-1.7",
+    "subschema-plugin-object": "^4.0.0-b-1.7",
+    "subschema-plugin-template-buttons": "^4.0.0-b-1.7",
+    "subschema-rendertemplate": "^4.0.0-b-1.7",
+    "subschema-utils": "^4.0.0-b-1.7"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.6"
+    "subschema-dev-support": "^4.0.0-b-1.7"
   },
   "source": "src"
 }

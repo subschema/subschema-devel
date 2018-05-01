@@ -1,6 +1,6 @@
 {
   "name": "subschema-test-support",
-  "version": "4.0.0-b-1.6",
+  "version": "4.0.0-b-1.7",
   "description": "Subschema Test Support",
   "main": "lib",
   "scripts": {
@@ -13,14 +13,14 @@
     "enzyme-adapter-react-16": "^1.1.0",
     "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-context": "^4.0.0-b-1.6",
-    "subschema-dev-support": "^4.0.0-b-1.6",
-    "subschema-injection": "^4.0.0-b-1.6",
-    "subschema-loader": "^4.0.0-b-1.6",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.6",
-    "subschema-preset-resolvers": "^4.0.0-b-1.6",
-    "subschema-prop-types": "^4.0.0-b-1.6",
-    "subschema-valuemanager": "^4.0.0-b-1.6",
+    "subschema-context": "^4.0.0-b-1.7",
+    "subschema-dev-support": "^4.0.0-b-1.7",
+    "subschema-injection": "^4.0.0-b-1.7",
+    "subschema-loader": "^4.0.0-b-1.7",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.7",
+    "subschema-preset-resolvers": "^4.0.0-b-1.7",
+    "subschema-prop-types": "^4.0.0-b-1.7",
+    "subschema-valuemanager": "^4.0.0-b-1.7",
     "util": "^0.10.3"
   },
   "peerDependencies": {

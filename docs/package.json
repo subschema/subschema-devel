@@ -1,6 +1,6 @@
 {
   "name": "subschema-docs",
-  "version": "4.0.0-b-1.6",
+  "version": "4.0.0-b-1.7",
   "dependencies": {
     "lerna": "^2.11.0",
     "mrbuilder": "^3.0.1"

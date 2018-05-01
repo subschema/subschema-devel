@@ -1,6 +1,6 @@
 {
   "name": "subschema",
-  "version": "4.0.0-b-1.6",
+  "version": "4.0.0-b-1.7",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -20,30 +20,30 @@
     "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
-    "subschema-context": "^4.0.0-b-1.6",
-    "subschema-css": "^4.0.0-b-1.6",
-    "subschema-dom": "^4.0.0-b-1.6",
-    "subschema-expression": "^4.0.0-b-1.6",
-    "subschema-field": "^4.0.0-b-1.6",
-    "subschema-fieldset": "^4.0.0-b-1.6",
-    "subschema-form": "^4.0.0-b-1.6",
-    "subschema-injection": "^4.0.0-b-1.6",
-    "subschema-loader": "^4.0.0-b-1.6",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.6",
-    "subschema-preset-list": "^4.0.0-b-1.6",
-    "subschema-preset-resolvers": "^4.0.0-b-1.6",
-    "subschema-preset-web-form": "^4.0.0-b-1.6",
-    "subschema-preset-wizard": "^4.0.0-b-1.6",
-    "subschema-prop-types": "^4.0.0-b-1.6",
-    "subschema-rendercontent": "^4.0.0-b-1.6",
-    "subschema-rendertemplate": "^4.0.0-b-1.6",
-    "subschema-utils": "^4.0.0-b-1.6",
-    "subschema-valuemanager": "^4.0.0-b-1.6"
+    "subschema-context": "^4.0.0-b-1.7",
+    "subschema-css": "^4.0.0-b-1.7",
+    "subschema-dom": "^4.0.0-b-1.7",
+    "subschema-expression": "^4.0.0-b-1.7",
+    "subschema-field": "^4.0.0-b-1.7",
+    "subschema-fieldset": "^4.0.0-b-1.7",
+    "subschema-form": "^4.0.0-b-1.7",
+    "subschema-injection": "^4.0.0-b-1.7",
+    "subschema-loader": "^4.0.0-b-1.7",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.7",
+    "subschema-preset-list": "^4.0.0-b-1.7",
+    "subschema-preset-resolvers": "^4.0.0-b-1.7",
+    "subschema-preset-web-form": "^4.0.0-b-1.7",
+    "subschema-preset-wizard": "^4.0.0-b-1.7",
+    "subschema-prop-types": "^4.0.0-b-1.7",
+    "subschema-rendercontent": "^4.0.0-b-1.7",
+    "subschema-rendertemplate": "^4.0.0-b-1.7",
+    "subschema-utils": "^4.0.0-b-1.7",
+    "subschema-valuemanager": "^4.0.0-b-1.7"
   },
   "devDependencies": {
     "mrbuilder-plugin-version": "^3.0.0",
-    "subschema-dev-support": "^4.0.0-b-1.6",
-    "subschema-test-support": "^4.0.0-b-1.6"
+    "subschema-dev-support": "^4.0.0-b-1.7",
+    "subschema-test-support": "^4.0.0-b-1.7"
   },
   "subschema": {
     "options": {
