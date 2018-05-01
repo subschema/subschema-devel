@@ -14,8 +14,11 @@ import ReactSelect from "react-select";
 
 //This tells Subschema to use these propTypes instead of the components original.
 ReactSelect.injectedPropTypes = {
- onChange : PropTypes.valueEvent;
- value : PropTypes.value;
+ onChange : PropTypes.valueEvent,
+ value : PropTypes.value,
+ //Subschema injects a blur, which gets in the way, this prevents that behaviour
+ onBlur:PropTypes.func,
+ onValidate:PropTypes.blurValidate
 }
 //This says to use these default Props rather than the components original defaultProps.
 ReactSelect.injectedProps = {

@@ -6,6 +6,7 @@ import _importer from 'subschema-plugin-autoloader/importer';
 
 const importer = _importer();
 const ctx      = () => {
+    //eslint-disable-next-line no-unused-vars
     const { valueManager, loader, injector, ...rest } = newSubschemaContext();
     loader.loaderType('Example');
     return {
@@ -32,7 +33,7 @@ export default class InlinePlayground extends PureComponent {
     }
 
     componentWillMount() {
-        this.Example = InlinePlayground.context.injector.inject(InlineExample);
+        this.SubschemaExample = InlinePlayground.context.injector.inject(InlineExample);
     }
 
     handleSubmit = () => {
@@ -40,10 +41,10 @@ export default class InlinePlayground extends PureComponent {
     };
 
     render() {
-        const { Example } = this;
+        const { SubschemaExample } = this;
         const example        = importer(this.props.name);
-        return <Example {...this.props} name='' example={example.default || example}
-                           onSubmit={this.handleSubmit}/>
+        return (<SubschemaExample {...this.props} name='' example={example.default || example}
+                           onSubmit={this.handleSubmit}/>)
     }
 }
 window.InlinePlayground = InlinePlayground;
