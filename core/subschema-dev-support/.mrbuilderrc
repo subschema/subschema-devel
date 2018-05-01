@@ -19,6 +19,11 @@
     ]
   ],
   "env": {
+    "mocha": {
+      "presets": [
+        "mrbuilder-preset-test"
+      ]
+    },
     "production": {
       "plugins": [
         [
@@ -32,12 +37,11 @@
       ]
     },
     "test": {
+      "presets": [
+        "mrbuilder-preset-test"
+      ],
       "plugins": [
-        "subschema",
-        "mrbuilder-plugin-mocha",
-        "mrbuilder-plugin-enzyme",
-        "mrbuilder-plugin-webpack",
-        "mrbuilder-plugin-karma"
+        "subschema"
       ]
     }
   }
