@@ -8,8 +8,7 @@
     "clean": "lerna clean --yes && lerna run clean",
     "rebuild": "lerna clean --yes && lerna run clean && yarn install && lerna run prepublish && lr-idea",
     "coverage": "MRBUILDER_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
-    "test": "lerna run test",
-    "bootstrap": "lerna bootstrap  && lr-idea",
+    "test": "lerna run prepublish && lerna run test",
     "prepublish": "lerna run prepublish",
     "demo": "cd subschema-component-demo && yarn run demo"
   },
