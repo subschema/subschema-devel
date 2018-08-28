@@ -9,10 +9,8 @@
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "react": "^16.1.0",
     "rimraf": "^2.6.2",
+    "mrbuilder-plugin-enzyme": "^3.1.6",
     "subschema-context": "^4.0.0-b-1.7",
     "subschema-dev-support": "^4.0.0-b-1.7",
     "subschema-injection": "^4.0.0-b-1.7",

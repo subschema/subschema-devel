@@ -7503,6 +7503,14 @@ mrbuilder-plugin-enzyme@^3.1.5:
     enzyme-adapter-react-16 "^1.1.0"
     mrbuilder-plugin-lodash "^3.1.5"
 
+mrbuilder-plugin-enzyme@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-enzyme/-/mrbuilder-plugin-enzyme-3.1.6.tgz#aacaf896e69f2669298b2be882f622c453701085"
+  dependencies:
+    enzyme "^3.2.0"
+    enzyme-adapter-react-16 "^1.1.0"
+    mrbuilder-plugin-lodash "^3.1.6"
+
 mrbuilder-plugin-eslint@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/mrbuilder-plugin-eslint/-/mrbuilder-plugin-eslint-3.1.5.tgz#3b9965a15e989f31f796c6098759635eebbc5b98"
@@ -7570,6 +7578,12 @@ mrbuilder-plugin-less@^3.1.5:
 mrbuilder-plugin-lodash@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/mrbuilder-plugin-lodash/-/mrbuilder-plugin-lodash-3.1.5.tgz#6ecdcc1ac293e18a7d5447ad73dffef20117d0ac"
+  dependencies:
+    lodash-es "^4.17.10"
+
+mrbuilder-plugin-lodash@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/mrbuilder-plugin-lodash/-/mrbuilder-plugin-lodash-3.1.6.tgz#a299c5a64dc468cb0d30760a74e8cc6285494e7a"
   dependencies:
     lodash-es "^4.17.10"
 
