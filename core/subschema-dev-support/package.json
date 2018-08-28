@@ -2,16 +2,17 @@
   "name": "subschema-dev-support",
   "version": "4.0.0-b-1.7",
   "dependencies": {
-    "mrbuilder": "^3.0.1",
-    "mrbuilder-plugin-html": "^3.0.1",
-    "mrbuilder-plugin-less": "^3.0.1",
-    "mrbuilder-plugin-mocha": "^3.0.1",
-    "mrbuilder-plugin-version": "^3.0.1",
-    "mrbuilder-preset-app": "^3.0.1",
-    "mrbuilder-preset-lib": "^3.0.1",
-    "mrbuilder-preset-test": "^3.0.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "mrbuilder": "^3.1.5",
+    "mrbuilder-plugin-html": "^3.1.5",
+    "mrbuilder-plugin-less": "^3.1.5",
+    "mrbuilder-plugin-mocha": "^3.1.5",
+    "mrbuilder-plugin-version": "^3.1.5",
+    "mrbuilder-preset-app": "^3.1.5",
+    "mrbuilder-preset-lib": "^3.1.5",
+    "mrbuilder-preset-test": "^3.1.5",
+    "mrbuilder-plugin-clean":"^3.1.5",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   },
   "bin": {
     "subschema-babel": "bin/subschema-babel.js",
