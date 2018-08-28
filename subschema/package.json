@@ -41,7 +41,7 @@
     "subschema-valuemanager": "^4.0.0-b-1.7"
   },
   "devDependencies": {
-    "mrbuilder-plugin-version": "^3.0.0",
+    "mrbuilder-plugin-version": "^3.1.5",
     "subschema-dev-support": "^4.0.0-b-1.7",
     "subschema-test-support": "^4.0.0-b-1.7"
   },
