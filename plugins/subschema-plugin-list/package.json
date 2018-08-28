@@ -18,7 +18,9 @@
     "subschema-utils": "^4.0.0-b-1.7"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.7"
+    "subschema-styles-bootstrap": "^4.0.0-b-1.7",
+    "subschema-dev-support": "^4.0.0-b-1.7",
+    "subschema-transitions": "^4.0.0-b-1.7"
   },
   "source": "src"
 }
