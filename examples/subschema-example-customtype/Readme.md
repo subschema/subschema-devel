@@ -1,7 +1,1 @@
-subschema-example-customtype
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-customtype
-```
+An example of creating a custom type and adding it to the loader.

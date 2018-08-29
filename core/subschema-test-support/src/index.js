@@ -1,4 +1,3 @@
-import './fix-util';
 import React, { Component } from 'react';
 import PropTypes from 'subschema-prop-types';
 import ValueManager from 'subschema-valuemanager';
@@ -7,10 +6,6 @@ import injector from 'subschema-injection';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import { ReactWrapper, configure, mount as _mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
-
 
 function prettyLog(result) {
     console.log(JSON.stringify(result, null, '\t'));

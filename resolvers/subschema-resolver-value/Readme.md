@@ -1,7 +1,1 @@
-subschema-resolver-value
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-value
-```
+Injects the current value in the valueManager to the component.

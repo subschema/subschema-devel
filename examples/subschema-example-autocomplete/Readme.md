@@ -1,7 +1,1 @@
-subschema-example-autocomplete
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-autocomplete
-```
+An example how to use the Autocomplete component.

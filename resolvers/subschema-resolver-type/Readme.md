@@ -1,7 +1,1 @@
-subschema-resolver-type
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-type
-```
+Injects a type from the loader.

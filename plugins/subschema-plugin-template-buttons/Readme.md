@@ -1,7 +1,1 @@
-subschema-plugin-template-buttons
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-template-buttons
-```
+Renders buttons as a group.

@@ -1,7 +1,1 @@
-subschema-styles-bootstrap
-===
-
-## Installation
-```sh
- $ yarn install subschema-styles-bootstrap
-```
+Provides bootstrap 4 styles for subschema.

@@ -1,24 +1,26 @@
 {
   "name": "subschema-demo",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.7",
   "dependencies": {
-    "subschema": "^4.0.0-b-1.5",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.5",
-    "subschema-plugin-demo": "^4.0.0-b-1.5",
-    "subschema-plugin-project": "^4.0.0-b-1.5",
-    "subschema-preset-examples": "^4.0.0-b-1.5",
-    "subschema-preset-resolvers": "^4.0.0-b-1.5",
-    "subschema-preset-web-form": "^4.0.0-b-1.5",
-    "subschema-styles-bootstrap4": "^4.0.0-b-1.5",
-    "subschema.wiki": "^4.0.0-b-1.5"
+    "subschema": "^4.0.0-b-1.7",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.7",
+    "subschema-plugin-demo": "^4.0.0-b-1.7",
+    "subschema-plugin-project": "^4.0.0-b-1.7",
+    "subschema-preset-examples": "^4.0.0-b-1.7",
+    "subschema-preset-resolvers": "^4.0.0-b-1.7",
+    "subschema-preset-web-form": "^4.0.0-b-1.7",
+    "subschema-styles-bootstrap4": "^4.0.0-b-1.7",
+    "subschema.wiki": "^4.0.0-b-1.6"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.5"
+    "mrbuilder-plugin-markdown": "^3.0.1",
+    "subschema-dev-support": "^4.0.0-b-1.7"
   },
   "scripts": {
     "start": "subschema-webpack-dev-server",
-    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs",
-    "server": "subschema-webpack-dev-server"
+    "demo": "SUBSCHEMA_USE_ANALYTICS='UA-72459938-1' subschema-webpack --demo ../docs/dist/demo",
+    "server": "subschema-webpack-dev-server",
+    "clean": "subschema-clean"
   },
   "subschema": {
     "plugins": [
@@ -45,6 +47,9 @@
   "source": "src",
   "main": "lib",
   "mrbuilder": {
+    "presets": [
+      "subschema-styles-bootstrap4"
+    ],
     "plugins": [
       "mrbuilder-plugin-markdown",
       [
@@ -61,11 +66,13 @@
           }
         }
       ],
-      ["mrbuilder-plugin-version", {
-        "module":"~subschema/package.json"
-      }],
+      [
+        "mrbuilder-plugin-version",
+        {
+          "module": "~subschema/package.json"
+        }
+      ],
       "subschema",
-      "subschema-styles-bootstrap4",
       "subschema-plugin-autoloader",
       "subschema-plugin-project"
     ]

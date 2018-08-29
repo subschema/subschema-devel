@@ -1,7 +1,1 @@
-subschema-example-login
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-login
-```
+An example of a login form.

@@ -1,16 +1,16 @@
 {
   "name": "subschema-rendercontent",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.7",
   "scripts": {
     "clean": "subschema-clean",
     "prepublish": "subschema-babel"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.0-b-1.5",
-    "subschema-utils": "^4.0.0-b-1.5"
+    "subschema-prop-types": "^4.0.0-b-1.7",
+    "subschema-utils": "^4.0.0-b-1.7"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.5"
+    "subschema-dev-support": "^4.0.0-b-1.7"
   },
   "source": "src",
   "main": "lib"

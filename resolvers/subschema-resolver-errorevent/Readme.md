@@ -1,7 +1,1 @@
-subschema-resolver-errorevent
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-errorevent
-```
+Fires the error listeners for the given path.  If not configured with a string it will fire on the current path of the field.

@@ -1,12 +1,15 @@
 {
   "name": "subschema-preset-list",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.7",
   "dependencies": {
-    "subschema-plugin-list": "^4.0.0-b-1.5"
+    "subschema-plugin-list": "^4.0.0-b-1.7"
   },
   "subschema": {
     "plugins": [
       "subschema-plugin-list"
     ]
+  },
+  "scripts": {
+    "clean": "subschema-clean"
   }
 }

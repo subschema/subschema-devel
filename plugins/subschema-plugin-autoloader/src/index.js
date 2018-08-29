@@ -1,4 +1,4 @@
-const { camelCase } = require('subschema-utils');
+const camelCase = require('lodash/camelCase');
 
 function writeImport(config, cmd) {
     if (config && config.loader === false) {

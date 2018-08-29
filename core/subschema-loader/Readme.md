@@ -1,7 +1,1 @@
-subschema-loader
-===
-
-## Installation
-```sh
- $ yarn install subschema-loader
-```
+Loads objects for subschema.

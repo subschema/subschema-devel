@@ -1,7 +1,1 @@
-subschema-example-hidden
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-hidden
-```
+Shows how to use the hidden input.

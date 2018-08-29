@@ -1,7 +1,1 @@
-subschema-resolver-content
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-content
-```
+Normalizes content, and is a marker for content within components.

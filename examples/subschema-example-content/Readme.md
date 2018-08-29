@@ -1,7 +1,1 @@
-subschema-example-content
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-content
-```
+An example of the content component.

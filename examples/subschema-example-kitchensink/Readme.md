@@ -1,7 +1,1 @@
-subschema-example-kitchensink
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-kitchensink
-```
+Really a sanity test that all components load on in the same schema.

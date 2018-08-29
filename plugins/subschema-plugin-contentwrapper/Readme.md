@@ -1,7 +1,1 @@
-subschema-plugin-contentwrapper
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-contentwrapper
-```
+ContentWrapper is a convience to type to render Content.

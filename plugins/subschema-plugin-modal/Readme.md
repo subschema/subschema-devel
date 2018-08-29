@@ -1,7 +1,2 @@
-subschema-plugin-modal
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-modal
-```
+A template to provide modal support
+[example](https://subschema.github.io#modal)

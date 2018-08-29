@@ -1,7 +1,1 @@
-subschema-resolver-htmlfor
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-htmlfor
-```
+Tries to resolve the for attribute on labels, looking at path to determine id.

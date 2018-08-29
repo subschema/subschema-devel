@@ -1,7 +1,1 @@
-subschema-resolver-operator
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-operator
-```
+Resolves an operator, eventually checking the loader.

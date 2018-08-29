@@ -14,12 +14,7 @@
         "useNameHash": false
       }
     ],
-    [
-      "mrbuilder-plugin-webpack",
-      {
-        "libraryTarget": "umd"
-      }
-    ],
+
     "mrbuilder-plugin-less",
     "subschema-plugin-autoloader"
   ],
@@ -36,6 +31,7 @@
     },
     "subschema-web": {
       "plugins": [
+
         [
           "mrbuilder-plugin-version",
           {
@@ -56,7 +52,6 @@
           "mrbuilder-plugin-webpack",
           {
             "libraryTarget": "var",
-            "library": "subschema",
             "devtool": "source-map",
             "filename": "subschema.js",
             "outputPath": "./dist",
@@ -91,7 +86,6 @@
           "mrbuilder-plugin-webpack",
           {
             "libraryTarget": "var",
-            "library": "subschema",
             "devtool": "inline-source-map",
             "filename": "subschema-debug.js",
             "outputPath": "./dist",
@@ -111,9 +105,8 @@
         [
           "mrbuilder-plugin-webpack",
           {
-            "libaryTarget": "commonjs",
-            "library": "subschema",
-            "devtool": "sourcemap",
+            "library": "commonjs",
+            "devtool": "source-map",
             "filename": "subschema.server.js",
             "outputPath": "./dist",
             "target": "node"
@@ -133,9 +126,9 @@
         [
           "mrbuilder-plugin-webpack",
           {
-            "libaryTarget": "commonjs",
+            "libraryTarget": "umd",
             "library": "subschema",
-            "devtool": "sourcemap",
+            "devtool": "source-map",
             "filename": "subschema-noreact.js",
             "outputPath": "./dist"
           }

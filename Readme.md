@@ -26,7 +26,6 @@ More on [Subschema](https://github.com/subschema/subschema), [demo](https://subs
 ```sh
   $ git clone  git@github.com:subschema/subschema-devel.git
   $ yarn install
-  $ yarn run  bootstrap
   $ cd subschema-component-demo
   $ yarn run server
   # on Mac

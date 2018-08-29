@@ -1,7 +1,3 @@
-subschema-plugin-type-text
-===
+Text input the default and the workhorse.
 
-## Installation
-```sh
- $ yarn install subschema-plugin-type-text
-```
+See the [example](http://subschema.github.io/subschema/#/Basic)

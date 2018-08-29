@@ -1,7 +1,1 @@
-subschema-plugin-navigation
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-navigation
-```
+A simple navigation component based on react-router 4

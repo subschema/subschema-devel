@@ -1,7 +1,1 @@
-subschema-example-carmake
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-carmake
-```
+A more sophisticated linked selection example.

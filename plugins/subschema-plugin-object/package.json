@@ -1,19 +1,19 @@
 {
   "name": "subschema-plugin-object",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.7",
   "dependencies": {
-    "subschema-field": "^4.0.0-b-1.5",
-    "subschema-fieldset": "^4.0.0-b-1.5",
-    "subschema-prop-types": "^4.0.0-b-1.5",
-    "subschema-rendertemplate": "^4.0.0-b-1.5",
-    "subschema-utils": "^4.0.0-b-1.5"
+    "subschema-field": "^4.0.0-b-1.7",
+    "subschema-fieldset": "^4.0.0-b-1.7",
+    "subschema-prop-types": "^4.0.0-b-1.7",
+    "subschema-rendertemplate": "^4.0.0-b-1.7",
+    "subschema-utils": "^4.0.0-b-1.7"
   },
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.5"
+    "subschema-dev-support": "^4.0.0-b-1.7"
   },
   "source": "src",
   "main": "lib"

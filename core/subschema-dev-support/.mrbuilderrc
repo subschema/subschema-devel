@@ -1,15 +1,42 @@
 {
   "presets": [
-    "mrbuilder-preset-lib"
+    "mrbuilder-preset-lib",
+    "subschema"
   ],
   "env": {
-    "test": {
+    "mocha": {
+      "presets": [
+        "mrbuilder-preset-test"
+      ]
+    },
+    "karma": {
+      "presets": [
+        "mrbuilder-preset-test"
+      ]
+    },
+    "production": {
       "plugins": [
-        "subschema",
-        "mrbuilder-plugin-mocha",
-        "mrbuilder-plugin-enzyme",
-        "mrbuilder-plugin-webpack",
-        "mrbuilder-plugin-karma"
+        [
+          "mrbuilder-plugin-clean",
+          {
+            "paths": [
+              "./lib"
+            ]
+          }
+        ],
+        [
+          "mrbuilder-plugin-chunk",
+          false
+        ],
+        [
+          "mrbuilder-plugin-uglify",
+          false
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        "mrbuilder-preset-test"
       ]
     }
   }

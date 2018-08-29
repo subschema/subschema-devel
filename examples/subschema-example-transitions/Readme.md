@@ -1,7 +1,1 @@
-subschema-example-transitions
-===
-
-## Installation
-```sh
- $ yarn install subschema-example-transitions
-```
+A rather bad example of how to use transitions.

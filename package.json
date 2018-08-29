@@ -2,21 +2,20 @@
   "name": "subschema-devel",
   "dependencies": {
     "istanbul": "^0.4.5",
+    "mrbuilder-tool": "^3.1.5",
     "nyc": "^11.3.0"
   },
   "scripts": {
-    "clean": "lerna clean --yes && lerna run clean",
-    "rebuild": "lerna clean --yes && lerna run clean && yarn install && lerna run prepublish && lr-idea",
+    "clean": "lerna run clean && lerna clean --yes &&  rimraf node_modules",
     "coverage": "MRBUILDER_COVERAGE_USE_GLOBAL=1 lerna --concurrency 1 run test && istanbul report --dir ./docs/coverage --include './coverage/subschema*/cov*.json' html",
     "test": "lerna run test",
-    "bootstrap": "lerna bootstrap  && lr-idea",
     "prepublish": "lerna run prepublish",
+    "ci": "yarn install && yarn run test",
     "demo": "cd subschema-component-demo && yarn run demo"
   },
   "private": true,
   "devDependencies": {
-    "lerna": "^2.5.1",
-    "lerna-relinker": "^1.5.0",
+    "lerna": "^3.1.4",
     "rimraf": "^2.6.2"
   },
   "workspaces": [
@@ -26,9 +25,9 @@
     "plugins/*",
     "presets/*",
     "subschema",
-    "subschema.wiki",
+    "examples/*",
     "demo",
-    "examples/*"
+    "docs"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

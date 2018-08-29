@@ -1,7 +1,1 @@
-subschema-resolver-clearstash
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-clearstash
-```
+Clears the stash from valueManager.

@@ -1,7 +1,1 @@
-subschema-plugin-type-textarea
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-type-textarea
-```
+TextArea input pretty much same as text except its a textarea.

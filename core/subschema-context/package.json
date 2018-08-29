@@ -1,15 +1,15 @@
 {
   "name": "subschema-context",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.7",
   "dependencies": {
-    "subschema-form": "^4.0.0-b-1.5",
-    "subschema-injection": "^4.0.0-b-1.5",
-    "subschema-loader": "^4.0.0-b-1.5",
-    "subschema-utils": "^4.0.0-b-1.5",
-    "subschema-valuemanager": "^4.0.0-b-1.5"
+    "subschema-form": "^4.0.0-b-1.7",
+    "subschema-injection": "^4.0.0-b-1.7",
+    "subschema-loader": "^4.0.0-b-1.7",
+    "subschema-utils": "^4.0.0-b-1.7",
+    "subschema-valuemanager": "^4.0.0-b-1.7"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0-b-1.5"
+    "subschema-dev-support": "^4.0.0-b-1.7"
   },
   "scripts": {
     "clean": "subschema-clean",

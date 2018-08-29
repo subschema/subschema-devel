@@ -1,7 +1,1 @@
-subschema-resolver-domtype
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-domtype
-```
+Will inject a DOM type into the component.

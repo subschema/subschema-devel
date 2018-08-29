@@ -1,5 +1,4 @@
-ValueManager
-===
+
 ValueManager is how state is stored in subschema.   It is based on a relatively simple event listener scheme. 
 
 By default when you use a Subschema.Form a ValueManager is created, if you pass value into the form that becomes the initial value of the valueManager.
@@ -13,7 +12,7 @@ ValueManager has a factory constructor.
 ### No Argument Constructor.
 ValueManager can be called with any arguments.
 
-```es6
+```js static
   import {ValueManager} from 'Subschema';
 
   const vm = ValueManager();
@@ -23,7 +22,7 @@ ValueManager can be called with any arguments.
 
 ### Constructor with errors and value.
 It can be initialized with values, and errors.
-```es6
+```js static
   import {ValueManager} from 'Subschema';
 
   const vm = ValueManager({test:1}, {test:[{message:'Is In Error'}]});
@@ -50,7 +49,7 @@ addListener returns an object with the following properties
 
 ### Listening to a path.
 Example:
-```es6
+```js static
   const vm = ValueManager();
   
   const listener = vm.addListener('stuff', function(value, oldValue, path){
@@ -63,7 +62,7 @@ Example:
 ```
 
 ### Listening to all changes.
-```es6
+```js static
   const vm = ValueManager();
   
   const listener = vm.addListener(null, function(value, oldValue, path){
@@ -79,7 +78,7 @@ Example:
 ### Removing a listener
 When addListener returns an object with a remove property.  When that function is called it removes the listener from the ValueManager.
 
-```es6
+```js static
  const vm = ValueManager();
   
   const remove = vm.addListener(null, function(value, oldValue, path){
@@ -92,7 +91,7 @@ When addListener returns an object with a remove property.  When that function i
 ## Listening to nested paths.
 ValueManager also allows you to listen to nested paths.  This is done via dots in string notation.  It works with arrays and nested objects.
 
-```es6
+```js static
  const vm = ValueManager();
  vm.addListener('path.to.stuff', function(value, oldValue, path){
   //will be triggered.
@@ -119,7 +118,7 @@ ValueManager also allows you to listen to nested paths.  This is done via dots i
 
 ## ValueManager#getValue
 Returns the current value of the value Manager.
-```es6
+```js static
   const vm = ValueManager({test:{stuff:1}});
   vm.update('test.stuff', 2);
   vm.update('other.than', false);

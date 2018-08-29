@@ -1,7 +1,2 @@
-subschema-plugin-template-object
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-template-object
-```
+A template for not rendering a Form but rather just a div, which is necessary
+to prevent nested forms.

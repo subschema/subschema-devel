@@ -1,7 +1,1 @@
-subschema-transitions
-===
-
-## Installation
-```sh
- $ yarn install subschema-transitions
-```
+Provides limited transitions for subschema.

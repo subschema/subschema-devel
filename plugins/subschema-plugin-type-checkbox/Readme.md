@@ -1,7 +1,2 @@
-subschema-plugin-type-checkbox
-===
-
-## Installation
-```sh
- $ yarn install subschema-plugin-type-checkbox
-```
+A checkbox component
+See the [example](https://http://subschema.github.io/subschema/#/Checkboxes)

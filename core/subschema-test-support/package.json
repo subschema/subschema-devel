@@ -1,25 +1,24 @@
 {
   "name": "subschema-test-support",
-  "version": "4.0.0-b-1.5",
+  "version": "4.0.0-b-1.7",
   "description": "Subschema Test Support",
   "main": "lib",
   "scripts": {
-    "prepublish": "subschema-babel"
+    "prepublish": "subschema-babel",
+    "clean": "subschema-clean"
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "react": "^16.1.0",
     "rimraf": "^2.6.2",
-    "subschema-context": "^4.0.0-b-1.5",
-    "subschema-dev-support": "^4.0.0-b-1.5",
-    "subschema-injection": "^4.0.0-b-1.5",
-    "subschema-loader": "^4.0.0-b-1.5",
-    "subschema-plugin-autoloader": "^4.0.0-b-1.5",
-    "subschema-preset-resolvers": "^4.0.0-b-1.5",
-    "subschema-prop-types": "^4.0.0-b-1.5",
-    "subschema-valuemanager": "^4.0.0-b-1.5",
+    "mrbuilder-plugin-enzyme": "^3.1.6",
+    "subschema-context": "^4.0.0-b-1.7",
+    "subschema-dev-support": "^4.0.0-b-1.7",
+    "subschema-injection": "^4.0.0-b-1.7",
+    "subschema-loader": "^4.0.0-b-1.7",
+    "subschema-plugin-autoloader": "^4.0.0-b-1.7",
+    "subschema-preset-resolvers": "^4.0.0-b-1.7",
+    "subschema-prop-types": "^4.0.0-b-1.7",
+    "subschema-valuemanager": "^4.0.0-b-1.7",
     "util": "^0.10.3"
   },
   "peerDependencies": {

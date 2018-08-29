@@ -1,7 +1,1 @@
-subschema-resolver-validatefields
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-validatefields
-```
+Provides a function that allows for the validation of multiple paths.

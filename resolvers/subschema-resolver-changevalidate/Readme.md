@@ -1,8 +1,1 @@
-subschema-resolver-changevalidate
-===
-Resolver that handles validate on change.
-
-## Installation
-```sh
- $ yarn install subschema-resolver-changevalidate
-```
+Validates on every value change, useful, checkbox and select values.

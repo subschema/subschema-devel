@@ -1,7 +1,1 @@
-subschema-resolver-listener
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-listener
-```
+Listens to value at a path

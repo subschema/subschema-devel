@@ -1,10 +1,9 @@
-Why Subschema
-=============
+### Why Subschema
 
 Occassionally  I get the why Subschema, or what is Subschema question.
 This is a brief document explaining why and to some extent what.
 
-## First what is subschema?
+### First what is subschema?
 
 Subschema allows for easy management of state and configuration of
 React components.   In traditional React application, state is or 
@@ -15,7 +14,7 @@ Basically Dependency Injection for React.
 When you first enter the react world and go to write a form, you will
 probably start with something like...
 
-```jsx
+```js static
   //Traditional React Form - No store
 
   import React, {Component} from 'react';
@@ -85,7 +84,8 @@ probably start with something like...
 This is a lot of code, and a lot of repetition and very little reuse. So
 let's try again with Subschema.
 
-```jsx
+```js static
+
 
   import React, {Component} from 'react';
   import {Form} from 'Subschema';
@@ -112,7 +112,8 @@ let's try again with Subschema.
 Well, Subschema works both with and without client side javascript so,
 (isomorphically) let's say we do have JavaScript.
 
-```jsx
+```js static
+
 
   import React, {Component} from 'react';
   import {Form} from 'Subschema';
@@ -154,11 +155,12 @@ Well, Subschema works both with and without client side javascript so,
 
 ```
 
-## Labels
+### Labels
 `"Ahh"` you say `"but, I wanna have my own labels..."`
 
 Easy just change the schema.
-```jsx
+```js static
+
 
 //new schema
 const schema = {
@@ -194,7 +196,8 @@ with a range of built in validators, regex, required, match, number,email.
 Here's what would change.
 
 
-```jsx
+```js static
+
 
 //schema with validators
 const schema = {
@@ -230,7 +233,8 @@ const schema = {
 ### Custom Validators
 You may have a need for a validator that does come with Subschema.  No problem..
 
-```js
+```js static
+
   
 loader.addValidator('moreThan2', (options)=>{
    const {message} = options || {message:'Custom default message'};
@@ -261,7 +265,7 @@ schema = {
 
 
 
-## External Components
+### External Components
 `"That's all neat, but seriously I have all these awesome react components
 that I want to use."` -says you.
 
@@ -276,7 +280,8 @@ hey so do I.  So let's do it.
 First install (hint $ npm install react-maskedinput --save)
 
 
-```jsx
+```js static
+
 
 import {loader, Form} from 'Subschema';
 import React, {Component} from 'react';
@@ -321,7 +326,8 @@ No, probably not, but here is how you can write your
 own (or adapt one to yours).
 
 
-```jsx
+```js static
+
 import React, {Component} from 'react';
 import {PropTypes} from 'Subschema';
 class SwitchButton extends Component {
@@ -374,7 +380,8 @@ class SwitchButton extends Component {
 
 And then add it to your loader
 
-```jsx
+```js static
+
 
 import SwitchButton from './SwitchButon';
 
@@ -385,7 +392,7 @@ loader.addType({SwitchButton});
 Text, or Checkbox.
 ```
 
-## Nested Objects
+### Nested Objects
 `"Uh-Huh, but what about nested structures"`
 
 I know not all objects are key value pairs, no worries, Subscshema has a
@@ -393,7 +400,8 @@ type Object, that can handle nested structures, [List](http://subschema.github.i
 and [Mixed](http://subschema.github.io/subschema/#/Questionaire) 
 for well Objects where the keys are dynamic.
 
-```js
+```js static
+
 ...
 const schema = {
     /**
@@ -456,7 +464,8 @@ const schema = {
 I get it sometimes you want more or different layout. All fields can
 have a template defined.
 
-```js
+```js static
+
 class CustomTemplate extends Component {
 
     render(){
@@ -469,7 +478,7 @@ class CustomTemplate extends Component {
 
 ```
 
-## How Does Subschema Work?
+### How Does Subschema Work?
 Subschema works by looking at the propTypes and defaultProps of the class being
 wired in.   If a PropType matches a resolver it uses the resolver to
 add special behaviour to the propType.    If there isn't a matching resolver it
@@ -480,14 +489,14 @@ by design.
 
 
 
-## Loaders
+### Loaders
 Resolvers often use the loader to actually load the type.   Loaders just return
 a class (or function) based on key name.    The only real magic of loaders is
 that they can be nested, that is you can add a loader to a loader. And the last
 key, value pair added is the one that will be returned.   Allowing for easy 
 overridding of defaults.  
 
-```jsx
+```js static
 
 import React, {Component} from 'react';
 import {loaderFactory, PropTypes} from 'Subcshema';
@@ -527,7 +536,7 @@ Built into loader are 'Operator', 'Template', 'Processor', 'Type', 'Schema', 'Va
 
 You can define your own "loader type".
 
-```js
+```js static
   const loader = loaderFactory();
   loader.loaderType('Something');
   loader.addSomething(....)

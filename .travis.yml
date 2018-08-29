@@ -5,15 +5,17 @@ dist: trusty # needs Ubuntu Trusty
 # Note: if you switch to sudo: false, you'll need to launch chrome with --no-sandbox.
 # See https://github.com/travis-ci/travis-ci/issues/8836
 sudo: required
+before_install: # if "install" is overridden
+  # Repo for Yarn
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.5.1
+  - export PATH="$HOME/.yarn/bin:$PATH"
 addons:
   chrome: stable # have Travis install chrome stable.
 cache:
   yarn: true
   directories:
     - node_modules
-install:
-  - yarn
 script:
-  - yarn test
+  - yarn ci
 env:
   - MRBUILDER_PLUGIN_KARMA_BROWSERS='["ChromeHeadless"]'

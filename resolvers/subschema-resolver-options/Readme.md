@@ -1,7 +1,1 @@
-subschema-resolver-options
-===
-
-## Installation
-```sh
- $ yarn install subschema-resolver-options
-```
+Normalize select style label,val objects.
