@@ -1,6 +1,6 @@
 {
   "name": "subschema-docs",
-  "version": "4.0.0-b-1.7",
+  "version": "4.0.0",
   "dependencies": {
     "lerna": "^2.11.0",
     "mrbuilder": "^3.1.5"
@@ -8,10 +8,10 @@
   "devDependencies": {
     "mrbuilder-plugin-doc-prop-types": "^3.1.5",
     "mrbuilder-plugin-emeth": "^3.1.5",
-    "mrbuilder-plugin-react-styleguidist":"^3.1.5",
+    "mrbuilder-plugin-react-styleguidist": "^3.1.5",
     "mrbuilder-plugin-stylus": "^3.1.5",
     "mrbuilder-preset-dev": "^3.1.5",
-    "webpack-dev-server":"^3.1.5"
+    "webpack-dev-server": "^3.1.5"
   },
   "scripts": {
     "start:styleguide": "mrbuilder",
