@@ -20,7 +20,6 @@
   },
   "workspaces": [
     "core/*",
-    "contrib/*",
     "resolvers/*",
     "plugins/*",
     "presets/*",

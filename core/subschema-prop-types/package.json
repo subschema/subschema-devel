@@ -19,5 +19,6 @@
   },
   "mrbuilder": {
     "plugin": "./mrbuilder-plugin"
-  }
+  },
+  "gitHead": "7102e6249fb7d12545737ed895b0d269b401f9db"
 }
