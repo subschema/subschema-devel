@@ -1,17 +1,17 @@
 {
   "name": "subschema-form",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "scripts": {
     "clean": "subschema-clean",
     "prepublish": "subschema-babel"
   },
   "dependencies": {
-    "subschema-plugin-object": "^4.0.0",
-    "subschema-prop-types": "^4.0.0",
-    "subschema-utils": "^4.0.0"
+    "subschema-plugin-object": "^4.0.1",
+    "subschema-prop-types": "^4.0.1",
+    "subschema-utils": "^4.0.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0"
+    "subschema-dev-support": "^4.0.1"
   },
   "source": "src",
   "main": "lib",

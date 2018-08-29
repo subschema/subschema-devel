@@ -1,29 +1,29 @@
 {
   "name": "subschema-preset-examples",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "dependencies": {
-    "subschema-example-autocomplete": "^4.0.0",
-    "subschema-example-basic": "^4.0.0",
-    "subschema-example-carmake": "^4.0.0",
-    "subschema-example-checkboxes": "^4.0.0",
-    "subschema-example-conditional": "^4.0.0",
-    "subschema-example-content": "^4.0.0",
-    "subschema-example-customtype": "^4.0.0",
-    "subschema-example-expression": "^4.0.0",
-    "subschema-example-hidden": "^4.0.0",
-    "subschema-example-kitchensink": "^4.0.0",
-    "subschema-example-listenerproperty": "^4.0.0",
-    "subschema-example-loader": "^4.0.0",
-    "subschema-example-login": "^4.0.0",
-    "subschema-example-modal": "^4.0.0",
-    "subschema-example-nestedforms": "^4.0.0",
-    "subschema-example-questionaire": "^4.0.0",
-    "subschema-example-radio": "^4.0.0",
-    "subschema-example-restricted": "^4.0.0",
-    "subschema-example-select": "^4.0.0",
-    "subschema-example-todos": "^4.0.0",
-    "subschema-example-transitions": "^4.0.0",
-    "subschema-example-wizard": "^4.0.0"
+    "subschema-example-autocomplete": "^4.0.1",
+    "subschema-example-basic": "^4.0.1",
+    "subschema-example-carmake": "^4.0.1",
+    "subschema-example-checkboxes": "^4.0.1",
+    "subschema-example-conditional": "^4.0.1",
+    "subschema-example-content": "^4.0.1",
+    "subschema-example-customtype": "^4.0.1",
+    "subschema-example-expression": "^4.0.1",
+    "subschema-example-hidden": "^4.0.1",
+    "subschema-example-kitchensink": "^4.0.1",
+    "subschema-example-listenerproperty": "^4.0.1",
+    "subschema-example-loader": "^4.0.1",
+    "subschema-example-login": "^4.0.1",
+    "subschema-example-modal": "^4.0.1",
+    "subschema-example-nestedforms": "^4.0.1",
+    "subschema-example-questionaire": "^4.0.1",
+    "subschema-example-radio": "^4.0.1",
+    "subschema-example-restricted": "^4.0.1",
+    "subschema-example-select": "^4.0.1",
+    "subschema-example-todos": "^4.0.1",
+    "subschema-example-transitions": "^4.0.1",
+    "subschema-example-wizard": "^4.0.1"
   },
   "subschema": {
     "plugins": [
@@ -186,7 +186,7 @@
   "source": "src",
   "main": "lib",
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0"
+    "subschema-dev-support": "^4.0.1"
   },
   "scripts": {
     "clean": "subschema-clean"

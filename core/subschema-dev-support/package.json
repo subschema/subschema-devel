@@ -1,6 +1,6 @@
 {
   "name": "subschema-dev-support",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "dependencies": {
     "mrbuilder": "^3.1.6",
     "mrbuilder-plugin-clean": "^3.1.6",

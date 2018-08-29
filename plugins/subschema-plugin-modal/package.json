@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-modal",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Subschema Modal Component",
   "main": "lib",
   "scripts": {
@@ -8,12 +8,12 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.0",
-    "subschema-rendercontent": "^4.0.0",
-    "subschema-utils": "^4.0.0"
+    "subschema-prop-types": "^4.0.1",
+    "subschema-rendercontent": "^4.0.1",
+    "subschema-utils": "^4.0.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.0"
+    "subschema-dev-support": "^4.0.1"
   },
   "source": "src",
   "gitHead": "7102e6249fb7d12545737ed895b0d269b401f9db",
