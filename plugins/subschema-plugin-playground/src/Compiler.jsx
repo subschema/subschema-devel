@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { newSubschemaContext } from 'subschema';
-import { availablePlugins, transform } from 'babel-core';
+import { availablePlugins, transform } from 'Babel';
 import {
     babelrc as babelrcOrig, form, normalize, source
 } from 'subschema-plugin-project';
