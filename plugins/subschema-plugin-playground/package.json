@@ -10,10 +10,11 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "babel-standalone": "^6.24.0",
-    "brace": "^0.10.0",
+    "@babel/standalone": "^7.2.5",
+    "@babel/preset-env-standalone": "^7.2.5",
+    "brace": "^0.11.1",
     "browser-filesaver": "^1.1.1",
-    "react-ace": "^5.0.1",
+    "react-ace": "^6.3.2",
     "subschema-plugin-project": "^4.0.1",
     "subschema-valuemanager": "^4.0.1",
     "validate-npm-package-name": "^3.0.0"

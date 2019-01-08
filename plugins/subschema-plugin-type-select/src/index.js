@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'subschema-prop-types';
-import { isArray } from 'subschema-utils';
+import { isArray,toArray } from 'subschema-utils';
 
 export class Select extends PureComponent {
 
@@ -56,7 +56,7 @@ export class Select extends PureComponent {
     renderOptions(value) {
         let { multiple, options, placeholder } = this.props;
 
-        options      = options || [];
+        options      = toArray(options);
         let hasValue = false, ret = options.map(multiple ? (o, i) => {
             return <option key={'s' + i} value={o.val}>{o.label}</option>;
         } : (o, i) => {

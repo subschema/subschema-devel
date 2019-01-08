@@ -1,7 +1,14 @@
 {
   "presets": [
+    "mrbuilder-preset-babel-7",
     "mrbuilder-preset-lib",
     "subschema"
+  ],
+  "plugins": [
+    [
+      "mrbuilder-plugin-typescript",
+      false
+    ]
   ],
   "env": {
     "mocha": {
@@ -37,7 +44,18 @@
     "test": {
       "presets": [
         "mrbuilder-preset-test"
-      ]
+      ],
+      /*"plugins": [
+        [
+          "mrbuilder-plugin-karma",
+          {
+            "include": [
+              "/.*\/src\//",
+              "./test"
+            ]
+          }
+        ]
+      ]*/
     }
   }
 }

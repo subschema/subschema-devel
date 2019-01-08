@@ -5,7 +5,7 @@
   "main": "lib",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
-    "prepublish": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js",
+    "prepublish": "node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel -f - --out-file ./lib/wrapped-prop-types.js",
     "clean": "subschema-clean"
   },
   "dependencies": {

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import Loader from 'subschema-plugin-autoloader';
-import { newSubschemaContext } from 'subschema';
-import { compile, source } from 'subschema-plugin-project';
-import { expect } from 'chai';
-import { mount } from 'enzyme';
+import React                 from 'react';
+import Loader                from 'subschema-plugin-autoloader';
+import {newSubschemaContext} from 'subschema';
+import {compile, source}     from 'subschema-plugin-project';
+import {expect}              from 'chai';
+import {mount}               from 'enzyme';
 
-export const samples = Loader.listExamples().reduce((ret, { name, value }) => {
+export const samples = Loader.listExamples().reduce((ret, {name, value}) => {
     ret[name] = value;
     return ret;
 }, {});
@@ -15,7 +15,7 @@ export const into = (node, attachTo) => {
     if (attachTo === true) {
         attachTo = document.createElement('div');
         document.body.appendChild(attachTo);
-        return mount(node, { attachTo });
+        return mount(node, {attachTo});
     }
     return mount(node, attachTo);
 };
@@ -38,18 +38,14 @@ export function setupFunc(sample, Subschema = newSubschemaContext(), module) {
         return noop;
     }
 
-    const gen = compile(
-        source({ useData: false, useErrors: false, sample }, null));
+    const gen = compile(source({useData: false, useErrors: false, sample}, null));
 
     const funcBody = `${gen.code}  
         return {schema:schema, loader:loader, valueManager:valueManager}`
 
     try {
-        const newFunc = new Function(
-            ['require', 'loader', 'schema', 'Subschema', 'React', 'valueManager'],
-            funcBody);
-
-        const ret = newFunc(Subschema.importer, Subschema.loader, sample.schema,
+        const newFunc = new Function(['require', 'loader', 'schema', 'Subschema', 'React', 'valueManager'], funcBody);
+        const ret     = newFunc(Subschema.importer, Subschema.loader, sample.schema,
             Subschema,
             React,
             Subschema.valueManager);
@@ -66,10 +62,10 @@ export function setupFunc(sample, Subschema = newSubschemaContext(), module) {
 
 
 export function renderPage(sample, verify) {
-    const Subschema                      = newSubschemaContext();
-    const { loader, Form, ValueManager } = Subschema;
-    const ds                             = setupData(sample),
-          src                            = compile(source(ds)).code;
+    const Subschema                    = newSubschemaContext();
+    const {loader, Form, ValueManager} = Subschema;
+    const ds                           = setupData(sample),
+          src                          = compile(source(ds)).code;
 
     const f       = new Function(['render', 'require', 'document'], src);
     let didRender = false;
@@ -79,7 +75,7 @@ export function renderPage(sample, verify) {
     }, Subschema.importer, {
         getElementById(id) {
             expect(id).to
-                      .eql('content', 'document.getElementById was "content"');
+                .eql('content', 'document.getElementById was "content"');
         }
     });
     expect(didRender).to.eql(true, 'Should have called the render method');

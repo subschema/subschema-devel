@@ -12,10 +12,11 @@
   "source": "src",
   "main": "lib",
   "dependencies": {
-    "mrbuilder-optionsmanager": "^3.0.1",
+    "mrbuilder-optionsmanager": "^3.3.0",
     "val-loader": "^1.1.0"
   },
   "devDependencies": {
+    "mrbuilder-plugin-babel-6": "^3.3.1-alpha.0",
     "subschema-dev-support": "^4.0.1",
     "subschema-utils": "^4.0.1"
   },
