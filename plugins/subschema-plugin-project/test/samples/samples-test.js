@@ -1,8 +1,8 @@
-import React from "react";
-import { expect } from 'chai';
-import { newSubschemaContext, ValueManager } from "subschema";
-import { into, samples, setupFunc } from '../support';
-import { cleanUp } from 'subschema-test-support';
+import React                               from "react";
+import {expect}                            from 'chai';
+import {newSubschemaContext, ValueManager} from "subschema";
+import {into, samples, setupFunc}          from '../support';
+import {cleanUp}                           from 'subschema-test-support';
 
 describe('subschema-plugin-project/samples', function () {
     this.timeout(5000);
@@ -16,7 +16,7 @@ describe('subschema-plugin-project/samples', function () {
 
             it(`render sample ${key} with data`, function () {
                 const Subschema        = newSubschemaContext();
-                const { Form }         = Subschema;
+                const {Form}           = Subschema;
                 Subschema.valueManager = ValueManager(sample.data);
                 const context          = setupFunc(sample, Subschema);
 
@@ -26,7 +26,7 @@ describe('subschema-plugin-project/samples', function () {
 
             it(`render sample ${key} without data`, function () {
                 const Subschema = newSubschemaContext();
-                const { Form }  = Subschema;
+                const {Form}    = Subschema;
                 const context   = setupFunc(sample, Subschema);
                 form            = into(<Form {...context}/>, true);
                 expect(form, `form should exist for ${key}`).to.exist;
@@ -34,7 +34,7 @@ describe('subschema-plugin-project/samples', function () {
 
             it(`render sample ${key} with data and errors`, function () {
                 const Subschema = newSubschemaContext();
-                const { Form }  = Subschema;
+                const {Form}    = Subschema;
                 const context   = setupFunc(sample, Subschema);
                 const form      = into(<Form {...context}/>, true);
                 expect(form, `form should exist for ${key}`).to.exist;

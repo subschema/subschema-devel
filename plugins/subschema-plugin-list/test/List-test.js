@@ -101,7 +101,7 @@ describe.only('subschema-plugin-list/List', function () {
         const addBtn = root.find('.btn-add').at(0);
 
         expect(addBtn, 'add button does not exist').to.have.length(0);
-        expect(tasks).to.have.length(3);
+        expect(tasks, 'expected tasks').to.have.length(3);
 
         const span = root.find(ListItemTemplate).find('.clickable').at(0);
         click(span, root);

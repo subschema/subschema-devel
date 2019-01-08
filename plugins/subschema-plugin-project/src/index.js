@@ -3,7 +3,7 @@ import _generate from './generate';
 import _project from './templates/project';
 import _page from './templates/page';
 import _form from './form';
-import _babelrc from './babelrc.json';
+import _babelrc from 'val-loader!./babelrc.js';
 import _projectTemplates from './templates/project';
 
 export const projectTemplates = _projectTemplates;

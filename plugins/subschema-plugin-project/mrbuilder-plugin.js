@@ -1,8 +1,5 @@
 const path = require('path');
 
-const resolvePkgDir = name => path.resolve(
-    require.resolve(path.join(name, 'package.json')), '..');
-
 module.exports = function ({
                                test = /\.tmpl$/,
                                include,
@@ -19,6 +16,7 @@ module.exports = function ({
         include,
         exclude
     });
+
 
     const oNoParse = webpack.module.noParse;
     if (!oNoParse) {
@@ -40,13 +38,10 @@ module.exports = function ({
 
         };
     }
-    webpack.resolve.alias.debug=`${__dirname}/src/debug`;
-    webpack.resolve.alias['babel-core'] =
-        require.resolve('babel-standalone/babel.min');
-
-    webpack.resolve.alias['subschema-raw'] =
-        `!raw-loader!!${require.resolve(
-            'subschema/dist/subschema-debug.js')}`;
+    webpack.resolve.alias.debug            = `${__dirname}/src/debug`;
+    webpack.resolve.alias['Babel']         = require.resolve('@babel/standalone/babel');
+    //  webpack.resolve.alias['@babel/preset-env'] = require.resolve('@babel/preset-env-standalone');
+    webpack.resolve.alias['subschema-raw'] = `!raw-loader!!${require.resolve('subschema/dist/subschema-debug.js')}`;
 
     return webpack;
 };

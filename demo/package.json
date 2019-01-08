@@ -13,7 +13,7 @@
     "subschema.wiki": "^4.0.0-b-1.6"
   },
   "devDependencies": {
-    "mrbuilder-plugin-markdown": "^3.0.1",
+    "mrbuilder-plugin-markdown": "^3.3.1-alpha.0",
     "subschema-dev-support": "^4.0.1"
   },
   "scripts": {

@@ -1,8 +1,8 @@
-import { availablePlugins, transform } from 'babel-standalone';
+import { availablePlugins, transform } from 'Babel';
 import form from './form';
 import reactClassDisplayName from 'mrbuilder-plugin-babel/react-class-display-name';
 import transformClassProps from 'babel-plugin-transform-class-properties';
-import babelrc from './babelrc.json';
+import babelrc from 'val-loader!./babelrc.js';
 
 
 if (!availablePlugins['./react-class-display-name']) {
