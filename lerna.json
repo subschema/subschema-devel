@@ -2,5 +2,10 @@
   "lerna": "2.2.0",
   "version": "4.0.1",
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "gitRemote": "upstream"
+    }
+  }
 }
