@@ -24,7 +24,7 @@ export default class Form extends Component {
         enctype     : PropTypes.string,
         //handy submit handler.
         onSubmit    : PropTypes.event,
-        //Set this to true if you don't want validation to run on submit.
+        //Set this to true if you don't want validation to run on submit, validate or blur. You can still manually validate.
         noValidate  : PropTypes.bool,
         //Set this to true, if you want validators to be called against the
         // current schema.  I.E. after a POST.
