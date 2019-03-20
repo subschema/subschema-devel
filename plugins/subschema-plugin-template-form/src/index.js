@@ -14,7 +14,7 @@ export class FormTemplate extends Component {
         action        : PropTypes.string,
         autocapitalize: PropTypes.oneOf(
             ['on', 'off', 'words', 'sentences', 'charecters', 'none']),
-        autocomplete  : PropTypes.oneOf(['on', 'off']),
+        autoComplete  : PropTypes.oneOf(['on', 'off']),
         encType       : PropTypes.oneOf(
             ['application/x-www-form-urlencoded', 'multipart/form-data', 'text/plain']),
         method        : PropTypes.oneOf(['get', 'post']),
