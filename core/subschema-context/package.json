@@ -1,8 +1,8 @@
 {
   "name": "subschema-context",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "dependencies": {
-    "subschema-form": "^4.0.1",
+    "subschema-form": "^4.0.2",
     "subschema-injection": "^4.0.1",
     "subschema-loader": "^4.0.1",
     "subschema-utils": "^4.0.1",

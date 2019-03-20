@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-playground",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "A tool for editing and playing with subschema components",
   "scripts": {
     "karma": "subschema-karma",
@@ -14,7 +14,7 @@
     "brace": "^0.10.0",
     "browser-filesaver": "^1.1.1",
     "react-ace": "^5.0.1",
-    "subschema-plugin-project": "^4.0.1",
+    "subschema-plugin-project": "^4.0.2",
     "subschema-valuemanager": "^4.0.1",
     "validate-npm-package-name": "^3.0.0"
   },

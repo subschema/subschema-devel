@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-template-form",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "scripts": {
     "clean": "subschema-clean",
     "prepublish": "subschema-babel"

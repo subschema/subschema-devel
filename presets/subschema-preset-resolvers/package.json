@@ -1,10 +1,10 @@
 {
   "name": "subschema-preset-resolvers",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "dependencies": {
-    "subschema-resolver-blurvalidate": "^4.0.1",
+    "subschema-resolver-blurvalidate": "^4.0.2",
     "subschema-resolver-buttons": "^4.0.1",
-    "subschema-resolver-changevalidate": "^4.0.1",
+    "subschema-resolver-changevalidate": "^4.0.2",
     "subschema-resolver-classname": "^4.0.1",
     "subschema-resolver-clearstash": "^4.0.1",
     "subschema-resolver-conditional": "^4.0.1",

@@ -1,6 +1,6 @@
 {
   "name": "subschema-resolver-changevalidate",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
