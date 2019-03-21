@@ -1,6 +1,6 @@
 {
   "name": "subschema-valuemanager",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -9,11 +9,11 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.0.1"
+    "subschema-utils": "^4.1.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.2",
-    "subschema-dev-support": "^4.0.1"
+    "subschema-dev-support": "^4.1.0"
   },
   "source": "src",
   "gitHead": "7102e6249fb7d12545737ed895b0d269b401f9db",

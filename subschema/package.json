@@ -1,6 +1,6 @@
 {
   "name": "subschema",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -20,30 +20,30 @@
     "react-dom": "16.x || ^15.5.0"
   },
   "dependencies": {
-    "subschema-context": "^4.0.3",
-    "subschema-css": "^4.0.1",
-    "subschema-dom": "^4.0.1",
-    "subschema-expression": "^4.0.1",
-    "subschema-field": "^4.0.1",
-    "subschema-fieldset": "^4.0.1",
-    "subschema-form": "^4.0.3",
-    "subschema-injection": "^4.0.1",
-    "subschema-loader": "^4.0.1",
-    "subschema-plugin-autoloader": "^4.0.1",
-    "subschema-preset-list": "^4.0.1",
-    "subschema-preset-resolvers": "^4.0.3",
-    "subschema-preset-web-form": "^4.0.3",
-    "subschema-preset-wizard": "^4.0.1",
-    "subschema-prop-types": "^4.0.1",
-    "subschema-rendercontent": "^4.0.1",
-    "subschema-rendertemplate": "^4.0.1",
-    "subschema-utils": "^4.0.1",
-    "subschema-valuemanager": "^4.0.1"
+    "subschema-context": "^4.1.0",
+    "subschema-css": "^4.1.0",
+    "subschema-dom": "^4.1.0",
+    "subschema-expression": "^4.1.0",
+    "subschema-field": "^4.1.0",
+    "subschema-fieldset": "^4.1.0",
+    "subschema-form": "^4.1.0",
+    "subschema-injection": "^4.1.0",
+    "subschema-loader": "^4.1.0",
+    "subschema-plugin-autoloader": "^4.1.0",
+    "subschema-preset-list": "^4.1.0",
+    "subschema-preset-resolvers": "^4.1.0",
+    "subschema-preset-web-form": "^4.1.0",
+    "subschema-preset-wizard": "^4.1.0",
+    "subschema-prop-types": "^4.1.0",
+    "subschema-rendercontent": "^4.1.0",
+    "subschema-rendertemplate": "^4.1.0",
+    "subschema-utils": "^4.1.0",
+    "subschema-valuemanager": "^4.1.0"
   },
   "devDependencies": {
     "mrbuilder-plugin-version": "^3.1.5",
-    "subschema-dev-support": "^4.0.1",
-    "subschema-test-support": "^4.0.3"
+    "subschema-dev-support": "^4.1.0",
+    "subschema-test-support": "^4.1.0"
   },
   "subschema": {
     "options": {

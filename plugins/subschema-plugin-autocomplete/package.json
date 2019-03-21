@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-autocomplete",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "description": "Subschema Autocomplete",
   "main": "lib",
   "scripts": {
@@ -10,13 +10,13 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.0.1",
-    "subschema-rendertemplate": "^4.0.1",
-    "subschema-utils": "^4.0.1"
+    "subschema-prop-types": "^4.1.0",
+    "subschema-rendertemplate": "^4.1.0",
+    "subschema-utils": "^4.1.0"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.0.1",
-    "subschema-test-support": "^4.0.3"
+    "subschema-dev-support": "^4.1.0",
+    "subschema-test-support": "^4.1.0"
   },
   "source": "src",
   "gitHead": "f5a1fee9ac54f33f4d0cb2b7593de92d275c396b",

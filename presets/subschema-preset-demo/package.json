@@ -1,8 +1,8 @@
 {
   "name": "subschema-preset-demo",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "dependencies": {
-    "subschema-plugin-demo": "^4.0.3"
+    "subschema-plugin-demo": "^4.1.0"
   },
   "subschema": {
     "plugins": [
@@ -12,7 +12,7 @@
   "source": "src",
   "main": "lib",
   "devDependencies": {
-    "subschema-dev-support": "^4.0.1"
+    "subschema-dev-support": "^4.1.0"
   },
   "scripts": {
     "clean": "subschema-clean"
