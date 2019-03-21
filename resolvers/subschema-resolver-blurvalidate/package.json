@@ -1,6 +1,6 @@
 {
   "name": "subschema-resolver-blurvalidate",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"

@@ -1,6 +1,6 @@
 {
   "name": "subschema-test-support",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Subschema Test Support",
   "main": "lib",
   "scripts": {
@@ -11,12 +11,12 @@
     "chai": "^4.1.2",
     "mrbuilder-plugin-enzyme": "^3.1.6",
     "rimraf": "^2.6.2",
-    "subschema-context": "^4.0.2",
+    "subschema-context": "^4.0.3",
     "subschema-dev-support": "^4.0.1",
     "subschema-injection": "^4.0.1",
     "subschema-loader": "^4.0.1",
     "subschema-plugin-autoloader": "^4.0.1",
-    "subschema-preset-resolvers": "^4.0.2",
+    "subschema-preset-resolvers": "^4.0.3",
     "subschema-prop-types": "^4.0.1",
     "subschema-valuemanager": "^4.0.1",
     "util": "^0.10.3"

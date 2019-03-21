@@ -1,8 +1,8 @@
 {
   "name": "subschema-preset-demo",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "dependencies": {
-    "subschema-plugin-demo": "^4.0.2"
+    "subschema-plugin-demo": "^4.0.3"
   },
   "subschema": {
     "plugins": [
