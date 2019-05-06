@@ -1,5 +1,6 @@
 {
   "presets": [
+    "mrbuilder-preset-babel-7",
     "mrbuilder-preset-lib",
     "subschema"
   ],

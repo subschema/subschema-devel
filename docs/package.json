@@ -3,15 +3,15 @@
   "version": "4.0.1",
   "dependencies": {
     "lerna": "^2.11.0",
-    "mrbuilder": "^3.1.5"
+    "mrbuilder": "^3.3.1"
   },
   "devDependencies": {
-    "mrbuilder-plugin-doc-prop-types": "^3.1.5",
-    "mrbuilder-plugin-emeth": "^3.1.5",
-    "mrbuilder-plugin-react-styleguidist": "^3.1.5",
-    "mrbuilder-plugin-stylus": "^3.1.5",
-    "mrbuilder-preset-dev": "^3.1.5",
-    "webpack-dev-server": "^3.1.5"
+    "mrbuilder-plugin-doc-prop-types": "^3.3.1",
+    "mrbuilder-plugin-emeth": "^3.3.1",
+    "mrbuilder-plugin-react-styleguidist": "^3.3.2",
+    "mrbuilder-plugin-stylus": "^3.3.1",
+    "mrbuilder-preset-dev": "^3.3.1",
+    "webpack-dev-server": "^3.3.1"
   },
   "scripts": {
     "start:styleguide": "mrbuilder",
@@ -44,6 +44,7 @@
       ]
     ],
     "presets": [
+      "mrbuilder-preset-babel-7",
       "subschema",
       "subschema-styles-bootstrap4",
       "subschema-plugin-autoloader",
