@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import 'subschema-transitions/lib/style.css';
 import {transitions as _transitions} from 'subschema-transitions';
 import Autocomplete from './Autocomplete.less';
 import AutocompleteItemTemplate from './AutocompleteItemTemplate-style';

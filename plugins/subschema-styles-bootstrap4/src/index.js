@@ -1,6 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import 'subschema-transitions/lib/style.css';
-import { transitions as _transitions } from 'subschema-transitions';
 import Autocomplete from './Autocomplete.scss';
 import AutocompleteItemTemplate from './AutocompleteItemTemplate-style';
 import ListItemTemplate from './ListItemTemplate.scss';
@@ -15,7 +13,6 @@ import RadioItemTemplate from './RadioItemTemplate-style';
 import ModalTemplate from './ModalTemplate-style';
 import NavTemplate from './NavTemplate-style';
 
-export const transitions = _transitions;
 
 export const styles = ({
     Autocomplete,
@@ -45,4 +42,4 @@ export const styles = ({
     WizardTemplate
 });
 
-export default ({ styles, transitions });
+export default ({ styles, });

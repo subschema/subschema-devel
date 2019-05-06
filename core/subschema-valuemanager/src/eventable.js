@@ -1,5 +1,5 @@
 import {isFunction, returnFirst} from 'subschema-utils';
-import warning from 'subschema-utils/lib/warning'
+import warning from 'subschema-utils/src/warning'
 
 /**
  * This callback is displayed as a global member.

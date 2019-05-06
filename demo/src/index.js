@@ -5,7 +5,6 @@ import schema from './schema.json';
 import createHistory from 'history/createHashHistory';
 import { DynamicSchema } from 'subschema-plugin-demo';
 import { NavigationForm } from 'subschema-plugin-navigation';
-import 'subschema-transitions/lib/style.css';
 import './demo.css';
 
 //import "./sample.lessp";

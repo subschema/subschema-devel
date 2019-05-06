@@ -11,7 +11,7 @@
     "test": "lerna run test",
     "prepublish": "lerna run prepublish",
     "ci": "yarn install && yarn run test",
-    "demo": "cd subschema-component-demo && yarn run demo"
+    "demo": "cd subschema && yarn run prepublish && cd ../demo && yarn start"
   },
   "private": true,
   "devDependencies": {
