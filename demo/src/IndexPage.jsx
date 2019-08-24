@@ -24,7 +24,7 @@ export default class IndexPage extends Component {
                 <p>This is app shows how to use Subschema</p>
 
                 <p>Wherever it shows <b>Show Example Code</b> you can click to
-                    see the code that geneated the form, and
+                    see the code that generated the form, and
                     you can edit
                     the code in place,seeing the result immediately.</p>
 
