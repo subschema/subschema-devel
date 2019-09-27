@@ -1,6 +1,6 @@
 {
   "name": "subschema-validators",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Subschema Validators",
   "main": "lib",
   "scripts": {
@@ -9,11 +9,11 @@
     "clean": "subschema-clean"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.0"
+    "subschema-dev-support": "^4.1.1"
   },
   "source": "src",
   "dependencies": {
-    "subschema-utils": "^4.1.0"
+    "subschema-utils": "^4.1.1"
   },
   "gitHead": "7102e6249fb7d12545737ed895b0d269b401f9db",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "subschema-plugin-type-wizard",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Subschema Wizard Component",
   "main": "lib",
   "scripts": {
@@ -8,14 +8,14 @@
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-field": "^4.1.0",
-    "subschema-fieldset": "^4.1.0",
-    "subschema-plugin-object": "^4.1.0",
-    "subschema-rendertemplate": "^4.1.0",
-    "subschema-utils": "^4.1.0"
+    "subschema-field": "^4.1.1",
+    "subschema-fieldset": "^4.1.1",
+    "subschema-plugin-object": "^4.1.1",
+    "subschema-rendertemplate": "^4.1.1",
+    "subschema-utils": "^4.1.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.0"
+    "subschema-dev-support": "^4.1.1"
   },
   "source": "src",
   "gitHead": "7102e6249fb7d12545737ed895b0d269b401f9db",

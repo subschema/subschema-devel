@@ -1,16 +1,16 @@
 {
   "name": "subschema-example-autocomplete",
   "description": "Provides an autocomplete component for subschema",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.1.0"
+    "subschema-utils": "^4.1.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.0"
+    "subschema-dev-support": "^4.1.1"
   },
   "source": "src",
   "main": "lib",

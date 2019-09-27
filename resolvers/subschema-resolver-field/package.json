@@ -1,18 +1,18 @@
 {
   "name": "subschema-resolver-field",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "scripts": {
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-prop-types": "^4.1.0",
-    "subschema-resolver-template": "^4.1.0",
-    "subschema-resolver-type": "^4.1.0",
-    "subschema-utils": "^4.1.0"
+    "subschema-prop-types": "^4.1.1",
+    "subschema-resolver-template": "^4.1.1",
+    "subschema-resolver-type": "^4.1.1",
+    "subschema-utils": "^4.1.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.0"
+    "subschema-dev-support": "^4.1.1"
   },
   "source": "src",
   "main": "lib",

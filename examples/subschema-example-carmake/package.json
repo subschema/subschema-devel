@@ -1,16 +1,16 @@
 {
   "name": "subschema-example-carmake",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "scripts": {
     "build": "subschema-webpack",
     "prepublish": "subschema-babel",
     "clean": "subschema-clean"
   },
   "dependencies": {
-    "subschema-utils": "^4.1.0"
+    "subschema-utils": "^4.1.1"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.0"
+    "subschema-dev-support": "^4.1.1"
   },
   "source": "src",
   "main": "lib",
