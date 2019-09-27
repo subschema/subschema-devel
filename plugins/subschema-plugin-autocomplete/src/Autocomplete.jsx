@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Dom from 'subschema-dom';
-import PropTypes from 'subschema-prop-types';
-import renderTemplate  from 'subschema-rendertemplate';
+import React, {Component} from 'react';
+import Dom                from 'subschema-dom';
+import PropTypes          from 'subschema-prop-types';
+import renderTemplate     from 'subschema-rendertemplate';
 
 export default class Autocomplete extends Component {
 
@@ -37,7 +37,7 @@ export default class Autocomplete extends Component {
                 value       : PropTypes.any,
                 autoComplete: PropTypes.string
             },
-            defaultProps: { value: '', autoComplete: 'off' }
+            defaultProps: {value: '', autoComplete: 'off'}
         },
         processor     : 'OptionsProcessor',
         showing       : 'Searching...',
@@ -45,7 +45,7 @@ export default class Autocomplete extends Component {
         inputValue    : 'input'
     };
 
-    state = { suggestions: [], showing: false, focus: -1 };
+    state = {suggestions: [], showing: false, focus: -1};
 
     componentWillMount() {
         this._processProps(this.props);
@@ -103,7 +103,7 @@ export default class Autocomplete extends Component {
 
                 });
             } else {
-                this.setState({ input, value });
+                this.setState({input, value});
             }
         }
     }
@@ -116,14 +116,14 @@ export default class Autocomplete extends Component {
      * If
      */
     hide = (selectValue) => {
-        let { selected, input, suggestions, focus } = this.state,
-            i                                       = 0, l,
-            options, found                          = false;
-        suggestions                                 = suggestions || [];
+        let {selected, input, suggestions, focus} = this.state,
+            i                                     = 0, l,
+            options, found                        = false;
+        suggestions                               = suggestions || [];
         if (selectValue) {
 
 
-            const p = this.getProcessor();
+            const p = this.props.processor;
             if (selectValue && focus > -1) {
 
                 selected = suggestions[focus];
@@ -168,10 +168,8 @@ export default class Autocomplete extends Component {
                 });
             }
         } else {
-            this.setState({ showing: false, focus: -1, suggestions: [] },
-                this.un)
+            this.setState({showing: false, focus: -1, suggestions: []}, this.unbindDocument)
         }
-        //        this.props.onBlur();
     };
 
 
@@ -195,7 +193,7 @@ export default class Autocomplete extends Component {
         this.unbindDocument();
     }
 
-    unbindDocument() {
+    unbindDocument = ()=> {
         this._bound = false;
         if (this._onDocumentClickListener) {
             this._onDocumentClickListener.remove();
@@ -328,7 +326,7 @@ export default class Autocomplete extends Component {
                         this.handleSuggestionClick(
                             s[Math.max(this.state.focus, 0)]);
                         this.setState(
-                            { suggestions: [], showing: false, focus: -1 });
+                            {suggestions: [], showing: false, focus: -1});
 
                         return;
                     }
@@ -338,7 +336,7 @@ export default class Autocomplete extends Component {
             }
             if (update) {
                 //e.preventDefault();
-                this.setState({ focus });
+                this.setState({focus});
             }
         }
     };
@@ -358,7 +356,7 @@ export default class Autocomplete extends Component {
         const items = event.clipboardData && event.clipboardData.items;
         items && items[0] && items[0].getAsString((input) => {
 
-            this.setState({ input, suggestions: [], showing: false });
+            this.setState({input, suggestions: [], showing: false});
         });
     };
 
@@ -380,10 +378,10 @@ export default class Autocomplete extends Component {
 
             return null;
         }
-        const { focus, input }      = this.state;
+        const {focus, input}        = this.state;
         const processor             = this.processor();
         const handleSuggestionClick = this.handleSuggestionClick;
-        const { itemTemplate }      = this.props;
+        const {itemTemplate}        = this.props;
         return <ul className={this.props.listGroupClass}>
             {suggestions.map((data, i) => renderTemplate({
                 template: itemTemplate,
@@ -400,7 +398,7 @@ export default class Autocomplete extends Component {
 
     render() {
         const suggestions = this.state.suggestions
-                            || [];
+            || [];
         const {
                   foundClass, namespaceClass, inputType, id,
                   input, notFoundClass, placeholder
