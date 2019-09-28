@@ -1,4 +1,4 @@
-import loaderFactory from '../src';
+import loaderFactory from '../lib';
 import { expect } from 'chai';
 
 

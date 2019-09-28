@@ -1,5 +1,5 @@
 import wrapLoader from './loader';
-import warning from 'subschema-utils/src/warning';
+import {warning} from 'subschema-utils';
 
 const upFirst = (str) => `${str[0].toUpperCase()}${str.substring(1)}`;
 

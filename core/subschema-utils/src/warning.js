@@ -1,6 +1,4 @@
-import noop from 'lodash/noop';
-
-let warning = noop;
+let warning = () => {};
 
 if (process.env.NODE_ENV !== 'production') {
     warning = function (check, format) {
@@ -11,12 +9,12 @@ if (process.env.NODE_ENV !== 'production') {
         if (check) {
             return;
         }
-        let i       = 2;
-        const args  = arguments,
-            message = 'Subschema Warning: ' + format.replace(/%s/g,
-                () => args[i++]);
+        let i         = 2;
+        const args    = arguments,
+              message = 'Subschema Warning: ' + format.replace(/%s/g,
+                  () => args[i++]);
 
-        if (typeof console !== void(0)) {
+        if (typeof console !== void (0)) {
             console.error(message);
         }
 
