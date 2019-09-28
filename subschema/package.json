@@ -12,8 +12,8 @@
     "compile-web-noreact": "MRBUILDER_ENV=subschema-noreact NODE_ENV=production subschema-webpack",
     "karma": "subschema-karma",
     "test": "subschema-karma && node -r ./dist/subschema.server.js -e 'process.exit(0)'",
-    "prepublish": "yarn run compile-lib && yarn run compile-web && yarn run compile-web-debug && yarn run compile-web-noreact && yarn run compile-server",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "yarn run compile-lib && yarn run compile-web && yarn run compile-web-debug && yarn run compile-web-noreact && yarn run compile-server"
   },
   "peerDependencies": {
     "react": "16.x || ^15.5.0",

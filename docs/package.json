@@ -2,7 +2,6 @@
   "name": "subschema-docs",
   "version": "4.1.1",
   "dependencies": {
-    "lerna": "^2.11.0",
     "mrbuilder": "^3.3.1"
   },
   "devDependencies": {
