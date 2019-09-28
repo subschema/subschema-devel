@@ -2,8 +2,8 @@
   "name": "subschema-example-customtype",
   "version": "4.1.1",
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "subschema-utils": "^4.1.1"

@@ -2,7 +2,7 @@
   "name": "subschema-example-expression",
   "version": "4.1.1",
   "scripts": {
-    "prepublish": "subschema-webpack"
+    "prepare": "subschema-webpack"
   },
   "dependencies": {
     "subschema-utils": "^4.1.1"
