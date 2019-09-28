@@ -5,8 +5,8 @@
   "main": "lib",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.1.1"

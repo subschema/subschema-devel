@@ -3,7 +3,7 @@
   "version": "4.1.1",
   "scripts": {
     "clean": "subschema-clean",
-    "prepublish": "subschema-babel"
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "react-dom": "^16.1.1",

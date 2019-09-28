@@ -5,8 +5,8 @@
   "main": "lib",
   "scripts": {
     "test": "subschema-babel && subschema-mocha",
-    "prepublish": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js"
   },
   "dependencies": {
     "subschema-utils": "^4.1.1"

@@ -4,8 +4,8 @@
   "main": "lib",
   "description": "Bootstrap4 CSS support for subschema",
   "scripts": {
-    "prepublish": "NODE_ENV=development subschema-webpack",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "NODE_ENV=development subschema-webpack"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",

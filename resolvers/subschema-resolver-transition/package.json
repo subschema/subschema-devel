@@ -2,8 +2,8 @@
   "name": "subschema-resolver-transition",
   "version": "4.1.1",
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "react-transition-group": "^2.2.1",

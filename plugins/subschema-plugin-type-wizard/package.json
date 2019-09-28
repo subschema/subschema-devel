@@ -4,8 +4,8 @@
   "description": "Subschema Wizard Component",
   "main": "lib",
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "subschema-field": "^4.1.1",

@@ -2,8 +2,8 @@
   "name": "subschema-resolver-title",
   "version": "4.1.1",
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "subschema-prop-types": "^4.1.1",

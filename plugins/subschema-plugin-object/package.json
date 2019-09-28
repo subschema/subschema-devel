@@ -9,8 +9,8 @@
     "subschema-utils": "^4.1.1"
   },
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "devDependencies": {
     "subschema-dev-support": "^4.1.1"

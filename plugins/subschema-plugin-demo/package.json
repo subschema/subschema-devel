@@ -3,11 +3,11 @@
   "version": "4.1.1",
   "description": "Subschema Demo",
   "scripts": {
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "dependencies": {
-    "history": "^4.6.1",
+    "history": "^4.10.1",
     "hpack.js": "^2.1.6",
     "subschema-plugin-navigation": "^4.1.1",
     "subschema-plugin-playground": "^4.1.1",
@@ -19,9 +19,8 @@
     "prop-types": "*"
   },
   "devDependencies": {
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0",
-    "rimraf": "^2.6.2",
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0",
     "subschema-dev-support": "^4.1.1",
     "subschema-test-support": "^4.1.1"
   },

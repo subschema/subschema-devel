@@ -13,10 +13,7 @@
     "mrbuilder-preset-babel-7": "^3.3.1",
     "mrbuilder-preset-dev": "^3.3.1",
     "mrbuilder-preset-lib": "^3.3.1",
-    "mrbuilder-preset-test": "^3.3.1",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-hot-loader": "4.8.4"
+    "mrbuilder-preset-test": "^3.3.1"
   },
   "bin": {
     "subschema-babel": "bin/subschema-babel.js",

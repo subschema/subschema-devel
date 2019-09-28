@@ -4,8 +4,8 @@
   "description": "Subschema Transitions",
   "main": "lib",
   "scripts": {
-    "prepublish": "subschema-webpack",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-webpack"
   },
   "dependencies": {
     "react-transition-group": "^2.2.1",

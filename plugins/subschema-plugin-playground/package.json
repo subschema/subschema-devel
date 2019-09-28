@@ -6,14 +6,14 @@
     "karma": "subschema-karma",
     "test": "subschema-karma",
     "start": "subschema-webpack-dev-server --entry index=public/index.js",
-    "prepublish": "subschema-webpack",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-webpack"
   },
   "dependencies": {
-    "babel-standalone": "^6.24.0",
-    "brace": "^0.10.0",
+    "babel-standalone": "^6.26.0",
+    "brace": "^0.11.1",
     "browser-filesaver": "^1.1.1",
-    "react-ace": "^5.0.1",
+    "react-ace": "^7.0.4",
     "subschema-plugin-project": "^4.1.1",
     "subschema-valuemanager": "^4.1.1",
     "validate-npm-package-name": "^3.0.0"

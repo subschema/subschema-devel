@@ -7,8 +7,8 @@
     "karma": "subschema-karma",
     "test": "subschema-karma",
     "server": "subschema-webpack-dev-server",
-    "prepublish": "subschema-babel",
-    "clean": "subschema-clean"
+    "clean": "subschema-clean",
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "subschema-plugin-content": "^4.1.1",

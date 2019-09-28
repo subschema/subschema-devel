@@ -5,13 +5,14 @@
     "test": "subschema-mocha",
     "karma": "subschema-karma",
     "clean": "subschema-clean",
-    "prepublish": "subschema-babel"
+    "prepare": "subschema-babel"
   },
   "dependencies": {
     "subschema-prop-types": "^4.1.1",
     "subschema-utils": "^4.1.1"
   },
   "devDependencies": {
+    "subschema-test-support": "^4.1.0",
     "subschema-dev-support": "^4.1.1"
   },
   "source": "src",

@@ -7,7 +7,7 @@
   },
   "scripts": {
     "clean": "subschema-clean",
-    "prepublish": "mkdir lib; ./bin/subschema-autoloader.js > lib/index.js && ./bin/subschema-importer.js > lib/importer.js"
+    "prepare": "mkdir lib; ./bin/subschema-autoloader.js > lib/index.js && ./bin/subschema-importer.js > lib/importer.js"
   },
   "source": "src",
   "main": "lib",
