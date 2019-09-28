@@ -1,16 +1,16 @@
 {
   "name": "subschema-dom",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "scripts": {
     "clean": "subschema-clean",
     "prepare": "subschema-babel"
   },
   "dependencies": {
     "react-dom": "^16.1.1",
-    "subschema-utils": "^4.1.1"
+    "subschema-utils": "^4.1.2"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.1"
+    "subschema-dev-support": "^4.1.2"
   },
   "peerDependencies": {
     "react-dom": "*"

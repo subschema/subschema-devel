@@ -1,6 +1,6 @@
 {
   "name": "subschema-valuemanager",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "Subschema",
   "main": "lib",
   "scripts": {
@@ -9,10 +9,10 @@
     "prepare": "subschema-babel"
   },
   "dependencies": {
-    "subschema-utils": "^4.1.1"
+    "subschema-utils": "^4.1.2"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.1"
+    "subschema-dev-support": "^4.1.2"
   },
   "source": "src",
   "gitHead": "7102e6249fb7d12545737ed895b0d269b401f9db",

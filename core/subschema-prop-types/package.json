@@ -1,6 +1,6 @@
 {
   "name": "subschema-prop-types",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "source": "src",
   "main": "lib",
   "scripts": {
@@ -9,13 +9,13 @@
     "prepare": "subschema-babel && node -e 'console.log(require(\"./src/wrapped-prop-types.js\")({propTypes:require(\"prop-types\")}).code)'  | subschema-babel --out-file ./lib/wrapped-prop-types.js"
   },
   "dependencies": {
-    "subschema-utils": "^4.1.1"
+    "subschema-utils": "^4.1.2"
   },
   "peerDependencies": {
     "prop-types": "*"
   },
   "devDependencies": {
-    "subschema-dev-support": "^4.1.1"
+    "subschema-dev-support": "^4.1.2"
   },
   "mrbuilder": {
     "plugin": "./mrbuilder-plugin"

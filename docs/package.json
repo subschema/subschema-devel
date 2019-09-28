@@ -1,6 +1,6 @@
 {
   "name": "subschema-docs",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "dependencies": {
     "mrbuilder": "^3.3.1"
   },
