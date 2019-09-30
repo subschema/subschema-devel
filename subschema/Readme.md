@@ -1,4 +1,4 @@
-# Subschema [![Build Status](https://travis-ci.org/subschema/subschema.svg?branch=master)](https://travis-ci.org/subschema/subschema)
+# Subschema  [![Build Status](https://travis-ci.org/subschema/subschema-devel.svg?branch=master)](https://travis-ci.org/subschema/subschema-devel)
 
 Create forms by  declaring the schema in JSON.  Has validation,
 data update, support for server side errors, and a bunch of input types.  Easily change all your

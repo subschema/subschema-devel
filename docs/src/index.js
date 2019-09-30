@@ -1,7 +1,8 @@
-const lerna = require('lerna');
-const path  = require('path');
-const style = require('mrbuilder-plugin-react-styleguidist');
-const code  = (v, type = 'js static') => {
+const lerna                   = require('lerna');
+const path                    = require('path');
+const style                   = require('mrbuilder-plugin-react-styleguidist');
+const {lernaFilteredPackages} = require('mrbuilder-utils');
+const code                    = (v, type = 'js static') => {
     return `
 ${"```"}${type}
 ${v}
@@ -9,12 +10,9 @@ ${"```"}
 `
 };
 
-module.exports = function (options, webpack, om) {
-    const ls = new lerna.LsCommand(null, {}, path.join(process.cwd(), '..'));
-
-    ls.runPreparations();
-
-    const sections   = {
+module.exports = async function (options, webpack, om) {
+    const filteredPackages = await lernaFilteredPackages();
+    const sections         = {
         subschema: [],
         plugins  : [],
         presets  : [],
@@ -23,7 +21,7 @@ module.exports = function (options, webpack, om) {
         examples : [],
         misc     : []
     };
-    const components = [
+    const components       = [
         {
             name    : "Overview",
             content : "../subschema/Readme.md",
@@ -82,18 +80,20 @@ module.exports = function (options, webpack, om) {
         }
     ];
 
-    for (const pkg of ls.filteredPackages) {
-        const base = pkg._location.replace(/.*\/subschema-devel\//, '');
-        let sec    = base.split(path.sep)[0];
-        const conf = {};
-        let desc   = [pkg.name, conf];
+    console.log(filteredPackages);
+    for (const pkg of filteredPackages) {
+        pkg._package = require(`${pkg.location}/package.json`);
+        const base   = pkg.location.replace(/.*\/subschema-devel\//, '');
+        let sec      = base.split(path.sep)[0];
+        const conf   = {};
+        let desc     = [pkg.name, conf];
         switch (sec) {
             case 'subschema':
             case 'docs':
                 break;
             case 'examples':
                 conf.description = `
-${pkg._package.description || pkg.description || ''}
+pkg._package.description || pkg.description || ''}
 <InlinePlayground name='${pkg.name}'/>
 `;
                 conf.components  = [];
