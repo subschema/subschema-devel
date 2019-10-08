@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import warning     from 'subschema-utils/src/warning';
+import warning     from 'subschema-utils/lib/warning';
 
 const zipRe = /^(\d{0,5})(?:[^\d]?(\d{0,4}))?$/, reRe = /(#{1,}|A{1,}|a{1,}|0{1,}(?:\.0{1,})?)?(.+?)?/mg;
 
