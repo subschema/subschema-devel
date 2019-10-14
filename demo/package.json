@@ -1,21 +1,21 @@
 {
   "name": "subschema-demo",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "dependencies": {
-    "subschema": "^4.1.2",
-    "subschema-plugin-autoloader": "^4.1.2",
-    "subschema-plugin-demo": "^4.1.2",
-    "subschema-plugin-project": "^4.1.2",
-    "subschema-preset-examples": "^4.1.2",
-    "subschema-preset-resolvers": "^4.1.2",
-    "subschema-preset-web-form": "^4.1.2",
-    "subschema-styles-bootstrap4": "^4.1.2",
+    "subschema": "^4.1.3",
+    "subschema-plugin-autoloader": "^4.1.3",
+    "subschema-plugin-demo": "^4.1.3",
+    "subschema-plugin-project": "^4.1.3",
+    "subschema-preset-examples": "^4.1.3",
+    "subschema-preset-resolvers": "^4.1.3",
+    "subschema-preset-web-form": "^4.1.3",
+    "subschema-styles-bootstrap4": "^4.1.3",
     "subschema.wiki": "^4.0.0-b-1.5"
   },
   "devDependencies": {
     "mrbuilder-plugin-markdown": "^3.3.1",
     "mrbuilder-plugin-typescript": "3.3.1",
-    "subschema-dev-support": "^4.1.2"
+    "subschema-dev-support": "^4.1.3"
   },
   "scripts": {
     "start": "subschema-webpack-dev-server --open",
